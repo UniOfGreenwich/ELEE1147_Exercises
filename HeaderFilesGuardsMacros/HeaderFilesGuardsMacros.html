@@ -1,0 +1,787 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Header Files, Guards, and Macros - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="spacer"></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">2.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">3.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">4.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">5.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html" class="active"><strong aria-hidden="true">6.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> Pointers and Addressing</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> Structs and Unions</div></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Steams</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">12.</strong> Documentation</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lab-3-header-files-header-guards-and-macros-in-c"><a class="header" href="#lab-3-header-files-header-guards-and-macros-in-c">Lab 3: Header Files, Header Guards, and Macros in C</a></h1>
+<p>In this lab, we'll explore key concepts in C programming that enhance code organization and reusability.</p>
+<h2 id="modular-programming"><a class="header" href="#modular-programming">Modular Programming</a></h2>
+<p>Modular programming involves breaking down a program into smaller, manageable modules. Each module focuses on a specific task, promoting easier maintenance and collaboration.</p>
+<h2 id="need-for-header-files"><a class="header" href="#need-for-header-files">Need for Header Files</a></h2>
+<p>Header files serve as containers for function declarations, allowing us to separate the declaration (interface) from the implementation (code). This separation simplifies code organization and supports reusability.</p>
+<h2 id="benefits-of-code-separation-and-reusability"><a class="header" href="#benefits-of-code-separation-and-reusability">Benefits of Code Separation and Reusability</a></h2>
+<p>By using header files, we can:</p>
+<ul>
+<li>
+<p>Organize Code: Group related functions and declarations in separate files.</p>
+</li>
+<li>
+<p>Improve Readability: Focus on high-level functionality without getting lost in details.</p>
+</li>
+<li>
+<p>Facilitate Reusability: Easily reuse functions in different parts of a program or in other projects.</p>
+</li>
+</ul>
+<hr />
+<hr />
+<h2 id="task-1-header-files"><a class="header" href="#task-1-header-files">Task 1: Header Files</a></h2>
+<blockquote>
+<p><strong>So What is a Header File?</strong>
+&gt;</p>
+<blockquote>
+<p>A header file is a file containing declarations and macro definitions that can be shared between multiple source files. Commonly used header files, such as <code>stdio.h</code>, <code>stdlib.h</code>, and <code>math.h</code>, provide essential functions and constants.</p>
+</blockquote>
+</blockquote>
+<ol>
+<li>
+<p>Open a new project and call it something meaningful like <code>HeadersLab</code>.</p>
+</li>
+<li>
+<p>Create a new header file in the header folder of the project view as seen below, call it, <code>myheader.h</code></p>
+</li>
+</ol>
+<div align=center>
+<p><img src="./figures/step1.png" alt="" />
+<img src="./figures/step2.png" alt="" /></p>
+</div>
+<ol start="3">
+<li>
+<p>Open the newly created header file and add a guard using the the keywords, <code>#ifndef</code>, <code>#define</code> and <code>#endif</code>. In at the end of <code>#ifndef</code> and <code>#define</code>, write the name of the header file in captial letters, and replace the <code>.h</code> with <code>_h</code>.</p>
+<details>
+ <summary>Solution...</summary>
+<pre><code class="language-h">// myheader.h
+#ifndef MYHEADER_H
+#define MYHEADER_H
+
+#endif // MYHEADER_H
+
+</code></pre>
+</details>
+</li>
+<li>
+<p>Inside the ifndef and endif block add a declaration/definition for a <code>greet</code> function that returns <code>void</code> and has no arguments and a second function called <code>add</code> that returns an <code>int</code> and takes two arguments that are <code>int</code>s:</p>
+<details>
+ <summary>Solution...</summary>
+<pre><code class="language-h">// myheader.h
+#ifndef MYHEADER_H
+#define MYHEADER_H
+
+// Function declarations
+void greet();
+int add(int a, int b);
+
+#endif // MYHEADER_H
+
+</code></pre>
+</details>
+</li>
+<li>
+<p>Now create the <code>myheader.c</code> file that will provide the functionality of the <code>myheader.h</code> decalarations. Once created reproduce the following:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &quot;myheader.h&quot;
+
+void greet() {
+    printf(&quot;Hello, welcome to the workshop!\n&quot;);
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<p>You can see the that the <code>&quot;myheader.h&quot;</code> has different syntax to <code>&lt;stdio.h&gt;</code>. This is because <code>&lt;someheader.h&gt;</code> is part of the global library of header files that come with the C/C++ compilers. Whereas, the <code>&quot;someotherheader.h&quot;</code> indicates that this file is located somewhere else, defined generally by the user. The location is generally part of the project folder, but can be located else and you simply provide the path to it <code>&quot;/path/to/file.h&quot;</code></p>
+</li>
+<li>
+<p>Go back to the the <code>HeadersLab.c</code> file where the <code>main() </code>function is and include the <code>&quot;myheader.h&quot;</code> at the top of the script. </p>
+</li>
+<li>
+<p>Inside the <code>main()</code>, before the <code>return</code> keyword:</p>
+<ul>
+<li>write <code>greet()</code> function</li>
+<li>on the next line assign the returned <code>int</code> as <code>result</code> value from <code>add()</code>, supply 5 and 7 as the arguments. </li>
+<li>Finally, use the <code>prinf()</code> to output the <code>result</code>, you can use this format/syntax:
+<ul>
+<li><code>printf(&quot;some string: %d\n&quot;, result)</code>.</li>
+<li>Where the format specifier, <code>%d</code>, means digit/denary. <p></p></li>
+</ul>
+</li>
+</ul>
+<details>
+ <summary>HeadersLab.c code</summary>
+<pre><code class="language-c">// main.c
+#include &quot;myheader.h&quot;
+
+int main() {
+    greet();
+    
+    int result = add(5, 7);
+    printf(&quot;The sum is: %d\n&quot;, result);
+
+    return 0;
+}
+</code></pre>
+</details>
+</li>
+<li>
+<p>Run the program and you should recieve the following:</p>
+<p><strong>Output:</strong></p>
+<div align=center>
+<p><img src="./figures/step3.png" alt="" /></p>
+</div>
+</li>
+<li>
+<p>The guard is important in the header file because during the compiling process their should only be one instance on the header. </p>
+<ul>
+<li>To demonstrate this, create remove the guard block from <code>myheader.h</code>. </li>
+<li>Then create a new file called <code>otherfile.c</code> and  include the <code>myheader.h</code> at the top of the script</li>
+</ul>
+<p><img src="./figures/step4.png" alt="" /> <!--Image of noguard.h--></p>
+</li>
+<li>
+<p>Run the code and you should see....</p>
+<p><img src="./figures/step5.png" alt="" /> <!--Image of having no guard error--></p>
+<p>This is because: </p>
+<ul>
+<li>
+<p><strong>First Inclusion:</strong></p>
+<ul>
+<li><code>main.c</code> includes <code>myheader.h</code>.</li>
+<li>The preprocessor replaces the <code>#include &quot;myheader.h&quot;</code> with the content of <code>myheader.h</code>.</li>
+<li>Declarations in <code>myheader.h</code> become part of <code>main.c</code>.</li>
+</ul>
+<pre><code class="language-md">main.c:
+-----------
+#include &quot;myheader.h&quot;
+-----------
+
+myheader.h:
+-----------
+void greet();
+int add(int a, int b);
+-----------
+</code></pre>
+</li>
+<li>
+<p><strong>Second Inclusion (without Header Guard):</strong></p>
+</li>
+<li>
+<p>Another file, say <code>otherfile.c</code>, also includes <code>myheader.h</code>.</p>
+</li>
+<li>
+<p>The preprocessor replaces the <code>#include &quot;myheader.h&quot;</code> with the content of <code>myheader.h</code>.</p>
+</li>
+<li>
+<p>Declarations in <code>myheader.h</code> become part of <code>otherfile.c</code>.</p>
+<pre><code class="language-md">otherfile.c:
+-----------
+#include &quot;myheader.h&quot;
+-----------
+
+myheader.h:
+-----------
+void greet();
+int add(int a, int b);
+-----------
+</code></pre>
+</li>
+<li>
+<p><strong>Combined Result (Compilation):</strong></p>
+</li>
+<li>
+<p>Now, if both <code>main.c</code> and <code>otherfile.c</code> are compiled together, the compiler sees duplicate declarations for functions in <code>myheader.h</code>.</p>
+</li>
+<li>
+<p>This leads to compilation errors due to redefinition.</p>
+</li>
+<li>
+<p>The diagram below illustrates the problem:</p>
+<div align=center>
+<pre><code>    main.c                    otherfile.c
+|                            |
+v                            v
+--------------------------------------------------
+| #include &quot;myheader.h&quot; | #include &quot;myheader.h&quot;  |
+| void greet();         | void greet();          |
+| int add(int a, int b);| int add(int a, int b); |
+--------------------------------------------------
+</code></pre>
+</div>
+</li>
+<li>
+<p>Solution...</p>
+</li>
+<li>
+<p>Introducing a header guard resolves this issue. Here's how the modified <code>myheader.h</code> with a header guard looks:</p>
+<pre><code class="language-c">// myheader.h
+#ifndef MYHEADER_H
+#define MYHEADER_H
+
+// Function declarations
+void greet();
+int add(int a, int b);
+
+#endif // MYHEADER_H
+</code></pre>
+<ul>
+<li>The diagram shows that after the inclusion in both <code>main.c</code> and <code>otherfile.c</code> the <code>#ifndef</code> catches the second inclusion in <code>othefile.c</code> so it is ignored:</li>
+</ul>
+<pre><code>    main.c                     otherfile.c
+        |                            |
+        v                            v
+-----------------------------------------------------------
+|#include &quot;myheader.h&quot; | #include &quot;myheader.h&quot;            |
+|#ifndef MYHEADER_H    | (Already defined, skips content) |
+|#define MYHEADER_H    |                                  |
+|void greet();         |                                  |
+|int add(int a, int b);|                                  |
+|#endif // MYHEADER_H  |                                  |
+-----------------------------------------------------------
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Add the guard again to <code>myheader.h</code>. </p>
+</li>
+</ol>
+<hr />
+<hr />
+<h2 id="task-2-macros"><a class="header" href="#task-2-macros">Task 2: Macros</a></h2>
+<p>Macros are a powerful feature in C that allow us to define constants and perform code substitution. Let's explore their basic syntax and advantages.</p>
+<p><strong>Commonly Used Macros</strong></p>
+<p>Common macros, such as <code>#define PI 3.14</code>, simplify code maintenance by replacing repetitive values with named constants. <strong>Macros</strong> also play a role in conditional compilation using <code>#ifdef</code>, <code>#ifndef</code>, and <code>#endif</code>.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>The <code>#include</code> directive is used to include the contents of a file in another file. The inclusion happens during the preprocessing phase, before the actual compilation. It's used to include header files that contain declarations, macro definitions, and other necessary information so it is not a macro itself.</p>
+</blockquote>
+</blockquote>
+<ol start="12">
+<li>Let's modify our current <code>HeaderLab.c</code> file to includes some macros. after the <code>#include</code> directives and the macro <code>#define PI 3.14159</code></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>Macros variables/functions names follow a UPPERCASE name convention. </p>
+</blockquote>
+</blockquote>
+<ol start="13">
+<li>
+<p>Inside <code>main()</code> use <code>printf()</code> to output PI to the terminal. </p>
+<pre><code class="language-c">#include &quot;myheader.h&quot;
+#define PI 3.14159
+
+int main() {
+    
+    printf(&quot;PI is: %.5f\n&quot;, PI);
+    greet();
+    
+    int result = add(5, 7);
+    printf(&quot;The sum is: %d\n&quot;, result);
+
+    return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>Run and you should see the following output:</p>
+<p><strong>Output</strong>:</p>
+<p><img src="./figures/step6.PNG" alt="" /> <!--Output of PI--></p>
+</li>
+<li>
+<p>Continuing, define a second macro as function that computes the square of a number:</p>
+<pre><code class="language-c">#define SQUARE(x) ((x) * (x))
+</code></pre>
+<p>This function only use 4 Byte values, so anything larger than a <code>int</code> would not work. </p>
+</li>
+<li>
+<p>Inside <code>main()</code> call the macro defined function SQAURE inside a printf statement, where the statement outputs the result of the SQUARE and the number being squared:</p>
+<pre><code class="language-c">int num = 5;
+printf(&quot;The square of %d is: %d\n&quot;, num, SQUARE(num));
+</code></pre>
+</li>
+<li>
+<p>Run the program and you should see the following:</p>
+<p><img src="./figures/step7.png" alt="" /> <!--Output of programming runnning--></p>
+</li>
+<li>
+<p>Laslty we are going to look a very common marco useage implementing debugging. Reproduce the following at the top of the file,above the <code>#include</code> directive:</p>
+<pre><code class="language-c">// Example of conditional compilation macros
+#define DEBUG_MODE 1
+
+#ifdef DEBUG_MODE
+#define DEBUG_PRINT(msg) printf(&quot;Debug: %s\n&quot;, msg)
+#else
+#define DEBUG_PRINT(msg)
+#endif
+...
+</code></pre>
+</li>
+<li>
+<p><code>Inside main()</code> place this <code>DEBUG_PRINT(&quot;This is a debug message&quot;);</code> :</p>
+<pre><code class="language-c">int main() {
+
+printf(&quot;PI is: %.5f\n&quot;, PI);
+
+int num = 5;
+printf(&quot;The square of %d is: %d\n&quot;, num, SQUARE(num));
+
+DEBUG_PRINT(&quot;This is a debug message&quot;);
+...
+</code></pre>
+</li>
+<li>
+<p>If you run this program the you should see the following output:</p>
+<p><img src="./figures/step8.png" alt="" /></p>
+</li>
+<li>
+<p>Remove the macro <code>DEBUG_MODE</code> and run the program again.</p>
+<details>
+<summay></summary>
+<p><img src="./figures/step9.png" alt="" /></p>
+<p>This is because <code>DEBUG_MODE</code> is no longer defined so the <code>DEBUG_PRINT()</code> isn't invoked now.</p>
+</details>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>The term <strong>debugging</strong> can be traced back to Admiral Grace Hopper, who worked at Harvard University in the 1940s. When one of her colleagues found a moth impeding the operation of one of the university's computers, she told them they were debugging the system. Computer programmers were first recorded as using the terms bugs and debugging by the 1950s, and by the early 1960s, the term debugging was commonly accepted in the programming community.</p>
+</blockquote>
+</blockquote>
+<hr />
+<hr />
+<h2 id="task-3-advanced-macros"><a class="header" href="#task-3-advanced-macros">Task 3: Advanced Macros</a></h2>
+<p>Here you will explore the varadic, Stringification, Marcros as Data structures, and Guarded Macros for Header Files.</p>
+<ol start="22">
+<li>
+<p><strong>Varadic</strong> macros extend the function-like macros to handle a variable number of arguments using variadic macros. For example you can create your own macro for <code>printf</code>, try the following:</p>
+<pre><code class="language-c">// Example of a variadic macro for printing values
+#define PRINT_VALUES(...) printf(&quot;Values: &quot; __VA_ARGS__)
+
+// Usage in a C program
+#include &lt;stdio.h&gt;
+
+int main() {
+    PRINT_VALUES(&quot;%d, %f, %s\n&quot;, 10, 3.14, &quot;Hello&quot;);
+    return 0;
+}
+</code></pre>
+<p><strong>Output</strong>:</p>
+<p><img src="./figures/" alt="" /></p>
+<p><strong>Explanation of code:</strong></p>
+<ul>
+<li>
+<p><code>#define</code>: This is the preprocessor directive used to define macros in C.</p>
+</li>
+<li>
+<p><code>PRINT_VALUES</code>: This is the name of the macro being defined.</p>
+</li>
+<li>
+<p><code>(...)</code> (ellipsis): The ellipsis <code>(...)</code> in the parameter list indicates that the macro accepts a variable number of arguments. It is a feature known as variadic macros.</p>
+</li>
+<li>
+<p>printf(&quot;Values: &quot; <strong>VA_ARGS</strong>): This is the body of the macro. It's essentially a printf statement that prints a formatted string. The <strong>VA_ARGS</strong> is a special identifier in C that represents the variable arguments passed to the macro.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Challenge:</strong></p>
+<blockquote>
+<p>Can you create your own variadic macros and experiment with different argument types and formats.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>Stringifcation(<code>STRINGIFY</code>):</p>
+<p>The <code>STRINGIFY</code> macro takes a single argument <code>x</code> and converts it into a string literal. The <code>#</code> operator, when used before an argument in a macro, is called the <strong>stringification</strong> operator. It converts the argument into a string.</p>
+<pre><code class="language-c">#define STRINGIFY(x) #x
+</code></pre>
+</li>
+<li>
+<p>Reproduce the following:</p>
+<pre><code class="language-c">// Example of stringification and token pasting
+#define STRINGIFY(x) #x
+
+// Usage in a C program
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf(&quot;Stringified: %s\n&quot;, STRINGIFY(Hello));
+            
+    return 0;
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li>
+<p>Stringification Example (<code>STRINGIFY</code>):</p>
+<ul>
+<li>
+<p>The macro <code>STRINGIFY(Hello)</code> converts the identifier Hello into the string literal <code>&quot;Hello&quot;</code>.</p>
+</li>
+<li>
+<p>The <code>printf</code> statement prints <code>&quot;Stringified: Hello\n&quot;</code> to the console.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>These features are useful in advanced macro usage, especially in situations where the names of identifiers need to be converted into strings during preprocessing.</p>
+</li>
+</ol>
+<hr />
+<hr />
+<h2 id="task-3-header-guards-with-macros"><a class="header" href="#task-3-header-guards-with-macros">Task 3: Header Guards with Macros</a></h2>
+<ol start="26">
+<li>
+<p>The <code>mymacros.h</code> header file below encapsulates commonly used macros for maximum and minimum operations, as well as conditional debugging output. By using include guards, it ensures that the content is included only once in each compilation unit, avoiding redefinition issues. This header file can be included in C programs that require these macros for enhanced functionality and debugging capabilities.</p>
+</li>
+<li>
+<p>You would <code>#include &quot;mymacros_h&quot;</code> in your file with <code>main()</code> and then #define DEBUG_MODE with 0 or 1, you can then access those functions.</p>
+<pre><code class="language-C">// Example of header file with guarded macros
+#ifndef MYMACROS_H
+#define MYMACROS_H
+
+#define MAX(a, b) ((a) &gt; (b) ? (a) : (b))
+#define MIN(a, b) ((a) &lt; (b) ? (a) : (b))
+
+#ifdef DEBUG_MODE
+    #define DEBUG_PRINT(msg) printf(&quot;Debug: %s\n&quot;, msg)
+#else
+    #define DEBUG_PRINT(msg)
+#endif
+
+#endif // MYMACROS_H
+</code></pre>
+</li>
+<li>
+<p>Try and do this now.</p>
+</li>
+</ol>
+<hr />
+<hr />
+<h2 id="task-4-macros-in-data-structures"><a class="header" href="#task-4-macros-in-data-structures">Task 4 Macros in Data Structures:</a></h2>
+<ol start="29">
+<li>
+<p>The code below is an example of using macros to define a <em>generic structure</em> for a linked list node in C. This allows you to create linked lists for different data types using the same basic structure <strong>template</strong>. </p>
+<pre><code class="language-c">// Example of macros for a linked list
+#define DECLARE_NODE_TYPE(type) \
+    struct type##_Node {          \
+        type data;                \
+        struct type##_Node* next; \
+    }
+
+DECLARE_NODE_TYPE(int);
+</code></pre>
+<p>Let's break down the key components and explain how this works:</p>
+<ul>
+<li><code>DECLARE_NODE_TYPE</code>(type) Macro:
+<ul>
+<li>This macro is designed to declare a structure template for a linked list node.</li>
+<li>The type parameter allows the user to specify the data type of the elements that the linked list will store.</li>
+<li>The <code>##</code> operator concatenates the type with the <code>&quot;_Node&quot;</code> suffix to form the structure name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>The <code>main()</code> function below,</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+...
+
+int main() {
+    // Declare a linked list node for integers
+    struct int_Node myNode;
+    myNode.data = 42;
+    myNode.next = NULL;
+
+    printf(&quot;Data: %d\n&quot;, myNode.data);
+
+    return 0;
+}
+</code></pre>
+<ul>
+<li>
+<p>In the <code>())</code> function, a linked list node for integers is declared using the <code>DECLARE_NODE_TYPE(int)</code> macro. This creates a structure named <code>int_Node</code> with fields for storing data of type <code>int</code> and a pointer to the next node in the list.</p>
+</li>
+<li>
+<p>An instance of the structure, <code>myNode</code>, is then created and initialised with a data value of <code>42</code> and a <code>NULL</code> pointer for the next node.</p>
+</li>
+<li>
+<p>The program prints the data value of the node, which is <code>42</code>, to the console.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Reproducing the following and try with <code>int</code>, <code>float</code>, <code>double</code>, <code>char</code>:</p>
+<pre><code class="language-c">// Example of macros for a linked list
+#define DECLARE_NODE_TYPE(type) \
+    struct type##_Node {          \
+        type data;                \
+        struct type##_Node* next; \
+    }
+
+DECLARE_NODE_TYPE(int);
+
+// Usage in a C program
+#include &lt;stdio.h&gt;
+
+int main() {
+    struct int_Node myNode;
+    myNode.data = 42;
+    myNode.next = NULL;
+
+    printf(&quot;Data: %d\n&quot;, myNode.data);
+    
+    return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>Run the code to see the output: </p>
+<p><img src="./figures/step11.png" alt="" /></p>
+</li>
+<li>
+<p>Modify and make a declare a node type as type <code>float</code>, and run again.</p>
+</li>
+</ol>
+<h2 id="benefits"><a class="header" href="#benefits">Benefits:</a></h2>
+<ul>
+<li>
+<p><strong>Generic Data Structures:</strong> The use of macros allows for the creation of a generic template for linked list nodes, making it easy to declare nodes for different data types without duplicating code.</p>
+</li>
+<li>
+<p><strong>Code Reusability:</strong> The same set of macros can be reused for various data types, reducing the need to rewrite code for each specific type.</p>
+</li>
+<li>
+<p><strong>Consistency:</strong> By using macros, you ensure that the structure and naming conventions are consistent across different instances of linked lists.</p>
+</li>
+</ul>
+<h2 id="considerations"><a class="header" href="#considerations">Considerations:</a></h2>
+<ul>
+<li>
+<p>Error Handling: The provided example doesn't include error handling, such as checking for malloc failures when allocating memory for nodes. In a real-world scenario, you would need to add appropriate error handling.</p>
+</li>
+<li>
+<p>Type Safety: While macros provide a way to create generic structures, they lack type safety. Users need to be cautious and ensure that the macros are used correctly with appropriate data types.</p>
+</li>
+</ul>
+<hr />
+<hr />
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion:</a></h2>
+<p>The use of macros in this example simplifies the creation of linked list nodes for different data types, promoting code reuse and consistency. This approach is particularly useful when you want to create generic data structures that can handle various types of data in a C program.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Recursion/Recursion.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Recursion/Recursion.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
