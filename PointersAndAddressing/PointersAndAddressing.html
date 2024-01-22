@@ -1,0 +1,751 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Pointers and Addressing - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="spacer"></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">2.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">3.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">4.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">5.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">6.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item expanded "><a href="../PointersAndAddressing/PointersAndAddressing.html" class="active"><strong aria-hidden="true">7.</strong> Pointers and Addressing</a></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> Structs and Unions</div></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Steams</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">12.</strong> Documentation</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="c-pointers-and-addressing"><a class="header" href="#c-pointers-and-addressing">C Pointers and Addressing</a></h1>
+<p>In this lab you will be introduce to pointers and addressing as tool to understand computer memory.</p>
+<ol>
+<li>
+<p>Create a new C++ Console project called <code>PointersAndAddressing</code>.</p>
+</li>
+<li>
+<p>Remember to rename the <code>PointersAndAddressing.cpp</code> to <code>PointersAndAddressing.c</code></p>
+</li>
+<li>
+<p>Open <code>PointersAndAddressing.c</code> and modify to look like below: </p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(){
+
+    return 0;
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="section-1-pointers"><a class="header" href="#section-1-pointers">Section 1: Pointers</a></h2>
+<p>Now it's time to see the why C is used for the basis of nearly all programming languages, operating systems, and embedded code. </p>
+<p>Pointers in C are relativley easy and fun to learn. Some C programming tasks are performed more easily with pointers, and other tasks, such as dynamic memory allocation, cannot be performed without using pointers. </p>
+<p>Therefore it is necessary to learn pointers to become a perfect C programmer.</p>
+<p>Let's start learning them in simple and easy steps.</p>
+<p>Every variable is a memory location and every memory location has its address defined which can be accessed using ampersand <code>&amp;</code> operator, which denotes an address in memory. </p>
+<ol start="4">
+<li>
+<p>Modify <code>main()</code> by entering the following code:</p>
+<pre><code>...
+    int a=1, b =2 ,c =0;
+
+    printf(&quot;Address for the variable a: %lu \n&quot;, (long)&amp;a); // long casts the value in &amp;a to a long integer, upto 32 bits
+    printf(&quot;Address for the variable b: %lu\n&quot;, (long)&amp;b);
+    printf(&quot;Address for the variable c: %lu \n&quot;, (long)&amp;c);
+    return 0;
+}
+</code></pre>
+<blockquote>
+<p>Note: the <code>...</code> in the code blocks means that there is code above or below that remains the same.</p>
+</blockquote>
+<details>
+ <summary><b>Click for Expected Output</b></summary>
+ <p></p>
+<p><img src="./figures/step1.png" alt="" /></p>
+</details>
+<p>So it looks like the address are almost next to each other, we call this <strong>contiguous</strong>.</p>
+<blockquote>
+<p><strong>Notes:</strong></p>
+<blockquote>
+<ul>
+<li>We must use format specifiers to tell the <code>printf()</code> how we would like our variables to be displayed.</li>
+<li>So, <code>%</code> is the character for promising a specifier -&gt; <code>%lu</code> means <code>unsigned long</code> and is 32 bits in size. </li>
+<li>memory address are <strong>never</strong> negative.</li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>What would happen to the addresses if you ran the code again? <strong>Try it!</strong></p>
+<details>
+ <summary>Well...</summary>
+<p><img src="./figures/step2.png" alt="" /></p>
+<p>You should have recieved different memory address locations, this because of the <strong>Address Space Layout Randomiser</strong> (ASLR) which provides a random address space for security reason. Consider if someone wanted to get certain information and new where it was stored all the time?</p>
+</details>
+</li>
+</ol>
+<h2 id="section-2-what-are-pointers"><a class="header" href="#section-2-what-are-pointers">Section 2: What are Pointers?</a></h2>
+<p>A <strong>pointer</strong> is a variable whose value is the address of another variable, i.e., direct address of the memory location. Like any variable or constant, you must declare a pointer before using it to store any variable address. The general form of a pointer variable declaration is <code>type var-name</code>.</p>
+<p>Here, type is the pointer's base type; it must be a valid C data type and var-name is the name of the pointer variable. The asterisk <code>*</code> used to declare a pointer is the same asterisk used for multiplication. </p>
+<p>However, in this statement the asterisk is being used to designate a variable as a pointer. Take a look at some of the valid pointer declarations:</p>
+<pre><code class="language-c">int    *ip;    /* pointer to an integer */
+double *dp;    /* pointer to a double */
+float  *fp;    /* pointer to a float */
+char   *ch     /* pointer to a character */
+</code></pre>
+<p>The actual data type of the value of all pointers, whether integer, float, character, or otherwise, is the same, a long hexadecimal number that represents a memory address. The only difference between pointers of different data types is the data type of the variable or constant that the pointer points to.</p>
+<h2 id="section-3-how-to-use-pointers"><a class="header" href="#section-3-how-to-use-pointers">Section 3: How to Use Pointers?</a></h2>
+<p>To use the pointer, a C language feature, you must do the following steps:</p>
+<ul>
+<li><strong>(a)</strong> define a pointer variable,</li>
+<li><strong>(b)</strong> assign the address of a variable to a pointer, and </li>
+<li><strong>(c)</strong> finally access the value at the address available in the pointer variable. </li>
+</ul>
+<p>This is done by using unary operator <code>*</code> that returns the value of the variable located at the address specified by its operand. The following example makes use of these operations.</p>
+<ol start="6">
+<li>
+<p>Again edit the contents of <code>main()</code> to match below:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main () {
+
+    int  a = 15;      /* actual variable declaration */
+    int  *pointerToA; /* pointer variable declaration */
+
+    pointerToA = &amp;a;  /* store address of var in pointer variable*/
+
+    printf(&quot;Address of A variable: %lu\n&quot;, (long)&amp;a);
+
+    /* address stored in pointer variable */
+    printf(&quot;Address stored in pointerToA variable: %lu\n&quot;, (long)pointerToA);
+
+    /* access the value using the pointer */
+    printf(&quot;Value of *pointerToA variable: %d\n&quot;, *pointerToA);
+    
+    /* address of the pointer itself */
+        printf(&quot;Address of pointerToA: %lu\n&quot;, (long)&amp;pointerToA);
+
+    return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>Run the code and you should see something similar to below,remember to compile first:</p>
+<details>
+ <summary><b>Click for Expected Output</b></summary>
+ <p></p>
+<p><img src="./figures/step3.png" alt="" /></p>
+</details>
+</li>
+</ol>
+<hr />
+<h2 id="section-4-null-pointers"><a class="header" href="#section-4-null-pointers">Section 4: Null Pointers</a></h2>
+<p>It is always a good practice to assign a <code>NULL</code> value to a pointer variable in case you do not have an exact address to be assigned. </p>
+<p>This is done at the time of variable declaration. A pointer that is assigned <code>NULL</code> is called a <code>NULL pointer</code>.</p>
+<p>The <code>NULL pointer</code> is a constant with a value of zero defined in several standard libraries. </p>
+<ol start="8">
+<li>
+<p>Modify <code>main()</code> and enter the following:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main () {
+
+int  *ptr = NULL;
+
+printf(&quot;The value of ptr is : %p\n&quot;, ptr  );
+
+return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>Run the program:</p>
+<details>
+ <summary><b>Click for Expected Output</b></summary>
+ <p></p>
+<p><img src="./figures/step4.png" alt="" /></p>
+</details>
+<ul>
+<li>
+<p>In most of the operating systems, programs are not permitted to access memory at address <code>0</code> because that memory is reserved by the operating system. </p>
+</li>
+<li>
+<p>However, the memory address 0 has special significance; it signals that the pointer is not intended to point to an accessible memory location. But by convention, if a pointer contains the <code>null</code> (zero) value, it is assumed to point to nothing.</p>
+</li>
+<li>
+<p>To check for a null pointer, you can use an <code>if</code> statement as follows:</p>
+<pre><code class="language-c">if(ptr)     /* succeeds if p is not null */
+if(!ptr)    /* succeeds if p is null */
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="section-5-pointers-in-detail"><a class="header" href="#section-5-pointers-in-detail">Section 5: Pointers in Detail</a></h2>
+<p>Pointers have many but easy concepts and they are very important to <code>C</code> programming. The following important pointer concepts should be clear to any C programmer:</p>
+<ul>
+<li>
+<p><strong>Pointer arithmetic</strong></p>
+<p>There are four arithmetic operators that can be used in pointers:</p>
+<ul>
+<li><code>++</code> ,<code>--</code>, <code>+</code>, <code>-</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Array of pointers</strong></p>
+<ul>
+<li>You can define arrays to hold a number of pointers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pointer to pointer</strong></p>
+<ul>
+<li>C allows you to have pointer on a pointer and so on.</li>
+</ul>
+</li>
+<li>
+<p><strong>Passing pointers to functions in C</strong></p>
+<ul>
+<li>Passing an argument by reference or by address enable the passed argument to be changed in the calling function by the called function.</li>
+</ul>
+</li>
+<li>
+<p><strong>Return pointer from functions in C</strong></p>
+<ul>
+<li>C allows a function to return a pointer to the local variable, static variable, and dynamically allocated memory as well.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="section-6-exploring-the-memory"><a class="header" href="#section-6-exploring-the-memory">Section 6: Exploring the memory</a></h2>
+<p>Now we can explore memory in a more detail way.</p>
+<p>So one crucial thing to note here is that accessing memory locations and changes their values can be fatal for a system.</p>
+<p>It is relativley simple to access memory addresses around your own entry point, let's assume you assign a variable called <code>a</code> and then you get the memory address. After you have this address you have a starting pointing to explore.</p>
+<p>Modify <code>main()</code> with the following code snippets, remember to include the <code>#include&lt;stdio.h&gt;</code> and <code>int main(){return 0;}</code> lines of code:</p>
+<ol>
+<li>
+<p>Define and assign an integer with the value 10, which we are going to use for looping.</p>
+<pre><code class="language-c">int bin = 10;
+</code></pre>
+</li>
+<li>
+<p>Create another integer and this time give it the value 123456789.</p>
+<pre><code class="language-c">int value = 123456789:
+</code></pre>
+</li>
+<li>
+<p>Initialise a new variable in the pointer region of the code to point to the address of <code>value</code></p>
+<pre><code class="language-c">int* pointer = (&amp;value);
+</code></pre>
+</li>
+<li>
+<p>Add the following <code>printf</code>s</p>
+<pre><code class="language-c"> printf(&quot;Memory Address        ||    Value        \n&quot;);
+ printf(&quot;------------------------------------------\n&quot;);
+</code></pre>
+</li>
+<li>
+<p>Now you need to write of the <code>for</code> loop to return the address the pointer holds and the value at that address.</p>
+<pre><code class="language-c">for (int i = 0; i &lt; bin; ++i)
+{   
+
+
+}
+</code></pre>
+</li>
+<li>
+<p>Inside the for loop between the braces { } enter this line to print out the values to console.</p>
+<pre><code class="language-c">printf(&quot; %lu      ||    %d \t\t \n&quot;,(unsigned long)
+
+pointer,(unsigned int)*pointer);
+</code></pre>
+</li>
+<li>
+<p>Finally, we need to take one off of the pointer's value thereby decreasing the address. Add the following direcitly on the line below<code>printf();</code></p>
+<pre><code class="language-c">pointer = pointer - 1;
+</code></pre>
+<details>
+<summary><b>Click for Full Code</b></summary>
+<p></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main () {
+   // define your variables in this region 
+    int bin = 10;
+    int value = 123456789;
+    // end of variabl region
+
+    // create a pointer here
+    int* pointer = (&amp;value);
+    // end of pointer region
+    
+    printf(&quot;Memory Address||    Value (normal)       ||           Value(Hex)   \n&quot;);
+    printf(&quot;-----------------------------------------------------------\n&quot;);
+
+    // put the `for` loop here
+    for (int i = 0; i &lt; bin; ++i)
+    {
+        printf(&quot; %x     ||     %u     ||    %p \t\t \n&quot;, (unsigned long)pointer, (unsigned int)*pointer, (unsigned int)*pointer);
+        pointer = pointer - 1;
+    }
+    // end of for loop
+    return 0;
+}
+</code></pre>
+</details>
+</li>
+<li>
+<p>Run the code and you should see something like below: </p>
+<details>
+ <summary><b>Click for Expected Output</b></summary>
+ <p></p>
+<p><img src="./figures/step5.png" alt="" /></p>
+</details>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>Remember you will get different memory address and other than the <code>123456789</code> value the rest of the values are generally nonsense, unless they are used by the program.</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>
+<p>Now that the script has executed you can see we have a list of 10 memory addresses and the values those address hold.</p>
+</li>
+<li>
+<p>Again we see <strong>contiguous</strong> memory seperated by 4 byte address spaces.</p>
+</li>
+<li>
+<p>We can see our the that on the first time the loop executes we get the memory address of our variable <code>bin</code> and the subsequent value of stored in the address <code>123456789</code>.</p>
+</li>
+<li>
+<p>However, we can also see that as the for loop continues looping through we get our list of memory addresses and values inside those memory addresses.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="subsection-61-arrays"><a class="header" href="#subsection-61-arrays">Subsection 6.1: Arrays</a></h2>
+<p>So lets quickly look at arrays from a memory prespective.</p>
+<p>The <code>C</code> programming language can store arrays of any data type; <code>int</code>, <code>float</code>, <code>char</code>,... etc.</p>
+<ol start="8">
+<li>
+<p>This time we will store a <code>char[]</code> and print out the each element of the array and the corresponding memory address which will be formatted as a hexadecimal number. Modifiy <code>main()</code> to look like the following code:</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int main ()
+{
+    int n = 11, i;
+    char ptr[11] = &quot;hello world&quot;;
+    
+    printf (&quot;\nPrinting elements of 1-D array: \n\n&quot;);
+    for (i = 0; i &lt; n; i++)
+    {
+        printf (&quot;%c &quot;, ptr[i]);
+    }
+    printf (&quot;\n\nNow what is the memory location for each index and the array itself: \n\n&quot;);
+    printf(&quot;      Memory Address (HEX)  ||  Element        Value\n&quot;);
+    printf(&quot;----------------------------------------------------\n&quot;);
+    
+    //%p means type pointer
+    for (i = 0; i &lt; n; i++)
+    {
+        printf (&quot;\t%p      ||   ptr[%d]    =    %c\n&quot;, &amp;ptr[i], i, ptr[i]);
+    }
+    printf(&quot;----------------------------------------------------\n&quot;);
+    printf(&quot;\t%p      ||   ptr[]     =  %c (this is the array's address too!) \n&quot;, &amp;ptr,*ptr);
+    
+
+    return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>Run this code and see the expected output below:</p>
+<details>
+ <summary><b>Click for Expected Output</b></summary>
+ <p></p>
+<p><img src="./figures/step6.png" alt="" /></p>
+</details>
+<ul>
+<li>
+<p>So you should be able to see that arrays are indeed <strong>Contiguous</strong></p>
+</li>
+<li>
+<p>The starting memory address of the array is the same the zeroth element (<code>h</code>). </p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="section-7-dynamically-allocation-of-memory"><a class="header" href="#section-7-dynamically-allocation-of-memory">Section 7: Dynamically Allocation of Memory</a></h2>
+<p>As you know, an array is a collection of a fixed number of values. Once the size of an array is declared, you cannot change it.</p>
+<p>Sometimes the size of the array you declared may be insufficient. To solve this issue, you can allocate memory manually during run-time. This is known as dynamic memory allocation in C programming.</p>
+<p>To allocate memory dynamically, library functions are <code>malloc()</code>, <code>calloc()</code>, <code>realloc()</code> and <code>free()</code> are used. These functions are defined in the <code>&lt;stdlib.h&gt;</code> header file.</p>
+<h3 id="subsection-71-malloc"><a class="header" href="#subsection-71-malloc">Subsection 7.1: <code>malloc()</code></a></h3>
+<p>The name <code>malloc</code> stands for <strong>m</strong>emory <strong>alloc</strong>ation.</p>
+<p>The <code>malloc()</code> function reserves a block of memory of the specified number of bytes. And, it returns a pointer of <code>void</code> which can be casted into pointers of any form.</p>
+<pre><code class="language-c">ptr = (castType*) malloc(size);
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-c">ptr = (float*) malloc(100 * sizeof(float));
+</code></pre>
+<p>The above statement allocates 400 bytes of memory. It's because the size of <code>float</code> is 4 bytes. And, the pointer <code>ptr</code> holds the address of the first byte in the allocated memory.</p>
+<p>The expression results in a <code>NULL</code> pointer if the memory cannot be allocated.</p>
+<h3 id="subsection-72-calloc"><a class="header" href="#subsection-72-calloc">Subsection 7.2: <code>calloc()</code></a></h3>
+<p>The name <code>calloc</code> stands for contiguous allocation.</p>
+<p>The <code>malloc()</code> function allocates memory and leaves the memory uninitialized, whereas the <code>calloc()</code> function allocates memory and initialises all bits to zero.</p>
+<pre><code class="language-c">ptr = (castType*)calloc(n, size);
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-c">ptr = (float*) calloc(25, sizeof(float));
+</code></pre>
+<p>The above statement allocates contiguous space in memory for 25 elements of type <code>float</code>.</p>
+<h3 id="subsection-73-free"><a class="header" href="#subsection-73-free">Subsection 7.3: <code>free()</code></a></h3>
+<p>Dynamically allocated memory created with either <code>calloc()</code> or <code>malloc()</code> doesn't get freed on their own. You must explicitly use <code>free()</code> to release the space.</p>
+<pre><code class="language-c">free(ptr);
+</code></pre>
+<p>This statement frees the space allocated in the memory pointed by <code>ptr</code>.</p>
+<h4 id="example-1"><a class="header" href="#example-1">Example 1:</a></h4>
+<ol start="10">
+<li>
+<p>Modify <code>main()</code> again so that and reproduce the following code  so that the program dynamically allocates the memory for <code>n</code> number of <code>int</code>s using <code>malloc()</code> and <code>free()</code>:</p>
+<pre><code class="language-c">// Program to calculate the sum of n numbers entered by the user
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+int n, i, *ptr, sum = 0;
+
+printf(&quot;Enter number of elements: &quot;);
+scanf_s(&quot;%d&quot;, &amp;n);
+
+ptr = (int*) malloc(n * sizeof(int));
+
+// if memory cannot be allocated
+if(ptr == NULL) {
+    printf(&quot;Error! memory not allocated.&quot;);
+    exit(0);
+}
+
+printf(&quot;Enter elements per line: &quot;);
+for(i = 0; i &lt; n; ++i) {
+    scanf_s(&quot;%d&quot;, ptr + i);
+    sum += *(ptr + i);
+}
+
+printf(&quot;Sum = %d&quot;, sum);
+
+// deallocating the memory
+free(ptr);
+
+return 0;
+}
+
+</code></pre>
+</li>
+<li>
+<p>Run the program and try to enter a number equal to or than greater that zero:</p>
+<details>
+<summary>Output...</summary>
+<p><img src="./figures/step7.png" alt="" /></p>
+</details>
+</li>
+</ol>
+<h3 id="example-2"><a class="header" href="#example-2">Example 2:</a></h3>
+<ol start="12">
+<li>
+<p>Modify <code>main()</code> again so that and reproduce the following code that dynamically allocates the memory for <code>n</code> number of <code>int</code> using <code>calloc()</code> and <code>free()</code>:</p>
+<pre><code class="language-c">// Program to calculate the sum of n numbers entered by the user
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+int n, i, *ptr, sum = 0;
+printf(&quot;Enter number of elements: &quot;);
+scanf(&quot;%d&quot;, &amp;n);
+
+ptr = (int*) calloc(n, sizeof(int));
+if(ptr == NULL) {
+    printf(&quot;Error! memory not allocated.&quot;);
+    exit(0);
+}
+
+printf(&quot;Enter elements: &quot;);
+for(i = 0; i &lt; n; ++i) {
+    scanf(&quot;%d&quot;, ptr + i);
+    sum += *(ptr + i);
+}
+
+printf(&quot;Sum = %d&quot;, sum);
+free(ptr);
+return 0;
+}
+
+</code></pre>
+</li>
+<li>
+<p>Now, run the code and you should see the following output, remember to enter a number equal to or greater than zero:</p>
+<details>
+<summary>Output...</summary>
+<p><img src="./figures/step8.png" alt="" /></p>
+</details>
+</li>
+</ol>
+<h3 id="subsection-74-realloc"><a class="header" href="#subsection-74-realloc">Subsection 7.4: <code>realloc()</code></a></h3>
+<p>If the dynamically allocated memory is insufficient or more than required, you can change the size of previously allocated memory using the <code>realloc()</code> function.</p>
+<pre><code class="language-c">ptr = realloc(ptr, x);
+</code></pre>
+<p>Here, <code>ptr</code> is reallocated with a new size <code>x</code>.</p>
+<h3 id="example-3"><a class="header" href="#example-3">Example 3:</a></h3>
+<ol start="14">
+<li>
+<p>Modify <code>main()</code> again so that and reproduce the following code that dynamically allocates the memory for <code>n</code> number of <code>int</code> using <code>malloc()</code>, <code>realloc()</code> and <code>free()</code>:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+int *ptr, i , n1, n2;
+printf(&quot;Enter size: &quot;);
+scanf(&quot;%d&quot;, &amp;n1);
+
+ptr = (int*) malloc(n1 * sizeof(int));
+
+printf(&quot;Addresses of previously allocated memory:\n&quot;);
+for(i = 0; i &lt; n1; ++i)
+    printf(&quot;%pc\n&quot;,ptr + i);
+
+printf(&quot;\nEnter the new size: &quot;);
+scanf(&quot;%d&quot;, &amp;n2);
+
+// rellocating the memory
+ptr = realloc(ptr, n2 * sizeof(int));
+
+printf(&quot;Addresses of newly allocated memory:\n&quot;);
+for(i = 0; i &lt; n2; ++i)
+    printf(&quot;%pc\n&quot;, ptr + i);
+
+free(ptr);
+
+return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>Run the program and remeber the enter a number equal to or greater than zero:</p>
+<details>
+<summary>Output...</summary>
+<p><img src="./figures/step9.png" alt="" /></p>
+</details>
+</li>
+</ol>
+<h2 id="section-8-memory-allocations-system-calls"><a class="header" href="#section-8-memory-allocations-system-calls">Section 8: Memory Allocations (System Calls)</a></h2>
+<p>If you are a computer programmer, (which all of you will be) you should know more about memory allocation. When looking at the allocation process, it is necessary to go into a little detail on Linux and the <code>glibc</code> library.</p>
+<p>When applications need memory, they have to request it from the operating system. This request from the kernel will naturally require a system call. You cannot allocate memory yourself in user mode.</p>
+<p>The <code>malloc()</code> family of functions is responsible for memory allocation in the <code>C</code> language(which we have been doing for a few exercises). The question to ask here is whether <code>malloc()</code>, as a glibc function, makes a direct system call.</p>
+<p>There is no system call called <code>malloc()</code> in the Linux kernel. However, there are two system calls for applications memory demands, which are <code>brk</code> and <code>mmap</code>.</p>
+<p>Since you will be requesting memory in your application via glibc functions, you may be wondering which of these system calls glibc is using at this point. The answer is both.</p>
+<p>Here is the graphic for memory allocation that we looked at the in the lecture, to remind you of key concepts.</p>
+<p><img src="./figures/process_memory_application_graphic" alt="" /></p>
+<h2 id="section-9-extra-work"><a class="header" href="#section-9-extra-work">Section 9: Extra work</a></h2>
+<p>Combine what you have learnt in this lab to advance your understanding of what you have achieved. </p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
