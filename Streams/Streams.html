@@ -1,0 +1,540 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Streams - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item expanded "><a href="../Streams/Streams.html" class="active"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lab-n-streams"><a class="header" href="#lab-n-streams">Lab n: Streams</a></h1>
+<p>You have been using the <code>stdio.h</code> for nearly every lab, and will use it for nearly every program you will ever create in C.</p>
+<p><strong>St</strong>andar<strong>d</strong> <strong>I</strong>nput and <strong>O</strong>utput enables the program to take inputs and produce outputs. These two categories are broken numerically as: </p>
+<ul>
+<li>Standard <strong>In</strong> is numerically defined as <code>0</code></li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>getc()</code></td><td>Get character</td></tr>
+<tr><td><code>getchar()</code></td><td>Get character</td></tr>
+<tr><td><code>gets()</code></td><td>Get string</td></tr>
+<tr><td><code>fscanf()</code></td><td>Formatted input</td></tr>
+<tr><td><code>scanf()</code></td><td>Formatted input</td></tr>
+<tr><td><code>ungetc()</code></td><td>Unget character</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>Standard <strong>Out</strong> is numerically dedined as <code>1</code></li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>putc()</code></td><td>Put character</td></tr>
+<tr><td><code>putchar()</code></td><td>Put character</td></tr>
+<tr><td><code>puts()</code></td><td>Put string</td></tr>
+<tr><td><code>fprintf()</code></td><td>Formatted output</td></tr>
+<tr><td><code>printf()</code></td><td>Formatted output</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>Standard <strong>Error</strong> is numerically defined as <code>2</code></li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>perror()</code></td><td>Print error message</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="task-1-starting-out"><a class="header" href="#task-1-starting-out">Task 1: Starting out...</a></h2>
+<p>In this program you are going to: </p>
+<ul>
+<li>
+<p>prompt the user to enter a number.</p>
+</li>
+<li>
+<p>read the user input using <code>scanf()</code> and checks if the input was successfully read. If an error occurs, <code>perror()</code> is used to print an error message, and the program exits with an error code. </p>
+</li>
+<li>
+<p>If the input is successfully read, a simple calculation is performed (squaring the input).</p>
+</li>
+<li>
+<p>The result is displayed using <code>printf()</code>.</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>Create a new project in Visual Studio and call it Streams, rename the <code>Streams.cpp</code> to <code>Streams.c</code></p>
+</li>
+<li>
+<p>Define two variables both integers called <code>number</code> and <code>result</code>.</p>
+</li>
+<li>
+<p>Prompt the user to enter a number using the standard out function <code>printf()</code></p>
+</li>
+<li>
+<p>Next using standard in's <code>scanf()</code> read in the users input use the format specifier <code>%d</code> and save it to <code>&amp;number</code> </p>
+</li>
+<li>
+<p>Add some conditional checking to compare the <code>number</code> to the value <code>2</code>, where the comparison is <em><code>number</code> <strong>does not equal</strong> <code>2</code></em>.</p>
+</li>
+<li>
+<p>Inside the conditonal block use the <code>perror</code> function to with the string <code>&quot;Error reading input&quot;</code>, on the next line use <code>return 1</code> to indicate an error using the exit code <code>1</code>.</p>
+</li>
+<li>
+<p>Outside of the conditonal block  multiply the <code>number</code> by itself and assign the result to <code>result</code>, </p>
+</li>
+<li>
+<p>Finally, print the result using  <code>printf(&quot;The square of %d is: %d\n&quot;, number, result);</code><p></p></p>
+<details>
+ <summary>Code...</summary>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // Declare variables for input and result
+    int number;
+    int result;
+
+    // Prompt the user for input
+    printf(&quot;Enter a number: &quot;);
+
+    // Read user input
+    scanf(&quot;%d&quot;, &amp;number)
+
+    // compare user inputted value
+    if ( result != 2) {
+        // Handle input error using perror()
+        perror(&quot;Error reading input&quot;);
+        return 1; // Exit with an error code
+    }
+
+    // Perform a simple calculation (for example, squaring the input)
+    result = number * number;
+
+    // Display the result
+    printf(&quot;The square of %d is: %d\n&quot;, number, result);
+
+    return 0; // Exit successfully
+}
+
+</code></pre>
+</details>
+</li>
+<li>
+<p>Run the code and when prompted enter the any number that is <strong>not</strong> <code>2</code>. </p>
+<details>
+ <summary>Output...</summary>
+<ul>
+<li>Notice how the terminal has rendered the error message, this is because error, <code>2</code> stream is different to standard out, <code>1</code>, stream</li>
+</ul>
+</details>
+</li>
+<li>
+<p>Run a second time and then enter the value <code>2</code></p>
+<details>
+<summary>Output...</summary>
+</details>
+</li>
+</ol>
+<hr />
+<h2 id="task-2-read-and-write-a-file"><a class="header" href="#task-2-read-and-write-a-file">Task 2: Read and Write a File</a></h2>
+<p>The program you will write assumes that there is an input file named <code>input.txt</code> that stores two integers. The program will then create an output file named <code>output.txt</code> with the multiplication result of those two numbers. Error handling is incorporated using <code>perror()</code> for file-related errors.</p>
+<ol>
+<li>
+<p>Create a new file and places in the resources folder of the solution view, call it <code>input.txt</code>, inside the file input <strong>two</strong> numbers seperated by <strong>space</strong> that range from <code>0</code> <strong>to</strong> <code>50000</code>, save the file.</p>
+</li>
+<li>
+<p>Now modify <code>main()</code>, by placing using the <code> FILE *inputFile, *outputFile;</code> at the top of <code>main()</code>. </p>
+<blockquote>
+<p><strong>Note</strong></p>
+<blockquote>
+<ul>
+<li>
+<p><code>FILE</code> is not a fundamental C data type; it's a data type defined in the C standard library. It represents a file stream and is used to interact with files in C programs. The <code>FILE</code> type is typically defined in the &lt;stdio.h&gt; header file as <code>struct</code></p>
+<pre><code class="language-c">typedef struct {
+// Implementation-specific members
+} FILE;
+</code></pre>
+</li>
+<li>
+<p><code>FILE</code> is essentially a structure that holds information about an open file, including its <strong>current position</strong>, <strong>status</strong>, and <strong>other details</strong>. When you open a file using functions like <code>fopen()</code>, it returns a pointer,<code>*</code>, to a <code>FILE</code> structure that you use for subsequent file operations.</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>On the next line define three integer variables called, <code>numOne</code>, <code>numTwo</code> and <code>result</code>: </p>
+<details>
+<summary>Code...</summary>
+<pre><code class="language-c">int num1, num2, result;
+</code></pre>
+</details>
+</li>
+<li>
+<p>Create two newlines and the second one you need to reproduce the follwoing: </p>
+<pre><code class="language-c"> // Open input file for reading
+ inputFile = fopen(&quot;input.txt&quot;, &quot;r&quot;);
+ if (inputFile == NULL) {
+     perror(&quot;Error opening input file&quot;);
+     return 1; // Exit with an error code
+ }
+</code></pre>
+<ul>
+<li>
+<p>Here we are using <code>fopen</code> to open the <code>&quot;input.txt&quot;</code> with in read mode <code>&quot;r&quot;</code></p>
+</li>
+<li>
+<p>A check is made to see if the <code>inputFile</code> has any data, does the file exist, this is done with a <code>NULL</code> check.</p>
+</li>
+<li>
+<p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>&quot;Error opening input file&quot;</code> to standard error, and close the application with <code>return 1,</code> to indicate an error using an exit code. </p>
+</li>
+</ul>
+</li>
+<li>
+<p>If inputFile is not <code>NULL</code> then the following code would excute, input the following: </p>
+<pre><code class="language-c">// Read two integers from the input file
+if (fscanf(inputFile, &quot;%d %d&quot;, &amp;numOne, &amp;numTwo) != 2) {
+     // Handle input error using perror()
+     perror(&quot;Error reading input from file&quot;);
+     fclose(inputFile); // Close the input file
+     return 1; // Exit with an error code
+ }
+</code></pre>
+<ul>
+<li>
+<p><code>fscanf</code> is for reading files what <code>scanf</code> is for reading from terminal input.</p>
+</li>
+<li>
+<p><code>fscanf</code>  returns the number of successfully read items. In this case, it should return <code>2</code> if it successfully reads two integers from the file. The <code>!= 2</code> checks if the return value is <strong>not</strong> equal to 2, indicating that the expected number of items was <strong>not</strong> successfully read.</p>
+</li>
+<li>
+<p><code>fclose</code> is invoked because the file was opened, and needs to be closed. This protects the file from curruption when the program closes with <code>return 1</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>We should also close the file when successfully read, do this by reproducing the <code>fclose</code> code on a new line outside of the closing brace of the <code>if(...){...</code>}</p>
+</li>
+<li>
+<p>The calculation can now be performed, multiply <code>numOne</code> by <code>numTwo</code> and store in <code>result</code></p>
+<details>
+ <summary>Code...</details>
+<pre><code class="language-c">fclose(inputFile); // Close the input file
+
+// Perform multiplication
+result = numOne * numTwo;
+</code></pre>
+</details>
+</li>
+<li>
+<p>In a similar fashion to step 4 we need to write to a new file, reproduce the following:</p>
+<pre><code class="language-c">// Open output file for writing
+outputFile = fopen(&quot;output.txt&quot;, &quot;w&quot;);
+if (outputFile == NULL) {
+    perror(&quot;Error opening output file&quot;);
+    return 1; // Exit with an error code
+}
+</code></pre>
+<ul>
+<li>
+<p><code>fopen</code> opens the <code>&quot;output.txt&quot;</code> in write mode <code>&quot;w&quot;</code></p>
+</li>
+<li>
+<p>A check is made to see if the <code>outputFile</code> has any data, does the file exist, this is done with a <code>NULL</code> check.</p>
+</li>
+<li>
+<p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>&quot;Error opening output file&quot;</code> to standard error, and close the application with <code>return 1</code>, to indicate an error using an exit code. </p>
+</li>
+</ul>
+</li>
+<li>
+<p>Again, repeating the structure of step 5, we can write to the file the <code>result</code> variable. Reproduce the following:</p>
+<pre><code class="language-c">// Write the result to the output file
+if (fprintf(outputFile, &quot;Multiplication result: %d\n&quot;, result) &lt; 0) {
+    // Handle output error using perror()
+    perror(&quot;Error writing output to file&quot;);
+    fclose(outputFile); // Close the output file before exiting
+    return 1; // Exit with an error code
+}
+</code></pre>
+<ul>
+<li>
+<p><code>fprintf</code> is for writing a formatted output to a file. It is similar to <code>printf</code>, but it writes to a file stream (<code>FILE*</code>).</p>
+</li>
+<li>
+<p><code>&lt; 0</code> is a comparison that checks if the return value of fprintf is <strong>less than</strong> 0. <code>fprintf</code> returns the number of characters successfully written. If the return value is less than 0, it indicates an error occurred during writing.</p>
+</li>
+<li>
+<p>Again you see <code>perror()</code> for standard error and the addition of <code>fclose()</code> to close the file.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>On success the file needs to be close so after the <code>if(..){..}</code> add <code>fclose(&quot;outputFile)</code> and on a new line <code>printf(&quot;Operation completed successfully.\n&quot;);</code></p>
+</li>
+<li>
+<p>Run the code and you should see the following outputs: </p>
+</li>
+<li>
+<p>Open the <code>output.txt</code> file to see the result of the multiplication.</p>
+</li>
+</ol>
+<hr />
+<details>
+<summary>Full Code....</summary>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *inputFile, *outputFile;
+    int numOne, numTwo, result;
+
+    // Open input file for reading
+    inputFile = fopen(&quot;input.txt&quot;, &quot;r&quot;);
+    if (inputFile == NULL) {
+        perror(&quot;Error opening input file&quot;);
+        return 1; // Exit with an error code
+    }
+
+    // Read two integers from the input file
+    if (fscanf(inputFile, &quot;%d %d&quot;, &amp;numOne, &amp;numTwo) != 2) {
+        // Handle input error using perror()
+        perror(&quot;Error reading input from file&quot;);
+        fclose(inputFile); // Close the input file
+        return 1; // Exit with an error code
+    }
+
+    fclose(inputFile); // Close the input file
+
+    // Perform multiplication
+    result = numOne * numTwo;
+
+     // Open output file for writing
+    outputFile = fopen(&quot;output.txt&quot;, &quot;w&quot;);
+    if (outputFile == NULL) {
+        perror(&quot;Error opening output file&quot;);
+        return 1; // Exit with an error code
+    }
+
+    // Write the result to the output file
+    if (fprintf(outputFile, &quot;Multiplication result: %d\n&quot;, result) &lt; 0) {
+        // Handle output error using perror()
+        perror(&quot;Error writing output to file&quot;);
+        fclose(outputFile); // Close the output file before exiting
+        return 1; // Exit with an error code
+    }
+
+    fclose(outputFile); // Close outputFile file2
+
+    printf(&quot;Operation completed successfully.\n&quot;);
+
+    return 0; // Exit successfully
+}
+</code></pre>
+</details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../UnionsAndStructs/UnionsAndStructs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../UnionsAndStructs/UnionsAndStructs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
