@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item expanded "><a href="../UnionsAndStructs/UnionsAndStructs.html" class="active"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item expanded "><a href="../UnionsAndStructs/UnionsAndStructs.html" class="active"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><a href="../Algorithms/Algorithms.html"><strong aria-hidden="true">9.</strong> Algorithms</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -173,7 +173,7 @@
                     <main>
                         <h1 id="lab-7-unions-and-structs"><a class="header" href="#lab-7-unions-and-structs">Lab 7: Unions and Structs</a></h1>
 <ul>
-<li>You need to open a new Visual Studio C++ Console Application, give it a meaningful name. </li>
+<li>You need to open a new Visual Studio C++ Console Application, give it a meaningful name.</li>
 <li>Remember to modify the file extension to <code>projectName.c</code> from <code>projectName.cpp</code></li>
 <li>Ensure the <code>projectName.c</code> file has the following structure:</li>
 <li>
@@ -227,7 +227,7 @@ struct Person {
 * @param p The person to be printed.
 */
 void printPerson(struct Person p) {
-    printf(&quot;Name: %s\nAge: %d\nHeight: %.2f\n&quot;, p.name, p.age, p.height);
+    printf("Name: %s\nAge: %d\nHeight: %.2f\n", p.name, p.age, p.height);
 }
 
 /**
@@ -235,7 +235,7 @@ void printPerson(struct Person p) {
 */
 int main() {
     // Create an instance of Person, initialize its attributes, and print details
-    struct Person person1 = {&quot;Your Name&quot;, 1, 4.0};
+    struct Person person1 = {"Your Name", 1, 4.0};
     printPerson(person1);
 
     return 0;
@@ -285,9 +285,9 @@ union Data {
 * @param d The data to be printed.
 */
 void printData(union Data d) {
-    printf(&quot;Data: &quot;);
-    printf(&quot;%d (Integer)\n&quot;, d.integerData);
-    printf(&quot;%f (Float)\n&quot;, d.floatData);
+    printf("Data: ");
+    printf("%d (Integer)\n", d.integerData);
+    printf("%f (Float)\n", d.floatData);
    
 }
 
@@ -328,30 +328,30 @@ int main() {
 </ul>
 </li>
 <li>
-<p>In <code>main</code> define a the <code>struct Person</code> as <code>person</code> and the <code>union Data</code> as <code>data</code> </p>
+<p>In <code>main</code> define a the <code>struct Person</code> as <code>person</code> and the <code>union Data</code> as <code>data</code></p>
 </li>
 <li>
 <p>Reproduce the following code to assign <code>person.age</code> and <code>data.integerData</code> and <code>data.floatData</code>:</p>
 <pre><code class="language-c">...
  // Accessing struct members
 person.age = 25;
-printf(&quot;Struct Member - Age: %d\n&quot;, person.age);
+printf("Struct Member - Age: %d\n", person.age);
 
 // Accessing union members
 data.integerData = 42;
-printf(&quot;Union Member - Integer Data: %d\n&quot;, data.integerData);
+printf("Union Member - Integer Data: %d\n", data.integerData);
 
 // Modify union member and access another member
 data.floatData = 3.14;
-printf(&quot;Union Member - Float Data: %.2f\n&quot;, data.floatData);
+printf("Union Member - Float Data: %.2f\n", data.floatData);
 </code></pre>
 </li>
 <li>
 <p>Now we are going to compare the size of the <code>struct</code> and the <code>union</code>, reproduce the following after last <code>printf(...)</code> line:</p>
 <pre><code class="language-c">...
 // Demonstrate the size difference between struct and union
-printf(&quot;Size of Struct (Person): %lu bytes\n&quot;, sizeof(struct Person));
-printf(&quot;Size of Union (Data): %lu bytes\n&quot;, sizeof(union Data));
+printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
+printf("Size of Union (Data): %lu bytes\n", sizeof(union Data));
 </code></pre>
 </li>
 <li>
@@ -393,19 +393,19 @@ int main() {
 
     // Accessing struct members
     person.age = 25;
-    printf(&quot;Struct Member - Age: %d\n&quot;, person.age);
+    printf("Struct Member - Age: %d\n", person.age);
 
     // Accessing union members
     data.integerData = 42;
-    printf(&quot;Union Member - Integer Data: %d\n&quot;, data.integerData);
+    printf("Union Member - Integer Data: %d\n", data.integerData);
 
     // Modify union member and access another member
     data.floatData = 3.14;
-    printf(&quot;Union Member - Float Data: %.2f\n&quot;, data.floatData);
+    printf("Union Member - Float Data: %.2f\n", data.floatData);
 
     // Demonstrate the size difference between struct and union
-    printf(&quot;Size of Struct (Person): %lu bytes\n&quot;, sizeof(struct Person));
-    printf(&quot;Size of Union (Data): %llu bytes\n&quot;, sizeof(union Data));
+    printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
+    printf("Size of Union (Data): %llu bytes\n", sizeof(union Data));
 
     return 0;
 }
@@ -502,13 +502,13 @@ struct Employee {
 * @param d The data to be printed.
 */
 void printData(union Data d) {
-    printf(&quot;Data: &quot;);
+    printf("Data: ");
     if (d.integerData) {
-        printf(&quot;%d (Integer)\n&quot;, d.integerData);
+        printf("%d (Integer)\n", d.integerData);
     } else if (d.floatData) {
-        printf(&quot;%.2f (Float)\n&quot;, d.floatData);
+        printf("%.2f (Float)\n", d.floatData);
     } else {
-        printf(&quot;%c (Character)\n&quot;, d.charData);
+        printf("%c (Character)\n", d.charData);
     }
 }
 
@@ -517,7 +517,7 @@ void printData(union Data d) {
 * @param p The person to be printed.
 */
 void printPerson(struct Person p) {
-    printf(&quot;Name: %s\nAge: %d\nHeight: %.2f\n&quot;, p.name, p.age, p.height);
+    printf("Name: %s\nAge: %d\nHeight: %.2f\n", p.name, p.age, p.height);
 }
 
 /**
@@ -525,9 +525,9 @@ void printPerson(struct Person p) {
 * @param e The employee to be printed.
 */
 void printEmployee(struct Employee e) {
-    printf(&quot;Personal Information:\n&quot;);
+    printf("Personal Information:\n");
     printPerson(e.personalInfo);
-    printf(&quot;\nJob Information:\n&quot;);
+    printf("\nJob Information:\n");
     printData(e.jobInfo);
 }
 
@@ -536,7 +536,7 @@ void printEmployee(struct Employee e) {
 */
 int main() {
     // Create an instance of Employee, assign values, and print details
-    struct Employee employee1 = {{&quot;Alice&quot;, 30, 5.5}, {0}};
+    struct Employee employee1 = {{"Alice", 30, 5.5}, {0}};
     employee1.jobInfo.floatData = 75000.50;
     printEmployee(employee1);
 

@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item expanded "><a href="../BitwiseOperations/BitwiseOperations.html" class="active"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item expanded "><a href="../BitwiseOperations/BitwiseOperations.html" class="active"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><a href="../Algorithms/Algorithms.html"><strong aria-hidden="true">9.</strong> Algorithms</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -239,20 +239,20 @@ int main(){
 void bitwiseOperations(int a, int b) {
     // AND operation
     int andResult = a &amp; b;
-    printf(&quot;AND result: %d &amp; %d = %d\n&quot;, a, b, andResult);
+    printf("AND result: %d &amp; %d = %d\n", a, b, andResult);
 
     // OR operation
     int orResult = a | b;
-    printf(&quot;OR result: %d | %d = %d\n&quot;, a, b, orResult);
+    printf("OR result: %d | %d = %d\n", a, b, orResult);
 
     // XOR operation
     int xorResult = a ^ b;
-    printf(&quot;XOR result: %d ^ %d = %d\n&quot;, a, b, xorResult);
+    printf("XOR result: %d ^ %d = %d\n", a, b, xorResult);
 
     // Negation operation
     int negationA = ~a;
     int negationB = ~b;
-    printf(&quot;Negation result: ~%d = %d, ~%d = %d\n&quot;, a, negationA, b, negationB);
+    printf("Negation result: ~%d = %d, ~%d = %d\n", a, negationA, b, negationB);
 }
 </code></pre>
 <ul>
@@ -260,41 +260,41 @@ void bitwiseOperations(int a, int b) {
 <p>Bitwise AND (<code>&amp;</code>):</p>
 <ul>
 <li><code>int andResult = a &amp; b;</code> performs a bitwise AND operation between corresponding bits of integers <code>a</code> and <code>b</code>.</li>
-<li><code>printf(&quot;AND result: %d &amp; %d = %d\n&quot;, a, b, andResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
+<li><code>printf("AND result: %d &amp; %d = %d\n", a, b, andResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
 </ul>
 </li>
 <li>
 <p>Bitwise OR (<code>|</code>):</p>
 <ul>
 <li><code>int orResult = a | b;</code> performs a bitwise OR operation between corresponding bits of integers <code>a</code> and <code>b</code>.</li>
-<li><code>printf(&quot;OR result: %d | %d = %d\n&quot;, a, b, orResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
+<li><code>printf("OR result: %d | %d = %d\n", a, b, orResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
 </ul>
 </li>
 <li>
 <p>Bitwise XOR (<code>^</code>):</p>
 <ul>
 <li><code>int xorResult = a ^ b;</code> performs a bitwise XOR operation between corresponding bits of integers <code>a</code> and <code>b</code>.</li>
-<li><code>printf(&quot;XOR result: %d ^ %d = %d\n&quot;, a, b, xorResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
+<li><code>printf("XOR result: %d ^ %d = %d\n", a, b, xorResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
 </ul>
 </li>
 <li>
 <p>Bitwise Negation (<code>~</code>):</p>
 <ul>
 <li><code>int negationA = ~a;</code> and <code>int negationB = ~b;</code> perform bitwise negation operations on integers <code>a</code> and <code>b</code>, respectively.</li>
-<li><code>printf(&quot;Negation result: ~%d = %d, ~%d = %d\n&quot;, a, negationA, b, negationB);</code> prints the negation results using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
+<li><code>printf("Negation result: ~%d = %d, ~%d = %d\n", a, negationA, b, negationB);</code> prints the negation results using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
 </ul>
 </li>
 </ul>
 <p>These <code>printf</code> statements help visualize and understand the results of each bitwise operation by displaying the values of the operands and their outcomes. The <code>%d</code> format specifier is used to print integers in the output.</p>
 </li>
 <li>
-<p>Modify <code>main()</code> to look like this: </p>
+<p>Modify <code>main()</code> to look like this:</p>
 <pre><code class="language-c">int main() {
     // Example values for demonstration
     int value1 = 15;
     int value2 = 7;
 
-    printf(&quot;Bitwise operations demonstration:\n&quot;);
+    printf("Bitwise operations demonstration:\n");
     bitwiseOperations(value1, value2);
 
     return 0;
@@ -316,7 +316,7 @@ the example values <code>value1</code> and <code>value2</code> as arguments. Thi
 <li>
 <p><strong>Print Statement:</strong></p>
 <ul>
-<li><code>printf(&quot;Bitwise operations demonstration:\n&quot;);</code> prints a message to the console indicating that the program is demonstrating bitwise operations. This provides a clear context for the output that follows.</li>
+<li><code>printf("Bitwise operations demonstration:\n");</code> prints a message to the console indicating that the program is demonstrating bitwise operations. This provides a clear context for the output that follows.</li>
 </ul>
 </li>
 <li>
@@ -328,7 +328,7 @@ the example values <code>value1</code> and <code>value2</code> as arguments. Thi
 </ul>
 </li>
 <li>
-<p>Run the program and predict the outputs: </p>
+<p>Run the program and predict the outputs:</p>
 <details>
 <summary>Output...</summary>
 <p><img src="./figures/step2.png" alt="" /></p>
@@ -344,27 +344,27 @@ the example values <code>value1</code> and <code>value2</code> as arguments. Thi
 </li>
 <li>
 <p>Add more bitwise operations to the <code>bitwiseOperations</code> function. For example, introduce left shift (<code>&lt;&lt;</code>) and right shift (<code>&gt;&gt;</code>) operations. Explain their purpose and demonstrate their usage.</p>
-<details>
+ <details>
  <summmary>Sample Code</summary>
 <pre><code class="language-c">// Left shift operation
 int leftShiftResult = a &lt;&lt; 1;
-printf(&quot;Left Shift result: %d &lt;&lt; 1 = %d\n&quot;, a, leftShiftResult);
+printf("Left Shift result: %d &lt;&lt; 1 = %d\n", a, leftShiftResult);
 
 // Right shift operation
 int rightShiftResult = b &gt;&gt; 1;
-printf(&quot;Right Shift result: %d &gt;&gt; 1 = %d\n&quot;, b, rightShiftResult);
+printf("Right Shift result: %d &gt;&gt; 1 = %d\n", b, rightShiftResult);
 
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Modify the <code>printf</code> statements to display the results in hexadecimal format using <code>%x</code> format specifier. This will introduce you to the hexadecimal representation of numbers.</p>
-<details>
+ <details>
  <summmary>Sample Code</summary>
-<pre><code class="language-c">printf(&quot;AND result: %d &amp; %d = %x\n&quot;, a, b, andResult);
+<pre><code class="language-c">printf("AND result: %d &amp; %d = %x\n", a, b, andResult);
 // Repeat for other operations
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Experiment with bit manipulation techniques. For example, check if a specific bit is set or unset, and set or clear a particular bit.</p>
@@ -372,14 +372,14 @@ printf(&quot;Right Shift result: %d &gt;&gt; 1 = %d\n&quot;, b, rightShiftResult
 <summmary>Sample Code</summary>
 <pre><code class="language-c">// Check if the 3rd bit is set in a
 if ((a &amp; (1 &lt;&lt; 2)) != 0) {
-    printf(&quot;3rd bit is set in %d\n&quot;, a);
+    printf("3rd bit is set in %d\n", a);
 } else {
-    printf(&quot;3rd bit is not set in %d\n&quot;, a);
+    printf("3rd bit is not set in %d\n", a);
 }
 
 // Set the 4th bit in b
 b = b | (1 &lt;&lt; 3);
-printf(&quot;After setting 4th bit: %d\n&quot;, b);
+printf("After setting 4th bit: %d\n", b);
 </code></pre>
 </details></li>
 </ol>

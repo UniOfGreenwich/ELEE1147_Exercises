@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item expanded "><a href="../ArithmeticOperations/ArithmeticOperations.html" class="active"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item expanded "><a href="../ArithmeticOperations/ArithmeticOperations.html" class="active"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><a href="../Algorithms/Algorithms.html"><strong aria-hidden="true">9.</strong> Algorithms</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -173,7 +173,7 @@
                     <main>
                         <h1 id="lab-3--arithmetic-operations"><a class="header" href="#lab-3--arithmetic-operations">Lab 3:  Arithmetic Operations</a></h1>
 <h2 id="task-1"><a class="header" href="#task-1">Task 1</a></h2>
-<p>Write a program with functions to perform basic arithmetic operations (addition, 
+<p>Write a program with functions to perform basic arithmetic operations (addition,
 subtraction, multiplication, and division). Each operation should be in its own function.</p>
 <ol>
 <li>
@@ -191,7 +191,7 @@ subtraction, multiplication, and division). Each operation should be in its own 
 </ul>
 </li>
 <li>
-<p>Next create a Guard for the new header file: </p>
+<p>Next create a Guard for the new header file:</p>
 <pre><code class="language-h">#pragma once
 
 #ifndef MYMATHS_H
@@ -209,7 +209,7 @@ subtraction, multiplication, and division). Each operation should be in its own 
 <li>divide</li>
 <li>square <p></p></li>
 </ul>
-<details>
+ <details>
  <summary>Possible Solution...</summary>
 <pre><code class="language-h">#pragma once
 
@@ -224,10 +224,10 @@ float square(float a, float b);
 
 #endif // End of Guard
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
-<p>To provide the actual code for each of these functions in <code>MyMaths.h</code>, create a new file in in the Sources File directory, similarly to how you created the <code>MyMaths.h</code> file, and call it <code>MyMaths.c</code>. You should have the following solution structure: </p>
+<p>To provide the actual code for each of these functions in <code>MyMaths.h</code>, create a new file in in the Sources File directory, similarly to how you created the <code>MyMaths.h</code> file, and call it <code>MyMaths.c</code>. You should have the following solution structure:</p>
 </li>
 </ol>
 <div align=center>
@@ -242,10 +242,10 @@ float square(float a, float b);
 <ol start="6">
 <li>
 <p>Modify the content on <code>MyMaths.c</code> so that it <code>includes</code> the <code>MyMaths.h</code> file:</p>
-<details>
+ <details>
  <summary>Possible Solution...</summary>
-<p><code>#include &quot;MyMaths.h&quot;</code></p>
-</details>
+<p><code>#include "MyMaths.h"</code></p>
+ </details>
 </li>
 <li>
 <p>Now start to build out the functionality of each of the arthimetic functions you declared in the <code>MyMaths.h</code> file:</p>
@@ -256,9 +256,9 @@ float square(float a, float b);
 <li>divide</li>
 <li>square <p></p></li>
 </ul>
-<details>
+ <details>
  <summary>Possible Solution</summary>
-<pre><code class="language-c">#include &quot;MyMaths.h&quot;
+<pre><code class="language-c">#include "MyMaths.h"
 
 float add(float a, float b)
 {
@@ -286,14 +286,14 @@ float square(float a)
     return a*a;
 }
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Go back to <code>ArthimeticOperations.c</code> and modify the contents so that it <code>includes</code> <code>stdio.h</code> and <code>MyMaths.h</code> and remove the code in side the <code>main()</code> block (keeping the <code>return 0;</code>), do this now:</p>
-<details>
+ <details>
  <summary>Possible Solution</summary>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &quot;MyMaths.h&quot;
+#include "MyMaths.h"
 
 int main()
 {
@@ -301,11 +301,11 @@ int main()
     return 0;
 }
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Declare two <code>float</code>s as <code>num1</code> and <code>num2</code> initialising them with the value <code>0.0f</code> inside of <code>main()</code>:</p>
-<details>
+ <details>
  <summary>Possible Solution</summary>
 <pre><code class="language-c">int main(){
 
@@ -314,7 +314,7 @@ int main()
     return 0;
 }
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Using <code>printf</code>, request the user to enter two numbers, where second number that must be greater than zero. Then using <code>scanf_s</code> read what the user inputted and assign those two numbers to <code>num1</code> and <code>num2</code>.</p>
@@ -323,8 +323,8 @@ int main()
 <pre><code class="language-c">int main(){
 
     float num1 = 0.0f, num2 = 0.0f;
-    printf(&quot;Enter two numbers, the second number must not be zero: &quot;);
-    scanf_s(&quot;%f %f&quot;, &amp;num1, &amp;num2);
+    printf("Enter two numbers, the second number must not be zero: ");
+    scanf_s("%f %f", &amp;num1, &amp;num2);
 
     return 0;
 }
@@ -332,22 +332,22 @@ int main()
 </details>
 </li>
 <li>
-<p>Reproducing the following format perform each of the arithmetic operations on the supplied numbers, you will need to do square twice, one for each number: </p>
-<p><code>printf(&quot;&lt;Arithemtic Operation&gt;:     %.2f + %.2f = %.2f\n&quot;, num1, num2, arithmeticOpeation(num1, num2));</code></p>
+<p>Reproducing the following format perform each of the arithmetic operations on the supplied numbers, you will need to do square twice, one for each number:</p>
+<p><code>printf("&lt;Arithemtic Operation&gt;:     %.2f + %.2f = %.2f\n", num1, num2, arithmeticOpeation(num1, num2));</code></p>
 <details>
 <summary>Possible Solution</summary>
 <pre><code class="language-c">int main(){
 
 float num1 = 0.0f, num2 = 0.0f;
-printf(&quot;Enter two numbers, the second number must not be zero: &quot;);
-scanf_s(&quot;%f %f&quot;, &amp;num1, &amp;num2);
+printf("Enter two numbers, the second number must not be zero: ");
+scanf_s("%f %f", &amp;num1, &amp;num2);
 
-printf(&quot;Additon:     %.2f + %.2f = %.2f\n&quot;, num1, num2, add(num1, num2));
-printf(&quot;Subtraction: %.2f - %.2f = %.2f\n&quot;, num1, num2, subtract(num1, num2));
-printf(&quot;Multiply:    %.2f * %.2f = %.2f\n&quot;, num1, num2, multiply(num1, num2));
-printf(&quot;Divison:     %.2f / %.2f = %.2f\n&quot;, num1, num2, divide(num1, num2));
-printf(&quot;squared:     %.2f * %.2f = %.2f\n&quot;, num1, num1, square(num1));
-printf(&quot;squared:     %.2f * %.2f = %.2f\n&quot;, num2, num2, square(num2));
+printf("Additon:     %.2f + %.2f = %.2f\n", num1, num2, add(num1, num2));
+printf("Subtraction: %.2f - %.2f = %.2f\n", num1, num2, subtract(num1, num2));
+printf("Multiply:    %.2f * %.2f = %.2f\n", num1, num2, multiply(num1, num2));
+printf("Divison:     %.2f / %.2f = %.2f\n", num1, num2, divide(num1, num2));
+printf("squared:     %.2f * %.2f = %.2f\n", num1, num1, square(num1));
+printf("squared:     %.2f * %.2f = %.2f\n", num2, num2, square(num2));
 
 return 0;
 </code></pre>
@@ -361,7 +361,7 @@ return 0;
 <hr />
 <hr />
 <h2 id="task-2"><a class="header" href="#task-2">Task 2</a></h2>
-<p>Let's further modify the solution so we can do some meaningful programming. In this task you will create a temperature conversion tool. </p>
+<p>Let's further modify the solution so we can do some meaningful programming. In this task you will create a temperature conversion tool.</p>
 <ol start="13">
 <li>Create a new Header file and c file in the respective locations called:
 <ul>
@@ -456,12 +456,12 @@ double kelvinToFahrenheit(double kel);
 <blockquote>
 <p><strong>Note:</strong></p>
 <blockquote>
-<p>Remember that the function are defined in the <code>TemperatureConversion.h</code>. </p>
+<p>Remember that the function are defined in the <code>TemperatureConversion.h</code>.</p>
 </blockquote>
 </blockquote>
 <details>
 <summary>Possible Solution...</summary>
-<pre><code class="language-c">#include &quot;TemperatureConversion.h&quot;
+<pre><code class="language-c">#include "TemperatureConversion.h"
 
 double fahrenheitToCelcius(double fahr) {
     return (5.0 / 9.0) * (fahr - 32.0);
@@ -491,28 +491,28 @@ double kelvinToFahrenheit(double kel) {
 </details>
 </li>
 <li>
-<p>Revist <code>ArithmeticConversion.c</code> and include the <code>TemperatureConversion.h</code> file underneath <code>#include &quot;MyMaths.h&quot;</code> line.</p>
+<p>Revist <code>ArithmeticConversion.c</code> and include the <code>TemperatureConversion.h</code> file underneath <code>#include "MyMaths.h"</code> line.</p>
 </li>
 <li>
 <p>Continuing lets comment out the previously written code for future reference incase we need it. Above the <code>float num1 = 0.0f, num2 = 0.0f</code> line add a <code>/*</code> place the proceeding <code>*/</code> on the last line of code in this block above the <code>return 0;</code></p>
 <details>
 <summary>Possible Solution...</summary>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &quot;MyMaths.h&quot;
-#include &quot;TemperatureConversion.h&quot;
+#include "MyMaths.h"
+#include "TemperatureConversion.h"
 int main(){
 
     /*
     float num1 = 0.0f, num2 = 0.0f;
-    printf(&quot;Enter two numbers, the second number must not be zero: &quot;);
-    scanf_s(&quot;%f %f&quot;, &amp;num1, &amp;num2);
+    printf("Enter two numbers, the second number must not be zero: ");
+    scanf_s("%f %f", &amp;num1, &amp;num2);
     
-    printf(&quot;Additon:     %.2f + %.2f = %.2f\n&quot;, num1, num2, add(num1, num2));
-    printf(&quot;Subtraction: %.2f - %.2f = %.2f\n&quot;, num1, num2, subtract(num1, num2));
-    printf(&quot;Multiply:    %.2f * %.2f = %.2f\n&quot;, num1, num2, multiply(num1, num2));
-    printf(&quot;Divison:     %.2f / %.2f = %.2f\n&quot;, num1, num2, divide(num1, num2));
-    printf(&quot;squared:     %.2f * %.2f = %.2f\n&quot;, num1, num1, square(num1));
-    printf(&quot;squared:     %.2f * %.2f = %.2f\n&quot;, num2, num2, square(num2));
+    printf("Additon:     %.2f + %.2f = %.2f\n", num1, num2, add(num1, num2));
+    printf("Subtraction: %.2f - %.2f = %.2f\n", num1, num2, subtract(num1, num2));
+    printf("Multiply:    %.2f * %.2f = %.2f\n", num1, num2, multiply(num1, num2));
+    printf("Divison:     %.2f / %.2f = %.2f\n", num1, num2, divide(num1, num2));
+    printf("squared:     %.2f * %.2f = %.2f\n", num1, num1, square(num1));
+    printf("squared:     %.2f * %.2f = %.2f\n", num2, num2, square(num2));
     */
     return 0;
 </code></pre>
@@ -522,7 +522,7 @@ int main(){
 <p>To use our temperature functions, reproduce the following line and then replicate for the other temperature functions. I would suggest starting in the whitespace between <code>int main(){</code> and the <code>/*</code> line:</p>
 <pre><code class="language-c">float num1 = 100.0f;
 
-printf(&quot;Fahrenheit to Ceclius: %.2fF -&gt; %.2fC \n&quot;, num1, fahrenheitToCelcius(num1));
+printf("Fahrenheit to Ceclius: %.2fF -&gt; %.2fC \n", num1, fahrenheitToCelcius(num1));
 </code></pre>
 <blockquote>
 <p><strong>Note:</strong></p>
@@ -536,17 +536,17 @@ printf(&quot;Fahrenheit to Ceclius: %.2fF -&gt; %.2fC \n&quot;, num1, fahrenheit
 int main(){
     float num1 = 100.0f;
 
-    printf(&quot;Fahrenheit to Ceclius: %.2fF -&gt; %.2fC \n&quot;, num1, fahrenheitToCelcius(num1));
+    printf("Fahrenheit to Ceclius: %.2fF -&gt; %.2fC \n", num1, fahrenheitToCelcius(num1));
 
-    printf(&quot;Fahrenheit to Kelvin: %.2fF -&gt; %.2fK \n&quot;, num1, fahrenheitToKelvin(num1));
+    printf("Fahrenheit to Kelvin: %.2fF -&gt; %.2fK \n", num1, fahrenheitToKelvin(num1));
 
-    printf(&quot;Ceclius to Fahrenheit: %.2fC -&gt; %.2fF \n&quot;, num1, celciusToFahrenheit(num1));
+    printf("Ceclius to Fahrenheit: %.2fC -&gt; %.2fF \n", num1, celciusToFahrenheit(num1));
 
-    printf(&quot;Ceclius to Kelvin: %.2fC -&gt; %.2fK \n&quot;, num1, celciusToKelvin(num1));
+    printf("Ceclius to Kelvin: %.2fC -&gt; %.2fK \n", num1, celciusToKelvin(num1));
 
-    printf(&quot;Kelvin to Farhenheit: %.2fK -&gt; %.2fF \n&quot;, num1, kelvinToFahrenheit(num1));
+    printf("Kelvin to Farhenheit: %.2fK -&gt; %.2fF \n", num1, kelvinToFahrenheit(num1));
 
-    printf(&quot;Kelvin to Ceclius: %.2fK -&gt; %.2fC \n&quot;, num1, kelvinToCelcius(num1));
+    printf("Kelvin to Ceclius: %.2fK -&gt; %.2fC \n", num1, kelvinToCelcius(num1));
 
 
     /*
@@ -558,7 +558,7 @@ int main(){
 <blockquote>
 <p><strong>Note:</strong></p>
 <blockquote>
-<p>The <code>...</code> means and rest of the code, that I have ommitted for readibility </p>
+<p>The <code>...</code> means and rest of the code, that I have ommitted for readibility</p>
 </blockquote>
 </blockquote>
 </details>
@@ -576,9 +576,9 @@ int main(){
 <p>If you get to here try and modify the code so that you can convert from above temperature units to Rankine and vice versa, the following formulas will help you:</p>
 <ul>
 <li>
-<p>Rankine to: </p>
+<p>Rankine to:</p>
 <ul>
-<li>\(Celcius = (R − 491.67) \cdot \left(\frac{5}{9}\right) \) </li>
+<li>\(Celcius = (R − 491.67) \cdot \left(\frac{5}{9}\right) \)</li>
 <li>\(Fahrenheit = R − 459.67\)</li>
 <li>\(Kelvin = R \cdot \left(\frac{5}{9}\right)\)</li>
 </ul>
@@ -646,17 +646,17 @@ double rankineToKelvin(double ran);
 <li>
 <p><strong>ArithmeticOperations.c</strong></p>
 <pre><code class="language-c">... 
-printf(&quot;Fahrenheit to Rankine: %.2fF -&gt; %.2fR \n&quot;, num1, fahrenheitToRankine(num1));
+printf("Fahrenheit to Rankine: %.2fF -&gt; %.2fR \n", num1, fahrenheitToRankine(num1));
 ...
-printf(&quot;Ceclius to Rankine: %.2fC -&gt; %.2fR \n&quot;, num1, celciusToRankine(num1))
+printf("Ceclius to Rankine: %.2fC -&gt; %.2fR \n", num1, celciusToRankine(num1))
 ...
-printf(&quot;Kelvin to Rankine: %.2fK -&gt; %.2fR \n&quot;, num1, kelvinToRankine(num1));
+printf("Kelvin to Rankine: %.2fK -&gt; %.2fR \n", num1, kelvinToRankine(num1));
 
-printf(&quot;Rankine to Farhenheit: %.2fR -&gt; %.2fF \n&quot;, num1, rankineToFahrenheit(num1));
+printf("Rankine to Farhenheit: %.2fR -&gt; %.2fF \n", num1, rankineToFahrenheit(num1));
 
-printf(&quot;Rankine to Ceclius: %.2fR -&gt; %.2fC \n&quot;, num1, rankineToCelcius(num1));
+printf("Rankine to Ceclius: %.2fR -&gt; %.2fC \n", num1, rankineToCelcius(num1));
 
-printf(&quot;Rankine to Kelvin: %.2fR -&gt; %.2fK \n&quot;, num1, rankineToKelvin(num1));
+printf("Rankine to Kelvin: %.2fR -&gt; %.2fK \n", num1, rankineToKelvin(num1));
 </code></pre>
 </li>
 </ul>

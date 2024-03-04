@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html" class="active"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html" class="active"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><a href="../Algorithms/Algorithms.html"><strong aria-hidden="true">9.</strong> Algorithms</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -194,8 +194,7 @@
 <hr />
 <h2 id="task-1-header-files"><a class="header" href="#task-1-header-files">Task 1: Header Files</a></h2>
 <blockquote>
-<p><strong>So What is a Header File?</strong>
-&gt;</p>
+<p><strong>So What is a Header File?</strong></p>
 <blockquote>
 <p>A header file is a file containing declarations and macro definitions that can be shared between multiple source files. Commonly used header files, such as <code>stdio.h</code>, <code>stdlib.h</code>, and <code>math.h</code>, provide essential functions and constants.</p>
 </blockquote>
@@ -215,7 +214,7 @@
 <ol start="3">
 <li>
 <p>Open the newly created header file and add a guard using the the keywords, <code>#ifndef</code>, <code>#define</code> and <code>#endif</code>. In at the end of <code>#ifndef</code> and <code>#define</code>, write the name of the header file in captial letters, and replace the <code>.h</code> with <code>_h</code>.</p>
-<details>
+ <details>
  <summary>Solution...</summary>
 <pre><code class="language-h">// myheader.h
 #ifndef MYHEADER_H
@@ -224,11 +223,11 @@
 #endif // MYHEADER_H
 
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Inside the ifndef and endif block add a declaration/definition for a <code>greet</code> function that returns <code>void</code> and has no arguments and a second function called <code>add</code> that returns an <code>int</code> and takes two arguments that are <code>int</code>s:</p>
-<details>
+ <details>
  <summary>Solution...</summary>
 <pre><code class="language-h">// myheader.h
 #ifndef MYHEADER_H
@@ -241,65 +240,65 @@ int add(int a, int b);
 #endif // MYHEADER_H
 
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Now create the <code>myheader.c</code> file that will provide the functionality of the <code>myheader.h</code> decalarations. Once created reproduce the following:</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &quot;myheader.h&quot;
+#include "myheader.h"
 
 void greet() {
-    printf(&quot;Hello, welcome to the workshop!\n&quot;);
+    printf("Hello, welcome to the workshop!\n");
 }
 
 int add(int a, int b) {
     return a + b;
 }
 </code></pre>
-<p>You can see the that the <code>&quot;myheader.h&quot;</code> has different syntax to <code>&lt;stdio.h&gt;</code>. This is because <code>&lt;someheader.h&gt;</code> is part of the global library of header files that come with the C/C++ compilers. Whereas, the <code>&quot;someotherheader.h&quot;</code> indicates that this file is located somewhere else, defined generally by the user. The location is generally part of the project folder, but can be located else and you simply provide the path to it <code>&quot;/path/to/file.h&quot;</code></p>
+<p>You can see the that the <code>"myheader.h"</code> has different syntax to <code>&lt;stdio.h&gt;</code>. This is because <code>&lt;someheader.h&gt;</code> is part of the global library of header files that come with the C/C++ compilers. Whereas, the <code>"someotherheader.h"</code> indicates that this file is located somewhere else, defined generally by the user. The location is generally part of the project folder, but can be located else and you simply provide the path to it <code>"/path/to/file.h"</code></p>
 </li>
 <li>
-<p>Go back to the the <code>HeadersLab.c</code> file where the <code>main() </code>function is and include the <code>&quot;myheader.h&quot;</code> at the top of the script. </p>
+<p>Go back to the the <code>HeadersLab.c</code> file where the <code>main() </code>function is and include the <code>"myheader.h"</code> at the top of the script.</p>
 </li>
 <li>
 <p>Inside the <code>main()</code>, before the <code>return</code> keyword:</p>
 <ul>
 <li>write <code>greet()</code> function</li>
-<li>on the next line assign the returned <code>int</code> as <code>result</code> value from <code>add()</code>, supply 5 and 7 as the arguments. </li>
+<li>on the next line assign the returned <code>int</code> as <code>result</code> value from <code>add()</code>, supply 5 and 7 as the arguments.</li>
 <li>Finally, use the <code>prinf()</code> to output the <code>result</code>, you can use this format/syntax:
 <ul>
-<li><code>printf(&quot;some string: %d\n&quot;, result)</code>.</li>
+<li><code>printf("some string: %d\n", result)</code>.</li>
 <li>Where the format specifier, <code>%d</code>, means digit/denary. <p></p></li>
 </ul>
 </li>
 </ul>
-<details>
+ <details>
  <summary>HeadersLab.c code</summary>
 <pre><code class="language-c">// main.c
-#include &quot;myheader.h&quot;
+#include "myheader.h"
 
 int main() {
     greet();
     
     int result = add(5, 7);
-    printf(&quot;The sum is: %d\n&quot;, result);
+    printf("The sum is: %d\n", result);
 
     return 0;
 }
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Run the program and you should recieve the following:</p>
 <p><strong>Output:</strong></p>
-<div align=center>
+ <div align=center>
 <p><img src="./figures/step3.png" alt="" /></p>
-</div>
+ </div>
 </li>
 <li>
-<p>The guard is important in the header file because during the compiling process their should only be one instance on the header. </p>
+<p>The guard is important in the header file because during the compiling process their should only be one instance on the header.</p>
 <ul>
-<li>To demonstrate this, create remove the guard block from <code>myheader.h</code>. </li>
+<li>To demonstrate this, create remove the guard block from <code>myheader.h</code>.</li>
 <li>Then create a new file called <code>otherfile.c</code> and  include the <code>myheader.h</code> at the top of the script</li>
 </ul>
 <p><img src="./figures/step4.png" alt="" /> <!--Image of noguard.h--></p>
@@ -307,18 +306,18 @@ int main() {
 <li>
 <p>Run the code and you should see....</p>
 <p><img src="./figures/step5.png" alt="" /> <!--Image of having no guard error--></p>
-<p>This is because: </p>
+<p>This is because:</p>
 <ul>
 <li>
 <p><strong>First Inclusion:</strong></p>
 <ul>
 <li><code>main.c</code> includes <code>myheader.h</code>.</li>
-<li>The preprocessor replaces the <code>#include &quot;myheader.h&quot;</code> with the content of <code>myheader.h</code>.</li>
+<li>The preprocessor replaces the <code>#include "myheader.h"</code> with the content of <code>myheader.h</code>.</li>
 <li>Declarations in <code>myheader.h</code> become part of <code>main.c</code>.</li>
 </ul>
 <pre><code class="language-md">main.c:
 -----------
-#include &quot;myheader.h&quot;
+#include "myheader.h"
 -----------
 
 myheader.h:
@@ -335,13 +334,13 @@ int add(int a, int b);
 <p>Another file, say <code>otherfile.c</code>, also includes <code>myheader.h</code>.</p>
 </li>
 <li>
-<p>The preprocessor replaces the <code>#include &quot;myheader.h&quot;</code> with the content of <code>myheader.h</code>.</p>
+<p>The preprocessor replaces the <code>#include "myheader.h"</code> with the content of <code>myheader.h</code>.</p>
 </li>
 <li>
 <p>Declarations in <code>myheader.h</code> become part of <code>otherfile.c</code>.</p>
 <pre><code class="language-md">otherfile.c:
 -----------
-#include &quot;myheader.h&quot;
+#include "myheader.h"
 -----------
 
 myheader.h:
@@ -362,17 +361,17 @@ int add(int a, int b);
 </li>
 <li>
 <p>The diagram below illustrates the problem:</p>
-<div align=center>
+  <div align=center>
 <pre><code>    main.c                    otherfile.c
 |                            |
 v                            v
 --------------------------------------------------
-| #include &quot;myheader.h&quot; | #include &quot;myheader.h&quot;  |
+| #include "myheader.h" | #include "myheader.h"  |
 | void greet();         | void greet();          |
 | int add(int a, int b);| int add(int a, int b); |
 --------------------------------------------------
 </code></pre>
-</div>
+  </div>
 </li>
 <li>
 <p>Solution...</p>
@@ -396,7 +395,7 @@ int add(int a, int b);
         |                            |
         v                            v
 -----------------------------------------------------------
-|#include &quot;myheader.h&quot; | #include &quot;myheader.h&quot;            |
+|#include "myheader.h" | #include "myheader.h"            |
 |#ifndef MYHEADER_H    | (Already defined, skips content) |
 |#define MYHEADER_H    |                                  |
 |void greet();         |                                  |
@@ -408,7 +407,7 @@ int add(int a, int b);
 </ul>
 </li>
 <li>
-<p>Add the guard again to <code>myheader.h</code>. </p>
+<p>Add the guard again to <code>myheader.h</code>.</p>
 </li>
 </ol>
 <hr />
@@ -429,22 +428,22 @@ int add(int a, int b);
 <blockquote>
 <p><strong>Note:</strong></p>
 <blockquote>
-<p>Macros variables/functions names follow a UPPERCASE name convention. </p>
+<p>Macros variables/functions names follow a UPPERCASE name convention.</p>
 </blockquote>
 </blockquote>
 <ol start="13">
 <li>
-<p>Inside <code>main()</code> use <code>printf()</code> to output PI to the terminal. </p>
-<pre><code class="language-c">#include &quot;myheader.h&quot;
+<p>Inside <code>main()</code> use <code>printf()</code> to output PI to the terminal.</p>
+<pre><code class="language-c">#include "myheader.h"
 #define PI 3.14159
 
 int main() {
     
-    printf(&quot;PI is: %.5f\n&quot;, PI);
+    printf("PI is: %.5f\n", PI);
     greet();
     
     int result = add(5, 7);
-    printf(&quot;The sum is: %d\n&quot;, result);
+    printf("The sum is: %d\n", result);
 
     return 0;
 }
@@ -459,12 +458,12 @@ int main() {
 <p>Continuing, define a second macro as function that computes the square of a number:</p>
 <pre><code class="language-c">#define SQUARE(x) ((x) * (x))
 </code></pre>
-<p>This function only use 4 Byte values, so anything larger than a <code>int</code> would not work. </p>
+<p>This function only use 4 Byte values, so anything larger than a <code>int</code> would not work.</p>
 </li>
 <li>
 <p>Inside <code>main()</code> call the macro defined function SQAURE inside a printf statement, where the statement outputs the result of the SQUARE and the number being squared:</p>
 <pre><code class="language-c">int num = 5;
-printf(&quot;The square of %d is: %d\n&quot;, num, SQUARE(num));
+printf("The square of %d is: %d\n", num, SQUARE(num));
 </code></pre>
 </li>
 <li>
@@ -477,7 +476,7 @@ printf(&quot;The square of %d is: %d\n&quot;, num, SQUARE(num));
 #define DEBUG_MODE 1
 
 #ifdef DEBUG_MODE
-#define DEBUG_PRINT(msg) printf(&quot;Debug: %s\n&quot;, msg)
+#define DEBUG_PRINT(msg) printf("Debug: %s\n", msg)
 #else
 #define DEBUG_PRINT(msg)
 #endif
@@ -485,15 +484,15 @@ printf(&quot;The square of %d is: %d\n&quot;, num, SQUARE(num));
 </code></pre>
 </li>
 <li>
-<p><code>Inside main()</code> place this <code>DEBUG_PRINT(&quot;This is a debug message&quot;);</code> :</p>
+<p><code>Inside main()</code> place this <code>DEBUG_PRINT("This is a debug message");</code> :</p>
 <pre><code class="language-c">int main() {
 
-printf(&quot;PI is: %.5f\n&quot;, PI);
+printf("PI is: %.5f\n", PI);
 
 int num = 5;
-printf(&quot;The square of %d is: %d\n&quot;, num, SQUARE(num));
+printf("The square of %d is: %d\n", num, SQUARE(num));
 
-DEBUG_PRINT(&quot;This is a debug message&quot;);
+DEBUG_PRINT("This is a debug message");
 ...
 </code></pre>
 </li>
@@ -524,13 +523,13 @@ DEBUG_PRINT(&quot;This is a debug message&quot;);
 <li>
 <p><strong>Variadic</strong> macros extend the function-like macros to handle a variable number of arguments using variadic macros. For example you can create your own macro for <code>printf</code>, try the following:</p>
 <pre><code class="language-c">// Example of a variadic macro for printing values
-#define PRINT_VALUES(...) printf(&quot;Values: &quot; __VA_ARGS__)
+#define PRINT_VALUES(...) printf("Values: " __VA_ARGS__)
 
 // Usage in a C program
 #include &lt;stdio.h&gt;
 
 int main() {
-    PRINT_VALUES(&quot;%d, %f, %s\n&quot;, 10, 3.14, &quot;Hello&quot;);
+    PRINT_VALUES("%d, %f, %s\n", 10, 3.14, "Hello");
     return 0;
 }
 </code></pre>
@@ -548,7 +547,7 @@ int main() {
 <p><code>(...)</code> (ellipsis): The ellipsis <code>(...)</code> in the parameter list indicates that the macro accepts a variable number of arguments. It is a feature known as variadic macros.</p>
 </li>
 <li>
-<p>printf(&quot;Values: &quot; <strong>VA_ARGS</strong>): This is the body of the macro. It's essentially a printf statement that prints a formatted string. The <strong>VA_ARGS</strong> is a special identifier in C that represents the variable arguments passed to the macro.</p>
+<p>printf("Values: " <strong>VA_ARGS</strong>): This is the body of the macro. It's essentially a printf statement that prints a formatted string. The <strong>VA_ARGS</strong> is a special identifier in C that represents the variable arguments passed to the macro.</p>
 </li>
 </ul>
 <blockquote>
@@ -573,7 +572,7 @@ int main() {
 #include &lt;stdio.h&gt;
 
 int main() {
-    printf(&quot;Stringified: %s\n&quot;, STRINGIFY(Hello));
+    printf("Stringified: %s\n", STRINGIFY(Hello));
             
     return 0;
 }
@@ -584,10 +583,10 @@ int main() {
 <p>Stringification Example (<code>STRINGIFY</code>):</p>
 <ul>
 <li>
-<p>The macro <code>STRINGIFY(Hello)</code> converts the identifier Hello into the string literal <code>&quot;Hello&quot;</code>.</p>
+<p>The macro <code>STRINGIFY(Hello)</code> converts the identifier Hello into the string literal <code>"Hello"</code>.</p>
 </li>
 <li>
-<p>The <code>printf</code> statement prints <code>&quot;Stringified: Hello\n&quot;</code> to the console.</p>
+<p>The <code>printf</code> statement prints <code>"Stringified: Hello\n"</code> to the console.</p>
 </li>
 </ul>
 </li>
@@ -605,7 +604,7 @@ int main() {
 <p>The <code>mymacros.h</code> header file below encapsulates commonly used macros for maximum and minimum operations, as well as conditional debugging output. By using include guards, it ensures that the content is included only once in each compilation unit, avoiding redefinition issues. This header file can be included in C programs that require these macros for enhanced functionality and debugging capabilities.</p>
 </li>
 <li>
-<p>You would <code>#include &quot;mymacros_h&quot;</code> in your file with <code>main()</code> and then #define DEBUG_MODE with 0 or 1, you can then access those functions.</p>
+<p>You would <code>#include "mymacros_h"</code> in your file with <code>main()</code> and then #define DEBUG_MODE with 0 or 1, you can then access those functions.</p>
 <pre><code class="language-C">// Example of header file with guarded macros
 #ifndef MYMACROS_H
 #define MYMACROS_H
@@ -614,7 +613,7 @@ int main() {
 #define MIN(a, b) ((a) &lt; (b) ? (a) : (b))
 
 #ifdef DEBUG_MODE
-    #define DEBUG_PRINT(msg) printf(&quot;Debug: %s\n&quot;, msg)
+    #define DEBUG_PRINT(msg) printf("Debug: %s\n", msg)
 #else
     #define DEBUG_PRINT(msg)
 #endif
@@ -631,7 +630,7 @@ int main() {
 <h2 id="task-4-macros-in-data-structures"><a class="header" href="#task-4-macros-in-data-structures">Task 4 Macros in Data Structures:</a></h2>
 <ol start="29">
 <li>
-<p>The code below is an example of using macros to define a <em>generic structure</em> for a linked list node in C. This allows you to create linked lists for different data types using the same basic structure <strong>template</strong>. </p>
+<p>The code below is an example of using macros to define a <em>generic structure</em> for a linked list node in C. This allows you to create linked lists for different data types using the same basic structure <strong>template</strong>.</p>
 <pre><code class="language-c">// Example of macros for a linked list
 #define DECLARE_NODE_TYPE(type) \
     struct type##_Node {          \
@@ -647,7 +646,7 @@ DECLARE_NODE_TYPE(int);
 <ul>
 <li>This macro is designed to declare a structure template for a linked list node.</li>
 <li>The type parameter allows the user to specify the data type of the elements that the linked list will store.</li>
-<li>The <code>##</code> operator concatenates the type with the <code>&quot;_Node&quot;</code> suffix to form the structure name</li>
+<li>The <code>##</code> operator concatenates the type with the <code>"_Node"</code> suffix to form the structure name</li>
 </ul>
 </li>
 </ul>
@@ -664,7 +663,7 @@ int main() {
     myNode.data = 42;
     myNode.next = NULL;
 
-    printf(&quot;Data: %d\n&quot;, myNode.data);
+    printf("Data: %d\n", myNode.data);
 
     return 0;
 }
@@ -700,14 +699,14 @@ int main() {
     myNode.data = 42;
     myNode.next = NULL;
 
-    printf(&quot;Data: %d\n&quot;, myNode.data);
+    printf("Data: %d\n", myNode.data);
     
     return 0;
 }
 </code></pre>
 </li>
 <li>
-<p>Run the code to see the output: </p>
+<p>Run the code to see the output:</p>
 <p><img src="./figures/step11.png" alt="" /></p>
 </li>
 <li>

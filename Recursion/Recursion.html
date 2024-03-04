@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item expanded "><a href="../Recursion/Recursion.html" class="active"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item expanded "><a href="../Recursion/Recursion.html" class="active"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><a href="../Algorithms/Algorithms.html"><strong aria-hidden="true">9.</strong> Algorithms</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -176,13 +176,13 @@
 <p>Recursion consists of <strong>two</strong> main components:</p>
 <ol>
 <li>
-<p><strong>Base Case</strong>: </p>
+<p><strong>Base Case</strong>:</p>
 <ul>
 <li>This is the terminating condition that prevents the function from calling itself indefinitely. When the base case is met, the recursion stops, and the function returns a specific value.</li>
 </ul>
 </li>
 <li>
-<p><strong>Recursive Case</strong>: </p>
+<p><strong>Recursive Case</strong>:</p>
 <ul>
 <li>This is the part of the function where it calls itself with a smaller or simpler input. Each recursive call should bring the problem closer to the base case.</li>
 </ul>
@@ -195,8 +195,7 @@
 <li>First recursive task is to perform a factorial, to do this we need a new project. Open VSCode and create a new C++ console project, and call it Factorial.</li>
 </ol>
 <blockquote>
-<p><strong>Note:</strong>
-&gt;</p>
+<p><strong>Note:</strong></p>
 <blockquote>
 <p>As a reminder the factorial of a non-negative integer \( n \), denoted by \( n! \), is the product of all positive integers less than or equal to \( n \). It is defined as:</p>
 <p>\[ n! = n \times (n-1) \times (n-2) \times \ldots \times 2 \times 1 \]</p>
@@ -208,9 +207,9 @@
 <ol>
 <li>
 <p>Change the extension of the <code>Factorial.cpp</code> to <code>Factorial.c</code></p>
-<div align=center>
+ <div align=center>
 <p><img src="./figures/step1.png" alt="" /></p>
-</div>
+ </div>
 </li>
 <li>
 <p>Reproduce the following:</p>
@@ -234,8 +233,8 @@ int main(){
 <p></p>
 <ol start="4">
 <li>
-<p>After the closing <code>}</code> of <code>main()</code> write the factorial function that has just been defined, write the head and leave the body empty. </p>
-<details>
+<p>After the closing <code>}</code> of <code>main()</code> write the factorial function that has just been defined, write the head and leave the body empty.</p>
+ <details>
  <summary>Solution</summary>
 <pre><code class="language-c">int main(){
     ...
@@ -245,11 +244,11 @@ int factorial(int n){
 
 }
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
-<p>Inside the factorial function write an if statement that checks if <code>n</code> is <code>0</code> or <code>1</code>, and if true, it returns <code>1</code>. Add a comment to the top of the if block that says <code>\\base case</code>. </p>
-<details>
+<p>Inside the factorial function write an if statement that checks if <code>n</code> is <code>0</code> or <code>1</code>, and if true, it returns <code>1</code>. Add a comment to the top of the if block that says <code>\\base case</code>.</p>
+ <details>
  <summary>Possible Solution</summary>
 <pre><code class="language-c">int factorial(int n) {
     // Base case
@@ -258,11 +257,11 @@ int factorial(int n){
     }
 }
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Now add the recusive case which will be the <code>else</code> block. Write the <code>return</code> keyword after the inside the <code>else{}</code> block. Continuing on the same line multiply <code>n</code> to the result of the factorial function invocation (the recursion). The <code>factorial()</code>'s argument should be <code>n - 1</code></p>
-<details>
+ <details>
  <summary>Possible Solution</summary>
 <pre><code class="language-c">int factorial(int n) {
     // Base case
@@ -274,33 +273,33 @@ int factorial(int n){
     }
 }
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
-<p>Now revist <code>main()</code> and create a variable called <code>result</code> which is of the data type <code>int</code> which stores the result of the <code>factorial(5)</code> as part of it's declaration and initilaisation. On the next line print the variable <code>result</code> the prepened string <code>&quot;Factorial: &quot;</code></p>
-<details>
+<p>Now revist <code>main()</code> and create a variable called <code>result</code> which is of the data type <code>int</code> which stores the result of the <code>factorial(5)</code> as part of it's declaration and initilaisation. On the next line print the variable <code>result</code> the prepened string <code>"Factorial: "</code></p>
+ <details>
  <summary>Possible Solution</summary>
 <pre><code class="language-c">int main() {
     // Example usage
     int result = factorial(5);
-    printf(&quot;Factorial: %d\n&quot;, result);  // Output: 120
+    printf("Factorial: %d\n", result);  // Output: 120
 
     return 0;
 }
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>Run the program and you should see the following:</p>
-<div align=center>
+ <div align=center>
 <p><img src="./figures/step2.png" alt="" /></p>
-</div>
+ </div>
 </li>
 <li>
 <p>Modifying the factorial function more, you could try and output each result per recursion. Add the following <code>printf</code> call in the <code>else</code> block above the <code>return</code> line:</p>
 </li>
 </ol>
-<pre><code class="language-c">printf(&quot;%d x %d = %d\n&quot;,n, (n-1), n * (n - 1));
+<pre><code class="language-c">printf("%d x %d = %d\n",n, (n-1), n * (n - 1));
 </code></pre>
 <ol start="10">
 <li>
@@ -344,7 +343,7 @@ int factorial(int n);
 int main() {
     // Example usage
     int result = factorial(5);
-    printf(&quot;Factorial: %d\n&quot;, result);  // Output: 120
+    printf("Factorial: %d\n", result);  // Output: 120
 
     return 0;
 }
@@ -386,7 +385,7 @@ int factorial(int n) {
 <p>The next number is 2 + 3 = 5. And so on...</p>
 </li>
 </ul>
-<p>Simplified the formula looks like: </p>
+<p>Simplified the formula looks like:</p>
 <p>\[𝐹(𝑛) = 𝐹(𝑛 − 1) + 𝐹(𝑛 − 2)\]</p>
 <ol start="11">
 <li>
@@ -395,7 +394,7 @@ int factorial(int n) {
 int main() {
 
     /*int result = factorial(5);
-    printf(&quot;\nFactorial: %d\n&quot;, result);  // Output: 120
+    printf("\nFactorial: %d\n", result);  // Output: 120
     */
 
     return 0;
@@ -435,15 +434,15 @@ int factorial(int n)
 
     int n;
 
-    printf(&quot;Enter the value of n: &quot;);
-    scanf_s(&quot;%d&quot;, &amp;n);
+    printf("Enter the value of n: ");
+    scanf_s("%d", &amp;n);
 
     // check if the input is non-negative
     if(n &lt; 0){
-        printf(&quot;Fibonacci sequence is not defined for negative numbers.&quot;);
+        printf("Fibonacci sequence is not defined for negative numbers.");
     }else{
         int fibVaule = fibonacci(n - 1);
-        printf(&quot;Fibonacci number at position %d is: %llu\n&quot;, n, fibValue);
+        printf("Fibonacci number at position %d is: %llu\n", n, fibValue);
     }
 
     ...
@@ -464,7 +463,7 @@ int factorial(int n)
 <p>Modifying the fibonacci function more, you could try and output each result per recursion. Add the following <code>printf</code> call in the <code>else</code> block above the <code>return</code> line:</p>
 </li>
 </ol>
-<pre><code class="language-c">printf(&quot;(%d - 1) + (%d - 2) = %d\n&quot;, n, n, (n - 1) + (n - 2));
+<pre><code class="language-c">printf("(%d - 1) + (%d - 2) = %d\n", n, n, (n - 1) + (n - 2));
 </code></pre>
 <ol start="10">
 <li>
@@ -472,7 +471,7 @@ int factorial(int n)
 <details>
 <summary>Output...</summary>
 <p><img src="./figures/step5.png" alt="" /></p>
-<p>Digrammitcally the program the recurison happens like this: </p>
+<p>Digrammitcally the program the recurison happens like this:</p>
 <pre><code class="language-sql">Call: fibonacci(5)
 |
 └── Print: (5 - 1) + (5 - 2) = 5
@@ -535,8 +534,8 @@ Final Result: Fibonacci number at position 5 is: 5
 </ul>
 </li>
 </ul>
-<p>The diagram shows the hierarchy of recursive calls, where each node represents a call to the <code>fibonacci</code> function with a specific value of (n). The &quot;Print&quot; lines indicate where the sum is printed. The &quot;Returned&quot; lines indicate the value returned from a particular call.</p>
-<p>The final result is printed at the bottom as &quot;Final Result: Fibonacci number at position 5 is: 5&quot;. This is the cumulative result obtained by adding the values returned from the recursive calls.</p>
+<p>The diagram shows the hierarchy of recursive calls, where each node represents a call to the <code>fibonacci</code> function with a specific value of (n). The "Print" lines indicate where the sum is printed. The "Returned" lines indicate the value returned from a particular call.</p>
+<p>The final result is printed at the bottom as "Final Result: Fibonacci number at position 5 is: 5". This is the cumulative result obtained by adding the values returned from the recursive calls.</p>
 <p>This kind of diagram is useful for visualizing the flow of recursive calls and understanding how the function evaluates the Fibonacci sequence for a given input.</p>
 </details><p></p>
 </li>
@@ -556,20 +555,20 @@ int main() {
 
     int n;
 
-    printf(&quot;Enter the value of n: &quot;);
-    scanf_s(&quot;%d&quot;, &amp;n);
+    printf("Enter the value of n: ");
+    scanf_s("%d", &amp;n);
 
     // check if the input is non-negative
     if (n &lt; 0) {
-        printf(&quot;Fibonacci sequence is not defined for negative numbers.&quot;);
+        printf("Fibonacci sequence is not defined for negative numbers.");
     }
     else {
         int fibValue = fibonacci(n - 1);
-        printf(&quot;Fibonacci number at position %d is: %llu\n&quot;, n, fibValue);
+        printf("Fibonacci number at position %d is: %llu\n", n, fibValue);
     }
 
     int result = factorial(5);
-    printf(&quot;\nFactorial: %d\n&quot;, result);  // Output: 120
+    printf("\nFactorial: %d\n", result);  // Output: 120
     
     return 0;
 }
@@ -577,7 +576,7 @@ int main() {
 int sizeofthearray(int* arr)
 {
     size_t some_array_n = sizeof(arr) / sizeof(arr[0]);
-    printf(&quot;Size of array is: %ld&quot;, some_array_n);
+    printf("Size of array is: %ld", some_array_n);
 }
 
 
@@ -587,7 +586,7 @@ int fibonacci(int n) {
         return n;
     }
     else {
-        printf(&quot;(%d - 1) + (%d - 2) = %d\n&quot;, n, n, (n - 1) + (n - 2));
+        printf("(%d - 1) + (%d - 2) = %d\n", n, n, (n - 1) + (n - 2));
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
 }
@@ -601,7 +600,7 @@ int factorial(int n) {
     }
     else {
         // Recursive case
-        printf(&quot;%d x %d = %d\n&quot;,n, (n-1), n * (n - 1));
+        printf("%d x %d = %d\n",n, (n-1), n * (n - 1));
         return n * factorial(n - 1);
     }
 }

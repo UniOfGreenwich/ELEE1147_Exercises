@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../Learning_C/Learning_C.html" class="active"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../Learning_C/Learning_C.html" class="active"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><a href="../Algorithms/Algorithms.html"><strong aria-hidden="true">9.</strong> Algorithms</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -188,9 +188,9 @@
 
 int main()
 {
-    printf(&quot;Hello World\n&quot;); // lets say hello, where it all began...
+    printf("Hello World\n"); // lets say hello, where it all began...
     
-    printf(&quot;Goodbye World\n&quot;); // this seems fitting as the program will close after this.
+    printf("Goodbye World\n"); // this seems fitting as the program will close after this.
     
     return 0; // returns 0 to the int of main() and terminate the program
 }
@@ -198,19 +198,19 @@ int main()
 <p>Some explanation about the above code:</p>
 <ul>
 <li>
-<p>All code gets executed inside of <code>main()</code>, </p>
+<p>All code gets executed inside of <code>main()</code>,</p>
 </li>
 <li>
-<p>For the program to terminate the <code>main()</code> has to have a returnable value, <code>int</code>, </p>
+<p>For the program to terminate the <code>main()</code> has to have a returnable value, <code>int</code>,</p>
 </li>
 <li>
-<p>The keyword at the end of the <code>main()</code> is <code>return</code>, this is will return the value preceeding it, </p>
+<p>The keyword at the end of the <code>main()</code> is <code>return</code>, this is will return the value preceeding it,</p>
 </li>
 <li>
-<p>A <code>0</code> execute means no errors. </p>
+<p>A <code>0</code> execute means no errors.</p>
 </li>
 <li>
-<p>Similar to <code>C#</code> to use libraries <code>c</code> programs import with the <code>#include</code> keyword instead of <code>using</code>. </p>
+<p>Similar to <code>C#</code> to use libraries <code>c</code> programs import with the <code>#include</code> keyword instead of <code>using</code>.</p>
 </li>
 <li>
 <p>The included library is the standard input out header, <code>stdio.h</code>.</p>
@@ -238,7 +238,7 @@ int main()
 int main()
 {
     int testInteger = 5;
-    printf(&quot;Number = %d&quot;, testInteger);
+    printf("Number = %d", testInteger);
     return 0;
 }
 </code></pre>
@@ -247,7 +247,7 @@ int main()
 <p>Remeber to use the vim shortcuts from before to edit, write and quit.</p>
 </li>
 <li>
-<p>Run the script again... </p>
+<p>Run the script again...</p>
 <p><img src="./figures/step2.png" alt="" /></p>
 <ul>
 <li>We use <code>%d</code> format specifier to print <code>int</code> types. Here, the <code>%d</code> inside the quotations will be replaced by the value of <code>testInteger</code>.</li>
@@ -264,14 +264,14 @@ int main()
     float number1 = 13.5;
     double number2 = 12.4;
 
-    printf(&quot;number1 = %f\n&quot;, number1);
-    printf(&quot;number2 = %lf&quot;, number2);
+    printf("number1 = %f\n", number1);
+    printf("number2 = %lf", number2);
     return 0;
 }
 </code></pre>
 </li>
 <li>
-<p>Run it </p>
+<p>Run it</p>
 <p><img src="./figures/step3.png" alt="" /></p>
 <ul>
 <li>To print float, we use <code>%f</code> format specifier. Similarly, we use <code>%lf</code> to print double values.</li>
@@ -286,7 +286,7 @@ int main()
 int main()
 {
     char chr = 'a';    
-    printf(&quot;character = %c, value is = %d&quot;, chr, chr);  
+    printf("character = %c, value is = %d", chr, chr);  
     return 0;
 } 
 </code></pre>
@@ -309,9 +309,9 @@ int main()
 int main()
 {
     int testInteger;
-    printf(&quot;Enter an integer: &quot;);
-    scanf_s(&quot;%d&quot;, &amp;testInteger);  
-    printf(&quot;Number = %d&quot;,testInteger);
+    printf("Enter an integer: ");
+    scanf_s("%d", &amp;testInteger);  
+    printf("Number = %d",testInteger);
     return 0;
 }
 </code></pre>
@@ -354,22 +354,22 @@ int main()
 <pre><code class="language-c">#include&lt;stdio.h&gt;
 int main(){
 
-    printf(&quot;Data_Types\t\tStorage_Size \n&quot;);
-    printf(&quot;char\t\t\t%d byte(s) \n&quot;, sizeof(char));
-    printf(&quot;int\t\t\t%d byte(s) \n&quot;, sizeof(int));
-    printf(&quot;double\t\t\t%d byte(s) \n&quot;, sizeof(double));
-    printf(&quot;float\t\t\t%d byte(s) \n&quot;, sizeof(float));
-    printf(&quot;unsigned char\t\t%ld byte(s) \n&quot;, sizeof(unsigned char));
-    printf(&quot;long\t\t\t%d byte(s) \n&quot;, sizeof(long));
-    printf(&quot;unsigned long\t\t%ld byte(s) \n&quot;, sizeof(unsigned long));
-    printf(&quot;long double\t\t%ld byte(s) \n&quot;, sizeof(long double));
+    printf("Data_Types\t\tStorage_Size \n");
+    printf("char\t\t\t%d byte(s) \n", sizeof(char));
+    printf("int\t\t\t%d byte(s) \n", sizeof(int));
+    printf("double\t\t\t%d byte(s) \n", sizeof(double));
+    printf("float\t\t\t%d byte(s) \n", sizeof(float));
+    printf("unsigned char\t\t%ld byte(s) \n", sizeof(unsigned char));
+    printf("long\t\t\t%d byte(s) \n", sizeof(long));
+    printf("unsigned long\t\t%ld byte(s) \n", sizeof(unsigned long));
+    printf("long double\t\t%ld byte(s) \n", sizeof(long double));
 
     return 0;
 }
 </code></pre>
 </li>
 <li>
-<p>Run program to see the data types and there available sizes in bytes: 
+<p>Run program to see the data types and there available sizes in bytes:
 <img src="./figures/step6.png" alt="" /></p>
 </li>
 </ul>

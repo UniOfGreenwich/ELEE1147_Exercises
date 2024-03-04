@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item expanded "><a href="../Streams/Streams.html" class="active"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item "><a href="../PointersAndAddressing/PointersAndAddressing.html"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item expanded "><a href="../Streams/Streams.html" class="active"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><a href="../Algorithms/Algorithms.html"><strong aria-hidden="true">9.</strong> Algorithms</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -171,9 +171,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="lab-n-streams"><a class="header" href="#lab-n-streams">Lab n: Streams</a></h1>
+                        <h1 id="lab-8-streams"><a class="header" href="#lab-8-streams">Lab 8: Streams</a></h1>
 <p>You have been using the <code>stdio.h</code> for nearly every lab, and will use it for nearly every program you will ever create in C.</p>
-<p><strong>St</strong>andar<strong>d</strong> <strong>I</strong>nput and <strong>O</strong>utput enables the program to take inputs and produce outputs. These two categories are broken numerically as: </p>
+<p><strong>St</strong>andar<strong>d</strong> <strong>I</strong>nput and <strong>O</strong>utput enables the program to take inputs and produce outputs. These two categories are broken numerically as:</p>
 <ul>
 <li>Standard <strong>In</strong> is numerically defined as <code>0</code></li>
 </ul>
@@ -206,13 +206,13 @@
 </div>
 <hr />
 <h2 id="task-1-starting-out"><a class="header" href="#task-1-starting-out">Task 1: Starting out...</a></h2>
-<p>In this program you are going to: </p>
+<p>In this program you are going to:</p>
 <ul>
 <li>
 <p>prompt the user to enter a number.</p>
 </li>
 <li>
-<p>read the user input using <code>scanf()</code> and checks if the input was successfully read. If an error occurs, <code>perror()</code> is used to print an error message, and the program exits with an error code. </p>
+<p>read the user input using <code>scanf()</code> and checks if the input was successfully read. If an error occurs, <code>perror()</code> is used to print an error message, and the program exits with an error code.</p>
 </li>
 <li>
 <p>If the input is successfully read, a simple calculation is performed (squaring the input).</p>
@@ -232,20 +232,20 @@
 <p>Prompt the user to enter a number using the standard out function <code>printf()</code></p>
 </li>
 <li>
-<p>Next using standard in's <code>scanf()</code> read in the users input use the format specifier <code>%d</code> and save it to <code>&amp;number</code> </p>
+<p>Next using standard in's <code>scanf()</code> read in the users input use the format specifier <code>%d</code> and save it to <code>&amp;number</code></p>
 </li>
 <li>
 <p>Add some conditional checking to compare the <code>number</code> to the value <code>2</code>, where the comparison is <em><code>number</code> <strong>does not equal</strong> <code>2</code></em>.</p>
 </li>
 <li>
-<p>Inside the conditonal block use the <code>perror</code> function to with the string <code>&quot;Error reading input&quot;</code>, on the next line use <code>return 1</code> to indicate an error using the exit code <code>1</code>.</p>
+<p>Inside the conditonal block use the <code>perror</code> function to with the string <code>"Error reading input"</code>, on the next line use <code>return 1</code> to indicate an error using the exit code <code>1</code>.</p>
 </li>
 <li>
-<p>Outside of the conditonal block  multiply the <code>number</code> by itself and assign the result to <code>result</code>, </p>
+<p>Outside of the conditonal block  multiply the <code>number</code> by itself and assign the result to <code>result</code>,</p>
 </li>
 <li>
-<p>Finally, print the result using  <code>printf(&quot;The square of %d is: %d\n&quot;, number, result);</code><p></p></p>
-<details>
+<p>Finally, print the result using  <code>printf("The square of %d is: %d\n", number, result);</code><p></p></p>
+ <details>
  <summary>Code...</summary>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
@@ -255,15 +255,15 @@ int main() {
     int result;
 
     // Prompt the user for input
-    printf(&quot;Enter a number: &quot;);
+    printf("Enter a number: ");
 
     // Read user input
-    scanf(&quot;%d&quot;, &amp;number)
+    scanf("%d", &amp;number)
 
     // compare user inputted value
     if ( result != 2) {
         // Handle input error using perror()
-        perror(&quot;Error reading input&quot;);
+        perror("Error reading input");
         return 1; // Exit with an error code
     }
 
@@ -271,22 +271,22 @@ int main() {
     result = number * number;
 
     // Display the result
-    printf(&quot;The square of %d is: %d\n&quot;, number, result);
+    printf("The square of %d is: %d\n", number, result);
 
     return 0; // Exit successfully
 }
 
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
-<p>Run the code and when prompted enter the any number that is <strong>not</strong> <code>2</code>. </p>
-<details>
+<p>Run the code and when prompted enter the any number that is <strong>not</strong> <code>2</code>.</p>
+ <details>
  <summary>Output...</summary>
 <ul>
 <li>Notice how the terminal has rendered the error message, this is because error, <code>2</code> stream is different to standard out, <code>1</code>, stream</li>
 </ul>
-</details>
+ </details>
 </li>
 <li>
 <p>Run a second time and then enter the value <code>2</code></p>
@@ -303,7 +303,7 @@ int main() {
 <p>Create a new file and places in the resources folder of the solution view, call it <code>input.txt</code>, inside the file input <strong>two</strong> numbers seperated by <strong>space</strong> that range from <code>0</code> <strong>to</strong> <code>50000</code>, save the file.</p>
 </li>
 <li>
-<p>Now modify <code>main()</code>, by placing using the <code> FILE *inputFile, *outputFile;</code> at the top of <code>main()</code>. </p>
+<p>Now modify <code>main()</code>, by placing using the <code> FILE *inputFile, *outputFile;</code> at the top of <code>main()</code>.</p>
 <blockquote>
 <p><strong>Note</strong></p>
 <blockquote>
@@ -323,7 +323,7 @@ int main() {
 </blockquote>
 </li>
 <li>
-<p>On the next line define three integer variables called, <code>numOne</code>, <code>numTwo</code> and <code>result</code>: </p>
+<p>On the next line define three integer variables called, <code>numOne</code>, <code>numTwo</code> and <code>result</code>:</p>
 <details>
 <summary>Code...</summary>
 <pre><code class="language-c">int num1, num2, result;
@@ -331,32 +331,32 @@ int main() {
 </details>
 </li>
 <li>
-<p>Create two newlines and the second one you need to reproduce the follwoing: </p>
+<p>Create two newlines and the second one you need to reproduce the follwoing:</p>
 <pre><code class="language-c"> // Open input file for reading
- inputFile = fopen(&quot;input.txt&quot;, &quot;r&quot;);
+ inputFile = fopen("input.txt", "r");
  if (inputFile == NULL) {
-     perror(&quot;Error opening input file&quot;);
+     perror("Error opening input file");
      return 1; // Exit with an error code
  }
 </code></pre>
 <ul>
 <li>
-<p>Here we are using <code>fopen</code> to open the <code>&quot;input.txt&quot;</code> with in read mode <code>&quot;r&quot;</code></p>
+<p>Here we are using <code>fopen</code> to open the <code>"input.txt"</code> with in read mode <code>"r"</code></p>
 </li>
 <li>
 <p>A check is made to see if the <code>inputFile</code> has any data, does the file exist, this is done with a <code>NULL</code> check.</p>
 </li>
 <li>
-<p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>&quot;Error opening input file&quot;</code> to standard error, and close the application with <code>return 1,</code> to indicate an error using an exit code. </p>
+<p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>"Error opening input file"</code> to standard error, and close the application with <code>return 1,</code> to indicate an error using an exit code.</p>
 </li>
 </ul>
 </li>
 <li>
-<p>If inputFile is not <code>NULL</code> then the following code would excute, input the following: </p>
+<p>If inputFile is not <code>NULL</code> then the following code would excute, input the following:</p>
 <pre><code class="language-c">// Read two integers from the input file
-if (fscanf(inputFile, &quot;%d %d&quot;, &amp;numOne, &amp;numTwo) != 2) {
+if (fscanf(inputFile, "%d %d", &amp;numOne, &amp;numTwo) != 2) {
      // Handle input error using perror()
-     perror(&quot;Error reading input from file&quot;);
+     perror("Error reading input from file");
      fclose(inputFile); // Close the input file
      return 1; // Exit with an error code
  }
@@ -378,42 +378,42 @@ if (fscanf(inputFile, &quot;%d %d&quot;, &amp;numOne, &amp;numTwo) != 2) {
 </li>
 <li>
 <p>The calculation can now be performed, multiply <code>numOne</code> by <code>numTwo</code> and store in <code>result</code></p>
-<details>
+ <details>
  <summary>Code...</details>
 <pre><code class="language-c">fclose(inputFile); // Close the input file
 
 // Perform multiplication
 result = numOne * numTwo;
 </code></pre>
-</details>
+ </details>
 </li>
 <li>
 <p>In a similar fashion to step 4 we need to write to a new file, reproduce the following:</p>
 <pre><code class="language-c">// Open output file for writing
-outputFile = fopen(&quot;output.txt&quot;, &quot;w&quot;);
+outputFile = fopen("output.txt", "w");
 if (outputFile == NULL) {
-    perror(&quot;Error opening output file&quot;);
+    perror("Error opening output file");
     return 1; // Exit with an error code
 }
 </code></pre>
 <ul>
 <li>
-<p><code>fopen</code> opens the <code>&quot;output.txt&quot;</code> in write mode <code>&quot;w&quot;</code></p>
+<p><code>fopen</code> opens the <code>"output.txt"</code> in write mode <code>"w"</code></p>
 </li>
 <li>
 <p>A check is made to see if the <code>outputFile</code> has any data, does the file exist, this is done with a <code>NULL</code> check.</p>
 </li>
 <li>
-<p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>&quot;Error opening output file&quot;</code> to standard error, and close the application with <code>return 1</code>, to indicate an error using an exit code. </p>
+<p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>"Error opening output file"</code> to standard error, and close the application with <code>return 1</code>, to indicate an error using an exit code.</p>
 </li>
 </ul>
 </li>
 <li>
 <p>Again, repeating the structure of step 5, we can write to the file the <code>result</code> variable. Reproduce the following:</p>
 <pre><code class="language-c">// Write the result to the output file
-if (fprintf(outputFile, &quot;Multiplication result: %d\n&quot;, result) &lt; 0) {
+if (fprintf(outputFile, "Multiplication result: %d\n", result) &lt; 0) {
     // Handle output error using perror()
-    perror(&quot;Error writing output to file&quot;);
+    perror("Error writing output to file");
     fclose(outputFile); // Close the output file before exiting
     return 1; // Exit with an error code
 }
@@ -431,10 +431,10 @@ if (fprintf(outputFile, &quot;Multiplication result: %d\n&quot;, result) &lt; 0)
 </ul>
 </li>
 <li>
-<p>On success the file needs to be close so after the <code>if(..){..}</code> add <code>fclose(&quot;outputFile)</code> and on a new line <code>printf(&quot;Operation completed successfully.\n&quot;);</code></p>
+<p>On success the file needs to be close so after the <code>if(..){..}</code> add <code>fclose("outputFile)</code> and on a new line <code>printf("Operation completed successfully.\n");</code></p>
 </li>
 <li>
-<p>Run the code and you should see the following outputs: </p>
+<p>Run the code and you should see the following outputs:</p>
 </li>
 <li>
 <p>Open the <code>output.txt</code> file to see the result of the multiplication.</p>
@@ -450,16 +450,16 @@ int main() {
     int numOne, numTwo, result;
 
     // Open input file for reading
-    inputFile = fopen(&quot;input.txt&quot;, &quot;r&quot;);
+    inputFile = fopen("input.txt", "r");
     if (inputFile == NULL) {
-        perror(&quot;Error opening input file&quot;);
+        perror("Error opening input file");
         return 1; // Exit with an error code
     }
 
     // Read two integers from the input file
-    if (fscanf(inputFile, &quot;%d %d&quot;, &amp;numOne, &amp;numTwo) != 2) {
+    if (fscanf(inputFile, "%d %d", &amp;numOne, &amp;numTwo) != 2) {
         // Handle input error using perror()
-        perror(&quot;Error reading input from file&quot;);
+        perror("Error reading input from file");
         fclose(inputFile); // Close the input file
         return 1; // Exit with an error code
     }
@@ -470,23 +470,23 @@ int main() {
     result = numOne * numTwo;
 
      // Open output file for writing
-    outputFile = fopen(&quot;output.txt&quot;, &quot;w&quot;);
+    outputFile = fopen("output.txt", "w");
     if (outputFile == NULL) {
-        perror(&quot;Error opening output file&quot;);
+        perror("Error opening output file");
         return 1; // Exit with an error code
     }
 
     // Write the result to the output file
-    if (fprintf(outputFile, &quot;Multiplication result: %d\n&quot;, result) &lt; 0) {
+    if (fprintf(outputFile, "Multiplication result: %d\n", result) &lt; 0) {
         // Handle output error using perror()
-        perror(&quot;Error writing output to file&quot;);
+        perror("Error writing output to file");
         fclose(outputFile); // Close the output file before exiting
         return 1; // Exit with an error code
     }
 
     fclose(outputFile); // Close outputFile file2
 
-    printf(&quot;Operation completed successfully.\n&quot;);
+    printf("Operation completed successfully.\n");
 
     return 0; // Exit successfully
 }
@@ -501,6 +501,9 @@ int main() {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="../Algorithms/Algorithms.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -512,6 +515,9 @@ int main() {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="../Algorithms/Algorithms.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

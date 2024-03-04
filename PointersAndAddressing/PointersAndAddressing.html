@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item expanded "><a href="../PointersAndAddressing/PointersAndAddressing.html" class="active"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Algorithms</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Learning_C/Learning_C.html"><strong aria-hidden="true">1.</strong> Learning C</a></li><li class="chapter-item "><a href="../BitwiseOperations/BitwiseOperations.html"><strong aria-hidden="true">2.</strong> Bitewise Operations</a></li><li class="chapter-item "><a href="../ArithmeticOperations/ArithmeticOperations.html"><strong aria-hidden="true">3.</strong> Arithmetic Operations</a></li><li class="chapter-item "><a href="../Recursion/Recursion.html"><strong aria-hidden="true">4.</strong> Recursion</a></li><li class="spacer"></li><li class="chapter-item "><a href="../HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.html"><strong aria-hidden="true">5.</strong> Header Files, Guards, and Macros</a></li><li class="chapter-item expanded "><a href="../PointersAndAddressing/PointersAndAddressing.html" class="active"><strong aria-hidden="true">6.</strong> Pointers and Addressing</a></li><li class="chapter-item "><a href="../UnionsAndStructs/UnionsAndStructs.html"><strong aria-hidden="true">7.</strong> Structs and Unions</a></li><li class="chapter-item "><a href="../Streams/Streams.html"><strong aria-hidden="true">8.</strong> Streams</a></li><li class="chapter-item "><a href="../Algorithms/Algorithms.html"><strong aria-hidden="true">9.</strong> Algorithms</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Code Conventions</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Documentation</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -181,7 +181,7 @@
 <p>Remember to rename the <code>PointersAndAddressing.cpp</code> to <code>PointersAndAddressing.c</code></p>
 </li>
 <li>
-<p>Open <code>PointersAndAddressing.c</code> and modify to look like below: </p>
+<p>Open <code>PointersAndAddressing.c</code> and modify to look like below:</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(){
@@ -192,38 +192,38 @@ int main(){
 </li>
 </ol>
 <h2 id="section-1-pointers"><a class="header" href="#section-1-pointers">Section 1: Pointers</a></h2>
-<p>Now it's time to see the why C is used for the basis of nearly all programming languages, operating systems, and embedded code. </p>
-<p>Pointers in C are relativley easy and fun to learn. Some C programming tasks are performed more easily with pointers, and other tasks, such as dynamic memory allocation, cannot be performed without using pointers. </p>
+<p>Now it's time to see the why C is used for the basis of nearly all programming languages, operating systems, and embedded code.</p>
+<p>Pointers in C are relativley easy and fun to learn. Some C programming tasks are performed more easily with pointers, and other tasks, such as dynamic memory allocation, cannot be performed without using pointers.</p>
 <p>Therefore it is necessary to learn pointers to become a perfect C programmer.</p>
 <p>Let's start learning them in simple and easy steps.</p>
-<p>Every variable is a memory location and every memory location has its address defined which can be accessed using ampersand <code>&amp;</code> operator, which denotes an address in memory. </p>
+<p>Every variable is a memory location and every memory location has its address defined which can be accessed using ampersand <code>&amp;</code> operator, which denotes an address in memory.</p>
 <ol start="4">
 <li>
 <p>Modify <code>main()</code> by entering the following code:</p>
 <pre><code>...
     int a=1, b =2 ,c =0;
 
-    printf(&quot;Address for the variable a: %lu \n&quot;, (long)&amp;a); // long casts the value in &amp;a to a long integer, upto 32 bits
-    printf(&quot;Address for the variable b: %lu\n&quot;, (long)&amp;b);
-    printf(&quot;Address for the variable c: %lu \n&quot;, (long)&amp;c);
+    printf("Address for the variable a: %lu \n", (long)&amp;a); // long casts the value in &amp;a to a long integer, upto 32 bits
+    printf("Address for the variable b: %lu\n", (long)&amp;b);
+    printf("Address for the variable c: %lu \n", (long)&amp;c);
     return 0;
 }
 </code></pre>
 <blockquote>
 <p>Note: the <code>...</code> in the code blocks means that there is code above or below that remains the same.</p>
 </blockquote>
-<details>
+ <details>
  <summary><b>Click for Expected Output</b></summary>
  <p></p>
 <p><img src="./figures/step1.png" alt="" /></p>
-</details>
+ </details>
 <p>So it looks like the address are almost next to each other, we call this <strong>contiguous</strong>.</p>
 <blockquote>
 <p><strong>Notes:</strong></p>
 <blockquote>
 <ul>
 <li>We must use format specifiers to tell the <code>printf()</code> how we would like our variables to be displayed.</li>
-<li>So, <code>%</code> is the character for promising a specifier -&gt; <code>%lu</code> means <code>unsigned long</code> and is 32 bits in size. </li>
+<li>So, <code>%</code> is the character for promising a specifier -&gt; <code>%lu</code> means <code>unsigned long</code> and is 32 bits in size.</li>
 <li>memory address are <strong>never</strong> negative.</li>
 </ul>
 </blockquote>
@@ -231,16 +231,16 @@ int main(){
 </li>
 <li>
 <p>What would happen to the addresses if you ran the code again? <strong>Try it!</strong></p>
-<details>
+ <details>
  <summary>Well...</summary>
 <p><img src="./figures/step2.png" alt="" /></p>
 <p>You should have recieved different memory address locations, this because of the <strong>Address Space Layout Randomiser</strong> (ASLR) which provides a random address space for security reason. Consider if someone wanted to get certain information and new where it was stored all the time?</p>
-</details>
+ </details>
 </li>
 </ol>
 <h2 id="section-2-what-are-pointers"><a class="header" href="#section-2-what-are-pointers">Section 2: What are Pointers?</a></h2>
 <p>A <strong>pointer</strong> is a variable whose value is the address of another variable, i.e., direct address of the memory location. Like any variable or constant, you must declare a pointer before using it to store any variable address. The general form of a pointer variable declaration is <code>type var-name</code>.</p>
-<p>Here, type is the pointer's base type; it must be a valid C data type and var-name is the name of the pointer variable. The asterisk <code>*</code> used to declare a pointer is the same asterisk used for multiplication. </p>
+<p>Here, type is the pointer's base type; it must be a valid C data type and var-name is the name of the pointer variable. The asterisk <code>*</code> used to declare a pointer is the same asterisk used for multiplication.</p>
 <p>However, in this statement the asterisk is being used to designate a variable as a pointer. Take a look at some of the valid pointer declarations:</p>
 <pre><code class="language-c">int    *ip;    /* pointer to an integer */
 double *dp;    /* pointer to a double */
@@ -252,8 +252,8 @@ char   *ch     /* pointer to a character */
 <p>To use the pointer, a C language feature, you must do the following steps:</p>
 <ul>
 <li><strong>(a)</strong> define a pointer variable,</li>
-<li><strong>(b)</strong> assign the address of a variable to a pointer, and </li>
-<li><strong>(c)</strong> finally access the value at the address available in the pointer variable. </li>
+<li><strong>(b)</strong> assign the address of a variable to a pointer, and</li>
+<li><strong>(c)</strong> finally access the value at the address available in the pointer variable.</li>
 </ul>
 <p>This is done by using unary operator <code>*</code> that returns the value of the variable located at the address specified by its operand. The following example makes use of these operations.</p>
 <ol start="6">
@@ -268,16 +268,16 @@ int main () {
 
     pointerToA = &amp;a;  /* store address of var in pointer variable*/
 
-    printf(&quot;Address of A variable: %lu\n&quot;, (long)&amp;a);
+    printf("Address of A variable: %lu\n", (long)&amp;a);
 
     /* address stored in pointer variable */
-    printf(&quot;Address stored in pointerToA variable: %lu\n&quot;, (long)pointerToA);
+    printf("Address stored in pointerToA variable: %lu\n", (long)pointerToA);
 
     /* access the value using the pointer */
-    printf(&quot;Value of *pointerToA variable: %d\n&quot;, *pointerToA);
+    printf("Value of *pointerToA variable: %d\n", *pointerToA);
     
     /* address of the pointer itself */
-        printf(&quot;Address of pointerToA: %lu\n&quot;, (long)&amp;pointerToA);
+        printf("Address of pointerToA: %lu\n", (long)&amp;pointerToA);
 
     return 0;
 }
@@ -285,18 +285,18 @@ int main () {
 </li>
 <li>
 <p>Run the code and you should see something similar to below,remember to compile first:</p>
-<details>
+ <details>
  <summary><b>Click for Expected Output</b></summary>
  <p></p>
 <p><img src="./figures/step3.png" alt="" /></p>
-</details>
+ </details>
 </li>
 </ol>
 <hr />
 <h2 id="section-4-null-pointers"><a class="header" href="#section-4-null-pointers">Section 4: Null Pointers</a></h2>
-<p>It is always a good practice to assign a <code>NULL</code> value to a pointer variable in case you do not have an exact address to be assigned. </p>
+<p>It is always a good practice to assign a <code>NULL</code> value to a pointer variable in case you do not have an exact address to be assigned.</p>
 <p>This is done at the time of variable declaration. A pointer that is assigned <code>NULL</code> is called a <code>NULL pointer</code>.</p>
-<p>The <code>NULL pointer</code> is a constant with a value of zero defined in several standard libraries. </p>
+<p>The <code>NULL pointer</code> is a constant with a value of zero defined in several standard libraries.</p>
 <ol start="8">
 <li>
 <p>Modify <code>main()</code> and enter the following:</p>
@@ -306,7 +306,7 @@ int main () {
 
 int  *ptr = NULL;
 
-printf(&quot;The value of ptr is : %p\n&quot;, ptr  );
+printf("The value of ptr is : %p\n", ptr  );
 
 return 0;
 }
@@ -314,14 +314,14 @@ return 0;
 </li>
 <li>
 <p>Run the program:</p>
-<details>
+ <details>
  <summary><b>Click for Expected Output</b></summary>
  <p></p>
 <p><img src="./figures/step4.png" alt="" /></p>
-</details>
+ </details>
 <ul>
 <li>
-<p>In most of the operating systems, programs are not permitted to access memory at address <code>0</code> because that memory is reserved by the operating system. </p>
+<p>In most of the operating systems, programs are not permitted to access memory at address <code>0</code> because that memory is reserved by the operating system.</p>
 </li>
 <li>
 <p>However, the memory address 0 has special significance; it signals that the pointer is not intended to point to an accessible memory location. But by convention, if a pointer contains the <code>null</code> (zero) value, it is assumed to point to nothing.</p>
@@ -395,8 +395,8 @@ if(!ptr)    /* succeeds if p is null */
 </li>
 <li>
 <p>Add the following <code>printf</code>s</p>
-<pre><code class="language-c"> printf(&quot;Memory Address        ||    Value        \n&quot;);
- printf(&quot;------------------------------------------\n&quot;);
+<pre><code class="language-c"> printf("Memory Address        ||    Value        \n");
+ printf("------------------------------------------\n");
 </code></pre>
 </li>
 <li>
@@ -410,7 +410,7 @@ if(!ptr)    /* succeeds if p is null */
 </li>
 <li>
 <p>Inside the for loop between the braces { } enter this line to print out the values to console.</p>
-<pre><code class="language-c">printf(&quot; %lu      ||    %d \t\t \n&quot;,(unsigned long)
+<pre><code class="language-c">printf(" %lu      ||    %d \t\t \n",(unsigned long)
 
 pointer,(unsigned int)*pointer);
 </code></pre>
@@ -433,13 +433,13 @@ int main () {
     int* pointer = (&amp;value);
     // end of pointer region
     
-    printf(&quot;Memory Address||    Value (normal)       ||           Value(Hex)   \n&quot;);
-    printf(&quot;-----------------------------------------------------------\n&quot;);
+    printf("Memory Address||    Value (normal)       ||           Value(Hex)   \n");
+    printf("-----------------------------------------------------------\n");
 
     // put the `for` loop here
     for (int i = 0; i &lt; bin; ++i)
     {
-        printf(&quot; %x     ||     %u     ||    %p \t\t \n&quot;, (unsigned long)pointer, (unsigned int)*pointer, (unsigned int)*pointer);
+        printf(" %x     ||     %u     ||    %p \t\t \n", (unsigned long)pointer, (unsigned int)*pointer, (unsigned int)*pointer);
         pointer = pointer - 1;
     }
     // end of for loop
@@ -449,12 +449,12 @@ int main () {
 </details>
 </li>
 <li>
-<p>Run the code and you should see something like below: </p>
-<details>
+<p>Run the code and you should see something like below:</p>
+ <details>
  <summary><b>Click for Expected Output</b></summary>
  <p></p>
 <p><img src="./figures/step5.png" alt="" /></p>
-</details>
+ </details>
 <blockquote>
 <p><strong>Note:</strong></p>
 <blockquote>
@@ -488,24 +488,24 @@ int main () {
 int main ()
 {
     int n = 11, i;
-    char ptr[11] = &quot;hello world&quot;;
+    char ptr[11] = "hello world";
     
-    printf (&quot;\nPrinting elements of 1-D array: \n\n&quot;);
+    printf ("\nPrinting elements of 1-D array: \n\n");
     for (i = 0; i &lt; n; i++)
     {
-        printf (&quot;%c &quot;, ptr[i]);
+        printf ("%c ", ptr[i]);
     }
-    printf (&quot;\n\nNow what is the memory location for each index and the array itself: \n\n&quot;);
-    printf(&quot;      Memory Address (HEX)  ||  Element        Value\n&quot;);
-    printf(&quot;----------------------------------------------------\n&quot;);
+    printf ("\n\nNow what is the memory location for each index and the array itself: \n\n");
+    printf("      Memory Address (HEX)  ||  Element        Value\n");
+    printf("----------------------------------------------------\n");
     
     //%p means type pointer
     for (i = 0; i &lt; n; i++)
     {
-        printf (&quot;\t%p      ||   ptr[%d]    =    %c\n&quot;, &amp;ptr[i], i, ptr[i]);
+        printf ("\t%p      ||   ptr[%d]    =    %c\n", &amp;ptr[i], i, ptr[i]);
     }
-    printf(&quot;----------------------------------------------------\n&quot;);
-    printf(&quot;\t%p      ||   ptr[]     =  %c (this is the array's address too!) \n&quot;, &amp;ptr,*ptr);
+    printf("----------------------------------------------------\n");
+    printf("\t%p      ||   ptr[]     =  %c (this is the array's address too!) \n", &amp;ptr,*ptr);
     
 
     return 0;
@@ -514,17 +514,17 @@ int main ()
 </li>
 <li>
 <p>Run this code and see the expected output below:</p>
-<details>
+ <details>
  <summary><b>Click for Expected Output</b></summary>
  <p></p>
 <p><img src="./figures/step6.png" alt="" /></p>
-</details>
+ </details>
 <ul>
 <li>
 <p>So you should be able to see that arrays are indeed <strong>Contiguous</strong></p>
 </li>
 <li>
-<p>The starting memory address of the array is the same the zeroth element (<code>h</code>). </p>
+<p>The starting memory address of the array is the same the zeroth element (<code>h</code>).</p>
 </li>
 </ul>
 </li>
@@ -570,24 +570,24 @@ int main ()
 int main() {
 int n, i, *ptr, sum = 0;
 
-printf(&quot;Enter number of elements: &quot;);
-scanf_s(&quot;%d&quot;, &amp;n);
+printf("Enter number of elements: ");
+scanf_s("%d", &amp;n);
 
 ptr = (int*) malloc(n * sizeof(int));
 
 // if memory cannot be allocated
 if(ptr == NULL) {
-    printf(&quot;Error! memory not allocated.&quot;);
+    printf("Error! memory not allocated.");
     exit(0);
 }
 
-printf(&quot;Enter elements per line: &quot;);
+printf("Enter elements per line: ");
 for(i = 0; i &lt; n; ++i) {
-    scanf_s(&quot;%d&quot;, ptr + i);
+    scanf_s("%d", ptr + i);
     sum += *(ptr + i);
 }
 
-printf(&quot;Sum = %d&quot;, sum);
+printf("Sum = %d", sum);
 
 // deallocating the memory
 free(ptr);
@@ -616,22 +616,22 @@ return 0;
 
 int main() {
 int n, i, *ptr, sum = 0;
-printf(&quot;Enter number of elements: &quot;);
-scanf(&quot;%d&quot;, &amp;n);
+printf("Enter number of elements: ");
+scanf("%d", &amp;n);
 
 ptr = (int*) calloc(n, sizeof(int));
 if(ptr == NULL) {
-    printf(&quot;Error! memory not allocated.&quot;);
+    printf("Error! memory not allocated.");
     exit(0);
 }
 
-printf(&quot;Enter elements: &quot;);
+printf("Enter elements: ");
 for(i = 0; i &lt; n; ++i) {
-    scanf(&quot;%d&quot;, ptr + i);
+    scanf("%d", ptr + i);
     sum += *(ptr + i);
 }
 
-printf(&quot;Sum = %d&quot;, sum);
+printf("Sum = %d", sum);
 free(ptr);
 return 0;
 }
@@ -660,24 +660,24 @@ return 0;
 
 int main() {
 int *ptr, i , n1, n2;
-printf(&quot;Enter size: &quot;);
-scanf(&quot;%d&quot;, &amp;n1);
+printf("Enter size: ");
+scanf("%d", &amp;n1);
 
 ptr = (int*) malloc(n1 * sizeof(int));
 
-printf(&quot;Addresses of previously allocated memory:\n&quot;);
+printf("Addresses of previously allocated memory:\n");
 for(i = 0; i &lt; n1; ++i)
-    printf(&quot;%pc\n&quot;,ptr + i);
+    printf("%pc\n",ptr + i);
 
-printf(&quot;\nEnter the new size: &quot;);
-scanf(&quot;%d&quot;, &amp;n2);
+printf("\nEnter the new size: ");
+scanf("%d", &amp;n2);
 
 // rellocating the memory
 ptr = realloc(ptr, n2 * sizeof(int));
 
-printf(&quot;Addresses of newly allocated memory:\n&quot;);
+printf("Addresses of newly allocated memory:\n");
 for(i = 0; i &lt; n2; ++i)
-    printf(&quot;%pc\n&quot;, ptr + i);
+    printf("%pc\n", ptr + i);
 
 free(ptr);
 
@@ -702,7 +702,7 @@ return 0;
 <p>Here is the graphic for memory allocation that we looked at the in the lecture, to remind you of key concepts.</p>
 <p><img src="./figures/process_memory_application_graphic" alt="" /></p>
 <h2 id="section-9-extra-work"><a class="header" href="#section-9-extra-work">Section 9: Extra work</a></h2>
-<p>Combine what you have learnt in this lab to advance your understanding of what you have achieved. </p>
+<p>Combine what you have learnt in this lab to advance your understanding of what you have achieved.</p>
 
                     </main>
 
