@@ -349,6 +349,10 @@ int main()
 <hr />
 <h2 id="7-data-types"><a class="header" href="#7-data-types">7. Data Types</a></h2>
 <ul>
+<li>Create a new file with nano like this:</li>
+</ul>
+<p><code>$ nano dataTypeSize.c</code></p>
+<ul>
 <li>
 <p>We are going to write a program that returns the size of each data type availabe in <code>c</code>, modify the program to look like below:</p>
 <pre><code class="language-c">#include&lt;stdio.h&gt;
@@ -373,6 +377,180 @@ int main(){
 <img src="./figures/step6.png" alt="" /></p>
 </li>
 </ul>
+<h2 id="8-conditions-in-c-if-statement"><a class="header" href="#8-conditions-in-c-if-statement">8. Conditions in C (If-Statement)</a></h2>
+<h3 id="basic-if-statement"><a class="header" href="#basic-if-statement">Basic if statement</a></h3>
+<p>In C, the <code>if</code> statement is a fundamental control structure that allows you to make decisions based on certain conditions. It enables you to execute different blocks of code based on whether a condition is <code>true</code> or <code>false</code>.</p>
+<h3 id="create-a-c-program"><a class="header" href="#create-a-c-program">Create a C Program</a></h3>
+<ol>
+<li>
+<p>Create a new C file using a text editor like <code>nano</code>:</p>
+<pre><code class="language-c">$ nano IfStatement.c
+</code></pre>
+</li>
+<li>
+<p>Write a program that applies the <code>if</code> statement in C to check <code>if</code> the variable <code>num</code> is greater than 5 using an <code>if</code> statement. If the condition is <code>true</code>, the code inside the <code>if</code> block is executed, and it prints a message.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 10;
+
+    if (num &gt; 5) {
+        printf("The number is greater than 5.\n");
+    }
+
+    return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>Save the file and exit the text editor.</p>
+</li>
+<li>
+<p>Compile your C code using the <code>gcc</code> compiler to generate an executable file:</p>
+<pre><code class="language-sh">$ gcc IfStatement.c -o IfStatement.exe
+</code></pre>
+</li>
+<li>
+<p>Run your C program using the generated executable file:</p>
+<pre><code class="language-sh">$ ./IfStatement.exe
+</code></pre>
+</li>
+</ol>
+<p>This program will output "The number is greater than 5" because the condition <code>num &gt; 5</code> is <code>true</code>.</p>
+<h3 id="if-else-statement"><a class="header" href="#if-else-statement">If-else statement</a></h3>
+<p>You can use an <code>if-else</code> statement to execute different code blocks for true and false conditions. Update your code as follows:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 3;
+
+    if (num &gt; 5) {
+        printf("The number is greater than 5.\n");
+    } else {
+        printf("The number is not greater than 5.\n");
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="if-else-if-statement"><a class="header" href="#if-else-if-statement">If-else if statement</a></h3>
+<p>You can use the <code>if-else if</code> statement to handle multiple conditions. Update your code as follows:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 0;
+
+    if (num &gt; 0) {
+        printf("The number is positive.\n");
+    } else if (num &lt; 0) {
+        printf("The number is negative.\n");
+    } else {
+        printf("The number is zero.\n");
+    }
+
+    return 0;
+}
+</code></pre>
+<h2 id="exersices"><a class="header" href="#exersices">Exersices</a></h2>
+<p>To write the code for each of the following tasks, <del>open this link and accept the task</del>. A C file has been created for each task; you only need to write the code for each one. Again, you can use either use VScode or Codepsaces on Github after accepting the task .</p>
+<h3 id="exercise-1-even-or-odd"><a class="header" href="#exercise-1-even-or-odd">Exercise-1: Even or Odd</a></h3>
+<p>Create a program that checks whether a given integer is even or odd. Prompt the user to enter an integer, and then display a message indicating whether it's even or odd.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num;
+
+    printf("Enter an integer: ");
+    scanf("%d", &amp;num);
+
+    if (num % 2 == 0) {
+        printf("%d is even.\n", num);
+    } else {
+        printf("%d is odd.\n", num);
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="exercise-2-prime-number-checker"><a class="header" href="#exercise-2-prime-number-checker">Exercise-2 Prime Number Checker</a></h3>
+<p>Write a program that determines if a given number is prime or not.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<ul>
+<li>A prime number is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers. In other words, a prime number has only two positive divisors: 1 and itself. For example, the first few prime numbers are 2, 3, 5, 7, 11, 13, 17, and so on. These numbers are only divisible evenly by 1 and the number itself.</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int is_prime(int number) {
+    if (number &lt; 2) {
+        return 0; // False
+    }
+    for (int i = 2; i * i &lt;= number; i++) {
+        if (number % i == 0) {
+            return 0; // False
+        }
+    }
+    return 1; // True
+}
+
+int main() {
+    int num;
+
+    printf("Enter a number: ");
+    scanf("%d", &amp;num);
+
+    if (is_prime(num)) {// calling the function above.
+        printf("%d is a prime number.\n", num);
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
+
+    return 0; 
+}
+</code></pre>
+<h3 id="exercise-3--simple-calculator"><a class="header" href="#exercise-3--simple-calculator">Exercise-3 : Simple Calculator</a></h3>
+<p>Write a basic calculator program that allows the user to perform addition, subtraction, multiplication, and division on two numbers. Ask the user to enter the operation they want to perform and the numbers to operate on.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    char operation;
+    double num1, num2, result;
+
+    printf("Enter operation (+, -, *, /): ");
+    scanf(" %c", &amp;operation);
+
+    printf("Enter first number: ");
+    scanf("%lf", &amp;num1);
+
+    printf("Enter second number: ");
+    scanf("%lf", &amp;num2);
+
+    if (operation == '+') {
+        result = num1 + num2;
+    } else if (operation == '-') {
+        result = num1 - num2;
+    } else if (operation == '*') {
+        result = num1 * num2;
+    } else if (operation == '/') {
+        if (num2 != 0) {
+            result = num1 / num2;
+        } else {
+            printf("Cannot divide by zero. Please enter a non-zero second number.\n");
+            return 1; // Return an error code
+        }
+    } else {
+        printf("Invalid operation. Please choose +, -, *, or /.\n");
+        return 1; // Return an error code
+    }
+
+    printf("Result: %lf\n", result);
+
+    return 0; 
+</code></pre>
 
                     </main>
 
