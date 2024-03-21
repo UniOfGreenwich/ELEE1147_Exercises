@@ -553,6 +553,7 @@ int main ()
 <pre><code class="language-c">ptr = (float*) calloc(25, sizeof(float));
 </code></pre>
 <p>The above statement allocates contiguous space in memory for 25 elements of type <code>float</code>.</p>
+<p><img src="./figures/mallocvscalloc.jpg" alt="" /></p>
 <h3 id="subsection-73-free"><a class="header" href="#subsection-73-free">Subsection 7.3: <code>free()</code></a></h3>
 <p>Dynamically allocated memory created with either <code>calloc()</code> or <code>malloc()</code> doesn't get freed on their own. You must explicitly use <code>free()</code> to release the space.</p>
 <pre><code class="language-c">free(ptr);
@@ -693,16 +694,155 @@ return 0;
 </details>
 </li>
 </ol>
-<h2 id="section-8-memory-allocations-system-calls"><a class="header" href="#section-8-memory-allocations-system-calls">Section 8: Memory Allocations (System Calls)</a></h2>
-<p>If you are a computer programmer, (which all of you will be) you should know more about memory allocation. When looking at the allocation process, it is necessary to go into a little detail on Linux and the <code>glibc</code> library.</p>
-<p>When applications need memory, they have to request it from the operating system. This request from the kernel will naturally require a system call. You cannot allocate memory yourself in user mode.</p>
-<p>The <code>malloc()</code> family of functions is responsible for memory allocation in the <code>C</code> language(which we have been doing for a few exercises). The question to ask here is whether <code>malloc()</code>, as a glibc function, makes a direct system call.</p>
-<p>There is no system call called <code>malloc()</code> in the Linux kernel. However, there are two system calls for applications memory demands, which are <code>brk</code> and <code>mmap</code>.</p>
-<p>Since you will be requesting memory in your application via glibc functions, you may be wondering which of these system calls glibc is using at this point. The answer is both.</p>
-<p>Here is the graphic for memory allocation that we looked at the in the lecture, to remind you of key concepts.</p>
-<p><img src="./figures/process_memory_application_graphic" alt="" /></p>
+<h2 id="section--stack-heap-and-static"><a class="header" href="#section--stack-heap-and-static">Section *: Stack, Heap and Static</a></h2>
+<p>In addition to the lecture note here are more info about those concepts.</p>
+<h3 id="stack-memory"><a class="header" href="#stack-memory">Stack Memory</a></h3>
+<ul>
+<li>
+<p><strong>Description:</strong> Stack memory is a region of memory that is used for storing local variables and function call information. It operates in a Last-In-First-Out (LIFO) manner, and memory is automatically allocated and deallocated as functions are called and return.</p>
+</li>
+<li>
+<p><strong>Definition:</strong> Stack memory is a type of memory that stores local variables and function call information. It follows a Last-In-First-Out (LIFO) structure, and memory is automatically managed during function calls.</p>
+</li>
+</ul>
+<h3 id="heap-memory"><a class="header" href="#heap-memory">Heap Memory:</a></h3>
+<ul>
+<li>
+<p><strong>Description:</strong> Heap memory is a dynamic memory allocation area where memory is allocated and deallocated manually using functions like malloc and free. It allows for more flexible memory management but requires explicit memory cleanup.</p>
+</li>
+<li>
+<p><strong>Definition:</strong> Heap memory is a dynamic memory allocation area where memory is manually allocated and deallocated using functions such as malloc and free. It provides flexibility in memory management but requires explicit cleanup.</p>
+</li>
+</ul>
+<h3 id="static-memory"><a class="header" href="#static-memory">Static Memory</a></h3>
+<ul>
+<li>
+<p><strong>Description:</strong> Static memory refers to memory allocated for variables that exist throughout the program's lifetime. It is typically used for global variables and static variables inside functions. Memory is allocated at compile-time and persists throughout the program's execution.</p>
+</li>
+<li>
+<p><strong>Definition:</strong> Static memory is memory allocated for variables that have a fixed lifetime throughout the program. It includes global variables and static variables inside functions. Memory is allocated at compile-time and persists during the program's execution.</p>
+</li>
+</ul>
+<h3 id="task"><a class="header" href="#task">Task</a></h3>
+<ul>
+<li>
+<p>Create new file with <code>Mem_Types.c</code>, and write the following code:</p>
+</li>
+<li>
+<p>Sack Memory (stackMemory function):</p>
+<ul>
+<li>Declares and prints a simple integer variable (stackVariable) on the stack.</li>
+<li>Demonstrates automatic memory management within the function's scope.</li>
+</ul>
+</li>
+<li>
+<p>Heap Memory (heapMemory function):</p>
+<ul>
+<li>Dynamically allocates memory for an integer array (heapArray) on the heap.</li>
+<li>Initializes and prints the array, showcasing dynamic memory allocation.</li>
+<li>Manually frees the allocated memory to prevent leaks.</li>
+</ul>
+</li>
+<li>
+<p>Static Memory (staticMemory function):</p>
+<ul>
+<li>Declares and prints a static integer array (staticArray) with five elements.</li>
+<li>Demonstrates static memory allocation with a persistent lifetime.</li>
+</ul>
+</li>
+<li>
+<p>Main Function (main function):</p>
+<ul>
+<li>
+<p>Calls each memory example function to showcase stack, heap, and static memory.</p>
+</li>
+<li>
+<p>Highlights the unique features of each memory type.</p>
+</li>
+<li>
+<p>Compile and run the program to observe the outputs for different memory types.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void stackMemory() {
+    // Stack memory example
+    int stackVariable = 10;
+    printf("Stack Variable: %d\n", stackVariable);
+    // The stack variable exists only within this function's scope
+}
+
+//---------------
+
+void heapMemory() {
+    // Heap memory example
+    int *heapArray;
+    int size;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &amp;size);
+
+    // Dynamically allocate memory for an array on the heap
+    heapArray = (int*)malloc(size * sizeof(int));
+
+    if (heapArray == NULL) {
+        printf("Memory allocation failed\n");
+        return;
+    }
+
+    // Initialize the array
+    for (int i = 0; i &lt; size; i++) {
+        heapArray[i] = i * 2;
+    }
+
+    // Print the original array
+    printf("Original Heap Array: ");
+    for (int i = 0; i &lt; size; i++) {
+        printf("%d ", heapArray[i]);
+    }
+    printf("\n");
+
+    // Don't forget to free the allocated memory when done
+    free(heapArray);
+}
+//---------------
+
+void staticMemory() {
+    // Static memory example
+    static int staticArray[5] = {1, 2, 3, 4, 5};
+
+    // Print the static array
+    printf("Static Array: ");
+    for (int i = 0; i &lt; 5; i++) {
+        printf("%d ", staticArray[i]);
+    }
+    printf("\n");
+}
+//---------------
+
+int main() {
+    // Stack memory example
+    stackMemory();
+
+    // Heap memory example
+    heapMemory();
+
+    // Static memory example
+    staticMemory();
+
+    return 0;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>By working through the examples and understanding the behaviors of variables in different memory regions, you should be better equipped to make informed decisions about memory allocation and deallocation in C programs.</p>
+</li>
+</ul>
 <h2 id="section-9-extra-work"><a class="header" href="#section-9-extra-work">Section 9: Extra work</a></h2>
-<p>Combine what you have learnt in this lab to advance your understanding of what you have achieved.</p>
+<p>While <code>calloc</code> and <code>malloc</code> are both dynamic memory allocation functions in C, they serve distinct purposes. The primary benefit of using calloc over <code>malloc</code> lies in its ability to initialise the allocated memory to zero. This can be advantageous when dealing with arrays or structures that need to be zero-initialised, ensuring a consistent and predictable state.</p>
+<p>However, it's essential to note that while <code>calloc</code> provides this initialization advantage, it may not be as time-efficient as <code>malloc</code>.</p>
+<p>Explore the trade-off between zero-initialisation benefits and time efficiency when using <code>calloc</code> compared to <code>malloc</code> in C programming. Implement a program, measure execution times (Hint: timestamps <code>#include &lt;time.h&gt;</code>)(perhaps for allocating memory for an array type double with size of 1,000,000 items, or maybe more), and draw conclusions based on the collected data.</p>
 
                     </main>
 
