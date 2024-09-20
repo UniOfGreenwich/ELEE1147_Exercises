@@ -1,0 +1,532 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Release Deployment - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction/Introduction.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Git</li><li class="chapter-item "><a href="../myFirstRepository/myFirstRepository.html"><strong aria-hidden="true">1.</strong> My First Repository</a></li><li class="chapter-item "><a href="../BashAliases/BashAliases.html"><strong aria-hidden="true">2.</strong> Bash Aliases</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">C</li><li class="chapter-item "><div><strong aria-hidden="true">3.</strong> Learning C</div></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> Bitewise Operations</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> Arithmetic Operations</div></li><li class="chapter-item "><div><strong aria-hidden="true">6.</strong> Recursion</div></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> Header Files, Guards, and Macros</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> Pointers and Addressing</div></li><li class="chapter-item "><div><strong aria-hidden="true">9.</strong> Structs and Unions</div></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> Streams</div></li><li class="chapter-item "><div><strong aria-hidden="true">11.</strong> Algorithms</div></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">Python</li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">Git Extras</li><li class="chapter-item "><a href="../myFirstRepository/myFirstRepository.html"><strong aria-hidden="true">12.</strong> My First Repository</a></li><li class="chapter-item "><a href="../BashAliases/BashAliases.html"><strong aria-hidden="true">13.</strong> Bash Aliases</a></li><li class="chapter-item "><a href="../BranchingModel/BranchingModel.html"><strong aria-hidden="true">14.</strong> Branching-Strategy</a></li><li class="chapter-item "><a href="../OneFlow/OneFlow.html"><strong aria-hidden="true">15.</strong> Git Oneflow</a></li><li class="chapter-item "><a href="../AntiPatterns/AntiPatterns.html"><strong aria-hidden="true">16.</strong> Anti Patterns</a></li><li class="chapter-item "><a href="../ContinousDeployment/ContinousDeployment.html"><strong aria-hidden="true">17.</strong> Continous Deployment</a></li><li class="chapter-item expanded "><a href="../ReleaseDeployment/ReleaseDeployment.html" class="active"><strong aria-hidden="true">18.</strong> Release Deployment</a></li><li class="chapter-item "><a href="../Migration/Migration.html"><strong aria-hidden="true">19.</strong> Migration</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="release-deployment"><a class="header" href="#release-deployment">Release Deployment</a></h1>
+<p>Use this strategy for projects where features get bundled into a release and then
+deployed all at once.</p>
+<p>You could follow the <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow"><strong>Gitflow</strong></a>. This page showcases common development scenarios and how to deal with them from a branching point of view.</p>
+<ul>
+<li><a href="#release-deployment">Release Deployment</a>
+<ul>
+<li><a href="#branches-overview">Branches Overview</a></li>
+<li><a href="#use-cases">Use Cases</a>
+<ul>
+<li><a href="#develop-a-new-feature">Develop a new feature</a></li>
+<li><a href="#develop-multiple-features-in-parallel">Develop multiple features in parallel</a></li>
+<li><a href="#create-and-deploy-a-release">Create and deploy a release</a></li>
+<li><a href="#change-in-plan-pull-a-feature-from-a-release">Change in plan, pull a feature from a release</a></li>
+<li><a href="#supporting-old-releases">Supporting old releases</a></li>
+<li><a href="#production-hot-fix">Production hot fix</a></li>
+</ul>
+</li>
+<li><a href="#migrate-a-legacy-project">Migrate a legacy project</a></li>
+</ul>
+</li>
+<li><a href="#scenarios">Scenarios</a>
+<ul>
+<li><a href="#deploying-an-adaptivejsmobifyjs-bundle-to-production">Deploying an Adaptive.js/Mobify.js Bundle to Production</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="branches-overview"><a class="header" href="#branches-overview">Branches Overview</a></h2>
+<p><img src="./figures/release-deployment.png" alt="Release Deployment workflow" /></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Branch</th><th style="text-align: left">Protected?</th><th style="text-align: left">Base Branch</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>master</code></td><td style="text-align: left">YES</td><td style="text-align: left">N/A</td><td style="text-align: left">What is live in production (<strong>stable</strong>).<br/>A pull request is required to merge code into <code>master</code>.</td></tr>
+<tr><td style="text-align: left"><code>develop</code></td><td style="text-align: left">YES</td><td style="text-align: left"><code>master</code></td><td style="text-align: left">The latest state of development (<strong>unstable</strong>).</td></tr>
+<tr><td style="text-align: left">feature</td><td style="text-align: left">NO</td><td style="text-align: left"><code>develop</code></td><td style="text-align: left">Cutting-edge features (<strong>unstable</strong>). These branches are used for any maintenance features / active development.</td></tr>
+<tr><td style="text-align: left"><code>release-vX.Y.Z</code></td><td style="text-align: left">NO</td><td style="text-align: left"><code>develop</code></td><td style="text-align: left">A temporary release branch that follows the <a href="http://semver.org/">semver</a> versioning. This is what is sent to UAT.<br/>A pull request is required to merge code into any <code>release-vX.Y.Z</code> branch.</td></tr>
+<tr><td style="text-align: left">bugfix</td><td style="text-align: left">NO</td><td style="text-align: left"><code>release-vX.Y.Z</code></td><td style="text-align: left">Any fixes against a release branch should be made in a bug-fix branch. The bug-fix branch should be merged into the release branch and also into develop. This is one area where we’re deviating from GitFlow.</td></tr>
+<tr><td style="text-align: left"><code>hotfix-*</code></td><td style="text-align: left">NO</td><td style="text-align: left"><code>master</code></td><td style="text-align: left">These are bug fixes against production.<br/>This is used because develop might have moved on from the last published state.<br/>Remember to merge this back into develop and any release branches.</td></tr>
+</tbody></table>
+</div>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use Cases</a></h2>
+<h3 id="develop-a-new-feature"><a class="header" href="#develop-a-new-feature">Develop a new feature</a></h3>
+<p><img src="./figures/feature-branch.png" alt="Feature branch" /></p>
+<ol>
+<li>
+<p>Make sure your <code>develop</code> branch is up-to-date</p>
+</li>
+<li>
+<p>Create a feature branch based off of <code>develop</code></p>
+<pre><code>$ git checkout develop
+$ git checkout -b MYTEAM-123-new-documentation
+$ git push --set-upstream MYTEAM-123-new-documentation
+</code></pre>
+</li>
+<li>
+<p>Develop the code for the new feature and commit. Push your changes often. This
+allows others to see your changes and suggest improvements/changes as well as
+provides a safety net should your hard drive crash.</p>
+<pre><code>$ ... make changes
+$ git add -A .
+$ git commit -m "Add new documentation files"
+$ ... make more changes
+$ git add -A .
+$ git commit -m "Fix some spelling errors"
+$ git push
+</code></pre>
+</li>
+<li>
+<p>Navigate to the project on <a href="www.github.com">Github</a> and open a pull request with
+the following branch settings:</p>
+<ul>
+<li>Base: <code>develop</code></li>
+<li>Compare: <code>MYTEAM-123-new-documentation</code></li>
+</ul>
+</li>
+<li>
+<p>When the pull request was reviewed, merge and close it and delete the
+<code>MYTEAM-123-new-documentation</code> branch.</p>
+</li>
+</ol>
+<h3 id="develop-multiple-features-in-parallel"><a class="header" href="#develop-multiple-features-in-parallel">Develop multiple features in parallel</a></h3>
+<p>There's nothing special about that. Each developer follows the above <a href="#develop-a-new-feature">Develop a new feature</a> process.</p>
+<h3 id="create-and-deploy-a-release"><a class="header" href="#create-and-deploy-a-release">Create and deploy a release</a></h3>
+<p><img src="./figures/release-release.png" alt="Create and deploy a release" /></p>
+<ol>
+<li>
+<p>Merge <code>master</code> into <code>develop</code> to ensure the new release will contain the
+latest production code. This reduces the chance of a merge conflict during
+the release.</p>
+<pre><code>$ git checkout develop
+$ git merge master
+</code></pre>
+</li>
+<li>
+<p>Create a new <code>release-vX.Y.Z</code> release branch off of <code>develop</code>.</p>
+<pre><code>$ git checkout -b release-vX.Y.Z
+$ git push --set-upstream release-vX.Y.Z
+</code></pre>
+</li>
+<li>
+<p>Stabilize the release by using bugfix branches off of the <code>release-vX.Y.Z</code> branch
+(the same way you would do a feature branch off of <code>develop</code>).</p>
+<pre><code>$ git checkout release-vX.Y.Z
+$ git checkout -b fix-label-alignment
+$ git push --set-upstream fix-label-alignment
+... do work
+$ git commit -m "Adjust label to align with button"
+$ git push
+</code></pre>
+</li>
+<li>
+<p>When the code is ready to release, navigate to the project on
+<a href="www.github.com">Github</a> and open a pull request with the following branch
+settings:</p>
+<ul>
+<li>Base: <code>master</code></li>
+<li>Compare: <code>release-vX.Y.Z</code>
+Paste the Release Checklist into the PR body. Each project should define a release
+checklist. It will vary across projects, but you can refer to the Astro <a href="https://github.com/mobify/astro/blob/develop/RELEASE.md">Release</a> document
+for an example.</li>
+</ul>
+</li>
+<li>
+<p>At some point in the checklist you will merge the release branch into <code>master</code>.
+You can do this by using the "Merge pull request" button on the release PR.</p>
+</li>
+<li>
+<p>Now you are ready to create the actual release. Navigate to the project page
+on Github and draft a new release with the following settings:</p>
+<ul>
+<li>Tag version: <code>vX.Y.Z</code></li>
+<li>Target: <code>master</code></li>
+<li>Release title: <code>Release vX.Y.Z</code></li>
+<li>Description: Include a high-level list of things changed in this release.
+Click <code>Publish release</code>.</li>
+</ul>
+</li>
+<li>
+<p>Merge the <code>release-vX.Y.Z</code> into <code>develop</code>.</p>
+<pre><code>$ git checkout develop
+$ git merge release-vX.Y.Z
+$ git push
+</code></pre>
+</li>
+<li>
+<p>Finish off the tasks in the release checklist. Once everything is done, close
+the release PR.</p>
+</li>
+<li>
+<p>Delete the release branch on Github.</p>
+</li>
+</ol>
+<h3 id="change-in-plan-pull-a-feature-from-a-release"><a class="header" href="#change-in-plan-pull-a-feature-from-a-release">Change in plan, pull a feature from a release</a></h3>
+<p><strong>TBD: Discuss</strong>
+Mike N: That probably means recreating the release branch, unless we have short-lived release branches</p>
+<h3 id="supporting-old-releases"><a class="header" href="#supporting-old-releases">Supporting old releases</a></h3>
+<p>In a release based project old releases can often need some maintenance. Critical bug fixes and strategic feature requests need to be supported on old releases. Old releases often become incompatible with the most recent versions of projects.</p>
+<p>In order to support old release versions gitflow has introduced the concept of support branches. Support branches are long living branches created to support major or minor versions of the project. Support branches do not get merged back into <code>master</code> or <code>develop</code> (this would cause major merge issues which are time consuming and error prone if attempted). Instead commits can be cherry picked from the support branch back into <code>develop</code>.</p>
+<p>Support branches can be thought of as the <code>master</code> branch for old releases. Support branches for major releases should be named as <code>support-v&lt;major&gt;.x</code>. Support branches for minor releases should be named as <code>support-v&lt;major&gt;.&lt;minor&gt;.x</code>.</p>
+<p>Here is an example of creating a support branch for v1.0 assuming v2.0 of the project has already been released.</p>
+<ol>
+<li>
+<p>Create the support branch and release branch for the patch release.</p>
+<pre><code>// Checkout the tag for the 1.0.0 release
+git checkout v1.0.0
+
+// Create the long living support branch
+git checkout -b support-v1.x
+
+// Create the release branch
+git checkout -b release-v1.0.1
+</code></pre>
+<p>Note: For subsequent releases (ex v1.0.2) the release branch will be branched off the <code>HEAD</code> of <code>support-v1.x</code></p>
+</li>
+<li>
+<p>Make changes in the <code>release-v1.0.1</code>. Multiple PRs can be merged into this branch if several changes are necessary.</p>
+</li>
+<li>
+<p>As PRs are merged into the <code>release-v1.0.1</code> branch create associated PRs that cherry pick the changes back into <code>develop</code>. Ensure that these changes are desired by the team going forward and that they are compatible with the current state of the <code>develop</code> branch.</p>
+</li>
+<li>
+<p>Create release PR to merge <code>release-v1.0.1</code> into <code>support-v1.x</code>.</p>
+</li>
+<li>
+<p>Follow the standard release process treating <code>support-v1.x</code> as the <code>master</code> branch. As per the standard release process <code>release-v1.0.1</code> will get deleted and <code>support-v1.x</code> will remain in repo indefinitely.</p>
+</li>
+<li>
+<p>Mark <code>support-v1.x</code> as a protected branch in github so that it does not get accidentally deleted.</p>
+</li>
+</ol>
+<p><em>Pro-tip</em>: Try to maintain as few support branches as possible. These branches are expensive to maintain since you will need to cherry pick applicable bug fixes into each support branch seperately.</p>
+<h3 id="production-hot-fix"><a class="header" href="#production-hot-fix">Production hot fix</a></h3>
+<p>A production hotfix is very similar to a full-scale release except that you do
+your work in a branch taken directly off of <code>master</code>. Hotfixes are useful in cases
+where you want to patch a bug in a released version, but <code>develop</code> has unreleased
+code in it already.</p>
+<p><strong>TBD: Insert diagram</strong></p>
+<ol>
+<li>
+<p>Create a hot fix branch based off of <code>master</code>.</p>
+<pre><code>$ git checkout master
+$ git checkout -b hotfix-documentation-broken-links
+$ git push --set-upstream origin hotfix-documentation-broken-links
+</code></pre>
+</li>
+<li>
+<p>Add a test case to validate the bug, fix the bug, and commit.</p>
+<pre><code>... add test, fix bug, verify
+$ git add -A .
+$ git commit -m "Fix broken links"
+$ git push
+</code></pre>
+</li>
+<li>
+<p>Navigate to the project on <a href="www.github.com">Github</a> and open a pull request
+with the following branch settings:</p>
+<ul>
+<li>Base: <code>master</code></li>
+<li>Compare: <code>hotfix-documentation-broken-links</code>
+Paste your release checklist into the PR and work through the PR to get the
+hotfix into production.</li>
+</ul>
+</li>
+<li>
+<p>At some point in the checklist you will merge the hotfix branch into <code>master</code>.
+You can do this by using the "Merge pull request" button on the release PR.</p>
+</li>
+<li>
+<p>Now that the hotfix code is in <code>master</code> you are ready to create the actual
+release. Navigate to the project page on Github and draft a new release with
+the following settings:</p>
+<ul>
+<li>Tag version: <code>vX.Y.Z</code></li>
+<li>Target: <code>master</code></li>
+<li>Release title: <code>Release vX.Y.Z (hotfix)</code></li>
+<li>Description: Include a high-level list of things changed in this release.</li>
+</ul>
+</li>
+</ol>
+<p>Click <code>Publish release</code>.</p>
+<p><em>Note: Hotfix releases <em>are</em> actual releases. You should bump at least the
+patch part of the version when releasing a hotfix and so even hotfixes go
+through the process of creating a release like this.</em></p>
+<ol>
+<li>
+<p>Merge the <code>hotfix-documentation-broken-links</code> into <code>develop</code>.</p>
+<pre><code>$ git checkout develop
+$ git merge hotfix-documentation-broken-links
+$ git push
+</code></pre>
+</li>
+<li>
+<p>Finish off the tasks in the release checklist. Once everything is done, close
+the hotfix PR.</p>
+</li>
+</ol>
+<h2 id="migrate-a-legacy-project"><a class="header" href="#migrate-a-legacy-project">Migrate a legacy project</a></h2>
+<p>To migrate any git project to our branching strategy, please follow the instructions
+in the <a href="migration.html">Migration</a> document.</p>
+<h1 id="scenarios"><a class="header" href="#scenarios">Scenarios</a></h1>
+<p>This section outlines specific scenarios and the steps to take to ensure success.</p>
+<h2 id="deploying-an-adaptivejsmobifyjs-bundle-to-production"><a class="header" href="#deploying-an-adaptivejsmobifyjs-bundle-to-production">Deploying an Adaptive.js/Mobify.js Bundle to Production</a></h2>
+<p>The process for tagging and merging is a bit different when deploying a bundle, the steps to take are outlined here:</p>
+<p><img src="./figures/release-deployment-bundle.png" alt="Bundle Flow" /></p>
+<ol>
+<li>
+<p>Ensure all features are merged into <code>release-v.X.Y.Z</code></p>
+</li>
+<li>
+<p>Create a bundle to be sent to the customer for verification and approval off of the <code>release-vX.Y.Z</code> branch.</p>
+<p>Ensure you have installed the automated bundle message script found [here] (https://	mobify.atlassian.net/wiki/questions/81789082/how-do-i-automate-a-bundle-message-using-bash). Follow these steps:</p>
+<pre><code>$ grunt push -m "$(message Mobile X.Y.Z)"
+</code></pre>
+</li>
+<li>
+<p>When creating a pull request to merge the release branch into <code>master</code> ensure that the standard workflow for <em>creating a release</em> is followed with these specific changes:</p>
+<ul>
+<li>Name/Summary: <code>DEPLOYMENT MERGE: release-v.X.Y.Z, bundle &lt;bundle number that was sent to customer&gt;</code></li>
+<li>Description:</li>
+</ul>
+<pre><code>Status: **Out to Customer**
+Owner: &lt;Your Github username&gt;
+Reviewers: Customer
+
+## Bundle:
+- &lt;bundle link sent to customer&gt;
+
+## Jira Tickets:
+ - [x] &lt;List of JIRA Tickets associated with release&gt;
+
+ ## Todos:
+ - [ ] Customer Approves Bundle &lt;number&gt;
+ - [ ] Deploy Bundle &lt;number&gt;
+ - [ ] Clean Up Repo
+</code></pre>
+</li>
+<li>
+<p>Once the customer has approved the bundle. The bundle is published to production and post launch tests occur. Once all tests have passed, the pull request is merged into <code>master</code>.</p>
+</li>
+<li>
+<p>Finish the <em>Github release workflow</em> as described above and ensure that these specific changes are added to the <em>release notes</em> draft of the <em>Github release</em>:</p>
+<ul>
+<li>Release title: <code>Release vX.Y.Z - Bundle &lt;number&gt;</code></li>
+<li>Description: This should also include a link to a confluence JIRA report page that lists all issues in the release.</li>
+</ul>
+<p>Click <code>Publish release</code>.</p>
+<p><strong>NOTE: the release tag will be 1 commit ahead of the bundle commit</strong></p>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ContinousDeployment/ContinousDeployment.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../Migration/Migration.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ContinousDeployment/ContinousDeployment.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../Migration/Migration.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
