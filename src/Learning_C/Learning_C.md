@@ -2,12 +2,45 @@
 
 We will be doing this lab inconjuction with the C lecture. Key concepts will be explained and you will put into practice.
 
+
+## 0. Compiler for C
+
+- We need add a compiler to out `PATH` to do that revist the `~/.bashrc` file and append the `PATH` environment variable the following: 
+
+    ```sh
+    $ vim ~/.bashrc
+    export PATH=$PATH:"/c/Program Files/GCC-Windows-MingW-2.0.0/w64devkit/bin"
+    ```
+    >**Note:**
+    >> - This collection of build tools are from [https://github.com/skeeto/w64devkit/releases](https://github.com/skeeto/w64devkit/releases)
+
+- Then source the `~/.bashrc` or use the alias we created last time `refresh`
+
+    ```sh
+    $ source ~/.bashrc
+    ```
+    or
+    ```sh
+    $ refersh
+    ```
+
+- The following packages are now available:
+
+    ![](figures/gccandtools.png)
+
 So let's make our first program.
 ## 1. Create a Project in Visual Studio:
 
-- Open Visual Studio and create a new C project.
-- Name the project `Learning_C`.
-- Create a new source file named `helloworld.c`.
+- Open Visual Studio Code and create a new folder called `Learning_C`..
+- Create a new file named `helloworld.c` inside the `Learning_C` directory.
+
+    <div align=center>
+
+    ![](./figures/step1.png)
+
+    </div>
+
+- Then open the file and edit:
 
     ```c
     #include <stdio.h> // we need this library to get access to the input and out put methods for printing to terminal
@@ -30,7 +63,7 @@ So let's make our first program.
 
     - The keyword at the end of the `main()` is `return`, this is will return the value preceeding it, 
 
-    - A `0` execute means no errors. 
+    - A `0` execute means no errors. >
 
     - Similar to `C#` to use libraries `c` programs import with the `#include` keyword instead of `using`. 
 
@@ -38,25 +71,33 @@ So let's make our first program.
 
     - By including this header file we have access to the `printf()` function that enables us to return information to the terminal in string format.
 
-    Now we are going to compile the code so that we have an executable file that can be run from the terminal:
+    Now we are going to compile the code so that we have an executable file that can be run from the terminal, using the `gcc` compiler:
 
-----
+    ```sh
+    $ gcc helloworld.c -o helloworld.exe
+    ```
 
-<details>
-<summary><b>Click for Expected Output</b></summary>
-<p></p>
+    >**Note:** 
+    >> - You can open the terminal in visual studio code using <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>'</kbd>
+    >> - If you do not have bash as the default, you can select it from the drop down arrow, like below.
+        ![](./figures/step1-1-1.png)
+    ----
 
-![](./figures/step1.png)
+    <details>
+    <summary><b>Click for Expected Output</b></summary>
+    <p></p>
 
-Congratulations, you used the programming language of the gods!
+    ![](./figures/step1-1.png)
 
-</details>
+    Congratulations, [you used the programming language of the gods!](https://devhumor.com/media/god-s-programming-language)
 
-----
+    </details>
+
+    ----
 
 ## 2. Data Type: Printing Integer
 
-- Now we are going to modifiy the script again `$ vim inputoutput.c` to look like below:
+- Now we are going to create a new program called `inputoutput.c` to look like below:
 
     ```c
     #include <stdio.h>
@@ -68,14 +109,17 @@ Congratulations, you used the programming language of the gods!
     }
     ```
 
-- Remeber to use the vim shortcuts from before to edit, write and quit.
-
-- Run the script again... 
+- Now we are going to compile the code so that we have an executable file that can be run from the terminal, using the `gcc` compiler: 
+ 
+    <div align=center>
 
     ![](./figures/step2.png)
 
+    </div>
+
     - We use `%d` format specifier to print `int` types. Here, the `%d` inside the quotations will be replaced by the value of `testInteger`.
 
+    - Changing `%d` to other specifiers will cause the compiler to interpret the variable differently.
 
 ## 3. Data Types: Printing Float and Double
 
@@ -85,19 +129,34 @@ Congratulations, you used the programming language of the gods!
     #include <stdio.h>
     int main()
     {
+        ...
+
         float number1 = 13.5;
         double number2 = 12.4;
 
         printf("number1 = %f\n", number1);
         printf("number2 = %lf", number2);
+
         return 0;
     }
     ```
+    - `...` means compressed code for brevity, don't write it.
 
+- Run the code again and you will see this again...
 
-- Run it 
+    <div align=center>
+
+    ![](./figures/step2.png)
+    
+    </div>
+
+- We need to recompile, `gcc`, and rerun:
+
+     <div align=center>
 
     ![](./figures/step3.png)
+
+    </div>
 
     - To print float, we use `%f` format specifier. Similarly, we use `%lf` to print double values.
 
@@ -110,6 +169,8 @@ Congratulations, you used the programming language of the gods!
     #include <stdio.h>
     int main()
     {
+        ...
+
         char chr = 'a';    
         printf("character = %c, value is = %d", chr, chr);  
         return 0;
@@ -117,7 +178,11 @@ Congratulations, you used the programming language of the gods!
     ```
 - Run the program again and you should see the following ouput:
 
+    <div align=center>  
+
     ![](./figures/step4.png)
+
+    </div>
 
     - To print `char`, we use `%c` format specifier.
     - Every `char` has a numerial representation in ASCII, using `%d` we can get the numerical value.
@@ -125,7 +190,7 @@ Congratulations, you used the programming language of the gods!
 
 ## 5. User Input in C
 
-In C programming, `scanf_s()` is one of the commonly used function to take input from the user. The `scanf_s()` function reads formatted input from the standard input such as keyboards.
+In C programming, `scanf()` is one of the commonly used function to take input from the user. The `scanf()` function reads formatted input from the standard input such as keyboards.
 
 - Again we will modify the program to look like the code below:
 
@@ -133,20 +198,28 @@ In C programming, `scanf_s()` is one of the commonly used function to take input
     #include <stdio.h>
     int main()
     {
-        int testInteger;
+        ... 
+        printf("character = %c, value is = %d\n", chr, chr); // not the \n for newline
+
+        testInteger;
         printf("Enter an integer: ");
-        scanf_s("%d", &testInteger);  
+        scanf("%d", &testInteger);  
         printf("Number = %d",testInteger);
         return 0;
     }
     ```
 
 - Run the program to get the following output, respond to the prompt and type in a number:
+    
+    <div align=center>
+
     ![](./figures/step5.png)
 
-    - Here, we have used `%d` format specifier inside the `scanf_s()` function to take `int` input from the user. When the user enters an integer, it is stored in the `testInteger` variable.
+    </div>
 
-    > Notice, that we have used `&testInteger` inside `scanf_s()`. It is because `&testInteger` gets the address of `testInteger`, and the value entered by the user is stored in that address. We will cover addressing and pointers at a later date.
+    - Here, we have used `%d` format specifier inside the `scanf()` function to take `int` input from the user. When the user enters an integer, it is stored in the `testInteger` variable.
+
+    > Notice, that we have used `&testInteger` inside `scanf()`. It is because `&testInteger` gets the address of `testInteger`, and the value entered by the user is stored in that address. We will cover addressing and pointers at a later date.
 
 ---
 
@@ -175,9 +248,7 @@ Here is a table of possible format specifiers for input and output:
 
 ## 7. Data Types
 
-- Create a new file with nano like this:
-
-`$ nano dataTypeSize.c`
+- Create a new file with called `dataTypeSize.c`
 
 - We are going to write a program that returns the size of each data type availabe in `c`, modify the program to look like below:
 
@@ -289,9 +360,6 @@ int main() {
 ```
 
 ## Exersices
-To write the code for each of the following tasks, ~open this link and accept the task~. A C file has been created for each task; you only need to write the code for each one. Again, you can use either use VScode or Codepsaces on Github after accepting the task .
-
-
 
 ### Exercise-1: Even or Odd
 Create a program that checks whether a given integer is even or odd. Prompt the user to enter an integer, and then display a message indicating whether it's even or odd.

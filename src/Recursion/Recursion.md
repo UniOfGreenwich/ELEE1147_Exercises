@@ -17,7 +17,7 @@ Recursion consists of **two** main components:
 
 ## Task 1.
 
-1. First recursive task is to perform a factorial, to do this we need a new project. Open VSCode and create a new C++ console project, and call it Factorial.
+1. First recursive task is to perform a factorial, to do this we need a new folder and call it Factorial.
 
 >**Note:**
 >>
@@ -32,7 +32,7 @@ Recursion consists of **two** main components:
 >>The factorial function is often used in combinatorics and probability, where it represents the number of ways to arrange \\(n \\) distinct objects into a sequence.
 
 
-1. Change the extension of the `Factorial.cpp` to `Factorial.c`
+1. Create a main.c inside the Factorial folder:
 
     <div align=center>
 
@@ -141,7 +141,7 @@ Recursion consists of **two** main components:
 
     </div>
 
-9. Modifying the factorial function more, you could try and output each result per recursion. Add the following `printf` call in the `else` block above the `return` line:
+9. Modifying the factorial function more, you could try and output each result per recursion. Add the following `printf` at the top of the function's body:
 
 ```c
 printf("%d x %d = %d\n",n, (n-1), n * (n - 1));
@@ -241,7 +241,7 @@ Simplified the formula looks like:
 
 \\[𝐹(𝑛) = 𝐹(𝑛 − 1) + 𝐹(𝑛 − 2)\\]
 
-11. Modify the `Recursion.c` file so that the `factorial()` call and `printf` statement is commented out:
+11. Modify the `main.c` file so that the `factorial()` call and `printf` statement is commented out:
 
     ```c
     ...
@@ -405,7 +405,6 @@ printf("(%d - 1) + (%d - 2) = %d\n", n, n, (n - 1) + (n - 2));
 // Function prototype
 int factorial(int n);
 int fibonacci(int c);
-int sizeofthearray(int* arr);
 
 int main() {
 
@@ -429,13 +428,6 @@ int main() {
     return 0;
 }
 
-int sizeofthearray(int* arr)
-{
-    size_t some_array_n = sizeof(arr) / sizeof(arr[0]);
-    printf("Size of array is: %ld", some_array_n);
-}
-
-
 int fibonacci(int n) {
     //base case
     if (n <= 1) {
@@ -446,7 +438,6 @@ int fibonacci(int n) {
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
 }
-
 
 int factorial(int n) {
     // Base case

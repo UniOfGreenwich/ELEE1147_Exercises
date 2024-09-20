@@ -60,7 +60,7 @@ The bitwise NOT operator (~) performs a unary operation, inverting each bit of t
 
 ## Task 1
 
-1.  Create a new **cpp** project and call it `BitwiseOperations`, then modify the file `BitwiseOperations.cpp` to `BitwiseOperations.c`
+1.  Create a new folder in `Learning_C\` and call it `BitwiseOperations`, then createa new file called`bitwiseoperations.c`
 
 
 <div align=center>

@@ -5,13 +5,11 @@
 Write a program with functions to perform basic arithmetic operations (addition, 
 subtraction, multiplication, and division). Each operation should be in its own function.
 
-1. Open a new project called `Arthimetic Operations`
+1. Open a new folder called `Arthimetic Operations`
 
-2. Create a new header file by following the images below, and call the file `MyMaths.h`:
+2. Create a new header file by following the images below, and call the file `MyMaths.h`, `MyMaths.c`, and `main.c`:
 
    - ![](./figures/step1.png)
-
-   -  ![](./figures/step2.png)
 
 3. Next create a Guard for the new header file: 
     ```h
@@ -39,27 +37,20 @@ subtraction, multiplication, and division). Each operation should be in its own 
     #ifndef MYMATHS_H
     #define MYMATHS_H
 
+    #include <stdio.h>
+
     float add(float a, float b);
     float subtract(float a, float b);
     float multiply(float a, float b);
     float divide(float a, float b);
-    float square(float a, float b);
+    float square(float a);
 
     #endif // End of Guard
     ```
 
     </details>
 
-5. To provide the actual code for each of these functions in `MyMaths.h`, create a new file in in the Sources File directory, similarly to how you created the `MyMaths.h` file, and call it `MyMaths.c`. You should have the following solution structure: 
-
-<div align=center>
-
-![](./figures/step3.png)
-
-</div>
-
->**Note:**
->> You may need to rename the `ArthimeticOperations.cpp` to `ArthimeticOperations.c` if you have not done so already.
+5. To provide the actual code for each of these prototype functions in `MyMaths.h`, modify the  `MyMaths.c` file.
 
 6. Modify the content on `MyMaths.c` so that it `includes` the `MyMaths.h` file:
     
@@ -113,13 +104,12 @@ subtraction, multiplication, and division). Each operation should be in its own 
 
     </details>
 
-8. Go back to `ArthimeticOperations.c` and modify the contents so that it `includes` `stdio.h` and `MyMaths.h` and remove the code in side the `main()` block (keeping the `return 0;`), do this now:
+8. Go back to `main.c` and modify the contents so that it `includes` `MyMaths.h` and remove the code in side the `main()` block (keeping the `return 0;`), do this now:
 
     <details>
     <summary>Possible Solution</summary>
 
     ```c
-    #include <stdio.h>
     #include "MyMaths.h"
 
     int main()
@@ -147,7 +137,7 @@ subtraction, multiplication, and division). Each operation should be in its own 
 
     </details>
 
-10. Using `printf`, request the user to enter two numbers, where second number that must be greater than zero. Then using `scanf_s` read what the user inputted and assign those two numbers to `num1` and `num2`.
+10. Using `printf`, request the user to enter two numbers, where second number that must be greater than zero. Then using `scanf` read what the user inputted and assign those two numbers to `num1` and `num2`.
 
     <details>
     <summary>Possible Solution</summary>
@@ -157,7 +147,7 @@ subtraction, multiplication, and division). Each operation should be in its own 
 
         float num1 = 0.0f, num2 = 0.0f;
         printf("Enter two numbers, the second number must not be zero: ");
-        scanf_s("%f %f", &num1, &num2);
+        scanf("%f %f", &num1, &num2);
 
         return 0;
     }
@@ -177,7 +167,7 @@ subtraction, multiplication, and division). Each operation should be in its own 
 
     float num1 = 0.0f, num2 = 0.0f;
     printf("Enter two numbers, the second number must not be zero: ");
-    scanf_s("%f %f", &num1, &num2);
+    scanf("%f %f", &num1, &num2);
     
     printf("Additon:     %.2f + %.2f = %.2f\n", num1, num2, add(num1, num2));
     printf("Subtraction: %.2f - %.2f = %.2f\n", num1, num2, subtract(num1, num2));
@@ -192,7 +182,12 @@ subtraction, multiplication, and division). Each operation should be in its own 
     </details>
 
 12. **Output:**<p></p>
-    ![](./figures/step5.png)
+
+    <div align=center>
+
+    ![](./figures/step2.png)
+
+    </div>
 
 ------------------------------
 ------------------------------
@@ -241,12 +236,12 @@ Let's further modify the solution so we can do some meaningful programming. In t
     double fahrenheitToKelvin(double kel);
 
     double celciusToFahrenheit(double cel);
-    double celiusToKelvin(double cel);
+    double celciusToKelvin(double cel);
 
-    double kelvinToCelius(double kel);
+    double kelvinToCelcius(double kel);
     double kelvinToFahrenheit(double kel);
 
-    #endif // !TEMPEATURECONVERSION_H
+    #endif // TEMPEATURECONVERSION_H
     ```
 
     </details>
@@ -306,35 +301,11 @@ Let's further modify the solution so we can do some meaningful programming. In t
     ```
     </details>
 
-17. Revist `ArithmeticConversion.c` and include the `TemperatureConversion.h` file underneath `#include "MyMaths.h"` line.
+17. Navigate to `main.c` and include the `TemperatureConversion.h` file underneath `#include <stdio.h>` line.
 
 18. Continuing lets comment out the previously written code for future reference incase we need it. Above the `float num1 = 0.0f, num2 = 0.0f` line add a `/*` place the proceeding `*/` on the last line of code in this block above the `return 0;`
 
-    <details>
-    <summary>Possible Solution...</summary>
-
-    ```c
-    #include <stdio.h>
-    #include "MyMaths.h"
-    #include "TemperatureConversion.h"
-    int main(){
-
-        /*
-        float num1 = 0.0f, num2 = 0.0f;
-        printf("Enter two numbers, the second number must not be zero: ");
-        scanf_s("%f %f", &num1, &num2);
-        
-        printf("Additon:     %.2f + %.2f = %.2f\n", num1, num2, add(num1, num2));
-        printf("Subtraction: %.2f - %.2f = %.2f\n", num1, num2, subtract(num1, num2));
-        printf("Multiply:    %.2f * %.2f = %.2f\n", num1, num2, multiply(num1, num2));
-        printf("Divison:     %.2f / %.2f = %.2f\n", num1, num2, divide(num1, num2));
-        printf("squared:     %.2f * %.2f = %.2f\n", num1, num1, square(num1));
-        printf("squared:     %.2f * %.2f = %.2f\n", num2, num2, square(num2));
-        */
-        return 0;
-    ```
-
-    </details>
+  
 
 19. To use our temperature functions, reproduce the following line and then replicate for the other temperature functions. I would suggest starting in the whitespace between `int main(){` and the `/*` line:
 
@@ -382,7 +353,11 @@ Let's further modify the solution so we can do some meaningful programming. In t
 
 20. Run the code and you should see the following output:
 
-    ![](./figures/step7.png)
+    <div align=center>
+
+    ![](./figures/step3.png)
+
+    </div>
 
 Congratulations you reached the end of the guided part of the lab, now try and do point 21 below.
 
@@ -406,8 +381,12 @@ Congratulations you reached the end of the guided part of the lab, now try and d
 
     <details>
     <summary>Output...</summary>
+    
+    <div align=center>
 
-    ![](./figures/step8.png)
+    ![](./figures/step4.png)
+
+    </div>
 
     </details> <p></p>
 
@@ -416,6 +395,7 @@ Congratulations you reached the end of the guided part of the lab, now try and d
 
     - **TemperatureConversion.c**
         ```c
+        ...
         double fahrenheitToRankine(double fahr) {
             return fahr + 459.67;
         }
@@ -442,6 +422,7 @@ Congratulations you reached the end of the guided part of the lab, now try and d
 
     - **TemperatureConversion.h**
         ```h
+        ...
         double fahrenheitToRankine(double fahr);
         double celciusToRankine(double cel);
 

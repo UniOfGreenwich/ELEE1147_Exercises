@@ -8,13 +8,13 @@ This mdBook will grow over the duration of this module with new labs/workshops a
 <td>
 
 The mdBook accessed outside of blackboard and is mobile and tablet friendly. :
-- [https://teachingmaterial.github.io/ELEE1147_Exercises/](https://teachingmaterial.github.io/ELEE1147_Exercises/Introduction.html)
+- [https://uniofgreenwich.github.io/ELEE1147_Exercises/](https://uniofgreenwich.github.io/ELEE1147_Exercises/Introduction.html)
 - Or scan the QR code on the right:
 </td>
 <td>
 
 
-<a rel='nofollow' href='https://www.qr-code-generator.com' border='0' style='cursor:default'><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fteachingmaterial.github.io%2FELEE1147_Exercises%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a>
+<a rel='nofollow' href='https://www.qr-code-generator.com' border='0' style='cursor:default'><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%uniofgreenwich.github.io%2FELEE1147_Exercises%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a>
 
 </td>
 </tr>
