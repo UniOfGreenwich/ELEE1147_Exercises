@@ -1,0 +1,25 @@
+[book]
+authors = ["CompEng0001"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Programming for Engineers"
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2
+
+[output.html.fold]
+enable = true
+
+
+[output.html]
+mathjax-support = true
+
+[output.html.print]
+enable = false
