@@ -242,41 +242,11 @@ You need to create an ssh key to push and pull to your online storage/repo befor
 
 Follow these instructions in the command line.
 
-```sh
-myfirstrepository on  dev
-❯ ssh-keygen -t ed25519 -C "YourGitEmail"
-```
-
-For every line requesting  user input just press the enter key and until the command has finished.
-
-**Output:**
-
-```sh
-Generating public/private ed25519 key pair.
-Enter file in which to save the key (/home/yourusername/.ssh/id_ed25519):
-Created directory '/home/yourusername/.ssh'.
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /home/yourusername/.ssh/id_ed25519
-Your public key has been saved in /home/yourusername/.ssh/id_ed25519.pub
-The key fingerprint is:
-SHA256:opMi+Jtjau26rE8pbgULmR4gI4SHnkxFV0dZVz1HO2g YourGitEmail
-The key's randomart image is:
-+--[ED25519 256]--+
-|oooo ....oo. ..oo|
-|B.. .   ..  . ..+|
-|B=.          E oo|
-|+*          .   .|
-|o +   . S        |
-|.o o o .         |
-|+ * +            |
-|oBo+ .           |
-|*OO+             |
-+----[SHA256]-----+
-```
+![](./figures/git%20config.gif)
 
 Now you need to get your public key you have generated and add to GitHub.
 
+![](./figures/ssh%20keygen.gif)
 ```sh
 myfirstrepository on  dev
 ❯ cat ~/.ssh/id_ed25519.pub
@@ -287,17 +257,18 @@ The copy the output from `ssh-ed25519 ... YourGitEmail` and follow the screensho
 
 <div align=center>
 
-1. ![](./figures/step6-4.png)
-2. ![](./figures/step6-5.png)
-3. ![](./figures/step6-6.png)
-4. ![](./figures/step6-7.png)
+![](./figures/step6-4.png)
+![](./figures/step6-5.png)
+![](./figures/step6-6.png)
+![](./figures/step6-7.png)
+
 </div>
 
 Once completed, go back to the terminal and lets check for a connection:
 
-```sh
-❯ ssh git@github.com
-```
+![](./figures/ssh%20git%20auth.gif)
+
+You may see a similar output below, ensure you write `yes`...
 
 ```sh
 The authenticity of host 'github.com (140.82.121.4)' can't be established.
