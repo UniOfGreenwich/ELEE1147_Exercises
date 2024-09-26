@@ -285,7 +285,12 @@ Connection to github.com closed.
 ```
 >**Note:**
 >
->> You only have do this once per machine.
+>> - You only have do this once per machine.
+>> - If you see the following: 
+>>    ![](./figures/nosshdir.png)
+>> - Then run the following command:
+>>    - `mkdir ~/.ssh`
+>> - Then repeat the `ssh-keygen.exe ...` command
 
 
 Now that is done, we can actually push our work to the cloud. 
