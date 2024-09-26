@@ -13,6 +13,7 @@ We will be doing this lab inconjuction with the C lecture. Key concepts will be 
     ```
     >**Note:**
     >> - This collection of build tools are from [https://github.com/skeeto/w64devkit/releases](https://github.com/skeeto/w64devkit/releases)
+    >> - and only for our machines in Nelson 128 and Nelson 108, you can download and install using the release and then do the export above.
 
 - Then source the `~/.bashrc` or use the alias we created last time `refresh`
 
