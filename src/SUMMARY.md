@@ -11,16 +11,16 @@
 # C
 
 - [Learning C](Learning_C/Learning_C.md)
-- [Header Files, Guards, and Macros]()
-- [Bitwise Operations]()
-- [Arithmetic Operations]()
+- [Header Files, Guards, and Macros](HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.md)
+- [Bitwise Operations](BitwiseOperations/BitwiseOperations.md)
+- [Arithmetic Operations](ArithmeticOperations/ArithmeticOperations.md)
 - [Recursion]()
 -------------------------------------
 
-- [Pointers and Addressing]()
-- [Structs and Unions]()
-- [Streams]()
-- [Algorithms]()
+- [Pointers and Addressing](PointersAndAddressing/PointersAndAddressing.md)
+- [Structs and Unions](UnionsAndStructs/UnionsAndStructs.md)
+- [Streams](Streams/Streams.md)
+- [Algorithms](Algorithms/Algorithms.md)
 
 -----
 
