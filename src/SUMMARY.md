@@ -10,20 +10,27 @@
 
 # C
 
-- [Learning C]()
-- [Bitewise Operations]()
-- [Arithmetic Operations]()
+- [Learning C](Learning_C/Learning_C.md)
+- [Header Files, Guards, and Macros](HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.md)
+- [Bitwise Operations](BitwiseOperations/BitwiseOperations.md)
+- [Arithmetic Operations](ArithmeticOperations/ArithmeticOperations.md)
 - [Recursion]()
 -------------------------------------
-- [Header Files, Guards, and Macros]()
-- [Pointers and Addressing]()
-- [Structs and Unions]()
-- [Streams]()
-- [Algorithms]()
+
+- [Pointers and Addressing](PointersAndAddressing/PointersAndAddressing.md)
+- [Structs and Unions](UnionsAndStructs/UnionsAndStructs.md)
+- [Streams](Streams/Streams.md)
+- [Algorithms](Algorithms/Algorithms.md)
 
 -----
 
 # Python
+
+- [Learning Python]()
+- [Importing Modules]()
+- [Bitwise Operations]()
+- [Arithmetic Operations]()
+- [Data Structures]()
 
 ------
 
