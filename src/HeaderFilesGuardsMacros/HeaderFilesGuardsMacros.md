@@ -29,7 +29,7 @@ By using header files, we can:
 >>
 >> A header file is a file containing declarations and macro definitions that can be shared between multiple source files. Commonly used header files, such as `stdio.h`, `stdlib.h`, and `math.h`, provide essential functions and constants.
 
-1. Open a new project and call it something meaningful like `HeadersLab`.
+1. Open visual studio code and open an existing folder or make a new one and call it something meaningful like `HeadersLab`.
    
 2. Create a new header file in the header folder of the project view as seen below, call it, `myheader.h`
 
@@ -127,113 +127,9 @@ By using header files, we can:
     **Output:**
     <div align=center>
 
-    ![](./figures/step3.png)
+    ![](./figures/myheader.gif)
 
     </div>
-
-9. The guard is important in the header file because during the compiling process their should only be one instance on the header. 
-    - To demonstrate this, create remove the guard block from `myheader.h`. 
-    - Then create a new file called `otherfile.c` and  include the `myheader.h` at the top of the script
-  
-    ![](./figures/step4.png) <!--Image of noguard.h-->
-
-10. Run the code and you should see....
-
-
-    ![](./figures/step5.png) <!--Image of having no guard error-->
-
-    This is because: 
-
-    - **First Inclusion:**
-        - `main.c` includes `myheader.h`.
-        - The preprocessor replaces the `#include "myheader.h"` with the content of `myheader.h`.
-        - Declarations in `myheader.h` become part of `main.c`.
-
-        ```md
-        main.c:
-        -----------
-        #include "myheader.h"
-        -----------
-
-        myheader.h:
-        -----------
-        void greet();
-        int add(int a, int b);
-        -----------
-        ```
-
-    - **Second Inclusion (without Header Guard):**
-    - Another file, say `otherfile.c`, also includes `myheader.h`.
-    - The preprocessor replaces the `#include "myheader.h"` with the content of `myheader.h`.
-    - Declarations in `myheader.h` become part of `otherfile.c`.
-    
-        ```md
-        otherfile.c:
-        -----------
-        #include "myheader.h"
-        -----------
-
-        myheader.h:
-        -----------
-        void greet();
-        int add(int a, int b);
-        -----------
-        ```
-
-    - **Combined Result (Compilation):**
-    - Now, if both `main.c` and `otherfile.c` are compiled together, the compiler sees duplicate declarations for functions in `myheader.h`.
-    - This leads to compilation errors due to redefinition.
-    - The diagram below illustrates the problem:
-
-
-        <div align=center>
-
-        ```
-            main.c                    otherfile.c
-        |                            |
-        v                            v
-        --------------------------------------------------
-        | #include "myheader.h" | #include "myheader.h"  |
-        | void greet();         | void greet();          |
-        | int add(int a, int b);| int add(int a, int b); |
-        --------------------------------------------------
-        ```
-
-        </div>
-
-    - Solution...
-    - Introducing a header guard resolves this issue. Here's how the modified `myheader.h` with a header guard looks:
-
-        ```c
-        // myheader.h
-        #ifndef MYHEADER_H
-        #define MYHEADER_H
-
-        // Function declarations
-        void greet();
-        int add(int a, int b);
-
-        #endif // MYHEADER_H
-        ```
-
-        - The diagram shows that after the inclusion in both `main.c` and `otherfile.c` the `#ifndef` catches the second inclusion in `othefile.c` so it is ignored:
-
-        ```
-            main.c                     otherfile.c
-                |                            |
-                v                            v
-        -----------------------------------------------------------
-        |#include "myheader.h" | #include "myheader.h"            |
-        |#ifndef MYHEADER_H    | (Already defined, skips content) |
-        |#define MYHEADER_H    |                                  |
-        |void greet();         |                                  |
-        |int add(int a, int b);|                                  |
-        |#endif // MYHEADER_H  |                                  |
-        -----------------------------------------------------------
-        ```
-
-11. Add the guard again to `myheader.h`. 
-
 
 ------------------------------
 ------------------------------
@@ -249,12 +145,12 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
 >**Note:**
 >> The `#include` directive is used to include the contents of a file in another file. The inclusion happens during the preprocessing phase, before the actual compilation. It's used to include header files that contain declarations, macro definitions, and other necessary information so it is not a macro itself.
 
-12. Let's modify our current `HeaderLab.c` file to includes some macros. after the `#include` directives and the macro `#define PI 3.14159`
+9. Let's modify our current `HeaderLab.c` file to includes some macros. after the `#include` directives and the macro `#define PI 3.14159`
 
 >**Note:**
 >> Macros variables/functions names follow a UPPERCASE name convention. 
 
-13. Inside `main()` use `printf()` to output PI to the terminal. 
+10. Inside `main()` use `printf()` to output PI to the terminal. 
 
     ```c
     #include "myheader.h"
@@ -272,30 +168,30 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
     }
     ```
 
-14. Run and you should see the following output:
+2.  Run and you should see the following output:
 
     **Output**:
 
     ![](./figures/step6.PNG) <!--Output of PI-->
 
-15. Continuing, define a second macro as function that computes the square of a number:
+3.  Continuing, define a second macro as function that computes the square of a number:
     ```c
     #define SQUARE(x) ((x) * (x))
     ```
     This function only use 4 Byte values, so anything larger than a `int` would not work. 
 
-16. Inside `main()` call the macro defined function SQAURE inside a printf statement, where the statement outputs the result of the SQUARE and the number being squared:
+4.  Inside `main()` call the macro defined function SQAURE inside a printf statement, where the statement outputs the result of the SQUARE and the number being squared:
 
     ```c
     int num = 5;
     printf("The square of %d is: %d\n", num, SQUARE(num));
     ```
 
-17.  Run the program and you should see the following:
+5.   Run the program and you should see the following:
 
      ![](./figures/step7.png) <!--Output of programming runnning-->
 
-18. Laslty we are going to look a very common marco useage implementing debugging. Reproduce the following at the top of the file,above the `#include` directive:
+6.  Laslty we are going to look a very common marco useage implementing debugging. Reproduce the following at the top of the file,above the `#include` directive:
 
     ```c
     // Example of conditional compilation macros
@@ -309,7 +205,7 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
     ...
     ```
 
-19. `Inside main()` place this `DEBUG_PRINT("This is a debug message");` :
+7.  `Inside main()` place this `DEBUG_PRINT("This is a debug message");` :
     ```c
     int main() {
 
@@ -321,11 +217,11 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
     DEBUG_PRINT("This is a debug message");
     ...
     ```
-20. If you run this program the you should see the following output:
+8.  If you run this program the you should see the following output:
 
     ![](./figures/step8.png)
 
-21. Remove the macro `DEBUG_MODE` and run the program again.
+9.  Remove the macro `DEBUG_MODE` and run the program again.
 
     <details>
     <summay></summary>
