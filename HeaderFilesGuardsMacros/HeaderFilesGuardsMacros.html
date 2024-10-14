@@ -201,7 +201,7 @@
 </blockquote>
 <ol>
 <li>
-<p>Open a new project and call it something meaningful like <code>HeadersLab</code>.</p>
+<p>Open visual studio code and open an existing folder or make a new one and call it something meaningful like <code>HeadersLab</code>.</p>
 </li>
 <li>
 <p>Create a new header file in the header folder of the project view as seen below, call it, <code>myheader.h</code></p>
@@ -292,122 +292,8 @@ int main() {
 <p>Run the program and you should recieve the following:</p>
 <p><strong>Output:</strong></p>
  <div align=center>
-<p><img src="./figures/step3.png" alt="" /></p>
+<p><img src="./figures/myheader.gif" alt="" /></p>
  </div>
-</li>
-<li>
-<p>The guard is important in the header file because during the compiling process their should only be one instance on the header.</p>
-<ul>
-<li>To demonstrate this, create remove the guard block from <code>myheader.h</code>.</li>
-<li>Then create a new file called <code>otherfile.c</code> and  include the <code>myheader.h</code> at the top of the script</li>
-</ul>
-<p><img src="./figures/step4.png" alt="" /> <!--Image of noguard.h--></p>
-</li>
-<li>
-<p>Run the code and you should see....</p>
-<p><img src="./figures/step5.png" alt="" /> <!--Image of having no guard error--></p>
-<p>This is because:</p>
-<ul>
-<li>
-<p><strong>First Inclusion:</strong></p>
-<ul>
-<li><code>main.c</code> includes <code>myheader.h</code>.</li>
-<li>The preprocessor replaces the <code>#include "myheader.h"</code> with the content of <code>myheader.h</code>.</li>
-<li>Declarations in <code>myheader.h</code> become part of <code>main.c</code>.</li>
-</ul>
-<pre><code class="language-md">main.c:
------------
-#include "myheader.h"
------------
-
-myheader.h:
------------
-void greet();
-int add(int a, int b);
------------
-</code></pre>
-</li>
-<li>
-<p><strong>Second Inclusion (without Header Guard):</strong></p>
-</li>
-<li>
-<p>Another file, say <code>otherfile.c</code>, also includes <code>myheader.h</code>.</p>
-</li>
-<li>
-<p>The preprocessor replaces the <code>#include "myheader.h"</code> with the content of <code>myheader.h</code>.</p>
-</li>
-<li>
-<p>Declarations in <code>myheader.h</code> become part of <code>otherfile.c</code>.</p>
-<pre><code class="language-md">otherfile.c:
------------
-#include "myheader.h"
------------
-
-myheader.h:
------------
-void greet();
-int add(int a, int b);
------------
-</code></pre>
-</li>
-<li>
-<p><strong>Combined Result (Compilation):</strong></p>
-</li>
-<li>
-<p>Now, if both <code>main.c</code> and <code>otherfile.c</code> are compiled together, the compiler sees duplicate declarations for functions in <code>myheader.h</code>.</p>
-</li>
-<li>
-<p>This leads to compilation errors due to redefinition.</p>
-</li>
-<li>
-<p>The diagram below illustrates the problem:</p>
-  <div align=center>
-<pre><code>    main.c                    otherfile.c
-|                            |
-v                            v
---------------------------------------------------
-| #include "myheader.h" | #include "myheader.h"  |
-| void greet();         | void greet();          |
-| int add(int a, int b);| int add(int a, int b); |
---------------------------------------------------
-</code></pre>
-  </div>
-</li>
-<li>
-<p>Solution...</p>
-</li>
-<li>
-<p>Introducing a header guard resolves this issue. Here's how the modified <code>myheader.h</code> with a header guard looks:</p>
-<pre><code class="language-c">// myheader.h
-#ifndef MYHEADER_H
-#define MYHEADER_H
-
-// Function declarations
-void greet();
-int add(int a, int b);
-
-#endif // MYHEADER_H
-</code></pre>
-<ul>
-<li>The diagram shows that after the inclusion in both <code>main.c</code> and <code>otherfile.c</code> the <code>#ifndef</code> catches the second inclusion in <code>othefile.c</code> so it is ignored:</li>
-</ul>
-<pre><code>    main.c                     otherfile.c
-        |                            |
-        v                            v
------------------------------------------------------------
-|#include "myheader.h" | #include "myheader.h"            |
-|#ifndef MYHEADER_H    | (Already defined, skips content) |
-|#define MYHEADER_H    |                                  |
-|void greet();         |                                  |
-|int add(int a, int b);|                                  |
-|#endif // MYHEADER_H  |                                  |
------------------------------------------------------------
-</code></pre>
-</li>
-</ul>
-</li>
-<li>
-<p>Add the guard again to <code>myheader.h</code>.</p>
 </li>
 </ol>
 <hr />
@@ -422,7 +308,7 @@ int add(int a, int b);
 <p>The <code>#include</code> directive is used to include the contents of a file in another file. The inclusion happens during the preprocessing phase, before the actual compilation. It's used to include header files that contain declarations, macro definitions, and other necessary information so it is not a macro itself.</p>
 </blockquote>
 </blockquote>
-<ol start="12">
+<ol start="9">
 <li>Let's modify our current <code>HeaderLab.c</code> file to includes some macros. after the <code>#include</code> directives and the macro <code>#define PI 3.14159</code></li>
 </ol>
 <blockquote>
@@ -431,7 +317,7 @@ int add(int a, int b);
 <p>Macros variables/functions names follow a UPPERCASE name convention.</p>
 </blockquote>
 </blockquote>
-<ol start="13">
+<ol start="10">
 <li>
 <p>Inside <code>main()</code> use <code>printf()</code> to output PI to the terminal.</p>
 <pre><code class="language-c">#include "myheader.h"
