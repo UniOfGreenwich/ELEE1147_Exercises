@@ -27,10 +27,10 @@
 # Python
 
 - [Learning Python]()
-- [Importing Modules]()
-- [Bitwise Operations]()
-- [Arithmetic Operations]()
 - [Data Structures]()
+- [Importing Modules]()
+- [Object Orientated Programming]()
+
 
 ------
 

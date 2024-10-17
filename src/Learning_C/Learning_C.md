@@ -30,7 +30,7 @@ We will be doing this lab inconjuction with the C lecture. Key concepts will be 
     ![](figures/gccandtools.png)
 
 So let's make our first program.
-## 1. Create a Project in Visual Studio:
+## 1. Create a Project in Visual Studio Code:
 
 - Open Visual Studio Code and create a new folder called `Learning_C`..
 - Create a new file named `helloworld.c` inside the `Learning_C` directory.
