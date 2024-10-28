@@ -1,8 +1,8 @@
 # Lab 7: Unions and Structs
 
- - You need to open a new Visual Studio C++ Console Application, give it a meaningful name. 
- - Remember to modify the file extension to `projectName.c` from `projectName.cpp`
- - Ensure the `projectName.c` file has the following structure:
+ - You need to open a new Visual Studio Code, give it a meaningful name. 
+ - Create a new file called `unionsandstructs.exe` 
+ - modify the contents to look like this:
  - ```c
    #include <stdio.h>
 
