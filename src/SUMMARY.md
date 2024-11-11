@@ -26,7 +26,7 @@
 
 # Python
 
-- [Learning Python]()
+- [Learning Python](./Learning_Python/Learning_Python.md)
 - [Data Structures]()
 - [Importing Modules]()
 - [Object Orientated Programming]()
