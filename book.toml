@@ -5,6 +5,14 @@ multilingual = false
 src = "src"
 title = "Programming for Engineers"
 
+[preprocessor.pagetoc]
+[output.html]
+mathjax-support = true
+git-repository-url = "https://github.com/uniofgreenwich/ELEE1147_Exercises"
+edit-url-template = "https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/{path}"
+additional-css = ["theme/pagetoc.css"]
+additional-js  = ["theme/pagetoc.js"]
+
 [output.html.search]
 limit-results = 20
 use-boolean-and = true
@@ -16,10 +24,6 @@ heading-split-level = 2
 
 [output.html.fold]
 enable = true
-
-
-[output.html]
-mathjax-support = true
 
 [output.html.print]
 enable = false

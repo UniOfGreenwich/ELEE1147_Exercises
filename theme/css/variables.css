@@ -1,0 +1,704 @@
+
+/* Globals */
+
+:root {
+    --sidebar-width: 300px;
+    --page-padding: 10px;
+    --content-max-width:800px; /*750px;*/
+    --menu-bar-height: 50px;
+    --mono-font: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace;
+    --code-font-size: 0.875em /* please adjust the ace font size accordingly in editor.js */
+}
+
+/* Themes */
+
+.ayu {
+    --bg: hsl(210, 25%, 8%);
+    --fg: #c5c5c5;
+
+    --sidebar-bg: #14191f;
+    --sidebar-fg: #c8c9db;
+    --sidebar-non-existant: #5c6773;
+    --sidebar-active: #ffb454;
+    --sidebar-spacer: #2d334f;
+
+    --scrollbar: var(--sidebar-fg);
+
+    --icons: #737480;
+    --icons-hover: #b7b9cc;
+
+    --links: #0096cf;
+
+    --inline-code-color: #ffb454;
+
+    --theme-popup-bg: #14191f;
+    --theme-popup-border: #5c6773;
+    --theme-hover: #191f26;
+
+    --quote-bg: hsl(226, 15%, 17%);
+    --quote-border: hsl(226, 15%, 22%);
+
+    --warning-border: #ff8e00;
+
+    --table-border-color: hsl(210, 25%, 13%);
+    --table-header-bg: hsl(210, 25%, 28%);
+    --table-alternate-bg: hsl(210, 25%, 11%);
+
+    --searchbar-border-color: #848484;
+    --searchbar-bg: #424242;
+    --searchbar-fg: #fff;
+    --searchbar-shadow-color: #d4c89f;
+    --searchresults-header-fg: #666;
+    --searchresults-border-color: #888;
+    --searchresults-li-bg: #252932;
+    --search-mark-bg: #e3b171;
+
+    --color-scheme: dark;
+}
+
+.coal {
+    --bg: hsl(200, 7%, 8%);
+    --fg: #98a3ad;
+
+    --sidebar-bg: #292c2f;
+    --sidebar-fg: #a1adb8;
+    --sidebar-non-existant: #505254;
+    --sidebar-active: #3473ad;
+    --sidebar-spacer: #393939;
+
+    --scrollbar: var(--sidebar-fg);
+
+    --icons: #43484d;
+    --icons-hover: #b3c0cc;
+
+    --links: #2b79a2;
+
+    --inline-code-color: #c5c8c6;
+
+    --theme-popup-bg: #141617;
+    --theme-popup-border: #43484d;
+    --theme-hover: #1f2124;
+
+    --quote-bg: hsl(234, 21%, 18%);
+    --quote-border: hsl(234, 21%, 23%);
+
+    --warning-border: #ff8e00;
+
+    --table-border-color: hsl(200, 7%, 13%);
+    --table-header-bg: hsl(200, 7%, 28%);
+    --table-alternate-bg: hsl(200, 7%, 11%);
+
+    --searchbar-border-color: #aaa;
+    --searchbar-bg: #b7b7b7;
+    --searchbar-fg: #000;
+    --searchbar-shadow-color: #aaa;
+    --searchresults-header-fg: #666;
+    --searchresults-border-color: #98a3ad;
+    --searchresults-li-bg: #2b2b2f;
+    --search-mark-bg: #355c7d;
+
+    --color-scheme: dark;
+}
+
+.light {
+    --bg: hsl(0, 0%, 100%);
+    --fg: hsl(0, 0%, 0%);
+
+    --sidebar-bg: #fafafa;
+    --sidebar-fg: hsl(0, 0%, 0%);
+    --sidebar-non-existant: #aaaaaa;
+    --sidebar-active: #1f1fff;
+    --sidebar-spacer: #f4f4f4;
+
+    --scrollbar: #8F8F8F;
+
+    --icons: #747474;
+    --icons-hover: #000000;
+
+    --links: #20609f;
+
+    --inline-code-color: #301900;
+
+    --theme-popup-bg: #fafafa;
+    --theme-popup-border: #cccccc;
+    --theme-hover: #e6e6e6;
+
+    --quote-bg: hsl(197, 37%, 96%);
+    --quote-border: hsl(197, 37%, 91%);
+
+    --warning-border: #ff8e00;
+
+    --table-border-color: hsl(0, 0%, 95%);
+    --table-header-bg: hsl(0, 0%, 80%);
+    --table-alternate-bg: hsl(0, 0%, 97%);
+
+    --searchbar-border-color: #aaa;
+    --searchbar-bg: #fafafa;
+    --searchbar-fg: #000;
+    --searchbar-shadow-color: #aaa;
+    --searchresults-header-fg: #666;
+    --searchresults-border-color: #888;
+    --searchresults-li-bg: #e4f2fe;
+    --search-mark-bg: #a2cff5;
+
+    --color-scheme: light;
+}
+
+.navy {
+    --bg: hsl(226, 23%, 11%);
+    --fg: #bcbdd0;
+
+    --sidebar-bg: #282d3f;
+    --sidebar-fg: #c8c9db;
+    --sidebar-non-existant: #505274;
+    --sidebar-active: #2b79a2;
+    --sidebar-spacer: #2d334f;
+
+    --scrollbar: var(--sidebar-fg);
+
+    --icons: #737480;
+    --icons-hover: #b7b9cc;
+
+    --links: #2b79a2;
+
+    --inline-code-color: #c5c8c6;
+
+    --theme-popup-bg: #161923;
+    --theme-popup-border: #737480;
+    --theme-hover: #282e40;
+
+    --quote-bg: hsl(226, 15%, 17%);
+    --quote-border: hsl(226, 15%, 22%);
+
+    --warning-border: #ff8e00;
+
+    --table-border-color: hsl(226, 23%, 16%);
+    --table-header-bg: hsl(226, 23%, 31%);
+    --table-alternate-bg: hsl(226, 23%, 14%);
+
+    --searchbar-border-color: #aaa;
+    --searchbar-bg: #aeaec6;
+    --searchbar-fg: #000;
+    --searchbar-shadow-color: #aaa;
+    --searchresults-header-fg: #5f5f71;
+    --searchresults-border-color: #5c5c68;
+    --searchresults-li-bg: #242430;
+    --search-mark-bg: #a2cff5;
+
+    --color-scheme: dark;
+}
+
+.rust {
+    --bg: hsl(60, 9%, 87%);
+    --fg: #262625;
+
+    --sidebar-bg: #3b2e2a;
+    --sidebar-fg: #c8c9db;
+    --sidebar-non-existant: #505254;
+    --sidebar-active: #e69f67;
+    --sidebar-spacer: #45373a;
+
+    --scrollbar: var(--sidebar-fg);
+
+    --icons: #737480;
+    --icons-hover: #262625;
+
+    --links: #2b79a2;
+
+    --inline-code-color: #6e6b5e;
+
+    --theme-popup-bg: #e1e1db;
+    --theme-popup-border: #b38f6b;
+    --theme-hover: #99908a;
+
+    --quote-bg: hsl(60, 5%, 75%);
+    --quote-border: hsl(60, 5%, 70%);
+
+    --warning-border: #ff8e00;
+
+    --table-border-color: hsl(60, 9%, 82%);
+    --table-header-bg: #b3a497;
+    --table-alternate-bg: hsl(60, 9%, 84%);
+
+    --searchbar-border-color: #aaa;
+    --searchbar-bg: #fafafa;
+    --searchbar-fg: #000;
+    --searchbar-shadow-color: #aaa;
+    --searchresults-header-fg: #666;
+    --searchresults-border-color: #888;
+    --searchresults-li-bg: #dec2a2;
+    --search-mark-bg: #e69f67;
+
+    --color-scheme: light;
+}
+
+.dracula {
+    /* Base and Surface colors for background and foreground */
+    --bg: #282a36; /* Default background */
+    --fg: #f8f8f2; /* Default text color */
+
+    /* Sidebar settings */
+    --sidebar-bg: #44475a; /* Sidebar background */
+    --sidebar-fg: #9b78dd; /* Sidebar text */
+    --sidebar-active: #ad49cc; /* Active item */
+    --sidebar-non-existant: #6272a4; /* Non-existent items */
+    --sidebar-spacer: #383a4a; /* Added for consistency */
+
+    --scrollbar: var(--sidebar-fg); /* Sidebar scrollbar color */
+
+    /* Icon settings */
+    --icons: #bd93f9; /* Icons */
+    --icons-hover: #ff79c6; /* Hovered icons */
+
+    /* Links and inline elements */
+    --links: #ad5add; /* Links */
+    --inline-code-color: #a850fa; /* Inline code */
+
+    /* Popup and theme-specific settings */
+    --theme-popup-bg: #282a36; /* Popup background */
+    --theme-popup-border: #44475a; /* Popup border */
+    --theme-hover: #21202e; /* Highlight low */
+
+    /* Blockquote settings */
+    --quote-bg: #44475a; /* Blockquote background */
+    --quote-border: #6272a4; /* Blockquote border */
+
+    /* Table settings */
+    --table-border-color: #6272a4; /* Table border */
+    --table-header-bg: #44475a; /* Table header background */
+    --table-alternate-bg: #383a4a; /* Alternate row background */
+
+    /* Search bar settings */
+    --searchbar-border-color: #6272a4; /* Search bar border */
+    --searchbar-bg: #282a36; /* Search bar background */
+    --searchbar-fg: #f8f8f2; /* Search bar text */
+    --searchbar-shadow-color: #ff79c6; /* Search bar shadow */
+
+    /* Search results settings */
+    --searchresults-header-fg: #f8f8f2; /* Search results header text */
+    --searchresults-border-color: #6272a4; /* Search results border */
+    --searchresults-li-bg: #44475a; /* Search result background */
+    --search-mark-bg: #8be9fd; /* Highlighted search term background */
+}
+
+/* Override Code Blocks for Rose Pink theme */
+.dracula .hljs {
+    background: #f4f0f8; /* Light pink background for contrast */
+    color: #350c3d; /* Darker rose color for text */
+}
+
+.dracula .hljs-section {
+    color: #863ab2; /* Rich rose color for section titles */
+}
+
+.pinkrose {
+    /* Base and Surface colors for background and foreground */
+    --bg: #1f1d2e; /* Surface color */
+    --fg: #e0def4; /* Text color */
+
+    /* Subtler sidebar to keep focus on the content */
+    --sidebar-bg: #191724; /* Base color */
+    --sidebar-fg: #908caa; /* Subtle color */
+
+    /* Additional color assignments from the palette */
+    --sidebar-non-existant: #524f67; /* Highlight High */
+    --sidebar-active: #eb6f92; /* Love */
+    --sidebar-spacer: #403d52; /* Highlight Med */
+
+    --scrollbar: var(--sidebar-fg);
+
+    --icons: #eb6f92; /* Pine */
+    --icons-hover: #ee6aee; /* Iris */
+
+    --links: #f6c177; /* Gold */
+
+    --inline-code-color: #ebbcba; /* Rose */
+
+    --theme-popup-bg: #26233a; /* Overlay */
+    --theme-popup-border: #6e6a86; /* Muted */
+    --theme-hover: #21202e; /* Highlight Low */
+
+    --quote-bg: #26233a; /* Overlay */
+    --quote-border: #403d52; /* Highlight Med */
+
+    --table-border-color: #524f67; /* Highlight High */
+    --table-header-bg: #403d52; /* Highlight Med */
+    --table-alternate-bg: #1f1d2e; /* Surface */
+
+    --searchbar-border-color: #6e6a86; /* Muted */
+    --searchbar-bg: #26233a; /* Overlay */
+    --searchbar-fg: #e0def4; /* Text */
+    --searchbar-shadow-color: #eb6f92; /* Love */
+    --searchresults-header-fg: #908caa; /* Subtle */
+    --searchresults-border-color: #524f67; /* Highlight High */
+    --searchresults-li-bg: #1f1d2e; /* Surface */
+    --search-mark-bg: #f6c177; /* Gold */
+}
+
+/* Override Code Blocks for Rose Pink theme */
+.pinkrose .hljs {
+    background: #fdebf6; /* Light pink background for contrast */
+    color: #b6485e; /* Darker rose color for text */
+}
+
+.pinkrose .hljs-section {
+    color: #b23a48; /* Rich rose color for section titles */
+}
+
+.kanagawa {
+    /* Using the Kanagawa color palette */
+    --bg: #1F1F28; /* sumiInk1 for Default background */
+    --fg: #DCD7BA; /* fujiWhite for Default foreground */
+
+    --sidebar-bg: #2A2A37; /* sumiInk2 for a subtler sidebar background */
+    --sidebar-fg: #C8C093; /* oldWhite for Dark foreground in sidebar */
+    
+    /* Other color assignments based on the palette */
+    --sidebar-non-existant: #54546D; /* sumiInk4 */
+    --sidebar-active: #FF9E3B; /* roninYellow for Diagnostic Warning */
+    --sidebar-spacer: #363646; /* sumiInk3 */
+
+    --scrollbar: var(--sidebar-fg);
+
+    --icons: #7E9CD8; /* #98BB6C;  springGreen for Strings */
+    --icons: #54546D; /* sumiInk4 for Darker foreground */
+    --icons-hover: #7E9CD8; /* crystalBlue for Functions and Titles */
+
+    --links: #7FB4CA; /* springBlue for Specials and builtin functions */
+
+    --inline-code-color: #E82424; /* samuraiRed for Diagnostic Error */
+
+    --theme-popup-bg: #223249; /* waveBlue1 for Popup background */
+    --theme-popup-border: #2D4F67; /* waveBlue2 for Popup selection background */
+    --theme-hover: #16161D; /* sumiInk0 for Dark background */
+
+    --quote-bg: #252535; /* winterBlue for Diff Line background */
+    --quote-border: #2B3328; /* winterGreen for Diff Add background */
+
+    --table-border-color: #49443C; /* winterYellow for Diff Change background */
+    --table-header-bg: #43242B; /* winterRed for Diff Deleted background */
+    --table-alternate-bg: #1F1F28; /* sumiInk1 */
+
+    --searchbar-border-color: #658594; /* dragonBlue for Diagnostic Hint */
+    --searchbar-bg: #6A9589; /* waveAqua1 for Diagnostic Info */
+    --searchbar-fg: #fff;
+    --searchbar-shadow-color: #d4c89f;
+    --searchresults-header-fg: #666;
+    --searchresults-border-color: #888;
+    --searchresults-li-bg: #2A2A37; /* sumiInk2 */
+    --search-mark-bg: #E6C384; /* carpYellow for Identifiers */
+}
+
+/* Override code blocks for Kanagawa theme */
+.kanagawa .hljs {
+    background: #2A2A37; /* sumiInk2 for a slightly lighter background */
+    color: #DCD7BA; /* fujiWhite for Default foreground */
+}
+
+.kanagawa .hljs-section {
+    color: #7E9CD8; /* crystalBlue for Functions and Titles */
+}
+
+/* This is made with love for my older daugher <3 */
+.tokyonight {
+    /* Tokyo Night color palette with more purple */
+    --bg: #202330; /* A darker background for main content */
+    --fg: #959cbd; /* Foreground color with a purple hue */
+
+    --sidebar-bg: #1B2232; /* Slightly lighter than --bg for the sidebar */
+    --sidebar-fg: #bdc7f0; /* Foreground color for the sidebar */
+
+    /* Enhancing link colors */
+    --links: #7a82da; /* More vibrant purple for links */
+    --links-hover: #a0a8e6; /* Lighter purple for hover state */
+
+    --sidebar-link-hover: #a0a8e6; /* Hover color for sidebar links */
+
+    /* Other color assignments based on the palette */
+    --sidebar-non-existant: #696d87; /* GitDecoration ignoredResourceForeground */
+    --sidebar-active: #7a82da; /* More vibrant purple for active elements */
+    --sidebar-spacer: #787c99; /* Inactive elements in activityBar */
+
+    --scrollbar: var(--sidebar-fg);
+
+    --icons: #959cbd; /* General icon color */
+    --icons-hover: #3d59a1; /* panelTitle activeBorder color for hover state */
+
+    --inline-code-color: #bdc7f0; /* Foreground color for inline code */
+
+    --theme-popup-bg: #1B2232; /* Similar to sidebar background */
+    --theme-popup-border: #787c99; /* Inactive elements in activityBar */
+    --theme-hover: #202330; /* Background color for hover states */
+
+    --quote-bg: #1B2232; /* Sidebar background for consistency */
+    --quote-border: #787c99; /* Inactive elements in activityBar */
+
+    --table-border-color: #1B2232; /* Sidebar background for consistency */
+    --table-header-bg: #202330; /* Main background color */
+    --table-alternate-bg: #1B2232; /* Sidebar background for alternate rows */
+
+    --searchbar-border-color: #787c99; /* Inactive elements in activityBar */
+    --searchbar-bg: #202330; /* Main background color */
+    --searchbar-fg: #bdc7f0; /* Foreground color */
+    --searchbar-shadow-color: #3d59a1; /* panelTitle activeBorder color */
+    --searchresults-header-fg: #959cbd; /* General foreground color */
+    --searchresults-border-color: #787c99; /* Inactive elements in activityBar */
+    --searchresults-li-bg: #1B2232; /* Sidebar background for list items */
+    --search-mark-bg: #bdc7f0; /* Foreground color for search highlights */
+}
+
+/* Override Code Blocks for Tokyo Night theme */
+.tokyonight .hljs {
+    background: #1B2232; /* A darker background, similar to sidebar-bg */
+    color: #bdc7f0; /* Foreground color used in sidebar */
+}
+
+.tokyonight .hljs-section {
+    color: #7a82da; /* More vibrant purple for titles and sections */
+}
+
+/* This is made with love for my wife, who was eager to have one after the kids both had one ;)  */
+.burgundy {
+    /* Set a unique base for the theme with a Burgundy accent */
+    --bg: #FFF8F0; /* Creamy white for a unique background */
+    --fg: #352839; /* Burgundy for primary text, making it the featured color */
+
+    /* Sidebar with a distinctive look and Burgundy highlights */
+    --sidebar-bg: #352839; /* Soft pinkish-white for sidebar background */
+    --sidebar-fg: #FFF0F8; /* Burgundy for sidebar text */
+
+    --sidebar-non-existant: #74475d; /* Soft lavender for non-existent items */
+    --sidebar-active: #db607a; /* A softer, lighter shade of Burgundy */
+    --sidebar-spacer: #FFFAFA; /* Very light pink for sidebar spacer */
+
+    --scrollbar: #B8A8B0; /* Muted lavender for scrollbar */
+
+    /* Icons and links with Burgundy as the key accent color */
+    --icons: #A08088; /* Soft brownish-pink for icons */
+    --icons-hover: #352839; /* Burgundy for hovered icons */
+
+    --links: #352839; /* Burgundy for links */
+
+    --inline-code-color: #352839; /* Burgundy for inline code */
+
+    /* Popups and quotes with a unique and gentle appearance */
+    --theme-popup-bg: #FFF8F0; /* Creamy white for popup background */
+    --theme-popup-border: #E0C0C8; /* Light rosy for popup borders */
+    --theme-hover: #FFF0F8; /* Soft pinkish-white for hover background */
+
+    --quote-bg: #FFF0F0; /* Very light pink for quote background */
+    --quote-border: #F0D0D8; /* Light pink for quote border */
+
+    /* Tables with a touch of Burgundy and complementary colors */
+    --table-border-color: #E8D0D8; /* Light rosy for table borders */
+    --table-header-bg: #FFF0F8; /* Soft pinkish-white for table header background */
+    --table-alternate-bg: #FFF8F0; /* Creamy white for alternate rows */
+
+    /* Search bar and results with a blend of theme colors */
+    --searchbar-border-color: #D8C0C8; /* Light rosy for search bar border */
+    --searchbar-bg: #FFF8F0; /* Creamy white for search bar background */
+    --searchbar-fg: #352839; /* Burgundy for search bar text */
+    --searchbar-shadow-color: #E0C0C8; /* Light rosy for search bar shadow */
+    --searchresults-header-fg: #A08088; /* Soft brownish-pink for search results header */
+    --searchresults-border-color: #C8B0B8; /* Muted pink for search results border */
+    --searchresults-li-bg: #FFF0F8; /* Soft pinkish-white for search results list item background */
+    --search-mark-bg: #FFE0E0; /* Very light pink for search mark background */
+}
+
+.burgundy .hljs {
+    background: #FFF0F8; /* A soft pinkish-white, in line with the theme */
+    color: #352839; /* Burgundy for the code text, ensuring readability */
+}
+
+.burgundy .hljs-section {
+    color: #A08088; /* A soft brownish-pink, for syntax highlighting */
+}
+
+.space {
+    --bg: #020305;
+    --fg: #ffffff;
+    --menu-bg: var(--bg);
+
+    --sidebar-bg: #080911;
+    --sidebar-fg: #c8c9db;
+    --sidebar-non-existant: #4a7289;
+    --sidebar-active: #86d8f5;
+    --sidebar-spacer: #00aaf0;
+
+    --scrollbar: var(--sidebar-bg);
+
+    --icons: var(--sidebar-spacer);
+    --icons-hover: #262625;
+
+    --links: #31aee9;
+
+    --code-bg: #191919;
+    --inline-code-color: #ebefe4;
+
+    --theme-popup-bg: var(--bg);
+    --theme-popup-border: #86d8f5;
+    --theme-hover: var(--sidebar-bg);
+
+    --quote-bg: hsl(218, 44%, 41%);
+    --quote-border: hsl(218, 44%, 45%);
+
+    --table-border-color: #0292cf;
+    --table-header-bg: var(--quote-bg);
+    --table-alternate-bg: transparent;
+
+    --searchbar-border-color: var(--icons);
+    --searchbar-bg: var(--sidebar-bg);
+    --searchbar-fg: var(--sidebar-fg);
+    --searchbar-shadow-color: #aaa;
+    --searchresults-header-fg: #91929e;
+    --searchresults-border-color: var(--icons);
+    --searchresults-li-bg: #dec2a2;
+    --search-mark-bg: #e69f67;
+}
+
+.space .hljs {
+    background: #ddefff; /* A soft blueish-white, in line with the theme */
+    color: #060f29; /* Darkblues for the code text, ensuring readability */
+}
+
+.space .hljs-section {
+    color: #a8d3fc; /* A soft blueish-white, for syntax highlighting */
+}
+
+.ecoFriend {
+    --bg: #c2e5cc;
+    --fg: #171717;
+    --menu-bg: var(--bg);
+
+
+    --sidebar-bg: #2B4F4F;
+    --sidebar-fg: #E0E0E0;
+    --sidebar-non-existant: #FFA500;
+    --sidebar-active: #00BFFF;
+    --sidebar-spacer: #008B8B;
+
+    --scrollbar: var(--sidebar-bg);
+
+    --icons: var(--sidebar-spacer);
+    --icons-hover: #884a31;
+
+    --links: #009bcb;
+
+    --code-bg: #2F4F4F;
+    --inline-code-color: #FFD700;
+
+    --theme-popup-bg: var(--bg);
+    --theme-popup-border: #00BFFF;
+    --theme-hover: var(--sidebar-bg);
+
+    --quote-bg: hsl(120, 60%, 77%);
+    --quote-border: hsl(120, 25%, 40%);
+
+    --table-border-color: hsl(120, 25%, 40%);
+    --table-header-bg: var(--quote-bg);
+    --table-alternate-bg: transparent;
+
+    --searchbar-border-color: var(--icons);
+    --searchbar-bg: var(--sidebar-bg);
+    --searchbar-fg: var(--sidebar-fg);
+    --searchbar-shadow-color: #aaa;
+    --searchresults-header-fg: #73bbc5;
+    --searchresults-border-color: var(--icons);
+    --searchresults-li-bg: #98FB98;
+    --search-mark-bg: #FFA07A;
+}
+
+.ecoFriend .hljs {
+    background: #e2fae9; /* A soft pinkish-white, in line with the theme */
+    color: #023d11; /* Green for the code text, ensuring readability */
+}
+
+.ecoFriend .hljs-section {
+    color: #a8fccb; /* A soft brownish-pink, for syntax highlighting */
+}
+
+.sustain {
+    --bg: #f5e9d5;
+    --fg: #171717;
+    --menu-bg: #f5e9d5;
+
+    --sidebar-bg: #2B4F4F;
+    --sidebar-fg: #E0E0E0;
+    --sidebar-non-existant: #FFA500;
+    --sidebar-active: #DEA361;
+    --sidebar-spacer: #008B8B;
+
+    --scrollbar: #2B4F4F;
+
+    --icons: #008B8B;
+    --icons-hover: #000000;
+
+    --links: #00bfff;
+
+    --code-bg: #2F4F4F;
+    --inline-code-color: #DEA361;
+
+    --theme-popup-bg: #f5e9d5;
+    --theme-popup-border: #DEA361;
+    --theme-hover: #2B4F4F;
+
+    --quote-bg: #599797;
+    --quote-border: hsl(120, 25%, 40%);
+
+    --table-border-color: #228B22;
+    --table-header-bg: hsl(120, 40%, 55%);
+    --table-alternate-bg: transparent;
+
+    --searchbar-border-color: #DEA361;
+    --searchbar-bg: #2B4F4F;
+    --searchbar-fg: #E0E0E0;
+    --searchbar-shadow-color: #aaa;
+    --searchresults-header-fg: #00BFFF;
+    --searchresults-border-color: #DEA361;
+    --searchresults-li-bg: #98FB98;
+    --search-mark-bg: #FFA07A;
+}
+
+@media (prefers-color-scheme: dark) {
+    .light.no-js {
+        --bg: hsl(200, 7%, 8%);
+        --fg: #98a3ad;
+
+        --sidebar-bg: #292c2f;
+        --sidebar-fg: #a1adb8;
+        --sidebar-non-existant: #505254;
+        --sidebar-active: #3473ad;
+        --sidebar-spacer: #393939;
+
+        --scrollbar: var(--sidebar-fg);
+
+        --icons: #43484d;
+        --icons-hover: #b3c0cc;
+
+        --links: #2b79a2;
+
+        --inline-code-color: #c5c8c6;
+
+        --theme-popup-bg: #141617;
+        --theme-popup-border: #43484d;
+        --theme-hover: #1f2124;
+
+        --quote-bg: hsl(234, 21%, 18%);
+        --quote-border: hsl(234, 21%, 23%);
+
+        --warning-border: #ff8e00;
+
+        --table-border-color: hsl(200, 7%, 13%);
+        --table-header-bg: hsl(200, 7%, 28%);
+        --table-alternate-bg: hsl(200, 7%, 11%);
+
+        --searchbar-border-color: #aaa;
+        --searchbar-bg: #b7b7b7;
+        --searchbar-fg: #000;
+        --searchbar-shadow-color: #aaa;
+        --searchresults-header-fg: #666;
+        --searchresults-border-color: #98a3ad;
+        --searchresults-li-bg: #2b2b2f;
+        --search-mark-bg: #355c7d;
+    }
+}
