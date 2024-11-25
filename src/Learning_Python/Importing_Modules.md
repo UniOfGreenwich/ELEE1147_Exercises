@@ -123,6 +123,15 @@ When you use `import` in Python, the interpreter searches for the module in the 
      pip install pandas==1.3.5
      pip install matplotlib==3.5.1
      ```
+     <details>
+     <summary>Do you have an error?</summary>
+
+     >**Note:**
+     >> - You should always check if the package version exists... you will likely have an error. 
+     >> - Check [https://pypi.org/](https://pypi.org/)
+   
+     </details>
+
 2. Open a new Python file named `exercise4.py`.
 3. From `pandas`, import only `DataFrame` and `Series` as `df` and `ser`.
 4. Print the installed versions of `pandas` and `matplotlib` to verify them.
