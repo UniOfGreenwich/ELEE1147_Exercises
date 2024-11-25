@@ -1,0 +1,681 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Importing Modules - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/src/Learning_Python/Importing_Modules.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="importing-modules"><a class="header" href="#importing-modules">Importing Modules</a></h1>
+<p>In this section we are looking at importing modules from global repository using <code>pip</code> and locally made libraries.</p>
+<h2 id="understanding-pip-and-importing-in-python"><a class="header" href="#understanding-pip-and-importing-in-python">Understanding Pip and Importing in Python</a></h2>
+<h3 id="what-is-pip"><a class="header" href="#what-is-pip">What is <code>pip</code>?</a></h3>
+<p><code>pip</code> is the package installer for Python. It allows you to install and manage additional libraries and dependencies that are not included in the Python standard library. To use <code>pip</code>, you typically run commands in the terminal.</p>
+<h3 id="installing-packages-with-pip"><a class="header" href="#installing-packages-with-pip">Installing Packages with <code>pip</code></a></h3>
+<p>To install a Python package using <code>pip</code>, you can use the following command in your terminal or command prompt:</p>
+<pre><code class="language-bash">pip install &lt;package_name&gt;
+</code></pre>
+<p>For example, to install the <code>requests</code> library, you would run:</p>
+<pre><code class="language-bash">pip install requests
+</code></pre>
+<p>To install a specific version of a package, use <code>==</code> followed by the version number, like so:</p>
+<pre><code class="language-bash">pip install pandas==1.3.5
+</code></pre>
+<h3 id="how-importing-works-in-python"><a class="header" href="#how-importing-works-in-python">How Importing Works in Python</a></h3>
+<p>When you use <code>import</code> in Python, the interpreter searches for the module in the following order:</p>
+<ol>
+<li><strong>Current Working Directory</strong>: It first checks if the module exists in the directory where the Python script is located.</li>
+<li><strong>Standard Library</strong>: Next, it checks if the module is part of Python's built-in standard library.</li>
+<li><strong>Installed Packages</strong>: Finally, it looks in the <code>site-packages</code> directory, where packages installed by <code>pip</code> are stored.</li>
+</ol>
+<h3 id="types-of-imports"><a class="header" href="#types-of-imports">Types of Imports</a></h3>
+<ol>
+<li><strong>Standard Imports</strong>: Import the entire module. For example:
+<pre><code class="language-python">import math
+</code></pre>
+</li>
+<li><strong>Selective Imports</strong>: Import specific functions or classes from a module. For example:
+<pre><code class="language-python">from math import sqrt, pi
+</code></pre>
+</li>
+<li><strong>Aliased Imports</strong>: Create a shorthand name for a module or function. For example:
+<pre><code class="language-python">import pandas as pd
+</code></pre>
+</li>
+</ol>
+<hr />
+<h2 id="exercise-1-built-in-modules"><a class="header" href="#exercise-1-built-in-modules">Exercise 1: Built-in Modules</a></h2>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>
+<p>Open a new Python file and name it <code>exercise1.py</code>.</p>
+</li>
+<li>
+<p>Import the <code>math</code> module.</p>
+</li>
+<li>
+<p>Use the <code>math.sqrt()</code> function to find the square root of 16.</p>
+</li>
+<li>
+<p>Use <code>math.pi</code> to print the value of Pi.</p>
+</li>
+<li>
+<p>Save and run the script.</p>
+</li>
+<li><details>
+<summary>Solution:</summary>
+<pre><code class="language-python">import math
+
+# Finding square root
+print("Square root of 16:", math.sqrt(16))
+
+# Printing the value of Pi
+print("Value of Pi:", math.pi)
+</code></pre>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="exercise-2-using-aliases-with-modules"><a class="header" href="#exercise-2-using-aliases-with-modules">Exercise 2: Using Aliases with Modules</a></h2>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>
+<p>Open a new Python file named <code>exercise2.py</code>.</p>
+</li>
+<li>
+<p>Import the <code>datetime</code> module as <code>dt</code>.</p>
+</li>
+<li>
+<p>Use <code>dt.datetime.now()</code> to print the current date and time.</p>
+</li>
+<li>
+<p>Save and run the script.</p>
+</li>
+<li><details>
+<summary>Solution:</summary>
+<pre><code class="language-python">import datetime as dt
+
+# Printing current date and time
+print("Current Date and Time:", dt.datetime.now())
+</code></pre>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="exercise-3-installing-and-using-external-modules"><a class="header" href="#exercise-3-installing-and-using-external-modules">Exercise 3: Installing and Using External Modules</a></h2>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>
+<p>Open a new Python file and name it <code>exercise3.py</code>.</p>
+</li>
+<li>
+<p>Use <code>pip</code> to install the <code>requests</code> module by running the following command in your terminal or command prompt:</p>
+<pre><code>pip install requests
+</code></pre>
+</li>
+<li>
+<p>In <code>exercise3.py</code>, import the <code>requests</code> module and use it to get data from a URL (for example, <code>https://api.github.com</code>). Print the status code of the response.</p>
+</li>
+<li>
+<p>Save and run the script.</p>
+</li>
+<li><details>
+<summary>Solution:</summary>
+<pre><code class="language-python"># Make sure you've run `pip install requests` in your terminal before running this code
+import requests
+
+response = requests.get("https://api.github.com")
+print("Status Code:", response.status_code)
+</code></pre>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="exercise-4-selective-imports-and-installing-specific-versions"><a class="header" href="#exercise-4-selective-imports-and-installing-specific-versions">Exercise 4: Selective Imports and Installing Specific Versions</a></h2>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>
+<p>Install <code>pandas</code> and <code>matplotlib</code> libraries with specific versions.</p>
+<ul>
+<li>In your terminal, run the following commands to install specific versions:
+<pre><code>pip install pandas==1.3.5
+pip install matplotlib==3.5.1
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Open a new Python file named <code>exercise4.py</code>.</p>
+</li>
+<li>
+<p>From <code>pandas</code>, import only <code>DataFrame</code> and <code>Series</code> as <code>df</code> and <code>ser</code>.</p>
+</li>
+<li>
+<p>Print the installed versions of <code>pandas</code> and <code>matplotlib</code> to verify them.</p>
+</li>
+<li>
+<p>Save and run the script.</p>
+</li>
+<li><details>
+<summary>Solution:</summary>
+<pre><code class="language-python">from pandas import DataFrame as df, Series as ser
+import matplotlib
+
+# Verifying and printing versions
+print("Pandas version:", df.__module__.split('.')[0])
+print("Matplotlib version:", matplotlib.__version__)
+</code></pre>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="exercise-5-basic-data-analysis-with-pandas"><a class="header" href="#exercise-5-basic-data-analysis-with-pandas">Exercise 5: Basic Data Analysis with Pandas</a></h2>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>
+<p>Create a new Python file and name it <code>exercise5.py</code>.</p>
+</li>
+<li>
+<p>Import <code>pandas</code> as <code>pd</code>.</p>
+</li>
+<li>
+<p>Create a small DataFrame using the following data:</p>
+<pre><code>data = {
+    "Name": ["Aisha", "Luis", "Chen", "Amara"],
+    "Age": [24, 27, 22, 32],
+    "City": ["New York", "San Francisco", "Beijing", "Nairobi"]
+}
+</code></pre>
+</li>
+<li>
+<p>Print the DataFrame and display summary statistics using <code>.describe()</code>.</p>
+</li>
+<li>
+<p>Save and run the script.</p>
+</li>
+<li><details>
+<summary>Solution:</summary>
+<pre><code class="language-python">import pandas as pd
+
+data = {
+    "Name": ["Aisha", "Luis", "Chen", "Amara"],
+    "Age": [24, 27, 22, 32],
+    "City": ["New York", "San Francisco", "Beijing", "Nairobi"]
+}
+
+df = pd.DataFrame(data)
+print("DataFrame:")
+print(df)
+
+print("\nSummary Statistics:")
+print(df.describe())
+</code></pre>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="exercise-6-data-visualization-with-matplotlib"><a class="header" href="#exercise-6-data-visualization-with-matplotlib">Exercise 6: Data Visualization with Matplotlib</a></h2>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>
+<p>Create a new Python file named <code>exercise6.py</code>.</p>
+</li>
+<li>
+<p>Import <code>matplotlib.pyplot</code> as <code>plt</code>.</p>
+</li>
+<li>
+<p>Use the following data to create a bar chart showing the ages of individuals:</p>
+<pre><code>names = ["Aisha", "Luis", "Chen", "Amara"]
+ages = [24, 27, 22, 32]
+</code></pre>
+</li>
+<li>
+<p>Label the axes as "Names" and "Ages" and add a title "Ages of Individuals".</p>
+</li>
+<li>
+<p>Display the plot using <code>plt.show()</code>.</p>
+</li>
+<li>
+<p>Save and run the script.</p>
+</li>
+<li><details>
+<summary>Solution:</summary>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+
+names = ["Aisha", "Luis", "Chen", "Amara"]
+ages = [24, 27, 22, 32]
+
+plt.bar(names, ages)
+plt.xlabel("Names")
+plt.ylabel("Ages")
+plt.title("Ages of Individuals")
+plt.show()
+</code></pre>
+ </details>
+</li>
+</ol>
+<hr />
+<h3 id="using-a-requirementstxt-file"><a class="header" href="#using-a-requirementstxt-file">Using a <code>requirements.txt</code> File</a></h3>
+<p>A <code>requirements.txt</code> file lists all the packages your project depends on, along with their versions. This file is helpful for sharing your project and ensuring others install the exact package versions you used.</p>
+<p>To create a <code>requirements.txt</code> file with the installed packages and their versions, run:</p>
+<pre><code class="language-bash">pip freeze &gt; requirements.txt
+</code></pre>
+<p>The command <code>pip freeze &gt; requirements.txt</code> is used to generate a <code>requirements.txt</code> file listing all currently installed Python packages along with their versions. Here’s how it works:</p>
+<ul>
+<li>
+<p><strong><code>pip freeze</code></strong>:</p>
+<ul>
+<li>This part of the command outputs a list of installed packages in your Python environment, with each package version pinned to the specific version currently installed.</li>
+<li>For example, the output might look like this:
+<pre><code>pandas==1.3.5
+requests==2.26.0
+matplotlib==3.5.1
+</code></pre>
+</li>
+<li>The <code>==</code> notation ensures that the exact versions are captured, which is crucial for creating a reproducible environment.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>&gt;</code> (Redirect Operator)</strong>:</p>
+<ul>
+<li>The <code>&gt;</code> symbol redirects the output of <code>pip freeze</code> to a file instead of displaying it in the terminal.</li>
+<li>Here, we use <code>&gt;</code> to create or overwrite a file called <code>requirements.txt</code> with the output from <code>pip freeze</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Creating <code>requirements.txt</code></strong>:</p>
+<ul>
+<li>The command <code>pip freeze &gt; requirements.txt</code> will save all installed packages and their versions into <code>requirements.txt</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="why-use-requirementstxt"><a class="header" href="#why-use-requirementstxt">Why Use <code>requirements.txt</code>?</a></h3>
+<ul>
+<li>
+<p><strong>Reproducibility</strong>: Using a <code>requirements.txt</code> file allows others to install the same package versions, ensuring the code runs the same way.</p>
+</li>
+<li>
+<p><strong>Easy Setup</strong>: To install all packages listed in a <code>requirements.txt</code> file, simply use:</p>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+</li>
+<li>
+<p>This will output a file listing all dependencies, which can then be installed with:</p>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+</li>
+</ul>
+<h3 id="exercise-7-creating-a-requirementstxt-file"><a class="header" href="#exercise-7-creating-a-requirementstxt-file">Exercise 7: Creating a <code>requirements.txt</code> File</a></h3>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>Install the <code>requests</code> and <code>pandas</code> packages if you haven't already, using:
+<pre><code class="language-bash">pip install requests pandas==1.3.5
+</code></pre>
+</li>
+<li>In your terminal, create a <code>requirements.txt</code> file with the following command:
+<pre><code class="language-bash">pip freeze &gt; requirements.txt
+</code></pre>
+</li>
+<li>Open the <code>requirements.txt</code> file to verify that <code>requests</code> and <code>pandas==1.3.5</code> are listed.</li>
+</ol>
+<p><strong>Explanation:</strong>
+The <code>requirements.txt</code> file should now include <code>requests</code> and <code>pandas==1.3.5</code>, specifying that exact version. This file allows others to replicate your environment with compatible package versions.</p>
+<hr />
+<h3 id="exercise-8-installing-from-a-requirementstxt-file"><a class="header" href="#exercise-8-installing-from-a-requirementstxt-file">Exercise 8: Installing from a <code>requirements.txt</code> File</a></h3>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>
+<p>To simulate using the <code>requirements.txt</code> file in a new environment, you can uninstall an installed package, like so:</p>
+<pre><code class="language-bash">pip uninstall requests
+</code></pre>
+</li>
+<li>
+<p>Use the <code>requirements.txt</code> file to reinstall the necessary packages by running:</p>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+</li>
+<li>
+<p>Verify the installation by running a script that imports <code>requests</code> and <code>pandas</code>, ensuring they are correctly installed.</p>
+</li>
+<li><details>
+<summary>Solution (test script):</summary>
+<pre><code class="language-python">import requests
+import pandas as pd
+
+print("Requests and Pandas installed and working!")
+</code></pre>
+<p>This setup ensures that anyone using your code can quickly set up a matching environment by using <code>pip install -r requirements.txt</code>.</p>
+</li>
+</ol>
+  </details>
+<hr />
+<h3 id="exercise-9-creating-a-data-science-program-using-a-provided-dataset-with-a-requirements-file"><a class="header" href="#exercise-9-creating-a-data-science-program-using-a-provided-dataset-with-a-requirements-file">Exercise 9: Creating a Data Science Program Using a Provided Dataset with a Requirements File</a></h3>
+<p>The following dataset includes 700 entries and 11 columns, covering various user behavior metrics such as "App Usage Time," "Screen On Time," "Battery Drain," "Data Usage," and demographic data ("Age" and "Gender").</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<ul>
+<li>Download the dataset here:
+<ul>
+<li><a href="./user_behavior_dataset.csv">user_behavior_dataset.csv</a></li>
+</ul>
+</li>
+<li>Documentation for each package used:
+<ul>
+<li>pandas: <a href="https://pandas.pydata.org/docs/">https://pandas.pydata.org/docs/</a></li>
+<li>numpy: <a href="https://numpy.org/doc/">https://numpy.org/doc/</a></li>
+<li>matplotlib: <a href="https://matplotlib.org/stable/index.html">https://matplotlib.org/stable/index.html</a></li>
+<li>seaborn: <a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<ul>
+<li>We are going to load this dataset and analyze key metrics like "App Usage Time (min/day)" and "Screen On Time (hours/day)".</li>
+<li>Group the data by "Operating System" and "User Behavior Class" to perform a comparative analysis.</li>
+<li>Visualize the distribution of "App Usage Time" by Batter Drain or behavior class using histograms or box plots.</li>
+</ul>
+<p>In this exercise, you’ll work with a provided dataset and specify dependencies using a <code>requirements.txt</code> file for easy environment setup.</p>
+<p><strong>Instructions:</strong></p>
+<ol>
+<li>
+<p><strong>Create a <code>requirements.txt</code> file</strong>: Open your terminal in the project directory and use the following command to specify versions and create <code>requirements.txt</code>:</p>
+<pre><code>echo "pandas==1.3.5" &gt;&gt; requirements.txt
+echo "numpy==2.1.0" &gt;&gt; requirements.txt
+echo "matplotlib==3.5.1" &gt;&gt; requirements.txt
+echo "seaborn==0.11.2" &gt;&gt; requirements.txt
+</code></pre>
+</li>
+<li>
+<p><strong>Install from <code>requirements.txt</code></strong>: Once created, install dependencies directly from <code>requirements.txt</code> by running:</p>
+<pre><code>pip install -r requirements.txt
+</code></pre>
+</li>
+<li>
+<p><strong>Write the analysis program</strong>: In a Python file (<code>exercise9.py</code>), write a program that:</p>
+<ul>
+<li>Loads the dataset <code>user_behavior_dataset.csv</code>.</li>
+<li>Displays a summary of the dataset and calculates statistics on "App Usage Time (min/day)" and "Screen On Time (hours/day)".</li>
+<li>Compares "App Usage Time (min/day)" across "Gender" and visualizes the distribution using a box plot.</li>
+</ul>
+</li>
+<li><details>
+<summary>Example Code</summary>
+<pre><code class="language-python"># Import necessary libraries for data analysis and visualization
+import pandas as pd  # For data manipulation
+import numpy as np  # For numerical operations
+import matplotlib.pyplot as plt  # For plotting
+import seaborn as sns  # For enhanced data visualization
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox  # For annotations on plots (if needed)
+
+# Load the dataset
+data = pd.read_csv('./user_behavior_dataset.csv')
+
+# Display the first few rows of the dataset
+print(data.head())
+
+# Display the shape of the dataset (rows, columns)
+print("Dataset shape:", data.shape)
+
+# Show information about the dataset, including column types and non-null values
+data.info()
+
+# Display descriptive statistics for numeric columns
+print(data.describe())
+
+# Check for missing values in the dataset
+print("Missing values per column:\\n", data.isnull().sum())
+
+# Plot 1: Distribution of App Usage Time
+plt.figure(figsize=(10, 6))
+sns.histplot(data['App Usage Time (min/day)'], kde=True, color="blue")
+plt.title('Distribution of App Usage Time (min/day)')
+plt.xlabel('App Usage Time (min/day)')
+plt.ylabel('Frequency')
+
+# Plot 2: Battery Drain vs Data Usage by User Behavior Class
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='Battery Drain (mAh/day)', y='Data Usage (MB/day)', hue='User Behavior Class', data=data, palette='plasma')
+plt.title('Battery Drain vs Data Usage by User Behavior Class')
+plt.xlabel('Battery Drain (mAh/day)')
+plt.ylabel('Data Usage (MB/day)')
+plt.legend(title='User Behavior Class')
+
+# Plot 3: Distribution of Battery Drain for Android vs iOS
+plt.figure(figsize=(10, 6))
+sns.kdeplot(data=data, x='Battery Drain (mAh/day)', hue='Operating System', palette='coolwarm', fill=True)
+plt.title('Distribution of Battery Drain for Android vs iOS')
+plt.xlabel('Battery Drain (mAh/day)')
+plt.ylabel('Density')
+
+# Plot 4: Number of Apps Installed by User Behavior Class
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='User Behavior Class', y='Number of Apps Installed', data=data, palette='Set2')
+plt.title('Number of Apps Installed by User Behavior Class')
+plt.xlabel('User Behavior Class')
+plt.ylabel('Number of Apps Installed')
+
+# Plot 5: Pairplot of selected behavioral metrics
+sns.pairplot(data[['App Usage Time (min/day)', 'Screen On Time (hours/day)', 'Battery Drain (mAh/day)', 'Data Usage (MB/day)', 'User Behavior Class']], hue='User Behavior Class', palette='husl')
+
+# Display all plots
+plt.show()
+</code></pre>
+ </details>
+</li>
+<li><details>
+<summary>Example of running program:</summary>
+<p><img src="./figures/py_data_example.gif" alt="" /></p>
+ </details></li>
+</ol>
+
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Learning_Python/DataStructures.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../myFirstRepository/myFirstRepository.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Learning_Python/DataStructures.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../myFirstRepository/myFirstRepository.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
