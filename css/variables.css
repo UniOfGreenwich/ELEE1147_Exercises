@@ -239,8 +239,8 @@
 
     /* Sidebar settings */
     --sidebar-bg: #44475a; /* Sidebar background */
-    --sidebar-fg: #9b78dd; /* Sidebar text */
-    --sidebar-active: #ad49cc; /* Active item */
+    --sidebar-fg: #cab1f8; /* Sidebar text */
+    --sidebar-active: #af67f3; /* Active item */
     --sidebar-non-existant: #6272a4; /* Non-existent items */
     --sidebar-spacer: #383a4a; /* Added for consistency */
 
@@ -477,7 +477,7 @@
     --icons: #A08088; /* Soft brownish-pink for icons */
     --icons-hover: #352839; /* Burgundy for hovered icons */
 
-    --links: #352839; /* Burgundy for links */
+    --links: #83658b; /* Burgundy for links */
 
     --inline-code-color: #352839; /* Burgundy for inline code */
 
@@ -573,7 +573,7 @@
 
     --sidebar-bg: #2B4F4F;
     --sidebar-fg: #E0E0E0;
-    --sidebar-non-existant: #FFA500;
+    --sidebar-non-existant: #a76d02;
     --sidebar-active: #00BFFF;
     --sidebar-spacer: #008B8B;
 
@@ -624,8 +624,8 @@
 
     --sidebar-bg: #2B4F4F;
     --sidebar-fg: #E0E0E0;
-    --sidebar-non-existant: #FFA500;
-    --sidebar-active: #DEA361;
+    --sidebar-non-existant: #DEA361;
+    --sidebar-active: #FFA500;
     --sidebar-spacer: #008B8B;
 
     --scrollbar: #2B4F4F;
@@ -633,17 +633,17 @@
     --icons: #008B8B;
     --icons-hover: #000000;
 
-    --links: #00bfff;
+    --links: #00BFFF;
 
     --code-bg: #2F4F4F;
-    --inline-code-color: #DEA361;
+    --inline-code-color: #FFA500;
 
     --theme-popup-bg: #f5e9d5;
     --theme-popup-border: #DEA361;
     --theme-hover: #2B4F4F;
 
-    --quote-bg: #599797;
-    --quote-border: hsl(120, 25%, 40%);
+    --quote-bg: #4a8686;
+    --quote-border: #2B4F4F;
 
     --table-border-color: #228B22;
     --table-header-bg: hsl(120, 40%, 55%);
