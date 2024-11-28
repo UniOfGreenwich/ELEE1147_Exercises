@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -165,7 +169,6 @@
                 <div id="content" class="content">
                     <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <h1 id="data-structures"><a class="header" href="#data-structures">Data Structures</a></h1>
-<p>Python Data Structures Exercises - Part 1</p>
 <p>This document provides a comprehensive overview of Python's main data structures: <strong>Lists, Tuples, Dictionaries,</strong> and <strong>Sets</strong>.</p>
 <hr />
 <h2 id="1-lists"><a class="header" href="#1-lists">1. Lists</a></h2>
@@ -177,7 +180,9 @@
 <li><strong>Sorting</strong>: Sort items using <code>sort()</code> for in-place sorting or <code>sorted()</code> to get a new sorted list.</li>
 </ul>
 <h3 id="example-working-with-lists"><a class="header" href="#example-working-with-lists">Example: Working with Lists</a></h3>
-<pre><code class="language-python"># Create a list of animals
+<pre><code class="language-admonish code">
+```python
+# Create a list of animals
 animals = ["lion", "tiger", "elephant", "giraffe"]
 print("Original list:", animals)
 
@@ -192,36 +197,28 @@ print("After removing:", animals)
 # Sort the list alphabetically
 animals.sort()
 print("Sorted list:", animals)
+```
+
 </code></pre>
 <h3 id="exercise-1-basic-list-operations"><a class="header" href="#exercise-1-basic-list-operations">Exercise 1: Basic List Operations</a></h3>
 <ol>
+<li>Create a list called <code>wildlife</code> with at least six animal names.</li>
+<li>Add two more animals to the list.</li>
+<li>Replace the third animal with <code>"penguin"</code>.</li>
+<li>Remove the last animal from the list.</li>
+<li>Print the list in alphabetical order without modifying the original list.</li>
+<li>Count how many times <code>"elephant"</code> appears in the list.</li>
 <li>
-<p>Create a list called <code>wildlife</code> with at least six animal names.</p>
-</li>
-<li>
-<p>Add two more animals to the list.</p>
-</li>
-<li>
-<p>Replace the third animal with <code>"penguin"</code>.</p>
-</li>
-<li>
-<p>Remove the last animal from the list.</p>
-</li>
-<li>
-<p>Print the list in alphabetical order without modifying the original list.</p>
-</li>
-<li>
-<p>Count how many times <code>"elephant"</code> appears in the list.</p>
-</li>
-<li><details><summary>Solution...</summary>
-<pre><code class="language-python">wildlife = ["lion", "tiger", "bear", "elephant", "zebra", "giraffe"]
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [5 lines]&#39;">
+```python
+wildlife = ["lion", "tiger", "bear", "elephant", "zebra", "giraffe"]
 wildlife.extend(["koala", "panda"])
 wildlife[2] = "penguin"
 wildlife.pop()
 print("Alphabetical order:", sorted(wildlife))
 print("Count of 'elephant':", wildlife.count("elephant"))
+```
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -234,7 +231,9 @@ print("Count of 'elephant':", wildlife.count("elephant"))
 <li><strong>Indexing and Slicing</strong>: Access elements like lists but without modification.</li>
 </ul>
 <h3 id="example-using-tuples"><a class="header" href="#example-using-tuples">Example: Using Tuples</a></h3>
-<pre><code class="language-python"># Create a tuple of bird species
+<pre><code class="language-admonish code">
+```python
+# Create a tuple of bird species
 birds = ("sparrow", "parrot", "eagle", "penguin")
 print("Bird species:", birds)
 
@@ -244,36 +243,32 @@ print("Last bird:", birds[-1])
 
 # Tuples are immutable, so the following line would raise an error:
 # birds[1] = "canary"
+```
+
 </code></pre>
 <h3 id="exercise-2-tuple-basics"><a class="header" href="#exercise-2-tuple-basics">Exercise 2: Tuple Basics</a></h3>
 <ol>
+<li>Create a tuple called <code>amphibians</code> with three amphibian species.</li>
+<li>Print the second amphibian in the tuple.</li>
+<li>Attempt to add a new amphibian to the tuple (note the error).</li>
+<li>Convert the tuple to a list, add a new amphibian, and convert it back to a tuple.</li>
 <li>
-<p>Create a tuple called <code>amphibians</code> with three amphibian species.</p>
-</li>
-<li>
-<p>Print the second amphibian in the tuple.</p>
-</li>
-<li>
-<p>Attempt to add a new amphibian to the tuple (note the error).</p>
-</li>
-<li>
-<p>Convert the tuple to a list, add a new amphibian, and convert it back to a tuple.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">amphibians = ("frog", "salamander", "newt")
-print("Second amphibian:", amphibians[1])
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [10 lines]&#39;">
+ ```python
+ amphibians = ("frog", "salamander", "newt")
+ print("Second amphibian:", amphibians[1])
 
-# Adding a new amphibian will raise an error as tuples are immutable
-# amphibians.append("toad")
+ # Adding a new amphibian will raise an error as tuples are immutable
+ # amphibians.append("toad")
 
-# Convert to list to add an item
-amphibians_list = list(amphibians)
-amphibians_list.append("toad")
-amphibians = tuple(amphibians_list)
-print("Updated tuple:", amphibians)
+ # Convert to list to add an item
+ amphibians_list = list(amphibians)
+ amphibians_list.append("toad")
+ amphibians = tuple(amphibians_list)
+ print("Updated tuple:", amphibians)
+ ```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -287,7 +282,9 @@ print("Updated tuple:", amphibians)
 <li><strong>Keys and Values</strong>: Access all keys with <code>keys()</code> and all values with <code>values()</code>.</li>
 </ul>
 <h3 id="example-animal-dictionary"><a class="header" href="#example-animal-dictionary">Example: Animal Dictionary</a></h3>
-<pre><code class="language-python"># Create a dictionary with animal categories
+<pre><code class="language-admonish code">
+```python
+# Create a dictionary with animal categories
 animal_classes = {
     "mammals": ["lion", "elephant", "tiger"],
     "birds": ["sparrow", "eagle", "parrot"],
@@ -305,27 +302,20 @@ print("Birds:", animal_classes["birds"])
 # Remove a category
 animal_classes.pop("reptiles")
 print("After removing reptiles:", animal_classes)
+```
+
 </code></pre>
 <h3 id="exercise-3-dictionary-basics"><a class="header" href="#exercise-3-dictionary-basics">Exercise 3: Dictionary Basics</a></h3>
 <ol>
+<li>Create a dictionary called <code>habitat</code> with three habitats (e.g., <code>"forest"</code>, <code>"desert"</code>, <code>"ocean"</code>), each containing a list of animals found there.</li>
+<li>Add a new habitat with its animals.</li>
+<li>Print all animals in the <code>"forest"</code> habitat.</li>
+<li>Remove a habitat from the dictionary.</li>
+<li>Print the dictionary’s keys and values.</li>
 <li>
-<p>Create a dictionary called <code>habitat</code> with three habitats (e.g., <code>"forest"</code>, <code>"desert"</code>, <code>"ocean"</code>), each containing a list of animals found there.</p>
-</li>
-<li>
-<p>Add a new habitat with its animals.</p>
-</li>
-<li>
-<p>Print all animals in the <code>"forest"</code> habitat.</p>
-</li>
-<li>
-<p>Remove a habitat from the dictionary.</p>
-</li>
-<li>
-<p>Print the dictionary’s keys and values.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">habitat = {
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [10 lines]&#39;">
+```python
+habitat = {
     "forest": ["deer", "bear", "owl"],
     "desert": ["camel", "scorpion", "fennec fox"],
     "ocean": ["dolphin", "whale", "shark"]
@@ -335,8 +325,9 @@ print("Forest animals:", habitat["forest"])
 habitat.pop("desert")
 print("Habitats:", habitat.keys())
 print("All animals:", habitat.values())
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -350,7 +341,9 @@ print("All animals:", habitat.values())
 <li><strong>Set Operations</strong>: Use union (<code>|</code>), intersection (<code>&amp;</code>), and difference (<code>-</code>).</li>
 </ul>
 <h3 id="example-animal-set"><a class="header" href="#example-animal-set">Example: Animal Set</a></h3>
-<pre><code class="language-python"># Create a set of unique animals
+<pre><code class="language-admonish code">
+```python
+# Create a set of unique animals
 unique_animals = {"lion", "tiger", "zebra", "elephant"}
 print("Animals:", unique_animals)
 
@@ -366,33 +359,27 @@ print("After discarding tiger:", unique_animals)
 savanna_animals = {"lion", "zebra", "elephant", "giraffe"}
 forest_animals = {"deer", "bear", "owl", "elephant"}
 print("Common animals:", savanna_animals &amp; forest_animals)
+```
+
 </code></pre>
 <h3 id="exercise-4-set-operations"><a class="header" href="#exercise-4-set-operations">Exercise 4: Set Operations</a></h3>
 <ol>
+<li>Create a set called <code>farm_animals</code> with animals like <code>"cow"</code>, <code>"chicken"</code>, and <code>"sheep"</code>.</li>
+<li>Add <code>"duck"</code> and <code>"goat"</code> to the set.</li>
+<li>Create another set called <code>wild_animals</code> with <code>"lion"</code>, <code>"tiger"</code>, and <code>"bear"</code>.</li>
+<li>Find and print the union of <code>farm_animals</code> and <code>wild_animals</code>.</li>
+<li>Check if <code>"cow"</code> is in the <code>wild_animals</code> set.</li>
 <li>
-<p>Create a set called <code>farm_animals</code> with animals like <code>"cow"</code>, <code>"chicken"</code>, and <code>"sheep"</code>.</p>
-</li>
-<li>
-<p>Add <code>"duck"</code> and <code>"goat"</code> to the set.</p>
-</li>
-<li>
-<p>Create another set called <code>wild_animals</code> with <code>"lion"</code>, <code>"tiger"</code>, and <code>"bear"</code>.</p>
-</li>
-<li>
-<p>Find and print the union of <code>farm_animals</code> and <code>wild_animals</code>.</p>
-</li>
-<li>
-<p>Check if <code>"cow"</code> is in the <code>wild_animals</code> set.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">farm_animals = {"cow", "chicken", "sheep"}
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [5 lines]&#39;">
+```python
+farm_animals = {"cow", "chicken", "sheep"}
 farm_animals.update(["duck", "goat"])
 wild_animals = {"lion", "tiger", "bear"}
 print("Union of animals:", farm_animals | wild_animals)
 print("Is 'cow' a wild animal?", "cow" in wild_animals)
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -400,7 +387,9 @@ print("Is 'cow' a wild animal?", "cow" in wild_animals)
 <h2 id="5-advanced-nested-data-structures"><a class="header" href="#5-advanced-nested-data-structures">5. Advanced: Nested Data Structures</a></h2>
 <p>Python allows nesting of data structures, which means you can have lists of dictionaries, sets of tuples, and other complex combinations.</p>
 <h3 id="example-nested-dictionary-of-animal-facts"><a class="header" href="#example-nested-dictionary-of-animal-facts">Example: Nested Dictionary of Animal Facts</a></h3>
-<pre><code class="language-python"># Dictionary containing animal facts
+<pre><code class="language-admonish code">
+```python
+# Dictionary containing animal facts
 animal_facts = {
     "lion": {"type": "mammal", "lifespan": 15, "diet": "carnivore"},
     "parrot": {"type": "bird", "lifespan": 50, "diet": "herbivore"},
@@ -408,40 +397,40 @@ animal_facts = {
 }
 print("Lion's diet:", animal_facts["lion"]["diet"])
 print("Parrot's lifespan:", animal_facts["parrot"]["lifespan"])
+```
+
 </code></pre>
 <h3 id="exercise-5-working-with-nested-data-structures"><a class="header" href="#exercise-5-working-with-nested-data-structures">Exercise 5: Working with Nested Data Structures</a></h3>
 <ol>
+<li>Create a dictionary called <code>zoo</code> where each key is an animal's name and each value is another dictionary with keys <code>"class"</code> (e.g., <code>"mammal"</code>, <code>"bird"</code>), <code>"habitat"</code>, and <code>"diet"</code>.</li>
+<li>Print the habitat of a specific animal.</li>
+<li>Add a new animal to the <code>zoo</code> dictionary with its details.</li>
 <li>
-<p>Create a dictionary called <code>zoo</code> where each key is an animal's name and each value is another dictionary with keys <code>"class"</code> (e.g., <code>"mammal"</code>, <code>"bird"</code>), <code>"habitat"</code>, and <code>"diet"</code>.</p>
-</li>
-<li>
-<p>Print the habitat of a specific animal.</p>
-</li>
-<li>
-<p>Add a new animal to the <code>zoo</code> dictionary with its details.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">zoo = {
-    "lion": {"class": "mammal", "habitat": "savanna", "diet": "carnivore"},
-    "parrot": {"class": "bird", "habitat": "tropical", "diet": "herbivore"},
-    "shark": {"class": "fish", "habitat": "ocean", "diet": "carnivore"}
-}
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [12 lines]&#39;">
+ ```python
+ zoo = {
+     "lion": {"class": "mammal", "habitat": "savanna", "diet": "carnivore"},
+     "parrot": {"class": "bird", "habitat": "tropical", "diet": "herbivore"},
+     "shark": {"class": "fish", "habitat": "ocean", "diet": "carnivore"}
+ }
 
-# Accessing specific information
-print("Parrot's habitat:", zoo["parrot"]["habitat"])
+ # Accessing specific information
+ print("Parrot's habitat:", zoo["parrot"]["habitat"])
 
-# Adding a new animal
-zoo["elephant"] = {"class": "mammal", "habitat": "savanna", "diet": "herbivore"}
-print("Updated zoo:", zoo)
+ # Adding a new animal
+ zoo["elephant"] = {"class": "mammal", "habitat": "savanna", "diet": "herbivore"}
+ print("Updated zoo:", zoo)
+ ```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
 <h3 id="example-nested-lists-and-dictionaries"><a class="header" href="#example-nested-lists-and-dictionaries">Example: Nested Lists and Dictionaries</a></h3>
 <p>You can also use lists within dictionaries to store multiple related items.</p>
-<pre><code class="language-python"># Example of a dictionary where each animal has a list of traits
+<pre><code class="language-admonish code">
+```python
+# Example of a dictionary where each animal has a list of traits
 animal_traits = {
     "lion": {"class": "mammal", "traits": ["carnivore", "strong", "social"]},
     "elephant": {"class": "mammal", "traits": ["herbivore", "large", "intelligent"]},
@@ -450,37 +439,35 @@ animal_traits = {
 
 # Access the traits of the lion
 print("Lion's traits:", animal_traits["lion"]["traits"])
+```
+
 </code></pre>
 <h3 id="exercise-6-complex-nested-structures"><a class="header" href="#exercise-6-complex-nested-structures">Exercise 6: Complex Nested Structures</a></h3>
 <ol>
+<li>Create a dictionary called <code>habitat_info</code> where each habitat (e.g., <code>"forest"</code>, <code>"ocean"</code>) contains a list of animal dictionaries. Each animal dictionary should include <code>"name"</code>, <code>"class"</code>, and <code>"diet"</code>.</li>
+<li>Add two habitats and at least two animals per habitat.</li>
+<li>Access the diet of an animal within a specific habitat.</li>
 <li>
-<p>Create a dictionary called <code>habitat_info</code> where each habitat (e.g., <code>"forest"</code>, <code>"ocean"</code>) contains a list of animal dictionaries. Each animal dictionary should include <code>"name"</code>, <code>"class"</code>, and <code>"diet"</code>.</p>
-</li>
-<li>
-<p>Add two habitats and at least two animals per habitat.</p>
-</li>
-<li>
-<p>Access the diet of an animal within a specific habitat.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">habitat_info = {
-    "forest": [
-        {"name": "bear", "class": "mammal", "diet": "omnivore"},
-        {"name": "owl", "class": "bird", "diet": "carnivore"}
-    ],
-    "ocean": [
-        {"name": "shark", "class": "fish", "diet": "carnivore"},
-        {"name": "whale", "class": "mammal", "diet": "herbivore"}
-    ]
-}
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [15 lines]&#39;">
+ ```python
+ habitat_info = {
+     "forest": [
+         {"name": "bear", "class": "mammal", "diet": "omnivore"},
+         {"name": "owl", "class": "bird", "diet": "carnivore"}
+     ],
+     "ocean": [
+         {"name": "shark", "class": "fish", "diet": "carnivore"},
+         {"name": "whale", "class": "mammal", "diet": "herbivore"}
+     ]
+ }
 
-# Access the diet of the bear in the forest
-for animal in habitat_info["forest"]:
-    if animal["name"] == "bear":
-        print("Bear's diet:", animal["diet"])
+ # Access the diet of the bear in the forest
+ for animal in habitat_info["forest"]:
+     if animal["name"] == "bear":
+         print("Bear's diet:", animal["diet"])
+ ```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -490,126 +477,92 @@ for animal in habitat_info["forest"]:
 <p>For each of the following Parts, create a differently named file i.e. <code>part1.py</code></p>
 <h4 id="part-1-lists---appending-removing-and-inserting"><a class="header" href="#part-1-lists---appending-removing-and-inserting">Part 1: Lists - Appending, Removing, and Inserting</a></h4>
 <ol>
+<li>Create a list called <code>animals</code> with the values <code>["lion", "tiger", "elephant"]</code>.</li>
+<li><strong>Append</strong> <code>"giraffe"</code> to the end of the list.</li>
+<li><strong>Insert</strong> <code>"panda"</code> at the second position in the list.</li>
+<li><strong>Pop</strong> the last item from the list and print the item that was removed.</li>
+<li>Remove <code>"tiger"</code> by value from the list.</li>
+<li>Print the final list.</li>
 <li>
-<p>Create a list called <code>animals</code> with the values <code>["lion", "tiger", "elephant"]</code>.</p>
-</li>
-<li>
-<p><strong>Append</strong> <code>"giraffe"</code> to the end of the list.</p>
-</li>
-<li>
-<p><strong>Insert</strong> <code>"panda"</code> at the second position in the list.</p>
-</li>
-<li>
-<p><strong>Pop</strong> the last item from the list and print the item that was removed.</p>
-</li>
-<li>
-<p>Remove <code>"tiger"</code> by value from the list.</p>
-</li>
-<li>
-<p>Print the final list.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">animals = ["lion", "tiger", "elephant"]
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [7 lines]&#39;">
+```python
+animals = ["lion", "tiger", "elephant"]
 animals.append("giraffe")
 animals.insert(1, "panda")
 removed_animal = animals.pop()
 print("Removed:", removed_animal)
 animals.remove("tiger")
 print("Final list:", animals)
+```
+
 </code></pre>
-</details>
 </li>
 </ol>
 <hr />
 <h4 id="part-2-dictionaries---adding-updating-and-popping-items"><a class="header" href="#part-2-dictionaries---adding-updating-and-popping-items">Part 2: Dictionaries - Adding, Updating, and Popping Items</a></h4>
 <ol>
+<li>Create a dictionary called <code>bird_habitats</code> with keys <code>"sparrow"</code>, <code>"eagle"</code>, and <code>"penguin"</code> and assign each an appropriate habitat (e.g., <code>"forest"</code>, <code>"mountain"</code>, <code>"ice"</code>).</li>
+<li>Add a new bird <code>"parrot"</code> with habitat <code>"rainforest"</code>.</li>
+<li>Update the habitat of <code>"sparrow"</code> to <code>"grassland"</code>.</li>
+<li><strong>Pop</strong> <code>"penguin"</code> from the dictionary and print its habitat.</li>
+<li>Print the final dictionary.</li>
 <li>
-<p>Create a dictionary called <code>bird_habitats</code> with keys <code>"sparrow"</code>, <code>"eagle"</code>, and <code>"penguin"</code> and assign each an appropriate habitat (e.g., <code>"forest"</code>, <code>"mountain"</code>, <code>"ice"</code>).</p>
-</li>
-<li>
-<p>Add a new bird <code>"parrot"</code> with habitat <code>"rainforest"</code>.</p>
-</li>
-<li>
-<p>Update the habitat of <code>"sparrow"</code> to <code>"grassland"</code>.</p>
-</li>
-<li>
-<p><strong>Pop</strong> <code>"penguin"</code> from the dictionary and print its habitat.</p>
-</li>
-<li>
-<p>Print the final dictionary.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">bird_habitats = {"sparrow": "forest", "eagle": "mountain", "penguin": "ice"}
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [6 lines]&#39;">
+```python
+bird_habitats = {"sparrow": "forest", "eagle": "mountain", "penguin": "ice"}
 bird_habitats["parrot"] = "rainforest"
 bird_habitats["sparrow"] = "grassland"
 penguin_habitat = bird_habitats.pop("penguin")
 print("Penguin's habitat:", penguin_habitat)
 print("Final dictionary:", bird_habitats)
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
 <h4 id="part-3-sets---adding-discarding-and-popping-elements"><a class="header" href="#part-3-sets---adding-discarding-and-popping-elements">Part 3: Sets - Adding, Discarding, and Popping Elements</a></h4>
 <ol>
+<li>Create a set called <code>farm_animals</code> with <code>"cow"</code>, <code>"chicken"</code>, and <code>"sheep"</code>.</li>
+<li><strong>Add</strong> <code>"duck"</code> and <code>"goat"</code> to the set.</li>
+<li><strong>Discard</strong> <code>"chicken"</code> from the set.</li>
+<li><strong>Pop</strong> an element from the set (note that sets are unordered, so any element could be removed) and print the removed element.</li>
+<li>Print the final set.</li>
 <li>
-<p>Create a set called <code>farm_animals</code> with <code>"cow"</code>, <code>"chicken"</code>, and <code>"sheep"</code>.</p>
-</li>
-<li>
-<p><strong>Add</strong> <code>"duck"</code> and <code>"goat"</code> to the set.</p>
-</li>
-<li>
-<p><strong>Discard</strong> <code>"chicken"</code> from the set.</p>
-</li>
-<li>
-<p><strong>Pop</strong> an element from the set (note that sets are unordered, so any element could be removed) and print the removed element.</p>
-</li>
-<li>
-<p>Print the final set.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">farm_animals = {"cow", "chicken", "sheep"}
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [7 lines]&#39;">
+```python
+farm_animals = {"cow", "chicken", "sheep"}
 farm_animals.add("duck")
 farm_animals.add("goat")
 farm_animals.discard("chicken")
 removed_animal = farm_animals.pop()  # Popped element is random
 print("Removed animal:", removed_animal)
 print("Final set:", farm_animals)
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
 <h4 id="part-4-tuples---converting-to-list-for-modifications-and-back"><a class="header" href="#part-4-tuples---converting-to-list-for-modifications-and-back">Part 4: Tuples - Converting to List for Modifications and Back</a></h4>
 <ol>
+<li>Create a tuple called <code>ocean_animals</code> with <code>("shark", "whale", "dolphin")</code>.</li>
+<li>Convert <code>ocean_animals</code> to a list.</li>
+<li>Add <code>"octopus"</code> to the list.</li>
+<li>Remove <code>"whale"</code> from the list.</li>
+<li>Convert the list back to a tuple and print the final tuple.</li>
 <li>
-<p>Create a tuple called <code>ocean_animals</code> with <code>("shark", "whale", "dolphin")</code>.</p>
-</li>
-<li>
-<p>Convert <code>ocean_animals</code> to a list.</p>
-</li>
-<li>
-<p>Add <code>"octopus"</code> to the list.</p>
-</li>
-<li>
-<p>Remove <code>"whale"</code> from the list.</p>
-</li>
-<li>
-<p>Convert the list back to a tuple and print the final tuple.</p>
-</li>
-<li><details>
-<summary>Solution...</summary>
-<pre><code class="language-python">ocean_animals = ("shark", "whale", "dolphin")
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [6 lines]&#39;">
+```python
+ocean_animals = ("shark", "whale", "dolphin")
 ocean_animals_list = list(ocean_animals)
 ocean_animals_list.append("octopus")
 ocean_animals_list.remove("whale")
 ocean_animals = tuple(ocean_animals_list)
 print("Final tuple:", ocean_animals)
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 

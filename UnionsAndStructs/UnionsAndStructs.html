@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -170,13 +174,16 @@
 <li>Create a new file called <code>unionsandstructs.exe</code></li>
 <li>modify the contents to look like this:</li>
 <li>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">```c
+#include &lt;stdio.h&gt;
 
 int main(){
 
 
     return 0;
 }
+```
+
 </code></pre>
 </li>
 </ul>
@@ -198,12 +205,15 @@ int main(){
 <p>In the main function, create an instance of the <code>Person</code> <code>struct</code>,populate its attributes with your name, age and height, and use the <code>printPerson</code> function to display the details.</p>
 </li>
 <li>
-<p><strong>Output:</strong></p>
-<p><img src="./figures/step1.PNG" alt="" /></p>
+<pre><code class="language-admonish output">
+![](./figures/step1.PNG)
+
+</code></pre>
 </li>
-<li><details>
-<summary>Possible Solution...</summary>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [29 lines]&#39;">
+```c
+#include &lt;stdio.h&gt;
 
 /**
 * @struct Person
@@ -233,8 +243,9 @@ int main() {
 
     return 0;
 }
+```
+
 </code></pre>
-</details>
 </li>
 </ol>
 <hr />
@@ -257,12 +268,15 @@ int main() {
 <p>In the main function, create an instance of the <code>Data</code> <code>union</code>, assign values to different members, and use the <code>printData</code> function to display the values.</p>
 </li>
 <li>
-<p><strong>Output:</strong></p>
-<p><img src="./figures/step2.PNG" alt="" /></p>
+<pre><code class="language-admonish output">
+ ![](./figures/step2.PNG)
+
+</code></pre>
 </li>
-<li><details>
-<summary>Possible Solution</summary>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [32 lines]&#39;">
+```c
+#include &lt;stdio.h&gt;
 
 /**
 * @union Data
@@ -281,7 +295,7 @@ void printData(union Data d) {
     printf("Data: ");
     printf("%d (Integer)\n", d.integerData);
     printf("%f (Float)\n", d.floatData);
-   
+
 }
 
 /**
@@ -295,8 +309,9 @@ int main() {
 
     return 0;
 }
+```
+
 </code></pre>
-</details>
 </li>
 </ol>
 <hr />
@@ -325,7 +340,9 @@ int main() {
 </li>
 <li>
 <p>Reproduce the following code to assign <code>person.age</code> and <code>data.integerData</code> and <code>data.floatData</code>:</p>
-<pre><code class="language-c">...
+<pre><code class="language-admonish code">
+```c
+...
  // Accessing struct members
 person.age = 25;
 printf("Struct Member - Age: %d\n", person.age);
@@ -337,104 +354,102 @@ printf("Union Member - Integer Data: %d\n", data.integerData);
 // Modify union member and access another member
 data.floatData = 3.14;
 printf("Union Member - Float Data: %.2f\n", data.floatData);
+```
+
 </code></pre>
 </li>
 <li>
 <p>Now we are going to compare the size of the <code>struct</code> and the <code>union</code>, reproduce the following after last <code>printf(...)</code> line:</p>
-<pre><code class="language-c">...
+<pre><code class="language-admonish code">
+```c
+...
 // Demonstrate the size difference between struct and union
 printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
 printf("Size of Union (Data): %lu bytes\n", sizeof(union Data));
+```
+
 </code></pre>
 </li>
 <li>
-<p><strong>Output:</strong></p>
-<p><img src="./figures/step3.PNG" alt="" /></p>
-</li>
-<li><details>
-<summary>Possible Solution...</summary>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish output">
+![](./figures/step3.PNG)
 
-/**
- * @struct Person
- * @brief Represents personal information about a person.
- */
-struct Person {
-    char name[50]; ///&lt; Name of the person.
-    int age;       ///&lt; Age of the person.
-    float height;  ///&lt; Height of the person.
-};
-
-/**
- * @union Data
- * @brief Represents different types of data (integer, float, char).
- */
-union Data {
-    int integerData; ///&lt; Integer data.
-    float floatData; ///&lt; Float data.
-    char charData;   ///&lt; Character data.
-};
-
-/**
- * @brief Main function where the program starts execution.
- * @return 0 on successful execution.
- */
-int main() {
-    // Create an instance of the struct and union
-    struct Person person;
-    union Data data;
-
-    // Accessing struct members
-    person.age = 25;
-    printf("Struct Member - Age: %d\n", person.age);
-
-    // Accessing union members
-    data.integerData = 42;
-    printf("Union Member - Integer Data: %d\n", data.integerData);
-
-    // Modify union member and access another member
-    data.floatData = 3.14;
-    printf("Union Member - Float Data: %.2f\n", data.floatData);
-
-    // Demonstrate the size difference between struct and union
-    printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
-    printf("Size of Union (Data): %llu bytes\n", sizeof(union Data));
-
-    return 0;
-}
 </code></pre>
-</details>
+</li>
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [48 lines]&#39;">
+ ```c
+ #include &lt;stdio.h&gt;
+
+ /**
+     * @struct Person
+     * @brief Represents personal information about a person.
+     */
+ struct Person {
+     char name[50]; ///&lt; Name of the person.
+     int age;       ///&lt; Age of the person.
+     float height;  ///&lt; Height of the person.
+ };
+
+ /**
+     * @union Data
+     * @brief Represents different types of data (integer, float, char).
+     */
+ union Data {
+     int integerData; ///&lt; Integer data.
+     float floatData; ///&lt; Float data.
+     char charData;   ///&lt; Character data.
+ };
+
+ /**
+     * @brief Main function where the program starts execution.
+     * @return 0 on successful execution.
+     */
+ int main() {
+     // Create an instance of the struct and union
+     struct Person person;
+     union Data data;
+
+     // Accessing struct members
+     person.age = 25;
+     printf("Struct Member - Age: %d\n", person.age);
+
+     // Accessing union members
+     data.integerData = 42;
+     printf("Union Member - Integer Data: %d\n", data.integerData);
+
+     // Modify union member and access another member
+     data.floatData = 3.14;
+     printf("Union Member - Float Data: %.2f\n", data.floatData);
+
+     // Demonstrate the size difference between struct and union
+     printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
+     printf("Size of Union (Data): %llu bytes\n", sizeof(union Data));
+
+     return 0;
+ }
+ ```
+
+</code></pre>
+<pre><code class="language-admonish info">
+- A `struct Person` is defined with attributes representing personal information.
+
+- A `union Data` is defined with three members: `integerData`, `floatData`, and `charData`.
+
+- In the `main` function, an instance of both the `struct` and the `union` is created.
+
+- The program demonstrates how to access and modify members of the `struct` and the `union`.
+
+- It prints the size of the `struct` and `union` to highlight the memory usage difference.
+
+- This exercise illustrates the key differences between `structs` and `unions`:
+
+- `Struct`: Each member has its own memory space, and the size of the `struct` is the sum of the sizes of its members.
+- `Union`: All members share the same memory space, and the size of the `union` is determined by the largest member.
+
+</code></pre>
 </li>
 </ol>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<blockquote>
-<ul>
-<li>
-<p>A <code>struct Person</code> is defined with attributes representing personal information.</p>
-</li>
-<li>
-<p>A <code>union Data</code> is defined with three members: <code>integerData</code>, <code>floatData</code>, and <code>charData</code>.</p>
-</li>
-<li>
-<p>In the <code>main</code> function, an instance of both the <code>struct</code> and the <code>union</code> is created.</p>
-</li>
-<li>
-<p>The program demonstrates how to access and modify members of the <code>struct</code> and the <code>union</code>.</p>
-</li>
-<li>
-<p>It prints the size of the <code>struct</code> and <code>union</code> to highlight the memory usage difference.</p>
-</li>
-<li>
-<p>This exercise illustrates the key differences between <code>structs</code> and <code>unions</code>:</p>
-<ul>
-<li><code>Struct</code>: Each member has its own memory space, and the size of the <code>struct</code> is the sum of the sizes of its members.</li>
-<li><code>Union</code>: All members share the same memory space, and the size of the <code>union</code> is determined by the largest member.</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</blockquote>
 <hr />
 <hr />
 <h2 id="exercise-4-combining-structs-and-unions"><a class="header" href="#exercise-4-combining-structs-and-unions">Exercise 4: Combining Structs and Unions</a></h2>
@@ -454,12 +469,15 @@ int main() {
 <p>In the main function, create an instance of the <code>Employee</code> <code>struct</code>, populate its attributes, and use the <code>printEmployee</code> function to display the details.</p>
 </li>
 <li>
-<p><strong>Output</strong>:
-<img src="./figures/step4.PNG" alt="" /></p>
+<pre><code class="language-admonish output">
+![](./figures/step4.PNG)
+
+</code></pre>
 </li>
-<li><details>
-<summary>Possible Solution...</summary>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [75 lines]&#39;">
+```c
+#include &lt;stdio.h&gt;
 
 /**
 * @struct Person
@@ -535,13 +553,20 @@ int main() {
 
     return 0;
 }
+```
+
 </code></pre>
-</details>
 </li>
 </ol>
 <h2 id="additional-challenges"><a class="header" href="#additional-challenges">Additional Challenges:</a></h2>
-<p><strong>Challenge 1</strong>: Modify the <code>Person</code> <code>struct</code> to include an array of hobbies. Update the relevant functions and demonstrate the changes in the <code>main</code> function.</p>
-<p><strong>Challenge 2</strong>: Extend the <code>Data</code> <code>union</code> to include an array of integers. Modify the <code>printData</code> function to handle this new data type.</p>
+<pre><code class="language-admonish tip title=&#39;Challenge 1&#39;">
+Modify the `Person` `struct` to include an array of hobbies. Update the relevant functions and demonstrate the changes in the `main` function.
+
+</code></pre>
+<pre><code class="language-admonish tip title=&#39;Challenge 2&#39;">
+Extend the `Data` `union` to include an array of integers. Modify the `printData` function to handle this new data type.
+
+</code></pre>
 <hr />
 <hr />
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion:</a></h2>

@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -224,11 +228,17 @@ v
 <hr />
 <h2 id="editing-your-bashrc"><a class="header" href="#editing-your-bashrc">Editing your <code>.bashrc</code></a></h2>
 <p>From your current location which should be <code>~</code> or <code>g//</code> in:</p>
-<pre><code>$ vim ~/.bashrc
+<pre><code class="language-admonish terminal">
+```
+$ vim ~/.bashrc
+```
+
 </code></pre>
 <p>This should load an empty file with the text editor <strong>vim</strong> called <code>.bashrc</code> in the home directory denoted by the <code>~</code>. The <code>.</code> means it is a hidden file.</p>
 <p>Inside the file file remember to presse <code>i</code> on keyboard to enter <strong>INSERT</strong> mode, and reproduce the following:</p>
-<pre><code class="language-sh">alias ga='git add'
+<pre><code class="language-admonish code">
+```sh
+alias ga='git add'
 alias gaa='git add .'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
@@ -237,12 +247,18 @@ alias gfa='git fetch -va'
 alias gpl='git pull'
 alias glg='git log --graph --oneline --decorate --all'
 alias Git='cd ~//Documents//GitHub//'
+```
+
 </code></pre>
 <p>Would look similar to below:</p>
 <p><img src="editedFile.png" alt="" /></p>
 <p>Remember to write and quit using first the escape key to exit <strong>INSERT</strong> mode to enter <strong>COMMAND</strong> mode and press the <code>:</code> and type <code>wq</code> to write and quit.</p>
 <p>Now that you have your .bashrc file you need to get the current instant of the shell to recongnise it.</p>
-<pre><code class="language-sh">$ source ~/.bashrc
+<pre><code class="language-admonish terminal">
+```sh
+$ source ~/.bashrc
+```
+
 </code></pre>
 <p>You should now be able to use any of the aliases instead of typing out the full commands.</p>
 

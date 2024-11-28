@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -171,13 +175,25 @@
 <p><code>pip</code> is the package installer for Python. It allows you to install and manage additional libraries and dependencies that are not included in the Python standard library. To use <code>pip</code>, you typically run commands in the terminal.</p>
 <h3 id="installing-packages-with-pip"><a class="header" href="#installing-packages-with-pip">Installing Packages with <code>pip</code></a></h3>
 <p>To install a Python package using <code>pip</code>, you can use the following command in your terminal or command prompt:</p>
-<pre><code class="language-bash">pip install &lt;package_name&gt;
+<pre><code class="language-admonish terminal">
+```bash
+pip install &lt;package_name&gt;
+```
+
 </code></pre>
 <p>For example, to install the <code>requests</code> library, you would run:</p>
-<pre><code class="language-bash">pip install requests
+<pre><code class="language-admonish terminal">
+```bash
+pip install requests
+```
+
 </code></pre>
 <p>To install a specific version of a package, use <code>==</code> followed by the version number, like so:</p>
-<pre><code class="language-bash">pip install pandas==1.3.5
+<pre><code class="language-admonish terminal">
+```bash
+pip install pandas==1.3.5
+```
+
 </code></pre>
 <h3 id="how-importing-works-in-python"><a class="header" href="#how-importing-works-in-python">How Importing Works in Python</a></h3>
 <p>When you use <code>import</code> in Python, the interpreter searches for the module in the following order:</p>
@@ -188,16 +204,31 @@
 </ol>
 <h3 id="types-of-imports"><a class="header" href="#types-of-imports">Types of Imports</a></h3>
 <ol>
-<li><strong>Standard Imports</strong>: Import the entire module. For example:
-<pre><code class="language-python">import math
+<li>
+<p><strong>Standard Imports</strong>: Import the entire module. For example:</p>
+<pre><code class="language-admonish code">
+```python
+import math
+```
+
 </code></pre>
 </li>
-<li><strong>Selective Imports</strong>: Import specific functions or classes from a module. For example:
-<pre><code class="language-python">from math import sqrt, pi
+<li>
+<p><strong>Selective Imports</strong>: Import specific functions or classes from a module. For example:</p>
+<pre><code class="language-admonish code">
+```python
+from math import sqrt, pi
+```
+
 </code></pre>
 </li>
-<li><strong>Aliased Imports</strong>: Create a shorthand name for a module or function. For example:
-<pre><code class="language-python">import pandas as pd
+<li>
+<p><strong>Aliased Imports</strong>: Create a shorthand name for a module or function. For example:</p>
+<pre><code class="language-admonish code">
+```python
+import pandas as pd
+```
+
 </code></pre>
 </li>
 </ol>
@@ -205,58 +236,44 @@
 <h2 id="exercise-1-built-in-modules"><a class="header" href="#exercise-1-built-in-modules">Exercise 1: Built-in Modules</a></h2>
 <p><strong>Instructions:</strong></p>
 <ol>
+<li>Open a new Python file and name it <code>exercise1.py</code>.</li>
+<li>Import the <code>math</code> module.</li>
+<li>Use the <code>math.sqrt()</code> function to find the square root of 16.</li>
+<li>Use <code>math.pi</code> to print the value of Pi.</li>
+<li>Save and run the script.</li>
 <li>
-<p>Open a new Python file and name it <code>exercise1.py</code>.</p>
-</li>
-<li>
-<p>Import the <code>math</code> module.</p>
-</li>
-<li>
-<p>Use the <code>math.sqrt()</code> function to find the square root of 16.</p>
-</li>
-<li>
-<p>Use <code>math.pi</code> to print the value of Pi.</p>
-</li>
-<li>
-<p>Save and run the script.</p>
-</li>
-<li><details>
-<summary>Solution:</summary>
-<pre><code class="language-python">import math
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [7 lines]&#39;">
+ ```python
+ import math
 
-# Finding square root
-print("Square root of 16:", math.sqrt(16))
+ # Finding square root
+ print("Square root of 16:", math.sqrt(16))
 
-# Printing the value of Pi
-print("Value of Pi:", math.pi)
+ # Printing the value of Pi
+ print("Value of Pi:", math.pi)
+ ```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
 <h2 id="exercise-2-using-aliases-with-modules"><a class="header" href="#exercise-2-using-aliases-with-modules">Exercise 2: Using Aliases with Modules</a></h2>
 <p><strong>Instructions:</strong></p>
 <ol>
+<li>Open a new Python file named <code>exercise2.py</code>.</li>
+<li>Import the <code>datetime</code> module as <code>dt</code>.</li>
+<li>Use <code>dt.datetime.now()</code> to print the current date and time.</li>
+<li>Save and run the script.</li>
 <li>
-<p>Open a new Python file named <code>exercise2.py</code>.</p>
-</li>
-<li>
-<p>Import the <code>datetime</code> module as <code>dt</code>.</p>
-</li>
-<li>
-<p>Use <code>dt.datetime.now()</code> to print the current date and time.</p>
-</li>
-<li>
-<p>Save and run the script.</p>
-</li>
-<li><details>
-<summary>Solution:</summary>
-<pre><code class="language-python">import datetime as dt
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [4 lines]&#39;">
+ ```python
+ import datetime as dt
 
-# Printing current date and time
-print("Current Date and Time:", dt.datetime.now())
+ # Printing current date and time
+ print("Current Date and Time:", dt.datetime.now())
+ ```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -268,7 +285,11 @@ print("Current Date and Time:", dt.datetime.now())
 </li>
 <li>
 <p>Use <code>pip</code> to install the <code>requests</code> module by running the following command in your terminal or command prompt:</p>
-<pre><code>pip install requests
+<pre><code class="language-admonish terminal">
+```
+pip install requests
+```
+
 </code></pre>
 </li>
 <li>
@@ -277,15 +298,17 @@ print("Current Date and Time:", dt.datetime.now())
 <li>
 <p>Save and run the script.</p>
 </li>
-<li><details>
-<summary>Solution:</summary>
-<pre><code class="language-python"># Make sure you've run `pip install requests` in your terminal before running this code
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [5 lines]&#39;">
+```python
+# Make sure you've run `pip install requests` in your terminal before running this code
 import requests
 
 response = requests.get("https://api.github.com")
 print("Status Code:", response.status_code)
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -297,21 +320,19 @@ print("Status Code:", response.status_code)
 <ul>
 <li>
 <p>In your terminal, run the following commands to install specific versions:</p>
-<pre><code>pip install pandas==1.3.5
+<pre><code class="language-admonish terminal">
+```
+pip install pandas==1.3.5
 pip install matplotlib==3.5.1
+```
+
 </code></pre>
-<details>
-<summary>Do you have an error?</summary>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
-<ul>
-<li>You should always check if the package version exists... you will likely have an error.</li>
-<li>Check <a href="https://pypi.org/">https://pypi.org/</a></li>
-</ul>
-</blockquote>
-</blockquote>
-</details>
+<pre><code class="language-admonish error collapsible=true title=&#39;Do you have an error?&#39;">
+- You should always check if the package version exists... you will likely have an error.
+
+- Check [https://pypi.org/](https://pypi.org/)
+
+</code></pre>
 </li>
 </ul>
 </li>
@@ -327,16 +348,18 @@ pip install matplotlib==3.5.1
 <li>
 <p>Save and run the script.</p>
 </li>
-<li><details>
-<summary>Solution:</summary>
-<pre><code class="language-python">from pandas import DataFrame as df, Series as ser
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [6 lines]&#39;">
+```python
+from pandas import DataFrame as df, Series as ser
 import matplotlib
 
 # Verifying and printing versions
 print("Pandas version:", df.__module__.split('.')[0])
 print("Matplotlib version:", matplotlib.__version__)
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -351,11 +374,15 @@ print("Matplotlib version:", matplotlib.__version__)
 </li>
 <li>
 <p>Create a small DataFrame using the following data:</p>
-<pre><code>data = {
+<pre><code class="language-admonish code">
+```py
+data = {
     "Name": ["Aisha", "Luis", "Chen", "Amara"],
     "Age": [24, 27, 22, 32],
     "City": ["New York", "San Francisco", "Beijing", "Nairobi"]
 }
+```
+
 </code></pre>
 </li>
 <li>
@@ -364,9 +391,10 @@ print("Matplotlib version:", matplotlib.__version__)
 <li>
 <p>Save and run the script.</p>
 </li>
-<li><details>
-<summary>Solution:</summary>
-<pre><code class="language-python">import pandas as pd
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [13 lines]&#39;">
+```python
+import pandas as pd
 
 data = {
     "Name": ["Aisha", "Luis", "Chen", "Amara"],
@@ -380,8 +408,9 @@ print(df)
 
 print("\nSummary Statistics:")
 print(df.describe())
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
@@ -396,8 +425,12 @@ print(df.describe())
 </li>
 <li>
 <p>Use the following data to create a bar chart showing the ages of individuals:</p>
-<pre><code>names = ["Aisha", "Luis", "Chen", "Amara"]
+<pre><code class="language-admonish code">
+```py
+names = ["Aisha", "Luis", "Chen", "Amara"]
 ages = [24, 27, 22, 32]
+```
+
 </code></pre>
 </li>
 <li>
@@ -409,9 +442,10 @@ ages = [24, 27, 22, 32]
 <li>
 <p>Save and run the script.</p>
 </li>
-<li><details>
-<summary>Solution:</summary>
-<pre><code class="language-python">import matplotlib.pyplot as plt
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [9 lines]&#39;">
+```python
+import matplotlib.pyplot as plt
 
 names = ["Aisha", "Luis", "Chen", "Amara"]
 ages = [24, 27, 22, 32]
@@ -421,29 +455,43 @@ plt.xlabel("Names")
 plt.ylabel("Ages")
 plt.title("Ages of Individuals")
 plt.show()
+```
+
 </code></pre>
- </details>
 </li>
 </ol>
 <hr />
 <h3 id="using-a-requirementstxt-file"><a class="header" href="#using-a-requirementstxt-file">Using a <code>requirements.txt</code> File</a></h3>
 <p>A <code>requirements.txt</code> file lists all the packages your project depends on, along with their versions. This file is helpful for sharing your project and ensuring others install the exact package versions you used.</p>
 <p>To create a <code>requirements.txt</code> file with the installed packages and their versions, run:</p>
-<pre><code class="language-bash">pip freeze &gt; requirements.txt
+<pre><code class="language-admonish terminal">
+```bash
+pip freeze &gt; requirements.txt
+```
+
 </code></pre>
 <p>The command <code>pip freeze &gt; requirements.txt</code> is used to generate a <code>requirements.txt</code> file listing all currently installed Python packages along with their versions. Here’s how it works:</p>
 <ul>
 <li>
 <p><strong><code>pip freeze</code></strong>:</p>
 <ul>
-<li>This part of the command outputs a list of installed packages in your Python environment, with each package version pinned to the specific version currently installed.</li>
-<li>For example, the output might look like this:
-<pre><code>pandas==1.3.5
+<li>
+<p>This part of the command outputs a list of installed packages in your Python environment, with each package version pinned to the specific version currently installed.</p>
+</li>
+<li>
+<p>For example, the output might look like this:</p>
+<pre><code class="language-admonish output">
+```
+pandas==1.3.5
 requests==2.26.0
 matplotlib==3.5.1
+```
+
 </code></pre>
 </li>
-<li>The <code>==</code> notation ensures that the exact versions are captured, which is crucial for creating a reproducible environment.</li>
+<li>
+<p>The <code>==</code> notation ensures that the exact versions are captured, which is crucial for creating a reproducible environment.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -467,81 +515,104 @@ matplotlib==3.5.1
 </li>
 <li>
 <p><strong>Easy Setup</strong>: To install all packages listed in a <code>requirements.txt</code> file, simply use:</p>
-<pre><code class="language-bash">pip install -r requirements.txt
+<pre><code class="language-admonish terminal">
+```bash
+pip install -r requirements.txt
+```
+
 </code></pre>
 </li>
 <li>
 <p>This will output a file listing all dependencies, which can then be installed with:</p>
-<pre><code class="language-bash">pip install -r requirements.txt
+<pre><code class="language-admonish terminal">
+ ```bash
+ pip install -r requirements.txt
+ ```
+
 </code></pre>
 </li>
 </ul>
 <h3 id="exercise-7-creating-a-requirementstxt-file"><a class="header" href="#exercise-7-creating-a-requirementstxt-file">Exercise 7: Creating a <code>requirements.txt</code> File</a></h3>
 <p><strong>Instructions:</strong></p>
 <ol>
-<li>Install the <code>requests</code> and <code>pandas</code> packages if you haven't already, using:
-<pre><code class="language-bash">pip install requests pandas==1.3.5
+<li>
+<p>Install the <code>requests</code> and <code>pandas</code> packages if you haven't already, using:</p>
+<pre><code class="language-admonish terminal">
+```bash
+pip install requests pandas==1.3.5
+```
+
 </code></pre>
 </li>
-<li>In your terminal, create a <code>requirements.txt</code> file with the following command:
-<pre><code class="language-bash">pip freeze &gt; requirements.txt
+<li>
+<p>In your terminal, create a <code>requirements.txt</code> file with the following command:</p>
+<pre><code class="language-admonish terminal">
+```bash
+pip freeze &gt; requirements.txt
+```
+
 </code></pre>
 </li>
-<li>Open the <code>requirements.txt</code> file to verify that <code>requests</code> and <code>pandas==1.3.5</code> are listed.</li>
+<li>
+<p>Open the <code>requirements.txt</code> file to verify that <code>requests</code> and <code>pandas==1.3.5</code> are listed.</p>
+<pre><code class="language-admonish example title=&#39;Explanation&#39;">
+The `requirements.txt` file should now include `requests` and `pandas==1.3.5`, specifying that exact version. This file allows others to replicate your environment with compatible package versions.
+
+</code></pre>
+</li>
 </ol>
-<p><strong>Explanation:</strong>
-The <code>requirements.txt</code> file should now include <code>requests</code> and <code>pandas==1.3.5</code>, specifying that exact version. This file allows others to replicate your environment with compatible package versions.</p>
 <hr />
 <h3 id="exercise-8-installing-from-a-requirementstxt-file"><a class="header" href="#exercise-8-installing-from-a-requirementstxt-file">Exercise 8: Installing from a <code>requirements.txt</code> File</a></h3>
 <p><strong>Instructions:</strong></p>
 <ol>
 <li>
 <p>To simulate using the <code>requirements.txt</code> file in a new environment, you can uninstall an installed package, like so:</p>
-<pre><code class="language-bash">pip uninstall requests
+<pre><code class="language-admonish terminal">
+```bash
+pip uninstall requests
+```
+
 </code></pre>
 </li>
 <li>
 <p>Use the <code>requirements.txt</code> file to reinstall the necessary packages by running:</p>
-<pre><code class="language-bash">pip install -r requirements.txt
+<pre><code class="language-admonish">
+```bash
+pip install -r requirements.txt
+```
+
 </code></pre>
 </li>
 <li>
 <p>Verify the installation by running a script that imports <code>requests</code> and <code>pandas</code>, ensuring they are correctly installed.</p>
 </li>
-<li><details>
-<summary>Solution (test script):</summary>
-<pre><code class="language-python">import requests
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [3 lines]&#39;">
+```python
+import requests
 import pandas as pd
 
 print("Requests and Pandas installed and working!")
+```
+
+This setup ensures that anyone using your code can quickly set up a matching environment by using `pip install -r requirements.txt`.
+
 </code></pre>
-<p>This setup ensures that anyone using your code can quickly set up a matching environment by using <code>pip install -r requirements.txt</code>.</p>
 </li>
 </ol>
-  </details>
 <hr />
 <h3 id="exercise-9-creating-a-data-science-program-using-a-provided-dataset-with-a-requirements-file"><a class="header" href="#exercise-9-creating-a-data-science-program-using-a-provided-dataset-with-a-requirements-file">Exercise 9: Creating a Data Science Program Using a Provided Dataset with a Requirements File</a></h3>
 <p>The following dataset includes 700 entries and 11 columns, covering various user behavior metrics such as "App Usage Time," "Screen On Time," "Battery Drain," "Data Usage," and demographic data ("Age" and "Gender").</p>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
-<ul>
-<li>Download the dataset here:
-<ul>
-<li><a href="./user_behavior_dataset.csv">user_behavior_dataset.csv</a></li>
-</ul>
-</li>
-<li>Documentation for each package used:
-<ul>
-<li>pandas: <a href="https://pandas.pydata.org/docs/">https://pandas.pydata.org/docs/</a></li>
-<li>numpy: <a href="https://numpy.org/doc/">https://numpy.org/doc/</a></li>
-<li>matplotlib: <a href="https://matplotlib.org/stable/index.html">https://matplotlib.org/stable/index.html</a></li>
-<li>seaborn: <a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a></li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</blockquote>
+<pre><code class="language-admonish info">
+- Download the dataset here: 
+   - [user_behavior_dataset.csv](./user_behavior_dataset.csv)
+- Documentation for each package used:
+   - pandas: [https://pandas.pydata.org/docs/](https://pandas.pydata.org/docs/)
+   - numpy: [https://numpy.org/doc/](https://numpy.org/doc/)
+   - matplotlib: [https://matplotlib.org/stable/index.html](https://matplotlib.org/stable/index.html)
+   - seaborn: [https://seaborn.pydata.org/](https://seaborn.pydata.org/)
+
+</code></pre>
 <ul>
 <li>We are going to load this dataset and analyze key metrics like "App Usage Time (min/day)" and "Screen On Time (hours/day)".</li>
 <li>Group the data by "Operating System" and "User Behavior Class" to perform a comparative analysis.</li>
@@ -552,15 +623,23 @@ print("Requests and Pandas installed and working!")
 <ol>
 <li>
 <p><strong>Create a <code>requirements.txt</code> file</strong>: Open your terminal in the project directory and use the following command to specify versions and create <code>requirements.txt</code>:</p>
-<pre><code>echo "pandas==1.3.5" &gt;&gt; requirements.txt
+<pre><code class="language-admonish terminal">
+```
+echo "pandas==1.3.5" &gt;&gt; requirements.txt
 echo "numpy==2.1.0" &gt;&gt; requirements.txt
 echo "matplotlib==3.5.1" &gt;&gt; requirements.txt
 echo "seaborn==0.11.2" &gt;&gt; requirements.txt
+```
+
 </code></pre>
 </li>
 <li>
 <p><strong>Install from <code>requirements.txt</code></strong>: Once created, install dependencies directly from <code>requirements.txt</code> by running:</p>
-<pre><code>pip install -r requirements.txt
+<pre><code class="language-admonish terminal">
+```
+pip install -r requirements.txt
+```
+
 </code></pre>
 </li>
 <li>
@@ -571,9 +650,10 @@ echo "seaborn==0.11.2" &gt;&gt; requirements.txt
 <li>Compares "App Usage Time (min/day)" across "Gender" and visualizes the distribution using a box plot.</li>
 </ul>
 </li>
-<li><details>
-<summary>Example Code</summary>
-<pre><code class="language-python"># Import necessary libraries for data analysis and visualization
+<li>
+<pre><code class="language-admonish code collapsible=true title=&#39;Supressed code.. [58 lines]&#39;">
+```python
+# Import necessary libraries for data analysis and visualization
 import pandas as pd  # For data manipulation
 import numpy as np  # For numerical operations
 import matplotlib.pyplot as plt  # For plotting
@@ -632,13 +712,16 @@ sns.pairplot(data[['App Usage Time (min/day)', 'Screen On Time (hours/day)', 'Ba
 
 # Display all plots
 plt.show()
+```
+
 </code></pre>
- </details>
 </li>
-<li><details>
-<summary>Example of running program:</summary>
-<p><img src="./figures/py_data_example.gif" alt="" /></p>
- </details></li>
+<li>
+<pre><code class="language-admonish output collapsible=true">
+![](./figures/py_data_example.gif)
+
+</code></pre>
+</li>
 </ol>
 
                     </main>
@@ -648,7 +731,7 @@ plt.show()
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../myFirstRepository/myFirstRepository.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../BranchingModel/BranchingModel.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -662,7 +745,7 @@ plt.show()
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../myFirstRepository/myFirstRepository.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../BranchingModel/BranchingModel.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

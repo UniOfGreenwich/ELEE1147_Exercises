@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -197,20 +201,28 @@ and how to deal with them from a branching point of view.</p>
 <ol>
 <li>
 <p>Create a feature branch based off of <code>master</code>.</p>
-<pre><code>$ git checkout master
+<pre><code class="language-admonish terminal">
+```
+$ git checkout master
 $ git checkout -b MYTEAM-123-new-documentation
 $ git push --set-upstream MYTEAM-123-new-documentation
+```
+
 </code></pre>
 </li>
 <li>
 <p>Develop the code for the new feature and commit as you go.</p>
-<pre><code>$ ... make changes
+<pre><code class="language-admonish terminal">
+```
+$ ... make changes
 $ git add -A .
 $ git commit -m "Add new documentation files"
 $ ... make more changes
 $ git add -A .
 $ git commit -m "Fix some spelling errors"
 $ git push
+```
+
 </code></pre>
 </li>
 <li>
@@ -253,15 +265,23 @@ described above.*
 <ol>
 <li>
 <p>Make sure your <code>master</code> branch is up-to-date</p>
-<pre><code>$ git checkout master
+<pre><code class="language-admonish terminal">
+```
+$ git checkout master
 $ git fetch
 $ git merge origin/master
+```
+
 </code></pre>
 </li>
 <li>
 <p>Create a hot fix branch based off of <code>master</code></p>
-<pre><code>$ git checkout -b hotfix-documentation-broken-links
+<pre><code class="language-admonish terminal">
+```
+$ git checkout -b hotfix-documentation-broken-links
 $ git push --set-upstream hotfix-documentation-broken-links
+```
+
 </code></pre>
 </li>
 <li>
@@ -270,10 +290,14 @@ $ git push --set-upstream hotfix-documentation-broken-links
 review it in person with one other engineer before releasing it. We're
 running without training wheels here and want to do our best not to have to
 do a stream of hotfixes in production.</em></p>
-<pre><code>... add test, fix bug, verify
+<pre><code class="language-admonish terminal">
+```
+... add test, fix bug, verify
 $ git add -A .
 $ git commit -m "Fix broken links"
 $ git push
+```
+
 </code></pre>
 </li>
 <li>

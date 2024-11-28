@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -170,13 +174,19 @@
 <ul>
 <li>
 <p>We should not need to do anything for the university machines to run python as this is already part of the PATH, you can run the following commands:</p>
-<pre><code class="language-sh">$ which python
+<pre><code class="language-admonish terminal">
+```sh
+$ which python
 $ python --version
 $ which pip
 $ pip --version
+```
+
 </code></pre>
-<p><strong>Output:</strong>
-<img src="./figures/versions.PNG" alt="" /></p>
+<pre><code class="language-admonish output">
+![](./figures/versions.PNG)
+
+</code></pre>
 </li>
 </ul>
 <p>So let's make our first program.</p>
@@ -188,12 +198,16 @@ $ pip --version
 </li>
 <li>
 <p>Modify the files content to contain the following:</p>
-<pre><code class="language-py">def main():
+<pre><code class="language-admonish code">
+```py
+def main():
     print("Hello World!")
     print("Goodbye World!")
 
 if __name__=="__main__":
     main()
+```
+
 </code></pre>
 <p><img src="./figures/helloworld.gif" alt="" /></p>
 </li>
@@ -218,18 +232,26 @@ if __name__=="__main__":
 </li>
 <li>
 <p>and then run it.</p>
-<pre><code class="language-python">name = "Your name"
+<pre><code class="language-admonish code">
+```python
+name = "Your name"
 age = 25
 height = 1.75
 
 print(name)
 print(age)
 print(height)
+```
+
 </code></pre>
-<pre><code class="language-bash">$ python variables.py
+<pre><code class="language-admonish terminal">
+```bash
+$ python variables.py
 &gt; Your name
 &gt; 25
 &gt; 1.75
+```
+
 </code></pre>
 </li>
 </ol>
@@ -250,7 +272,9 @@ print(height)
 </li>
 <li>
 <p>and then run it.</p>
-<pre><code class="language-python">a = 10
+<pre><code class="language-admonish code">
+```python
+a = 10
 b = 3
 
 print("Addition:", a + b)
@@ -258,13 +282,19 @@ print("Subtraction:", a - b)
 print("Multiplication:", a * b)
 print("Division:", a / b)
 print("Modulus:", a % b)
+```
+
 </code></pre>
-<pre><code class="language-bash">$ python basicMaths.py
+<pre><code class="language-admonish terminal">
+```bash
+$ python basicMaths.py
 &gt; Addition: 13
 &gt; Subtraction: 7
 &gt; Multiplication: 30
 &gt; Division: 3.3333333333333335
 &gt; Modulus: 1
+```
+
 </code></pre>
 </li>
 </ol>
@@ -288,7 +318,9 @@ print("Modulus:", a % b)
 </li>
 <li>
 <p>and then run it</p>
-<pre><code class="language-python">fruits = ["apple", "banana", "cherry"]
+<pre><code class="language-admonish code">
+```python
+fruits = ["apple", "banana", "cherry"]
 print("First fruit:", fruits[0])
 
 fruits.append("orange")
@@ -296,11 +328,17 @@ print("Updated list:", fruits)
 
 fruits.remove("banana")
 print("List after removing banana:", fruits)
+```
+
 </code></pre>
-<pre><code class="language-bash">$ python lists.py
+<pre><code class="language-admonish terminal">
+```bash
+$ python lists.py
 &gt; First fruit: apple
 &gt; Updated list: ['apple', 'banana', 'cherry', 'orange']
 &gt; List after removing banana: ['apple', 'cherry', 'orange']
+```
+
 </code></pre>
 </li>
 </ol>
@@ -326,7 +364,9 @@ print("List after removing banana:", fruits)
 </li>
 <li>
 <p>change 5 to 0 and run again</p>
-<pre><code class="language-python">number = 5
+<pre><code class="language-admonish code">
+```python
+number = 5
 
 if number &gt; 0:
     print("Positive")
@@ -334,11 +374,17 @@ elif number &lt; 0:
     print("Negative")
 else:
     print("Zero")
+```
+
 </code></pre>
-<pre><code class="language-bash">python conditionals.py
+<pre><code class="language-admonish terminal">
+```bash
+python conditionals.py
 Positive
 python conditionals.py
 Zero
+```
+
 </code></pre>
 </li>
 </ol>
@@ -359,7 +405,9 @@ Zero
 </li>
 <li>
 <p>run the program</p>
-<pre><code class="language-python"># For loop to print numbers from 1 to 5
+<pre><code class="language-admonish code">
+```python
+# For loop to print numbers from 1 to 5
 for i in range(1, 6):
     print(i)
 
@@ -373,8 +421,12 @@ n = 10
 while n &gt; 0:
     print(n)
     n -= 1
+```
+
 </code></pre>
-<pre><code class="language-bash">$ python loops.py
+<pre><code class="language-admonish terminal">
+```bash
+$ python loops.py
 &gt; 1
 &gt; 2
 &gt; 3
@@ -393,6 +445,8 @@ while n &gt; 0:
 &gt; 3
 &gt; 2
 &gt; 1
+```
+
 </code></pre>
 </li>
 </ol>
@@ -410,7 +464,9 @@ while n &gt; 0:
 </li>
 <li>
 <p>Test both functions by calling them with sample inputs.</p>
-<pre><code class="language-python">def greet(name):
+<pre><code class="language-admonish code">
+```python
+def greet(name):
     print(f"Hello, {name}!")
 
 def square(number):
@@ -419,10 +475,16 @@ def square(number):
 # Testing the functions
 greet("Alice")
 print("Square of 4:", square(4))
+```
+
 </code></pre>
-<pre><code class="language-bash">$ python functions.py
+<pre><code class="language-admonish terminal">
+```bash
+$ python functions.py
 &gt; Hello, Alice!
 &gt; Square of 4: 16
+```
+
 </code></pre>
 </li>
 </ol>
@@ -443,7 +505,9 @@ print("Square of 4:", square(4))
 </li>
 <li>
 <p>and run it.</p>
-<pre><code class="language-python">student = {
+<pre><code class="language-admonish code">
+```python
+student = {
     "name": "Your name",
     "age": 21,
     "courses": ["Subject1", "Subject2"]
@@ -454,11 +518,17 @@ print("Age:", student["age"])
 
 student["graduation_year"] = 2025
 print("Updated student dictionary:", student)
+```
+
 </code></pre>
-<pre><code class="language-bash">$ python dictionaries.py
+<pre><code class="language-admonish terminal">
+```bash
+$ python dictionaries.py
 &gt; Name: Your name
 &gt; Age: 21
 &gt; Updated student dictionary: {'name': 'Your name', 'age': 21, 'courses': ['Subject1', 'Subject2'], 'graduation_year': 2025}
+```
+
 </code></pre>
 </li>
 </ol>

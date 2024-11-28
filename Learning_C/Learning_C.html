@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -164,31 +168,39 @@
 
                 <div id="content" class="content">
                     <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="lab-1-learning-c"><a class="header" href="#lab-1-learning-c">Lab 1: Learning C</a></h1>
+                        <h1 id="lab-3-learning-c"><a class="header" href="#lab-3-learning-c">Lab 3: Learning C</a></h1>
 <p>We will be doing this lab inconjuction with the C lecture. Key concepts will be explained and you will put into practice.</p>
 <h2 id="0-compiler-for-c"><a class="header" href="#0-compiler-for-c">0. Compiler for C</a></h2>
 <ul>
 <li>
 <p>We need add a compiler to out <code>PATH</code> to do that revist the <code>~/.bashrc</code> file and append the <code>PATH</code> environment variable the following:</p>
-<pre><code class="language-sh">$ vim ~/.bashrc
+<pre><code class="language-admonish terminal">
+```sh
+$ vim ~/.bashrc
 export PATH=$PATH:"/c/Program Files/GCC-Windows-MingW-2.0.0/w64devkit/bin"
+```
+
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
-<ul>
-<li>This collection of build tools are from <a href="https://github.com/skeeto/w64devkit/releases">https://github.com/skeeto/w64devkit/releases</a></li>
-<li>and only for our machines in Nelson 128 and Nelson 108, you can download and install using the release and then do the export above.</li>
-</ul>
-</blockquote>
-</blockquote>
+<pre><code class="language-admonish info">
+- This collection of build tools are from [https://github.com/skeeto/w64devkit/releases](https://github.com/skeeto/w64devkit/releases)
+- and only for our machines in Nelson 128 and Nelson 108, you can download and install using the release and then do the export above.
+
+</code></pre>
 </li>
 <li>
 <p>Then source the <code>~/.bashrc</code> or use the alias we created last time <code>refresh</code></p>
-<pre><code class="language-sh">$ source ~/.bashrc
+<pre><code class="language-admonish terminal">
+```sh
+$ source ~/.bashrc
+```
+
 </code></pre>
 <p>or</p>
-<pre><code class="language-sh">$ refersh
+<pre><code class="language-admonish terminal">
+```sh
+$ refersh
+```
+
 </code></pre>
 </li>
 <li>
@@ -197,7 +209,7 @@ export PATH=$PATH:"/c/Program Files/GCC-Windows-MingW-2.0.0/w64devkit/bin"
 </li>
 </ul>
 <p>So let's make our first program.</p>
-<h2 id="1-create-a-project-in-visual-studio-code"><a class="header" href="#1-create-a-project-in-visual-studio-code">1. Create a Project in Visual Studio Code:</a></h2>
+<h2 id="1-create-a-project-in-visual-studio"><a class="header" href="#1-create-a-project-in-visual-studio">1. Create a Project in Visual Studio:</a></h2>
 <ul>
 <li>
 <p>Open Visual Studio Code and create a new folder called <code>Learning_C</code>..</p>
@@ -210,7 +222,9 @@ export PATH=$PATH:"/c/Program Files/GCC-Windows-MingW-2.0.0/w64devkit/bin"
 </li>
 <li>
 <p>Then open the file and edit:</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt; // we need this library to get access to the input and out put methods for printing to terminal
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt; // we need this library to get access to the input and out put methods for printing to terminal
 
 int main()
 {
@@ -220,51 +234,50 @@ int main()
     
     return 0; // returns 0 to the int of main() and terminate the program
 }
+```
+
 </code></pre>
-<p>Some explanation about the above code:</p>
-<ul>
-<li>
-<p>All code gets executed inside of <code>main()</code>,</p>
-</li>
-<li>
-<p>For the program to terminate the <code>main()</code> has to have a returnable value, <code>int</code>,</p>
-</li>
-<li>
-<p>The keyword at the end of the <code>main()</code> is <code>return</code>, this is will return the value preceeding it,</p>
-</li>
-<li>
-<p>A <code>0</code> execute means no errors. &gt;</p>
-</li>
-<li>
-<p>Similar to <code>C#</code> to use libraries <code>c</code> programs import with the <code>#include</code> keyword instead of <code>using</code>.</p>
-</li>
-<li>
-<p>The included library is the standard input out header, <code>stdio.h</code>.</p>
-</li>
-<li>
-<p>By including this header file we have access to the <code>printf()</code> function that enables us to return information to the terminal in string format.</p>
-</li>
-</ul>
+<pre><code class="language-admonish example title=&#39;Explanation of code&#39;">
+Some explanation about the above code:
+
+- All code gets executed inside of `main()`, 
+
+- For the program to terminate the `main()` has to have a returnable value, `int`, 
+
+- The keyword at the end of the `main()` is `return`, this is will return the value preceeding it, 
+
+- A `0` execute means no errors. &gt;
+
+- Similar to `C#` to use libraries `c` programs import with the `#include` keyword instead of `using`. 
+
+- The included library is the standard input out header, `stdio.h`.  
+
+- By including this header file we have access to the `printf()` function that enables us to return information to the terminal in string format.
+
+
+</code></pre>
 <p>Now we are going to compile the code so that we have an executable file that can be run from the terminal, using the <code>gcc</code> compiler:</p>
-<pre><code class="language-sh">$ gcc helloworld.c -o helloworld.exe
+<pre><code class="language-admonish terminal">
+```sh
+$ gcc helloworld.c -o helloworld.exe
+```
+
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
-<ul>
-<li>You can open the terminal in visual studio code using <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>'</kbd></li>
-<li>If you do not have bash as the default, you can select it from the drop down arrow, like below.
-<img src="./figures/step1-1-1.png" alt="" /></li>
-</ul>
-</blockquote>
-</blockquote>
+<pre><code class="language-admonish tip">
+- You can open the terminal in visual studio code using &lt;kbd&gt;ctrl&lt;/kbd&gt;+&lt;kbd&gt;shift&lt;/kbd&gt;+&lt;kbd&gt;'&lt;/kbd&gt;
+- If you do not have bash as the default, you can select it from the drop down arrow, like below.
+
+   ![](./figures/step1-1-1.png)
+
+</code></pre>
 <hr />
-  <details>
-  <summary><b>Click for Expected Output</b></summary>
-  <p></p>
-<p><img src="./figures/step1-1.png" alt="" /></p>
-<p>Congratulations, <a href="https://devhumor.com/media/god-s-programming-language">you used the programming language of the gods!</a></p>
-  </details>
+<pre><code class="language-admonish output collapsible=true title=&#39;Click for Expected Output&#39;">
+
+![](./figures/step1-1.png)
+
+Congratulations, [you used the programming language of the gods!](https://devhumor.com/media/god-s-programming-language)
+
+</code></pre>
 <hr />
 </li>
 </ul>
@@ -272,13 +285,17 @@ int main()
 <ul>
 <li>
 <p>Now we are going to create a new program called <code>inputoutput.c</code> to look like below:</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 int main()
 {
     int testInteger = 5;
     printf("Number = %d", testInteger);
     return 0;
 }
+```
+
 </code></pre>
 </li>
 <li>
@@ -300,7 +317,9 @@ int main()
 <ul>
 <li>
 <p>Modify the same file again to look like below:</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 int main()
 {
     ...
@@ -313,10 +332,13 @@ int main()
 
     return 0;
 }
+```
+
 </code></pre>
-<ul>
-<li><code>...</code> means compressed code for brevity, don't write it.</li>
-</ul>
+<pre><code class="language-admonish warning">
+- `...` means compressed code for brevity, don't write it.
+
+</code></pre>
 </li>
 <li>
 <p>Run the code again and you will see this again...</p>
@@ -338,7 +360,9 @@ int main()
 <ul>
 <li>
 <p>Modify the same file again to look like below:</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 int main()
 {
     ...
@@ -347,6 +371,8 @@ int main()
     printf("character = %c, value is = %d", chr, chr);  
     return 0;
 } 
+```
+
 </code></pre>
 </li>
 <li>
@@ -365,7 +391,9 @@ int main()
 <ul>
 <li>
 <p>Again we will modify the program to look like the code below:</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 int main()
 {
     ... 
@@ -377,6 +405,8 @@ int main()
     printf("Number = %d",testInteger);
     return 0;
 }
+```
+
 </code></pre>
 </li>
 <li>
@@ -385,11 +415,14 @@ int main()
 <p><img src="./figures/step5.png" alt="" /></p>
   </div>
 <ul>
-<li>Here, we have used <code>%d</code> format specifier inside the <code>scanf()</code> function to take <code>int</code> input from the user. When the user enters an integer, it is stored in the <code>testInteger</code> variable.</li>
+<li>
+<p>Here, we have used <code>%d</code> format specifier inside the <code>scanf()</code> function to take <code>int</code> input from the user. When the user enters an integer, it is stored in the <code>testInteger</code> variable.</p>
+<pre><code class="language-admonish info">
+Notice, that we have used `&amp;testInteger` inside `scanf()`. It is because `&amp;testInteger` gets the address of `testInteger`, and the value entered by the user is stored in that address. We will cover addressing and pointers at a later date.
+
+</code></pre>
+</li>
 </ul>
-<blockquote>
-<p>Notice, that we have used <code>&amp;testInteger</code> inside <code>scanf()</code>. It is because <code>&amp;testInteger</code> gets the address of <code>testInteger</code>, and the value entered by the user is stored in that address. We will cover addressing and pointers at a later date.</p>
-</blockquote>
 </li>
 </ul>
 <hr />
@@ -419,7 +452,9 @@ int main()
 </li>
 <li>
 <p>We are going to write a program that returns the size of each data type availabe in <code>c</code>, modify the program to look like below:</p>
-<pre><code class="language-c">#include&lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include&lt;stdio.h&gt;
 int main(){
 
     printf("Data_Types\t\tStorage_Size \n");
@@ -434,6 +469,8 @@ int main(){
 
     return 0;
 }
+```
+
 </code></pre>
 </li>
 <li>
@@ -448,12 +485,18 @@ int main(){
 <ol>
 <li>
 <p>Create a new C file using a text editor like <code>nano</code>:</p>
-<pre><code class="language-c">$ nano IfStatement.c
+<pre><code class="language-admonish terminal">
+```c
+$ nano IfStatement.c
+```
+
 </code></pre>
 </li>
 <li>
 <p>Write a program that applies the <code>if</code> statement in C to check <code>if</code> the variable <code>num</code> is greater than 5 using an <code>if</code> statement. If the condition is <code>true</code>, the code inside the <code>if</code> block is executed, and it prints a message.</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 
 int main() {
     int num = 10;
@@ -464,6 +507,8 @@ int main() {
 
     return 0;
 }
+```
+
 </code></pre>
 </li>
 <li>
@@ -471,19 +516,29 @@ int main() {
 </li>
 <li>
 <p>Compile your C code using the <code>gcc</code> compiler to generate an executable file:</p>
-<pre><code class="language-sh">$ gcc IfStatement.c -o IfStatement.exe
+<pre><code class="language-admonish terminal">
+```sh
+$ gcc IfStatement.c -o IfStatement.exe
+```
+
 </code></pre>
 </li>
 <li>
 <p>Run your C program using the generated executable file:</p>
-<pre><code class="language-sh">$ ./IfStatement.exe
+<pre><code class="language-admonish terminal">
+```sh
+$ ./IfStatement.exe
+```
+
 </code></pre>
 </li>
 </ol>
 <p>This program will output "The number is greater than 5" because the condition <code>num &gt; 5</code> is <code>true</code>.</p>
 <h3 id="if-else-statement"><a class="header" href="#if-else-statement">If-else statement</a></h3>
 <p>You can use an <code>if-else</code> statement to execute different code blocks for true and false conditions. Update your code as follows:</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 
 int main() {
     int num = 3;
@@ -496,10 +551,14 @@ int main() {
 
     return 0;
 }
+```
+
 </code></pre>
 <h3 id="if-else-if-statement"><a class="header" href="#if-else-if-statement">If-else if statement</a></h3>
 <p>You can use the <code>if-else if</code> statement to handle multiple conditions. Update your code as follows:</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 
 int main() {
     int num = 0;
@@ -514,11 +573,15 @@ int main() {
 
     return 0;
 }
+```
+
 </code></pre>
 <h2 id="exersices"><a class="header" href="#exersices">Exersices</a></h2>
 <h3 id="exercise-1-even-or-odd"><a class="header" href="#exercise-1-even-or-odd">Exercise-1: Even or Odd</a></h3>
 <p>Create a program that checks whether a given integer is even or odd. Prompt the user to enter an integer, and then display a message indicating whether it's even or odd.</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 
 int main() {
     int num;
@@ -534,18 +597,18 @@ int main() {
 
     return 0;
 }
+```
+
 </code></pre>
 <h3 id="exercise-2-prime-number-checker"><a class="header" href="#exercise-2-prime-number-checker">Exercise-2 Prime Number Checker</a></h3>
 <p>Write a program that determines if a given number is prime or not.</p>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
-<ul>
-<li>A prime number is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers. In other words, a prime number has only two positive divisors: 1 and itself. For example, the first few prime numbers are 2, 3, 5, 7, 11, 13, 17, and so on. These numbers are only divisible evenly by 1 and the number itself.</li>
-</ul>
-</blockquote>
-</blockquote>
-<pre><code class="language-c">
+<pre><code class="language-admonish info">
+- A prime number is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers. In other words, a prime number has only two positive divisors: 1 and itself. For example, the first few prime numbers are 2, 3, 5, 7, 11, 13, 17, and so on. These numbers are only divisible evenly by 1 and the number itself.
+
+</code></pre>
+<pre><code class="language-admonish code">
+```c
+
 #include &lt;stdio.h&gt;
 
 int is_prime(int number) {
@@ -574,10 +637,14 @@ int main() {
 
     return 0; 
 }
+```
+
 </code></pre>
 <h3 id="exercise-3--simple-calculator"><a class="header" href="#exercise-3--simple-calculator">Exercise-3 : Simple Calculator</a></h3>
 <p>Write a basic calculator program that allows the user to perform addition, subtraction, multiplication, and division on two numbers. Ask the user to enter the operation they want to perform and the numbers to operate on.</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code">
+```c
+#include &lt;stdio.h&gt;
 
 int main() {
     char operation;
@@ -613,6 +680,7 @@ int main() {
     printf("Result: %lf\n", result);
 
     return 0; 
+```
 </code></pre>
 
                     </main>

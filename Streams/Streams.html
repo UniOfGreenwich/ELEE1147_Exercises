@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -238,9 +242,9 @@
 </li>
 <li>
 <p>Finally, print the result using  <code>printf("The square of %d is: %d\n", number, result);</code><p></p></p>
- <details>
- <summary>Code...</summary>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [27 lines]&#39;">
+```c
+#include &lt;stdio.h&gt;
 
 int main() {
     // Declare variables for input and result
@@ -268,24 +272,19 @@ int main() {
 
     return 0; // Exit successfully
 }
+```
 
 </code></pre>
- </details>
 </li>
 <li>
 <p>Run the code and when prompted enter the any number that is <strong>not</strong> <code>2</code>.</p>
- <details>
- <summary>Output...</summary>
-<ul>
-<li>Notice how the terminal has rendered the error message, this is because error, <code>2</code> stream is different to standard out, <code>1</code>, stream</li>
-</ul>
- </details>
+<pre><code class="language-admonish output collapsible=true">
+- Notice how the terminal has rendered the error message, this is because error, `2` stream is different to standard out, `1`, stream
+
+</code></pre>
 </li>
 <li>
 <p>Run a second time and then enter the value <code>2</code></p>
-<details>
-<summary>Output...</summary>
-</details>
 </li>
 </ol>
 <hr />
@@ -297,131 +296,132 @@ int main() {
 </li>
 <li>
 <p>Now modify <code>main()</code>, by placing using the <code> FILE *inputFile, *outputFile;</code> at the top of <code>main()</code>.</p>
-<blockquote>
-<p><strong>Note</strong></p>
-<blockquote>
-<ul>
-<li>
-<p><code>FILE</code> is not a fundamental C data type; it's a data type defined in the C standard library. It represents a file stream and is used to interact with files in C programs. The <code>FILE</code> type is typically defined in the &lt;stdio.h&gt; header file as <code>struct</code></p>
-<pre><code class="language-c">typedef struct {
-// Implementation-specific members
-} FILE;
+<pre><code class="language-admonish info">
+ - `FILE` is not a fundamental C data type; it's a data type defined in the C standard library. It represents a file stream and is used to interact with files in C ograms. The `FILE` type is typically defined in the &lt;stdio.h&gt; header file as `struct`
+   
+    ```c
+    typedef struct {
+    // Implementation-specific members
+    } FILE;
+    ```
+
+ - `FILE` is essentially a structure that holds information about an open file, including its **current position**, **status**, and **other details**. When you open a file using functions like `fopen()`, it returns a pointer,`*`, to a `FILE` structure that you use for subsequent file operations.
+
 </code></pre>
-</li>
-<li>
-<p><code>FILE</code> is essentially a structure that holds information about an open file, including its <strong>current position</strong>, <strong>status</strong>, and <strong>other details</strong>. When you open a file using functions like <code>fopen()</code>, it returns a pointer,<code>*</code>, to a <code>FILE</code> structure that you use for subsequent file operations.</p>
-</li>
-</ul>
-</blockquote>
-</blockquote>
 </li>
 <li>
 <p>On the next line define three integer variables called, <code>numOne</code>, <code>numTwo</code> and <code>result</code>:</p>
-<details>
-<summary>Code...</summary>
-<pre><code class="language-c">int num1, num2, result;
+<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [1 line]&#39;">
+ ```c
+ int num1, num2, result;
+ ```
+
 </code></pre>
-</details>
 </li>
 <li>
 <p>Create two newlines and the second one you need to reproduce the follwoing:</p>
-<pre><code class="language-c"> // Open input file for reading
- inputFile = fopen("input.txt", "r");
- if (inputFile == NULL) {
-     perror("Error opening input file");
-     return 1; // Exit with an error code
- }
+<pre><code class="language-admonish code">
+```c
+// Open input file for reading
+inputFile = fopen("input.txt", "r");
+if (inputFile == NULL) {
+    perror("Error opening input file");
+    return 1; // Exit with an error code
+}
+```
+
 </code></pre>
-<ul>
-<li>
-<p>Here we are using <code>fopen</code> to open the <code>"input.txt"</code> with in read mode <code>"r"</code></p>
-</li>
-<li>
-<p>A check is made to see if the <code>inputFile</code> has any data, does the file exist, this is done with a <code>NULL</code> check.</p>
-</li>
-<li>
-<p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>"Error opening input file"</code> to standard error, and close the application with <code>return 1,</code> to indicate an error using an exit code.</p>
-</li>
-</ul>
+<pre><code class="language-admonish example title=&#39;Explanation of code&#39;">
+- Here we are using `fopen` to open the `"input.txt"` with in read mode `"r"`
+
+- A check is made to see if the `inputFile` has any data, does the file exist, this is done with a `NULL` check.
+
+- If `NULL`, then the `perror` is invoked and outputs `"Error opening input file"` to standard error, and close the application with `return 1,` to indicate an error using an exit code.
+
+</code></pre>
 </li>
 <li>
 <p>If inputFile is not <code>NULL</code> then the following code would excute, input the following:</p>
-<pre><code class="language-c">// Read two integers from the input file
+<pre><code class="language-admonish code">
+```c
+// Read two integers from the input file
 if (fscanf(inputFile, "%d %d", &amp;numOne, &amp;numTwo) != 2) {
      // Handle input error using perror()
      perror("Error reading input from file");
      fclose(inputFile); // Close the input file
      return 1; // Exit with an error code
  }
+```
+
 </code></pre>
-<ul>
-<li>
-<p><code>fscanf</code> is for reading files what <code>scanf</code> is for reading from terminal input.</p>
-</li>
-<li>
-<p><code>fscanf</code>  returns the number of successfully read items. In this case, it should return <code>2</code> if it successfully reads two integers from the file. The <code>!= 2</code> checks if the return value is <strong>not</strong> equal to 2, indicating that the expected number of items was <strong>not</strong> successfully read.</p>
-</li>
-<li>
-<p><code>fclose</code> is invoked because the file was opened, and needs to be closed. This protects the file from curruption when the program closes with <code>return 1</code></p>
-</li>
-</ul>
+<pre><code class="language-admonish info">
+- `fscanf` is for reading files what `scanf` is for reading from terminal input.
+
+- `fscanf`  returns the number of successfully read items. In this case, it should return `2` if it successfully reads two integers from the file. The `!= 2` checks if the return value is **not** equal to 2, indicating that the expected number of items was **not** successfully read.
+
+- `fclose` is invoked because the file was opened, and needs to be closed. This protects the file from curruption when the program closes with `return 1`
+
+</code></pre>
 </li>
 <li>
 <p>We should also close the file when successfully read, do this by reproducing the <code>fclose</code> code on a new line outside of the closing brace of the <code>if(...){...</code>}</p>
 </li>
 <li>
 <p>The calculation can now be performed, multiply <code>numOne</code> by <code>numTwo</code> and store in <code>result</code></p>
- <details>
- <summary>Code...</details>
-<pre><code class="language-c">fclose(inputFile); // Close the input file
+<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [3 lines]&#39;">
+```c
+fclose(inputFile); // Close the input file
 
 // Perform multiplication
 result = numOne * numTwo;
+```
+
 </code></pre>
- </details>
 </li>
 <li>
 <p>In a similar fashion to step 4 we need to write to a new file, reproduce the following:</p>
-<pre><code class="language-c">// Open output file for writing
+<pre><code class="language-admonish code">
+```c
+// Open output file for writing
 outputFile = fopen("output.txt", "w");
 if (outputFile == NULL) {
     perror("Error opening output file");
     return 1; // Exit with an error code
 }
+```
+
 </code></pre>
-<ul>
-<li>
-<p><code>fopen</code> opens the <code>"output.txt"</code> in write mode <code>"w"</code></p>
-</li>
-<li>
-<p>A check is made to see if the <code>outputFile</code> has any data, does the file exist, this is done with a <code>NULL</code> check.</p>
-</li>
-<li>
-<p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>"Error opening output file"</code> to standard error, and close the application with <code>return 1</code>, to indicate an error using an exit code.</p>
-</li>
-</ul>
+<pre><code class="language-admonish example title=&#39;Explanation of code&#39;">
+- `fopen` opens the `"output.txt"` in write mode `"w"`
+
+- A check is made to see if the `outputFile` has any data, does the file exist, this is done with a `NULL` check.
+
+- If `NULL`, then the `perror` is invoked and outputs `"Error opening output file"` to standard error, and close the application with `return 1`, to indicate an error using an exit code. 
+
+</code></pre>
 </li>
 <li>
 <p>Again, repeating the structure of step 5, we can write to the file the <code>result</code> variable. Reproduce the following:</p>
-<pre><code class="language-c">// Write the result to the output file
+<pre><code class="language-admonish code">
+```c
+// Write the result to the output file
 if (fprintf(outputFile, "Multiplication result: %d\n", result) &lt; 0) {
     // Handle output error using perror()
     perror("Error writing output to file");
     fclose(outputFile); // Close the output file before exiting
     return 1; // Exit with an error code
 }
+```
+
 </code></pre>
-<ul>
-<li>
-<p><code>fprintf</code> is for writing a formatted output to a file. It is similar to <code>printf</code>, but it writes to a file stream (<code>FILE*</code>).</p>
-</li>
-<li>
-<p><code>&lt; 0</code> is a comparison that checks if the return value of fprintf is <strong>less than</strong> 0. <code>fprintf</code> returns the number of characters successfully written. If the return value is less than 0, it indicates an error occurred during writing.</p>
-</li>
-<li>
-<p>Again you see <code>perror()</code> for standard error and the addition of <code>fclose()</code> to close the file.</p>
-</li>
-</ul>
+<pre><code class="language-admonish example title=&#39;Explanation of code&#39;">
+- `fprintf` is for writing a formatted output to a file. It is similar to `printf`, but it writes to a file stream (`FILE*`).
+
+- `&lt; 0` is a comparison that checks if the return value of fprintf is **less than** 0. `fprintf` returns the number of characters successfully written. If the return value is less than 0, it indicates an error occurred during writing.
+
+- Again you see `perror()` for standard error and the addition of `fclose()` to close the file.
+
+</code></pre>
 </li>
 <li>
 <p>On success the file needs to be close so after the <code>if(..){..}</code> add <code>fclose("outputFile)</code> and on a new line <code>printf("Operation completed successfully.\n");</code></p>
@@ -434,9 +434,10 @@ if (fprintf(outputFile, "Multiplication result: %d\n", result) &lt; 0) {
 </li>
 </ol>
 <hr />
-<details>
-<summary>Full Code....</summary>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<h2 id="full-code"><a class="header" href="#full-code">Full code</a></h2>
+<pre><code class="language-admonish code collapsible=true title=&#39;Full code... [56 lines] &#39;">
+```c
+#include &lt;stdio.h&gt;
 
 int main() {
     FILE *inputFile, *outputFile;
@@ -483,8 +484,9 @@ int main() {
 
     return 0; // Exit successfully
 }
+```
+
 </code></pre>
-</details>
 
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">

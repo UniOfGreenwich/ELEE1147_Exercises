@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -176,7 +180,9 @@
 <p><img src="./figures/masterBranchCycle.png" alt="flow" /></p>
 </div>
 <h3 id="the-workflow"><a class="header" href="#the-workflow">The workflow</a></h3>
-<pre><code class="language-bash"># everything is happy and up-to-date in master
+<pre><code class="language-admonish code">
+```bash
+# everything is happy and up-to-date in master
 git checkout master
 git pull origin master
 
@@ -215,13 +221,19 @@ git merge --no-ff my-new-feature
 
 # optional: tag important things, such as releases
 git tag 1.0.0-RC1
+```
+
 </code></pre>
 <h3 id="useful-config"><a class="header" href="#useful-config">useful config</a></h3>
-<pre><code class="language-bash"># autosetup rebase so that pulls rebase by default
+<pre><code class="language-admonish code">
+```bash
+# autosetup rebase so that pulls rebase by default
 git config --global branch.autosetuprebase always
 
 # if you already have branches (made before `autosetuprebase always`)
 git config branch.&lt;branchname&gt;.rebase true
+```
+
 </code></pre>
 <h3 id="dos-and-donts"><a class="header" href="#dos-and-donts">DOs and DON'Ts</a></h3>
 <p>No DO or DON'T is sacred. You'll obviously run into exceptions, and develop
@@ -299,7 +311,7 @@ in the future.</p>
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../BashAliases/BashAliases.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../Learning_Python/Importing_Modules.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -313,7 +325,7 @@ in the future.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../BashAliases/BashAliases.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../Learning_Python/Importing_Modules.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

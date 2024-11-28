@@ -1,0 +1,60 @@
+:root {
+  --md-admonition-icon--admonish-terminal: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-terminal' viewBox='0 0 16 16'><path d='M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9M3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708z'/><path d='M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z'/></svg>");
+}
+
+:is(.admonition):is(.admonish-terminal) {
+  border-color: #76727b;
+}
+
+:is(.admonish-terminal) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(118, 114, 123, 0.1);
+}
+:is(.admonish-terminal) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #76727b;
+  mask-image: var(--md-admonition-icon--admonish-terminal);
+  -webkit-mask-image: var(--md-admonition-icon--admonish-terminal);
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}
+:root {
+  --md-admonition-icon--admonish-output: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-terminal-fill' viewBox='0 0 16 16'><path d='M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9.5 5.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1m-6.354-.354a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708L4.793 6.5z'/></svg>");
+}
+
+:is(.admonition):is(.admonish-output) {
+  border-color: #72879c;
+}
+
+:is(.admonish-output) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(114, 135, 156, 0.1);
+}
+:is(.admonish-output) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #72879c;
+  mask-image: var(--md-admonition-icon--admonish-output);
+  -webkit-mask-image: var(--md-admonition-icon--admonish-output);
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}
+:root {
+  --md-admonition-icon--admonish-code: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-code-square' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z'/><path d='M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0m2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0'/></svg>");
+}
+
+:is(.admonition):is(.admonish-code) {
+  border-color: #24ab38;
+}
+
+:is(.admonish-code) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(36, 171, 56, 0.1);
+}
+:is(.admonish-code) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #24ab38;
+  mask-image: var(--md-admonition-icon--admonish-code);
+  -webkit-mask-image: var(--md-admonition-icon--admonish-code);
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}

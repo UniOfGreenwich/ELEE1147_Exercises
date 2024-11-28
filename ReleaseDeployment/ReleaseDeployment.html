@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -211,22 +215,30 @@ deployed all at once.</p>
 </li>
 <li>
 <p>Create a feature branch based off of <code>develop</code></p>
-<pre><code>$ git checkout develop
+<pre><code class="language-admonish terminal">
+```
+$ git checkout develop
 $ git checkout -b MYTEAM-123-new-documentation
 $ git push --set-upstream MYTEAM-123-new-documentation
+```
+
 </code></pre>
 </li>
 <li>
 <p>Develop the code for the new feature and commit. Push your changes often. This
 allows others to see your changes and suggest improvements/changes as well as
 provides a safety net should your hard drive crash.</p>
-<pre><code>$ ... make changes
+<pre><code class="language-admonish terminal">
+```
+$ ... make changes
 $ git add -A .
 $ git commit -m "Add new documentation files"
 $ ... make more changes
 $ git add -A .
 $ git commit -m "Fix some spelling errors"
 $ git push
+```
+
 </code></pre>
 </li>
 <li>
@@ -251,25 +263,37 @@ the following branch settings:</p>
 <p>Merge <code>master</code> into <code>develop</code> to ensure the new release will contain the
 latest production code. This reduces the chance of a merge conflict during
 the release.</p>
-<pre><code>$ git checkout develop
+<pre><code class="language-admonish terminal">
+```
+$ git checkout develop
 $ git merge master
+```
+
 </code></pre>
 </li>
 <li>
 <p>Create a new <code>release-vX.Y.Z</code> release branch off of <code>develop</code>.</p>
-<pre><code>$ git checkout -b release-vX.Y.Z
+<pre><code class="language-admonish terminal">
+```
+$ git checkout -b release-vX.Y.Z
 $ git push --set-upstream release-vX.Y.Z
+```
+
 </code></pre>
 </li>
 <li>
 <p>Stabilize the release by using bugfix branches off of the <code>release-vX.Y.Z</code> branch
 (the same way you would do a feature branch off of <code>develop</code>).</p>
-<pre><code>$ git checkout release-vX.Y.Z
+<pre><code class="language-admonish terminal">
+```
+$ git checkout release-vX.Y.Z
 $ git checkout -b fix-label-alignment
 $ git push --set-upstream fix-label-alignment
 ... do work
 $ git commit -m "Adjust label to align with button"
 $ git push
+```
+
 </code></pre>
 </li>
 <li>
@@ -301,9 +325,13 @@ Click <code>Publish release</code>.</li>
 </li>
 <li>
 <p>Merge the <code>release-vX.Y.Z</code> into <code>develop</code>.</p>
-<pre><code>$ git checkout develop
+<pre><code class="language-admonish terminal">
+```
+$ git checkout develop
 $ git merge release-vX.Y.Z
 $ git push
+```
+
 </code></pre>
 </li>
 <li>
@@ -325,16 +353,23 @@ Mike N: That probably means recreating the release branch, unless we have short-
 <ol>
 <li>
 <p>Create the support branch and release branch for the patch release.</p>
-<pre><code>// Checkout the tag for the 1.0.0 release
+<pre><code class="language-admonish terminal">
+```sh
+# Checkout the tag for the 1.0.0 release
 git checkout v1.0.0
 
-// Create the long living support branch
+# Create the long living support branch
 git checkout -b support-v1.x
 
-// Create the release branch
+# Create the release branch
 git checkout -b release-v1.0.1
+```
+
 </code></pre>
-<p>Note: For subsequent releases (ex v1.0.2) the release branch will be branched off the <code>HEAD</code> of <code>support-v1.x</code></p>
+<pre><code class="language-admonish note">
+For subsequent releases (ex v1.0.2) the release branch will be branched off the `HEAD` of `support-v1.x`
+
+</code></pre>
 </li>
 <li>
 <p>Make changes in the <code>release-v1.0.1</code>. Multiple PRs can be merged into this branch if several changes are necessary.</p>
@@ -350,9 +385,12 @@ git checkout -b release-v1.0.1
 </li>
 <li>
 <p>Mark <code>support-v1.x</code> as a protected branch in github so that it does not get accidentally deleted.</p>
+<pre><code class="language-admonish tip">
+Try to maintain as few support branches as possible. These branches are expensive to maintain since you will need to cherry pick applicable bug fixes into each support branch seperately.
+
+</code></pre>
 </li>
 </ol>
-<p><em>Pro-tip</em>: Try to maintain as few support branches as possible. These branches are expensive to maintain since you will need to cherry pick applicable bug fixes into each support branch seperately.</p>
 <h3 id="production-hot-fix"><a class="header" href="#production-hot-fix">Production hot fix</a></h3>
 <p>A production hotfix is very similar to a full-scale release except that you do
 your work in a branch taken directly off of <code>master</code>. Hotfixes are useful in cases
@@ -362,17 +400,25 @@ code in it already.</p>
 <ol>
 <li>
 <p>Create a hot fix branch based off of <code>master</code>.</p>
-<pre><code>$ git checkout master
+<pre><code class="language-admonish terminal">
+```
+$ git checkout master
 $ git checkout -b hotfix-documentation-broken-links
 $ git push --set-upstream origin hotfix-documentation-broken-links
+```
+
 </code></pre>
 </li>
 <li>
 <p>Add a test case to validate the bug, fix the bug, and commit.</p>
-<pre><code>... add test, fix bug, verify
+<pre><code class="language-admonish terminal">
+```
+... add test, fix bug, verify
 $ git add -A .
 $ git commit -m "Fix broken links"
 $ git push
+```
+
 </code></pre>
 </li>
 <li>
@@ -408,9 +454,13 @@ through the process of creating a release like this.</em></p>
 <ol>
 <li>
 <p>Merge the <code>hotfix-documentation-broken-links</code> into <code>develop</code>.</p>
-<pre><code>$ git checkout develop
+<pre><code class="language-admonish terminal">
+```
+$ git checkout develop
 $ git merge hotfix-documentation-broken-links
 $ git push
+```
+
 </code></pre>
 </li>
 <li>
@@ -433,16 +483,24 @@ in the <a href="migration.html">Migration</a> document.</p>
 <li>
 <p>Create a bundle to be sent to the customer for verification and approval off of the <code>release-vX.Y.Z</code> branch.</p>
 <p>Ensure you have installed the automated bundle message script found [here] (https://	mobify.atlassian.net/wiki/questions/81789082/how-do-i-automate-a-bundle-message-using-bash). Follow these steps:</p>
-<pre><code>$ grunt push -m "$(message Mobile X.Y.Z)"
+<pre><code class="language-admonish terminal">
+ ```
+ $ grunt push -m "$(message Mobile X.Y.Z)"
+ ```
+
 </code></pre>
 </li>
 <li>
 <p>When creating a pull request to merge the release branch into <code>master</code> ensure that the standard workflow for <em>creating a release</em> is followed with these specific changes:</p>
 <ul>
-<li>Name/Summary: <code>DEPLOYMENT MERGE: release-v.X.Y.Z, bundle &lt;bundle number that was sent to customer&gt;</code></li>
-<li>Description:</li>
-</ul>
-<pre><code>Status: **Out to Customer**
+<li>
+<p>Name/Summary: <code>DEPLOYMENT MERGE: release-v.X.Y.Z, bundle &lt;bundle number that was sent to customer&gt;</code></p>
+</li>
+<li>
+<p>Description:</p>
+<pre><code class="language-admonish code">
+```md
+Status: **Out to Customer**
 Owner: &lt;Your Github username&gt;
 Reviewers: Customer
 
@@ -450,13 +508,17 @@ Reviewers: Customer
 - &lt;bundle link sent to customer&gt;
 
 ## Jira Tickets:
- - [x] &lt;List of JIRA Tickets associated with release&gt;
+- [x] &lt;List of JIRA Tickets associated with release&gt;
 
- ## Todos:
- - [ ] Customer Approves Bundle &lt;number&gt;
- - [ ] Deploy Bundle &lt;number&gt;
- - [ ] Clean Up Repo
+## Todos:
+- [ ] Customer Approves Bundle &lt;number&gt;
+- [ ] Deploy Bundle &lt;number&gt;
+- [ ] Clean Up Repo
+```
+
 </code></pre>
+</li>
+</ul>
 </li>
 <li>
 <p>Once the customer has approved the bundle. The bundle is published to production and post launch tests occur. Once all tests have passed, the pull request is merged into <code>master</code>.</p>
@@ -468,7 +530,10 @@ Reviewers: Customer
 <li>Description: This should also include a link to a confluence JIRA report page that lists all issues in the release.</li>
 </ul>
 <p>Click <code>Publish release</code>.</p>
-<p><strong>NOTE: the release tag will be 1 commit ahead of the bundle commit</strong></p>
+<pre><code class="language-admonish note">
+The release tag will be 1 commit ahead of the bundle commit**
+
+</code></pre>
 </li>
 </ol>
 
