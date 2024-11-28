@@ -6,6 +6,8 @@ In this lab you will be introduce to pointers and addressing as tool to understa
 2. Remember to rename the `PointersAndAddressing.cpp` to `PointersAndAddressing.c`
 3. Open `PointersAndAddressing.c` and modify to look like below: 
 
+    ~~~admonish code
+
     ```c
     #include <stdio.h>
 
@@ -14,6 +16,8 @@ In this lab you will be introduce to pointers and addressing as tool to understa
         return 0;
     }
     ```
+
+    ~~~
 
 ## Section 1: Pointers
 
@@ -29,6 +33,8 @@ Every variable is a memory location and every memory location has its address de
 
 4. Modify `main()` by entering the following code:
 
+    ~~~admonish code
+
     ```
     ...
         int a=1, b =2 ,c =0;
@@ -40,34 +46,41 @@ Every variable is a memory location and every memory location has its address de
     }
     ```
     
-    >Note: the `...` in the code blocks means that there is code above or below that remains the same.
+    ~~~
+
+    ~~~admonish info
+
+    The `...` in the code blocks means that there is code above or below that remains the same.
     
-    <details>
-    <summary><b>Click for Expected Output</b></summary>
-    <p></p>
+    ~~~
+    
+    ~~~admonish output collapsible=true
 
     ![](./figures/step1.png)
 
-    </details>
-
-
     So it looks like the address are almost next to each other, we call this **contiguous**.
+    
+    ~~~
 
-    > **Notes:**
-    >> - We must use format specifiers to tell the `printf()` how we would like our variables to be displayed.
-    >> - So, `%` is the character for promising a specifier -> `%lu` means `unsigned long` and is 32 bits in size. 
-    >>- memory address are **never** negative.
+    ~~~admonish info
+
+    - We must use format specifiers to tell the `printf()` how we would like our variables to be displayed.
+    
+    - So, `%` is the character for promising a specifier -> `%lu` means `unsigned long` and is 32 bits in size. 
+    
+    - memory address are **never** negative.
+
+    ~~~
 
 5. What would happen to the addresses if you ran the code again? **Try it!**
 
-    <details>
-    <summary>Well...</summary>
+    ~~~admonish output collapsible=true
 
      ![](./figures/step2.png)
 
     You should have recieved different memory address locations, this because of the **Address Space Layout Randomiser** (ASLR) which provides a random address space for security reason. Consider if someone wanted to get certain information and new where it was stored all the time?
 
-    </details>
+    ~~~
 
 
 ## Section 2: What are Pointers?
@@ -78,12 +91,16 @@ Here, type is the pointer's base type; it must be a valid C data type and var-na
 
 However, in this statement the asterisk is being used to designate a variable as a pointer. Take a look at some of the valid pointer declarations:
 
+~~~admonish code
+
 ```c
 int    *ip;    /* pointer to an integer */
 double *dp;    /* pointer to a double */
 float  *fp;    /* pointer to a float */
 char   *ch     /* pointer to a character */
 ```
+
+~~~
 
 The actual data type of the value of all pointers, whether integer, float, character, or otherwise, is the same, a long hexadecimal number that represents a memory address. The only difference between pointers of different data types is the data type of the variable or constant that the pointer points to.
 
@@ -98,6 +115,8 @@ To use the pointer, a C language feature, you must do the following steps:
 This is done by using unary operator `*` that returns the value of the variable located at the address specified by its operand. The following example makes use of these operations.
 
 6. Again edit the contents of `main()` to match below:
+
+    ~~~admonish code
 
     ``` c
     #include <stdio.h>
@@ -124,15 +143,15 @@ This is done by using unary operator `*` that returns the value of the variable 
     }
     ```
 
+    ~~~
+
 7. Run the code and you should see something similar to below,remember to compile first:
 
-    <details>
-    <summary><b>Click for Expected Output</b></summary>
-    <p></p>
+    ~~~admonish output collapsible=true
 
     ![](./figures/step3.png)
 
-    </details>
+    ~~~
 
 ----
 
@@ -145,6 +164,8 @@ This is done at the time of variable declaration. A pointer that is assigned `NU
 The `NULL pointer` is a constant with a value of zero defined in several standard libraries. 
 
 8. Modify `main()` and enter the following:
+
+    ~~~admonish code
 
     ``` c
     #include <stdio.h>
@@ -159,15 +180,15 @@ The `NULL pointer` is a constant with a value of zero defined in several standar
     }
     ```
 
+    ~~~
+
 9. Run the program:
 
-    <details>
-    <summary><b>Click for Expected Output</b></summary>
-    <p></p>
-
+    ~~~admonish output collapsible=true
+    
     ![](./figures/step4.png)
 
-    </details>
+    ~~~
 
     - In most of the operating systems, programs are not permitted to access memory at address `0` because that memory is reserved by the operating system. 
 
@@ -175,10 +196,15 @@ The `NULL pointer` is a constant with a value of zero defined in several standar
 
     - To check for a null pointer, you can use an `if` statement as follows:
 
+        ~~~admonish code
+
         ``` c
         if(ptr)     /* succeeds if p is not null */
         if(!ptr)    /* succeeds if p is null */
         ```
+
+        ~~~
+
 --------------
 
 ## Section 5: Pointers in Detail
@@ -217,29 +243,48 @@ Modify `main()` with the following code snippets, remember to include the `#incl
 
 1.  Define and assign an integer with the value 10, which we are going to use for looping.
 
+    ~~~admonish code
+
     ``` c
     int bin = 10;
     ```
 
+    ~~~
+
 2.  Create another integer and this time give it the value 123456789.
+
+    ~~~admonish code
 
     ``` c
     int value = 123456789:
     ```
 
+    ~~~
+
 3.  Initialise a new variable in the pointer region of the code to point to the address of `value`
+
+    ~~~admonish code
 
     ``` c
     int* pointer = (&value);
     ```
+
+    ~~~
+
 4. Add the following `printf`s
    
+   ~~~admonish code
+
    ```c
     printf("Memory Address        ||    Value        \n");
     printf("------------------------------------------\n");
    ```
 
+   ~~~
+
 5.  Now you need to write of the `for` loop to return the address the pointer holds and the value at that address.
+
+    ~~~admonish code
 
     ``` c
     for (int i = 0; i < bin; ++i)
@@ -249,7 +294,11 @@ Modify `main()` with the following code snippets, remember to include the `#incl
     }
     ```
 
-5.  Inside the for loop between the braces { } enter this line to print out the values to console.
+    ~~~
+
+6.  Inside the for loop between the braces { } enter this line to print out the values to console.
+
+    ~~~admonish code 
 
     ``` c
     printf(" %lu      ||    %d \t\t \n",(unsigned long)
@@ -257,15 +306,19 @@ Modify `main()` with the following code snippets, remember to include the `#incl
     pointer,(unsigned int)*pointer);
     ```
 
-6.  Finally, we need to take one off of the pointer\'s value thereby decreasing the address. Add the following direcitly on the line below`printf();`
+    ~~~
 
+7.  Finally, we need to take one off of the pointer\'s value thereby decreasing the address. Add the following direcitly on the line below`printf();`
+
+    ~~~admonish code
+    
     ``` c
     pointer = pointer - 1;
     ```
 
-    <details>
-    <summary><b>Click for Full Code</b></summary>
-    <p></p>
+    ~~~
+
+    ~~~admonish code collapsible=true title='Suppressed Code ... [22 slines]'
 
     ```c
     #include <stdio.h>
@@ -292,24 +345,24 @@ Modify `main()` with the following code snippets, remember to include the `#incl
         return 0;
     }
     ```
-    </details>
+
+    ~~~
 
 
-7. Run the code and you should see something like below: 
+8. Run the code and you should see something like below: 
 
 
-    <details>
-    <summary><b>Click for Expected Output</b></summary>
-    <p></p>
-    
+    ~~~admonish output collapsible=true
+        
     ![](./figures/step5.png)
 
-    </details>
+    ~~~
 
-    >**Note:**
-    >
-    >> Remember you will get different memory address and other than the `123456789` value the rest of the values are generally nonsense, unless they are used by the program.
+    ~~~admonish info
+    
+    Remember you will get different memory address and other than the `123456789` value the rest of the values are generally nonsense, unless they are used by the program.
 
+    ~~~
 
    - Now that the script has executed you can see we have a list of 10 memory addresses and the values those address hold.
 
@@ -325,7 +378,9 @@ So lets quickly look at arrays from a memory prespective.
 
 The `C` programming language can store arrays of any data type; `int`, `float`, `char`,... etc.
 
-8.  This time we will store a `char[]` and print out the each element of the array and the corresponding memory address which will be formatted as a hexadecimal number. Modifiy `main()` to look like the following code:
+9.  This time we will store a `char[]` and print out the each element of the array and the corresponding memory address which will be formatted as a hexadecimal number. Modifiy `main()` to look like the following code:
+
+    ~~~admonish code
 
     ``` c
     #include<stdio.h>
@@ -357,20 +412,21 @@ The `C` programming language can store arrays of any data type; `int`, `float`, 
     }
     ```
 
+    ~~~
+
 9. Run this code and see the expected output below:
 
-    <details>
-    <summary><b>Click for Expected Output</b></summary>
-    <p></p>
+    ~~~admonish output collapsible=true
 
     ![](./figures/step6.png)
-
-    </details>
-
 
     - So you should be able to see that arrays are indeed **Contiguous**
     
     - The starting memory address of the array is the same the zeroth element (`h`). 
+    
+    ~~~
+
+
 
 --------------------------------------
 
@@ -388,15 +444,23 @@ The name `malloc` stands for **m**emory **alloc**ation.
 
 The `malloc()` function reserves a block of memory of the specified number of bytes. And, it returns a pointer of `void` which can be casted into pointers of any form.
 
+~~~admonish code
+
 ```c
 ptr = (castType*) malloc(size);
 ```
 
+~~~
+
 Example:
+
+~~~admonish code
 
 ```c
 ptr = (float*) malloc(100 * sizeof(float));
 ```
+
+~~~
 
 The above statement allocates 400 bytes of memory. It's because the size of `float` is 4 bytes. And, the pointer `ptr` holds the address of the first byte in the allocated memory.
 
@@ -408,15 +472,23 @@ The name `calloc` stands for contiguous allocation.
 
 The `malloc()` function allocates memory and leaves the memory uninitialized, whereas the `calloc()` function allocates memory and initialises all bits to zero.
 
+~~~admonish code
+
 ```c
 ptr = (castType*)calloc(n, size);
 ```
 
+~~~
+
 Example:
+
+~~~admonish code
 
 ```c
 ptr = (float*) calloc(25, sizeof(float));
 ```
+
+~~~
 
 The above statement allocates contiguous space in memory for 25 elements of type `float`.
 
@@ -426,15 +498,21 @@ The above statement allocates contiguous space in memory for 25 elements of type
 
 Dynamically allocated memory created with either `calloc()` or `malloc()` doesn't get freed on their own. You must explicitly use `free()` to release the space.
 
+~~~admonish code
+
 ```c
 free(ptr);
 ```
 
 This statement frees the space allocated in the memory pointed by `ptr`.
 
+~~~
+
 #### Example 1:
 
 10. Modify `main()` again so that and reproduce the following code  so that the program dynamically allocates the memory for `n` number of `int`s using `malloc()` and `free()`:
+
+    ~~~admonish code
 
     ```c
     // Program to calculate the sum of n numbers entered by the user
@@ -472,19 +550,21 @@ This statement frees the space allocated in the memory pointed by `ptr`.
 
     ```
 
+    ~~~
 
 11. Run the program and try to enter a number equal to or than greater that zero:
 
-    <details>
-    <summary>Output...</summary>
+    ~~~admonish output collapsibl=true
 
     ![](./figures/step7.png)
 
-    </details>
+    ~~~
 
 ### Example 2:
 
 12. Modify `main()` again so that and reproduce the following code that dynamically allocates the memory for `n` number of `int` using `calloc()` and `free()`:
+
+    ~~~admonish code
 
     ```c
     // Program to calculate the sum of n numbers entered by the user
@@ -516,29 +596,37 @@ This statement frees the space allocated in the memory pointed by `ptr`.
 
     ```
 
+    ~~~
+
 13. Now, run the code and you should see the following output, remember to enter a number equal to or greater than zero:
 
-    <details>
-    <summary>Output...</summary>
+    ~~~admonish output collapsibl=true
+
 
     ![](./figures/step8.png)
 
-    </details>
+    ~~~
 
 
 ### Subsection 7.4: `realloc()`
 
 If the dynamically allocated memory is insufficient or more than required, you can change the size of previously allocated memory using the `realloc()` function.
 
+~~~admonish code
+
 ```c
 ptr = realloc(ptr, x);
 ```
+
+~~~
 
 Here, `ptr` is reallocated with a new size `x`.
 
 ### Example 3:
 
 14. Modify `main()` again so that and reproduce the following code that dynamically allocates the memory for `n` number of `int` using `malloc()`, `realloc()` and `free()`:
+
+    ~~~admonish code
 
     ```c
     #include <stdio.h>
@@ -571,15 +659,16 @@ Here, `ptr` is reallocated with a new size `x`.
     }
     ```
 
+    ~~~
+
 15. Run the program and remeber the enter a number equal to or greater than zero:
 
 
-    <details>
-    <summary>Output...</summary>
+    ~~~admonish output collapsibl=true
 
     ![](./figures/step9.png)
 
-    </details>
+    ~~~
 
 ## Section *: Stack, Heap and Static
 
@@ -628,6 +717,8 @@ In addition to the lecture note here are more info about those concepts.
   - Calls each memory example function to showcase stack, heap, and static memory.
   - Highlights the unique features of each memory type.
   - Compile and run the program to observe the outputs for different memory types.
+
+    ~~~admonish code
 
     ```c
     #include <stdio.h>
@@ -701,6 +792,9 @@ In addition to the lecture note here are more info about those concepts.
         return 0;
     }
     ```
+    
+    ~~~
+
 - By working through the examples and understanding the behaviors of variables in different memory regions, you should be better equipped to make informed decisions about memory allocation and deallocation in C programs.
 
 ## Section 9: Extra work

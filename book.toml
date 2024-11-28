@@ -5,12 +5,32 @@ multilingual = false
 src = "src"
 title = "Programming for Engineers"
 
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+after = ["links"]
+renderer.test.render_mode = "strip"
+
+[preprocessor.admonish.directive.custom.code]
+icon = "./theme/code-square.svg"
+color = "#24ab38"
+aliases = ["code"]
+
+[preprocessor.admonish.directive.custom.terminal]
+icon = "./theme/terminal.svg"
+color = "#76727B"
+aliases = ["cli","cmd"]
+
+[preprocessor.admonish.directive.custom.output]
+icon = "./theme/output.svg"
+color = "#72879C"
+
 [preprocessor.pagetoc]
 [output.html]
 mathjax-support = true
 git-repository-url = "https://github.com/uniofgreenwich/ELEE1147_Exercises"
 edit-url-template = "https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/{path}"
-additional-css = ["theme/pagetoc.css"]
+additional-css = ["./theme/pagetoc.css", "./theme/css/mdbook-admonish.css", "./theme/css/code.css","./theme/css/terminal.css","./theme/css/output.css"]
 additional-js  = ["theme/pagetoc.js"]
 
 [output.html.search]

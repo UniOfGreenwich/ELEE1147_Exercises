@@ -6,14 +6,22 @@ We will be doing this lab inconjuction with the Python lecture. Key concepts wil
 
 - We should not need to do anything for the university machines to run python as this is already part of the PATH, you can run the following commands: 
 
+    ~~~admonish terminal
+
     ```sh
     $ which python
     $ python --version
     $ which pip
     $ pip --version
     ```
-    **Output:**
+
+    ~~~
+
+    ~~~admonish output
+
     ![](./figures/versions.PNG)
+
+    ~~~
 
 So let's make our first program.
 
@@ -21,10 +29,11 @@ So let's make our first program.
 
 1. Frist we need to create a directory and file, call directory `learning_python` and create a file in side it called `helloworld.py`:
 
-
     ![](./figures/create_dir.gif)
 
 2. Modify the files content to contain the following:
+    
+    ~~~admonish code
 
     ```py
     def main():
@@ -34,6 +43,8 @@ So let's make our first program.
     if __name__=="__main__":
         main()
     ```
+
+    ~~~
 
     ![](./figures/helloworld.gif)
 
@@ -48,6 +59,8 @@ So let's make our first program.
 4. Print each variable on a new line.
 5. and then run it.
 
+    ~~~admonish code
+
     ```python
     name = "Your name"
     age = 25
@@ -58,12 +71,18 @@ So let's make our first program.
     print(height)
     ```
 
+    ~~~
+
+    ~~~admonish terminal
+
     ```bash
     $ python variables.py
     > Your name
     > 25
     > 1.75
     ```
+
+    ~~~
 
 ## Exercise 3: Basic Operations
 
@@ -75,6 +94,7 @@ So let's make our first program.
 3. Use the modulus operator to find the remainder of `a` divided by `b` and print the result.
 4. and then run it.
 
+    ~~~admonish code
 
     ```python
     a = 10
@@ -87,6 +107,10 @@ So let's make our first program.
     print("Modulus:", a % b)
     ```
 
+    ~~~
+    
+    ~~~admonish terminal
+
     ```bash
     $ python basicMaths.py
     > Addition: 13
@@ -95,6 +119,8 @@ So let's make our first program.
     > Division: 3.3333333333333335
     > Modulus: 1
     ```
+
+    ~~~
 
 ## Exercise 4: Lists and Indexing
 
@@ -107,6 +133,7 @@ So let's make our first program.
 4. Remove `"banana"` from the list and print the list again.
 5. and then run it
 
+    ~~~admonish code
 
     ```python
     fruits = ["apple", "banana", "cherry"]
@@ -119,12 +146,18 @@ So let's make our first program.
     print("List after removing banana:", fruits)
     ```
 
+    ~~~
+    
+    ~~~admonish terminal
+
     ```bash
     $ python lists.py
     > First fruit: apple
     > Updated list: ['apple', 'banana', 'cherry', 'orange']
     > List after removing banana: ['apple', 'cherry', 'orange']
     ```
+
+    ~~~
 
 ## Exercise 5: Conditional Statements
 
@@ -139,6 +172,8 @@ So let's make our first program.
 3. and then run it.
 4. change 5 to 0 and run again
 
+    ~~~admonish code
+
     ```python
     number = 5
 
@@ -150,12 +185,18 @@ So let's make our first program.
         print("Zero")
     ```
 
+    ~~~
+
+    ~~~admonish terminal
+
     ```bash
     python conditionals.py
     Positive
     python conditionals.py
     Zero
     ```
+
+    ~~~
 
 ## Exercise 6: Loops
 
@@ -167,6 +208,7 @@ So let's make our first program.
 3. Write a `while` loop that prints numbers from 10 down to 1.
 4. run the program
 
+    ~~~admonish code
 
     ```python
     # For loop to print numbers from 1 to 5
@@ -185,6 +227,9 @@ So let's make our first program.
         n -= 1
     ```
 
+    ~~~
+
+    ~~~admonish terminal
 
     ```bash
     $ python loops.py
@@ -208,6 +253,8 @@ So let's make our first program.
     > 1
     ```
 
+    ~~~
+
 ## Exercise 7: Functions
 
 **Instructions:**
@@ -216,6 +263,8 @@ So let's make our first program.
 1. Write a function called `greet` that takes a name as a parameter and prints `"Hello, <name>!"`.
 2. Write a function `square` that takes a number as a parameter and returns its square.
 3. Test both functions by calling them with sample inputs.
+
+    ~~~admonish code
 
     ```python
     def greet(name):
@@ -229,11 +278,17 @@ So let's make our first program.
     print("Square of 4:", square(4))
     ```
 
+    ~~~
+
+    ~~~admonish terminal
+
     ```bash
     $ python functions.py
     > Hello, Alice!
     > Square of 4: 16
     ```
+
+    ~~~
 
 ## Exercise 8: Dictionaries
 
@@ -244,6 +299,8 @@ So let's make our first program.
 2. Print the student's name and age.
 3. Add a new key `graduation_year` with a sample year and print the updated dictionary.
 4. and run it. 
+
+    ~~~admonish code
 
     ```python
     student = {
@@ -259,9 +316,15 @@ So let's make our first program.
     print("Updated student dictionary:", student)
     ```
 
+    ~~~
+
+    ~~~admonish terminal
+
     ```bash
     $ python dictionaries.py
     > Name: Your name
     > Age: 21
     > Updated student dictionary: {'name': 'Your name', 'age': 21, 'courses': ['Subject1', 'Subject2'], 'graduation_year': 2025}
     ```
+    
+    ~~~

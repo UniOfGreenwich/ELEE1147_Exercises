@@ -11,19 +11,26 @@ instructions [here](continuous-deployment.md).
 1. Determine which branch is deployed to production.
     * For illustration purposes, let's say it's `current-prod`
 1. Merge `current-prod` into `master`
+   
+   ~~~admonish terminal
 
    ```
    $ git checkout master
    $ git merge current-prod
    ```
+   
+   ~~~
 
 1. Create a `develop` branch off of `master` if none exists
-
+   ~~~admonish terminal
+   
    ```
    $ git checkout master
    $ git checkout -b develop
    ```
 
+   ~~~
+    
 1. Notify your team branching & release Czar so that he or she can protect the following branches:
     * `master`
     * `develop`

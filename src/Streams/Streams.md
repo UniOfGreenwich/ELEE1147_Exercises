@@ -48,7 +48,7 @@ In this program you are going to:
 - The result is displayed using `printf()`.
 
 
-1.  Create a new project in Visual Studio and call it Streams, rename the `Streams.cpp` to `Streams.c`
+1. Create a new project in Visual Studio and call it Streams, rename the `Streams.cpp` to `Streams.c`
 
 2. Define two variables both integers called `number` and `result`.
    
@@ -64,8 +64,7 @@ In this program you are going to:
 
 8. Finally, print the result using  `printf("The square of %d is: %d\n", number, result);`<p></p>
    
-    <details>
-    <summary>Code...</summary>
+    ~~~admonish code collapsible=true title='Suppressed Code... [27 lines]'
 
     ```c
     #include <stdio.h>
@@ -96,28 +95,20 @@ In this program you are going to:
 
         return 0; // Exit successfully
     }
-
     ```
 
-    </details>
+    ~~~
 
 9. Run the code and when prompted enter the any number that is **not** `2`. 
 
-    <details>
-    <summary>Output...</summary>
-
+    ~~~admonish output collapsible=true
 
     - Notice how the terminal has rendered the error message, this is because error, `2` stream is different to standard out, `1`, stream
-    </details>
+
+    ~~~
 
 
 10. Run a second time and then enter the value `2`
-
-    <details>
-    <summary>Output...</summary>
-
-
-    </details>
 
 -------
 
@@ -129,45 +120,58 @@ The program you will write assumes that there is an input file named `input.txt`
 
 2. Now modify `main()`, by placing using the ` FILE *inputFile, *outputFile;` at the top of `main()`. 
     
-    >**Note**
-    >> - `FILE` is not a fundamental C data type; it's a data type defined in the C standard library. It represents a file stream and is used to interact with files in C programs. The `FILE` type is typically defined in the <stdio.h> header file as `struct`
-    >>   
-    >>    ```c
-    >>    typedef struct {
-    >>    // Implementation-specific members
-    >>    } FILE;
-    >>    ```
-    >>
-    >> - `FILE` is essentially a structure that holds information about an open file, including its **current position**, **status**, and **other details**. When you open a file using functions like `fopen()`, it returns a pointer,`*`, to a `FILE` structure that you use for subsequent file operations.
+    ~~~admonish info
+    
+     - `FILE` is not a fundamental C data type; it's a data type defined in the C standard library. It represents a file stream and is used to interact with files in C ograms. The `FILE` type is typically defined in the <stdio.h> header file as `struct`
+       
+        ```c
+        typedef struct {
+        // Implementation-specific members
+        } FILE;
+        ```
+    
+     - `FILE` is essentially a structure that holds information about an open file, including its **current position**, **status**, and **other details**. When you open a file using functions like `fopen()`, it returns a pointer,`*`, to a `FILE` structure that you use for subsequent file operations.
+
+    ~~~
 
 3. On the next line define three integer variables called, `numOne`, `numTwo` and `result`: 
    
-   <details>
-   <summary>Code...</summary>
-    
+   ~~~admonish code collapsible=true title='Suppressed Code... [1 line]'
+
     ```c
     int num1, num2, result;
     ```
    
-   </details>
+   ~~~
 
 4. Create two newlines and the second one you need to reproduce the follwoing: 
-   ```c
+
+    ~~~admonish code
+
+    ```c
     // Open input file for reading
     inputFile = fopen("input.txt", "r");
     if (inputFile == NULL) {
         perror("Error opening input file");
         return 1; // Exit with an error code
     }
-   ```
+    ```
+
+    ~~~
+
+    ~~~admonish example title='Explanation of code'
 
     - Here we are using `fopen` to open the `"input.txt"` with in read mode `"r"`
 
     - A check is made to see if the `inputFile` has any data, does the file exist, this is done with a `NULL` check.
 
-    - If `NULL`, then the `perror` is invoked and outputs `"Error opening input file"` to standard error, and close the application with `return 1,` to indicate an error using an exit code. 
+    - If `NULL`, then the `perror` is invoked and outputs `"Error opening input file"` to standard error, and close the application with `return 1,` to indicate an error using an exit code.
+
+    ~~~ 
 
 5. If inputFile is not `NULL` then the following code would excute, input the following: 
+
+   ~~~admonish code
 
    ```c
    // Read two integers from the input file
@@ -178,6 +182,11 @@ The program you will write assumes that there is an input file named `input.txt`
         return 1; // Exit with an error code
     }
    ```
+   
+   ~~~
+
+
+   ~~~admonish info
 
    - `fscanf` is for reading files what `scanf` is for reading from terminal input.
 
@@ -185,12 +194,13 @@ The program you will write assumes that there is an input file named `input.txt`
 
    - `fclose` is invoked because the file was opened, and needs to be closed. This protects the file from curruption when the program closes with `return 1`
 
+   ~~~
+
 6. We should also close the file when successfully read, do this by reproducing the `fclose` code on a new line outside of the closing brace of the `if(...){...`}
 
 7. The calculation can now be performed, multiply `numOne` by `numTwo` and store in `result`
 
-    <details>
-    <summary>Code...</details>
+    ~~~admonish code collapsible=true title='Suppressed Code... [3 lines]'
 
     ```c
     fclose(inputFile); // Close the input file
@@ -199,9 +209,11 @@ The program you will write assumes that there is an input file named `input.txt`
     result = numOne * numTwo;
     ```
 
-    </details>
+    ~~~
 
 8. In a similar fashion to step 4 we need to write to a new file, reproduce the following:
+
+    ~~~admonish code
 
     ```c
     // Open output file for writing
@@ -212,13 +224,21 @@ The program you will write assumes that there is an input file named `input.txt`
     }
     ```
 
+    ~~~
+
+    ~~~admonish example title='Explanation of code'
+
     - `fopen` opens the `"output.txt"` in write mode `"w"`
 
     - A check is made to see if the `outputFile` has any data, does the file exist, this is done with a `NULL` check.
 
     - If `NULL`, then the `perror` is invoked and outputs `"Error opening output file"` to standard error, and close the application with `return 1`, to indicate an error using an exit code. 
 
+    ~~~
+
 9. Again, repeating the structure of step 5, we can write to the file the `result` variable. Reproduce the following:
+
+    ~~~admonish code
 
     ```c
     // Write the result to the output file
@@ -230,11 +250,17 @@ The program you will write assumes that there is an input file named `input.txt`
     }
     ```
 
+    ~~~
+
+    ~~~admonish example title='Explanation of code'
+    
     - `fprintf` is for writing a formatted output to a file. It is similar to `printf`, but it writes to a file stream (`FILE*`).
     
     - `< 0` is a comparison that checks if the return value of fprintf is **less than** 0. `fprintf` returns the number of characters successfully written. If the return value is less than 0, it indicates an error occurred during writing.
 
     - Again you see `perror()` for standard error and the addition of `fclose()` to close the file.
+
+    ~~~
 
 10. On success the file needs to be close so after the `if(..){..}` add `fclose("outputFile)` and on a new line `printf("Operation completed successfully.\n");`
 
@@ -245,8 +271,10 @@ The program you will write assumes that there is an input file named `input.txt`
 
 -----------------------
 
-<details>
-<summary>Full Code....</summary>
+
+## Full code
+
+~~~admonish code collapsible=true title='Full code... [56 lines] '
 
 ```c
 #include <stdio.h>
@@ -298,5 +326,4 @@ int main() {
 }
 ```
 
-</details>
-
+~~~

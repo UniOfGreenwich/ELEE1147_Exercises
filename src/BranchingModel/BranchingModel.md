@@ -15,6 +15,8 @@ Or, as Zach Holman succinctly put it:
 
 ### The workflow
 
+~~~admonish code
+
 ```bash
 # everything is happy and up-to-date in master
 git checkout master
@@ -57,7 +59,11 @@ git merge --no-ff my-new-feature
 git tag 1.0.0-RC1
 ```
 
+~~~
+
 ### useful config
+
+~~~admonish code
 
 ```bash
 # autosetup rebase so that pulls rebase by default
@@ -66,6 +72,8 @@ git config --global branch.autosetuprebase always
 # if you already have branches (made before `autosetuprebase always`)
 git config branch.<branchname>.rebase true
 ```
+
+~~~
 
 ### DOs and DON'Ts
 

@@ -49,9 +49,13 @@ Feature branches often exist only in the developer’s repository, and are never
 
 To start a feature branch, simply create a new branch from `master`:
 
+~~~admonish terminal
+
 ```sh
 $ git checkout -b feature/my-feature master
 ```
+
+~~~
 
 ## Finishing a feature branch
 Once work on the given feature is done, it needs to be integrated back into `master`. There are several ways this can be accomplished.
@@ -61,6 +65,8 @@ Note: the choice of the feature branch integration method is immaterial as far a
 ## Option #1 - `rebase`
 
 This method uses Git’s `rebase` command (with the `-i`, meaning interactive, switch) to integrate the feature branch with `master`.
+
+~~~admonish terminal
 
 ```sh
 $ git checkout feature/my-feature
@@ -75,6 +81,8 @@ $ git push origin master
 
 $ git branch -d feature/my-feature
 ```
+
+~~~
 
 If you’re not yet well acquainted with the rebase command, I recommend [this chapter](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History) from the Pro Git SCM book.
 
@@ -102,6 +110,8 @@ Here’s a visual illustration of how that method works:
 
 This is the method that GitFlow advocates.
 
+~~~admonish terminal
+
 ```sh
 
 $ git checkout master
@@ -109,6 +119,8 @@ $ git merge --no-ff feature/my-feature
 $ git push origin master
 $ git branch -d feature/my-feature
 ```
+
+~~~
 
 Visually:
 
@@ -133,6 +145,8 @@ Visually:
 
 This method is a combination of the previous two, trying to keep their advantages while simultaneously getting rid of the disadvantages:
 
+~~~admonish terminal
+
 ```sh
 $ git checkout feature/my-feature
 
@@ -147,6 +161,8 @@ $ git push origin master
 $ git branch -d feature/my-feature
 
 ```
+
+~~~
 
 Visually:
 
@@ -167,10 +183,13 @@ Visually:
 
 Finally, regardless of the method used, if the feature branch was pushed to the central repository, you need to now remove it:
 
+~~~admonish terminal
 
 ```sh
 $ git push origin :feature/my-feature
 ```
+
+~~~
 
 ## Release branches
 
@@ -184,12 +203,18 @@ Release branches also start from master, however they often don’t start from t
 
 For example, here we start the branch for the version `2.3.0` release on a commit with the hash `9efc5d`:
 
+~~~admonish terminal
+
 ```sh
 $ git checkout -b release/2.3.0 9efc5d
 ```
 
+~~~
+
 ## Finishing a release branch
 Once whatever process you use for releasing is finished, the tip of the branch is tagged with the version number. After that, the branch needs to be merged into `master` to be versioned permanently:
+
+~~~admonish terminal
 
 ```sh
 $ git checkout release/2.3.0
@@ -204,6 +229,8 @@ $ git push --tags origin master
 
 $ git branch -d release/2.3.0
 ```
+
+~~~
 
 Here’s a diagram illustrating the above commands (assuming the release took two commits):
 
@@ -228,13 +255,19 @@ They are named `hotfix/<version-number>`. Note that if you use [Semantic Version
 Starting a hotfix branch
 Hotfix branches are cut from the commit that the latest version tag points to. Continuing our example from the release branch:
 
+~~~admonish terminal
+
 ```sh
 $ git checkout -b hotfix/2.3.1 2.3.0
 ```
 
+~~~
+
 ## Finishing a hotfix branch
 
 Finishing a hotfix branch is pretty much the same as finishing a release branch: tag the tip, merge it to `master`, then delete the branch.
+
+~~~admonish terminal
 
 ```sh
 $ git checkout hotfix/2.3.1
@@ -250,6 +283,8 @@ $ git push --tags origin master
 $ git branch -d hotfix/2.3.1
 ```
 
+~~~
+
 Here’s a visual illustration:
 
 <div align=center>
@@ -262,9 +297,13 @@ There is one special case when finishing a hotfix branch. If a release branch ha
 
 As always, if the hotfix branch was pushed to the central repository, you need to remove it now:
 
+~~~admonish terminal
+
 ```sh
 $ git push origin :hotfix/2.3.1
 ```
+
+~~~
 
 # # Variation – `develop` + `master`
 There is one small wrinkle with the branching model described above. In order to find the latest production version of the code, you need to look at all of the tags in the repository, and checkout the latest one.
@@ -286,13 +325,20 @@ This variation uses two branches: `develop`, which plays the same role as `maste
 Feature branches work exactly the same as already explained, except you need to substitute `master` with `develop` in the description above.
 
 ###  Starting a feature branch
+~~~admonish terminal
+
 ```sh
 $ git checkout -b feature/my-feature develop
 ```
 
+~~~
+
 ### Finishing a feature branch
 
 **Option #1 – `rebase`**
+
+~~~admonish terminal
+
 ```sh
 $ git checkout feature/my-feature
 
@@ -307,7 +353,11 @@ $ git push origin develop
 $ git branch -d feature/my-feature
 ```
 
+~~~
 **Option #2 – `merge –no-ff`**
+
+~~~admonish terminal
+
 ```sh
 $ git checkout develop
 
@@ -318,7 +368,12 @@ $ git push origin develop
 $ git branch -d feature/my-feature
 ```
 
+~~~
+
 **Option #3 – `rebase` + `merge –no–ff`**
+
+~~~admonish terminal
+
 ```sh
 $ git checkout feature/my-feature
 
@@ -332,16 +387,27 @@ $ git push origin develop
 
 $ git branch -d feature/my-feature
 ```
+
+~~~
+
 ## Release branches
 
 Release branches work the same as described above (with `master` substituted for `develop`, of course), except one small detail. There is an extra step when finishing the release branch: fast-forwarding the marker branch to the newly created release `tag`.
 
 ### Starting a release branch
+
+~~~admonish terminal
+
 ```sh
 $ git checkout -b release/2.3.0 9efc5d
 ```
 
+~~~
+
 ### Finishing a release branch
+
+~~~admonish terminal
+
 ```sh
 $ git checkout release/2.3.0
 
@@ -356,7 +422,11 @@ $ git push --tags origin develop
 $ git branch -d release/2.3.0
 ```
 
+~~~
+
 And here is the extra step – fast-forwarding `master` to the latest release tag:
+
+~~~admonish terminal
 
 ```sh
 $ git checkout master
@@ -365,6 +435,8 @@ $ git merge --ff-only 2.3.0
 
 $ git push origin master
 ```
+
+~~~
 
 Here’s a visualization of the state of the repository after finishing the release branch:
 
@@ -382,11 +454,18 @@ Hotfix branches, because they result in publishing a new version as well, also r
 
 Because `master` always tracks the latest tag, creating a `hotfix` branch is a tiny bit easier in this variant (note however that you still need to look at the tags to determine what the previous version number was, in order to name your `hotfix` branch correctly):
 
+~~~admonish terminal
+
 ```sh
 $ git checkout -b hotfix/2.3.1 `master`
 ```
 
+~~~
+
 ### Finishing a hotfix branch
+
+~~~admonish terminal
+
 ```sh
 $ git checkout hotfix/2.3.1
 
@@ -401,7 +480,11 @@ $ git push --tags origin develop
 $ git branch -d hotfix/2.3.1
 ```
 
+~~~
+
 And here is the additional step of fast-forwarding `master` to the latest release `tag`:
+
+~~~admonish terminal
 
 ```sh
 $ git checkout master
@@ -410,6 +493,8 @@ $ git merge --ff-only 2.3.1
 
 $ git push origin master
 ```
+
+~~~
 
 If we continue our release example, the visual illustration looks something
 

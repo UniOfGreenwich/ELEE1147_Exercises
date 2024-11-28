@@ -1,4 +1,4 @@
-# Lab 5: Header Files, Header Guards, and Macros in C
+# Lab 4: Header Files, Header Guards, and Macros in C
 
 In this lab, we'll explore key concepts in C programming that enhance code organization and reusability.
 
@@ -25,9 +25,11 @@ By using header files, we can:
 
 ## Task 1: Header Files 
 
->**So What is a Header File?**
->>
->> A header file is a file containing declarations and macro definitions that can be shared between multiple source files. Commonly used header files, such as `stdio.h`, `stdlib.h`, and `math.h`, provide essential functions and constants.
+~~~admonish info title='So What is a Header File?'
+
+A header file is a file containing declarations and macro definitions that can be shared between multiple source files. Commonly used header files, such as `stdio.h`, `stdlib.h`, and `math.h`, provide essential functions and constants.
+
+~~~
 
 1. Open visual studio code and open an existing folder or make a new one and call it something meaningful like `HeadersLab`.
    
@@ -41,9 +43,8 @@ By using header files, we can:
 </div>
 
 3. Open the newly created header file and add a guard using the the keywords, `#ifndef`, `#define` and `#endif`. In at the end of `#ifndef` and `#define`, write the name of the header file in captial letters, and replace the `.h` with `_h`.
-
-    <details>
-    <summary>Solution...</summary>
+     
+    ~~~admonish code collapsible=true title='Code: Solution... [5 lines]'
 
     ```h
     // myheader.h
@@ -51,15 +52,13 @@ By using header files, we can:
     #define MYHEADER_H
 
     #endif // MYHEADER_H
-
     ```
 
-    </details>
+    ~~~
 
 4. Inside the ifndef and endif block add a declaration/definition for a `greet` function that returns `void` and has no arguments and a second function called `add` that returns an `int` and takes two arguments that are `int`s:
 
-    <details>
-    <summary>Solution...</summary>
+    ~~~admonish code collapsible=true title='Code: Solution... [9 lines]'
 
     ```h
     // myheader.h
@@ -71,12 +70,13 @@ By using header files, we can:
     int add(int a, int b);
     
     #endif // MYHEADER_H
-
     ```
 
-    </details>
+    ~~~
     
 5. Now create the `myheader.c` file that will provide the functionality of the `myheader.h` decalarations. Once created reproduce the following:
+
+    ~~~admonish code
 
     ```c
     #include <stdio.h>
@@ -91,7 +91,13 @@ By using header files, we can:
     }
     ```
 
+    ~~~
+
+    ~~~admonish info
+
     You can see the that the `"myheader.h"` has different syntax to `<stdio.h>`. This is because `<someheader.h>` is part of the global library of header files that come with the C/C++ compilers. Whereas, the `"someotherheader.h"` indicates that this file is located somewhere else, defined generally by the user. The location is generally part of the project folder, but can be located else and you simply provide the path to it `"/path/to/file.h"`
+
+    ~~~
 
 6. Go back to the the `HeadersLab.c` file where the `main() `function is and include the `"myheader.h"` at the top of the script. 
 
@@ -102,9 +108,7 @@ By using header files, we can:
      -  `printf("some string: %d\n", result)`.
      -  Where the format specifier, `%d`, means digit/denary. <p></p>
   
-    <details>
-    <summary>HeadersLab.c code</summary>
-
+    ~~~admonish code collapsible=true title='HeadersLab.c: Solution... [10 lines]'
 
     ```c
     // main.c
@@ -120,7 +124,7 @@ By using header files, we can:
     }
     ```
 
-    </details>
+    ~~~
 
 8. Run the program and you should recieve the following:
 
@@ -142,15 +146,24 @@ Macros are a powerful feature in C that allow us to define constants and perform
 
 Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing repetitive values with named constants. **Macros** also play a role in conditional compilation using `#ifdef`, `#ifndef`, and `#endif`.
 
->**Note:**
->> The `#include` directive is used to include the contents of a file in another file. The inclusion happens during the preprocessing phase, before the actual compilation. It's used to include header files that contain declarations, macro definitions, and other necessary information so it is not a macro itself.
+~~~admonish info
+
+The `#include` directive is used to include the contents of a file in another file. The inclusion happens during the preprocessing phase, before the actual compilation. It's used to include header files that contain declarations, macro definitions, and other necessary information so it is not a macro itself.
+
+~~~
 
 9. Let's modify our current `HeaderLab.c` file to includes some macros. after the `#include` directives and the macro `#define PI 3.14159`
 
->**Note:**
->> Macros variables/functions names follow a UPPERCASE name convention. 
+    ~~~admonish info
+
+
+    Macros variables/functions names follow a UPPERCASE name convention. 
+
+    ~~~
 
 10. Inside `main()` use `printf()` to output PI to the terminal. 
+
+    ~~~admonish code
 
     ```c
     #include "myheader.h"
@@ -168,6 +181,9 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
     }
     ```
 
+    ~~~
+
+
 2.  Run and you should see the following output:
 
     **Output**:
@@ -175,23 +191,35 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
     ![](./figures/step6.PNG) <!--Output of PI-->
 
 3.  Continuing, define a second macro as function that computes the square of a number:
+
+    ~~~admonish code
+
     ```c
     #define SQUARE(x) ((x) * (x))
     ```
+
+    ~~~
+
     This function only use 4 Byte values, so anything larger than a `int` would not work. 
 
 4.  Inside `main()` call the macro defined function SQAURE inside a printf statement, where the statement outputs the result of the SQUARE and the number being squared:
+
+    ~~~admonish code
 
     ```c
     int num = 5;
     printf("The square of %d is: %d\n", num, SQUARE(num));
     ```
 
+    ~~~
+
 5.   Run the program and you should see the following:
 
      ![](./figures/step7.png) <!--Output of programming runnning-->
 
 6.  Laslty we are going to look a very common marco useage implementing debugging. Reproduce the following at the top of the file,above the `#include` directive:
+
+    ~~~admonish code
 
     ```c
     // Example of conditional compilation macros
@@ -205,7 +233,12 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
     ...
     ```
 
+    ~~~
+
 7.  `Inside main()` place this `DEBUG_PRINT("This is a debug message");` :
+    
+    ~~~admonish code
+
     ```c
     int main() {
 
@@ -217,24 +250,28 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
     DEBUG_PRINT("This is a debug message");
     ...
     ```
+
+    ~~~
+
 8.  If you run this program the you should see the following output:
 
     ![](./figures/step8.png)
 
 9.  Remove the macro `DEBUG_MODE` and run the program again.
 
-    <details>
-    <summay></summary>
+    ~~~admonish output collapsible=true
 
     ![](./figures/step9.png)
 
     This is because `DEBUG_MODE` is no longer defined so the `DEBUG_PRINT()` isn't invoked now.
 
-    </details>
+    ~~~
 
->**Note:**
->> The term **debugging** can be traced back to Admiral Grace Hopper, who worked at Harvard University in the 1940s. When one of her colleagues found a moth impeding the operation of one of the university's computers, she told them they were debugging the system. Computer programmers were first recorded as using the terms bugs and debugging by the 1950s, and by the early 1960s, the term debugging was commonly accepted in the programming community.
+~~~admonish info
 
+The term **debugging** can be traced back to Admiral Grace Hopper, who worked at Harvard University in the 1940s. When one of her colleagues found a moth impeding the operation of one of the university's computers, she told them they were debugging the system. Computer programmers were first recorded as using the terms bugs and debugging by the 1950s, and by the early 1960s, the term debugging was commonly accepted in the programming community.
+
+~~~
 
 --------------------------
 --------------------------
@@ -245,6 +282,8 @@ Common macros, such as `#define PI 3.14`, simplify code maintenance by replacing
 Here you will explore the varadic, Stringification, Marcros as Data structures, and Guarded Macros for Header Files.
 
 22. **Variadic** macros extend the function-like macros to handle a variable number of arguments using variadic macros. For example you can create your own macro for `printf`, try the following:
+
+    ~~~admonish code
 
     ```c
     // Example of a variadic macro for printing values
@@ -258,11 +297,10 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
         return 0;
     }
     ```
-    **Output**:
 
-    ![](./figures/)
+    ~~~
 
-    **Explanation of code:**
+    ~~~admonish example title='Explanation of Code'
 
     - `#define`: This is the preprocessor directive used to define macros in C.
 
@@ -272,18 +310,36 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
 
     - printf("Values: " __VA_ARGS__): This is the body of the macro. It's essentially a printf statement that prints a formatted string. The __VA_ARGS__ is a special identifier in C that represents the variable arguments passed to the macro.
 
-    >**Challenge:**
-    >> Can you create your own variadic macros and experiment with different argument types and formats.
+    ~~~
+    
+    ~~~admonish output
+
+    ![](./figures/step10.png)
+
+    ~~~
+
+    ~~~admonish tip title='Challenge'
+    
+    Can you create your own variadic macros and experiment with different argument types and formats.
+
+    ~~~
 
 23. Stringifcation(`STRINGIFY`):
 
     The `STRINGIFY` macro takes a single argument `x` and converts it into a string literal. The `#` operator, when used before an argument in a macro, is called the **stringification** operator. It converts the argument into a string.
 
+    ~~~admonish code
+
     ```c
     #define STRINGIFY(x) #x
     ```
+
+    ~~~
+
 24. Reproduce the following:
     
+    ~~~admonish code
+
     ```c
     // Example of stringification and token pasting
     #define STRINGIFY(x) #x
@@ -297,14 +353,17 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
         return 0;
     }
     ```
+    ~~~
 
-    **Explanation:**
-
+    ~~~admonish example title='Explanation of code'
+    
     - Stringification Example (`STRINGIFY`):
 
       - The macro `STRINGIFY(Hello)` converts the identifier Hello into the string literal `"Hello"`.
      
       - The `printf` statement prints `"Stringified: Hello\n"` to the console.
+
+    ~~~
 
 25. These features are useful in advanced macro usage, especially in situations where the names of identifiers need to be converted into strings during preprocessing.
 
@@ -316,6 +375,8 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
 26. The `mymacros.h` header file below encapsulates commonly used macros for maximum and minimum operations, as well as conditional debugging output. By using include guards, it ensures that the content is included only once in each compilation unit, avoiding redefinition issues. This header file can be included in C programs that require these macros for enhanced functionality and debugging capabilities.
 
 27. You would `#include "mymacros_h"` in your file with `main()` and then #define DEBUG_MODE with 0 or 1, you can then access those functions.
+
+    ~~~admonish code
 
     ```C
     // Example of header file with guarded macros
@@ -334,6 +395,8 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
     #endif // MYMACROS_H
     ```
 
+    ~~~
+
 28. Try and do this now.
 
 
@@ -343,6 +406,8 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
 ## Task 4 Macros in Data Structures:
 
 29. The code below is an example of using macros to define a *generic structure* for a linked list node in C. This allows you to create linked lists for different data types using the same basic structure **template**. 
+
+    ~~~admonish code
 
     ```c
     // Example of macros for a linked list
@@ -355,14 +420,21 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
     DECLARE_NODE_TYPE(int);
     ```
 
-    Let's break down the key components and explain how this works:
+    ~~~
+
+
+    ~~~admonish example title='Explanation of code'
 
     - `DECLARE_NODE_TYPE`(type) Macro:
         - This macro is designed to declare a structure template for a linked list node.
         - The type parameter allows the user to specify the data type of the elements that the linked list will store.
         - The `##` operator concatenates the type with the `"_Node"` suffix to form the structure name
 
+    ~~~
+
 30. The `main()` function below,
+    
+    ~~~admonish code
     
     ```c
     #include <stdio.h>
@@ -381,13 +453,22 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
     }
     ```
 
+    ~~~
+
+    ~~~admonish example title='Explanation of code'
+    
     - In the `())` function, a linked list node for integers is declared using the `DECLARE_NODE_TYPE(int)` macro. This creates a structure named `int_Node` with fields for storing data of type `int` and a pointer to the next node in the list.
 
     - An instance of the structure, `myNode`, is then created and initialised with a data value of `42` and a `NULL` pointer for the next node.
 
     - The program prints the data value of the node, which is `42`, to the console.
 
+    ~~~
+
 31. Reproducing the following and try with `int`, `float`, `double`, `char`:
+
+    ~~~admonish code
+
     ```c
     // Example of macros for a linked list
     #define DECLARE_NODE_TYPE(type) \
@@ -411,6 +492,8 @@ Here you will explore the varadic, Stringification, Marcros as Data structures, 
         return 0;
     }
     ```
+
+    ~~~
 
 32. Run the code to see the output: 
 

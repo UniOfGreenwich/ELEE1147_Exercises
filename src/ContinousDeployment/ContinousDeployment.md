@@ -37,13 +37,19 @@ and how to deal with them from a branching point of view.
 
 1. Create a feature branch based off of `master`.
 
+   ~~~admonish terminal
+
    ```
    $ git checkout master
    $ git checkout -b MYTEAM-123-new-documentation
    $ git push --set-upstream MYTEAM-123-new-documentation
    ```
 
+   ~~~
+
 1. Develop the code for the new feature and commit as you go.
+
+   ~~~admonish terminal
 
    ```
    $ ... make changes
@@ -54,6 +60,8 @@ and how to deal with them from a branching point of view.
    $ git commit -m "Fix some spelling errors"
    $ git push
    ```
+
+   ~~~
 
 1. Navigate to the project on [Github](www.github.com) and open a pull request
 with the following branch settings:
@@ -95,24 +103,35 @@ described above.*
 
 1. Make sure your `master` branch is up-to-date
 
+   ~~~admonish terminal
+
    ```
    $ git checkout master
    $ git fetch
    $ git merge origin/master
    ```
 
+   ~~~
+
 1. Create a hot fix branch based off of `master`
+
+   ~~~admonish terminal
 
    ```
    $ git checkout -b hotfix-documentation-broken-links
    $ git push --set-upstream hotfix-documentation-broken-links
    ```
 
+   ~~~
+
 1. Add a test case to validate the bug, fix the bug, and commit
    *When doing a hotfix you should at _least_ pair on the fix with somebody or
    review it in person with one other engineer before releasing it. We're
    running without training wheels here and want to do our best not to have to
    do a stream of hotfixes in production.*
+
+   ~~~admonish terminal
+
    ```
    ... add test, fix bug, verify
    $ git add -A .
@@ -120,6 +139,8 @@ described above.*
    $ git push
    ```
 
+   ~~~
+   
 1. Navigate to the project on [Github](www.github.com) and open a pull request
    with the following branch settings:
    * Base: `master`

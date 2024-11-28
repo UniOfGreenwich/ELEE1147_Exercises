@@ -17,11 +17,14 @@ Each exercise includes steps on saving the code in separate files, organizing co
 
 4. **Add a `main()` function** at the bottom to create an instance of `Animal` and call `describe()`.
 5. **Run the file** by opening a terminal in the directory where `animal.py` is saved, and execute:
+   
+   ~~~admonial terminal
    ```bash
    python animal.py
    ```
-6. <details>
-   <summary>Solution Code for animal.py...</summary>
+   ~~~
+
+6.  ~~~admonish code collapsible=true title='Supressed code: animal.py .. [14 lines]'
 
     ```python
     class Animal:
@@ -41,7 +44,7 @@ Each exercise includes steps on saving the code in separate files, organizing co
         main()
     ```
 
-    </details>
+    ~~~
 
 ---
 
@@ -56,11 +59,16 @@ Each exercise includes steps on saving the code in separate files, organizing co
 2. Write methods to **add an animal**, **list animals**, and **find an animal by name**.
 3. Add a `main()` function at the bottom to demonstrate creating `Zoo` and `Animal` instances and calling the methods.
 4. **Run the file** by opening a terminal and executing:
+   
+   ~~~admonish terminal
+
    ```bash
    python zoo_module.py
    ```
-5. <details>
-   <summary>Solution Code for zoo_module.py...</summary>
+
+   ~~~
+
+5.  ~~~admonish code collapsible=true title='Supressed code: zoo_module.py .. [38 lines]'
 
     ```python
     class Animal:
@@ -104,7 +112,7 @@ Each exercise includes steps on saving the code in separate files, organizing co
         main()
     ```
 
-    </details>
+    ~~~
 
 ---
 
@@ -119,11 +127,16 @@ Each exercise includes steps on saving the code in separate files, organizing co
 2. Override the `describe()` method in both subclasses.
 3. Write a `main()` function to demonstrate creating instances and calling `describe()` for both `Mammal` and `Bird`.
 4. **Run the file** by executing:
+
+   ~~~admonish terminal
+
    ```bash
    python specialized_animals.py
    ```
-5. <details>
-   <summary>Solution Code for specialized_animals.py...</summary>
+   
+   ~~~
+
+5.  ~~~admonish code collapsible=true title='Supressed code: specialised_animals.py .. [34 lines]'
    
     ```python
     class Animal:
@@ -163,7 +176,7 @@ Each exercise includes steps on saving the code in separate files, organizing co
         main()
     ```
 
-    </details>
+    ~~~
 
 ---
 ---
@@ -218,6 +231,8 @@ Create a modularised system to manage university Modules, instructors, and stude
 ### Example Usage
 In the `university_management` folder, create a main script file (`main.py`) to test your classes and methods.
 
+~~~admonish code
+
 ```python
 from module import Module
 from student import Student
@@ -254,17 +269,24 @@ if __name__ == "__main__":
     main()
 ```
 
+~~~
+
 ### Running the Program
 1. **Save each class in the specified files** (`module.py`, `student.py`, `instructor.py`) in the `university_management` folder.
 2. **Run the main script** by navigating to the `university_management` folder and executing:
+   
+   ~~~admonish terminal
+
    ```bash
    python main.py
    ```
 
-3.  <details>
-    <summary>Solution Code</summary>
+   ~~~
 
-    - `module.py`
+3.  Full code
+
+    -   ~~~admonish code collapsible=true title='Supressed code: module.py .. [16 lines]'
+
         ```python
         class module:
             def __init__(self, module_name, module_code, instructor):
@@ -284,8 +306,10 @@ if __name__ == "__main__":
             def get_module_info(self):
                 return f"module: {self.module_name} ({self.module_code}), Instructor: {self.instructor.instructor_name}"
         ```
+        ~~~
 
-    - `student.py`
+    -  ~~~admonish code collapsible=true title='Supressed code: student.py .. [12 lines]'
+       
         ```py
         class Student:
             def __init__(self, student_name, student_id):
@@ -302,7 +326,9 @@ if __name__ == "__main__":
                     print(f"- {module.module_name}")
         ```
 
-    - `instructor.py`
+        ~~~
+
+    -  ~~~admonish code collapsible=true title='Supressed code: instuctor.py .. [12 lines]'
 
         ```py
         class Instructor:
@@ -320,7 +346,7 @@ if __name__ == "__main__":
                     print(f"- {module.module_name}")
         ```
 
-    </details>
+       ~~~
 
 ---
 ---
@@ -382,6 +408,8 @@ You need to read the data from `user_behaviour_dataset.csv` and create `User` ob
 
 Example:
 
+~~~admonish code
+
 ```python
 import csv
 
@@ -407,6 +435,8 @@ def read_data(file_path):
     return users
 ```
 
+~~~
+
 ### Step 3: Analyzing the Data
 
 Once the data is loaded into the Dataset class, implement the following analysis tasks:
@@ -421,6 +451,8 @@ Once the data is loaded into the Dataset class, implement the following analysis
 After implementing the classes and methods, you should test your program by calling the various methods in the `Dataset` class. Print out the results of each analysis.
 
 #### Example test:
+
+~~~admonish code
 
 ```python
 if __name__ == "__main__":
@@ -437,6 +469,8 @@ if __name__ == "__main__":
     print("Average Screen On Time by OS:", dataset.get_avg_screen_time_by_os())
 ```
 
+~~~
+
 ### Step 5: Extend the Program
 
 Once you have completed the initial analysis, you can extend the program by adding additional features such as:
@@ -448,8 +482,7 @@ Once you have completed the initial analysis, you can extend the program by addi
 
 ### Solution
 
-<details>
-<summary>Code here... [115 lines]</summary>
+ ~~~admonish code collapsible=true title='Supressed code... [115 lines]'
 
 ```python
 import csv
@@ -570,7 +603,9 @@ if __name__ == "__main__":
         print(f"{os}: {avg_time:.2f} hours/day")
 ```
 
-#### Explanation of the Code
+~~~
+
+~~~admonish example collapsible=true title='Explanation of the Code'
 
 1. `User` Class:
 
@@ -595,5 +630,4 @@ if __name__ == "__main__":
 
     - The `main` block reads the dataset from the CSV file and performs various analyses, such as calculating the average app usage time, filtering users by behavior class, finding the user with the highest battery drain, and calculating average screen time by OS.
 
-</details>
-
+~~~

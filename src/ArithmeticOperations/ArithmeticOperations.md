@@ -12,6 +12,8 @@ subtraction, multiplication, and division). Each operation should be in its own 
    - ![](./figures/step1.png)
 
 3. Next create a Guard for the new header file: 
+    ~~~admonish code
+
     ```h
     #pragma once
 
@@ -21,6 +23,8 @@ subtraction, multiplication, and division). Each operation should be in its own 
     #endif
     ```
 
+    ~~~
+
 4. Now we are ready to place declare for reference various arithemtic functions. Add the following functions where the parameters are `floats`:
     - add
     - subtract
@@ -28,8 +32,7 @@ subtraction, multiplication, and division). Each operation should be in its own 
     - divide
     - square <p></p>
 
-    <details>
-    <summary>Possible Solution...</summary>
+    ~~~admonish code collapsible=true title='Code: A solution... [13 lines]'
 
     ```h
     #pragma once
@@ -48,18 +51,19 @@ subtraction, multiplication, and division). Each operation should be in its own 
     #endif // End of Guard
     ```
 
-    </details>
+    ~~~
 
 5. To provide the actual code for each of these prototype functions in `MyMaths.h`, modify the  `MyMaths.c` file.
 
 6. Modify the content on `MyMaths.c` so that it `includes` the `MyMaths.h` file:
     
-    <details>
-    <summary>Possible Solution...</summary>
+    ~~~admonish code collapsible=true title='Code: A solution... [1 line]'
 
-    `#include "MyMaths.h"`
+    ```c
+    #include "MyMaths.h"
+    ```
 
-    </details>
+    ~~~
 
 7. Now start to build out the functionality of each of the arthimetic functions you declared in the `MyMaths.h` file:
 
@@ -69,8 +73,7 @@ subtraction, multiplication, and division). Each operation should be in its own 
     - divide
     - square <p></p>
 
-    <details>
-    <summary>Possible Solution</summary>
+    ~~~admonish code collapsible=true title='Code: A solution... [26 lines]'
 
     ```c
     #include "MyMaths.h"
@@ -102,12 +105,11 @@ subtraction, multiplication, and division). Each operation should be in its own 
     }
     ```
 
-    </details>
+    ~~~
 
 8. Go back to `main.c` and modify the contents so that it `includes` `MyMaths.h` and remove the code in side the `main()` block (keeping the `return 0;`), do this now:
 
-    <details>
-    <summary>Possible Solution</summary>
+    ~~~admonish code collapsible=true title='Code: A solution... [6 lines]'
 
     ```c
     #include "MyMaths.h"
@@ -119,12 +121,11 @@ subtraction, multiplication, and division). Each operation should be in its own 
     }
     ```
 
-    </details>
+    ~~~
 
 9. Declare two `float`s as `num1` and `num2` initialising them with the value `0.0f` inside of `main()`:
 
-    <details>
-    <summary>Possible Solution</summary>
+    ~~~admonish code collapsible=true title='Code: A solution... [5 lines]'
 
     ```c
     int main(){
@@ -135,12 +136,11 @@ subtraction, multiplication, and division). Each operation should be in its own 
     }
     ```
 
-    </details>
+    ~~~
 
 10. Using `printf`, request the user to enter two numbers, where second number that must be greater than zero. Then using `scanf` read what the user inputted and assign those two numbers to `num1` and `num2`.
 
-    <details>
-    <summary>Possible Solution</summary>
+    ~~~admonish code collapsible=true title='Code: A solution... [7 lines]'
 
     ```c
     int main(){
@@ -153,14 +153,13 @@ subtraction, multiplication, and division). Each operation should be in its own 
     }
     ```
 
-    </details>
+    ~~~
 
 11. Reproducing the following format perform each of the arithmetic operations on the supplied numbers, you will need to do square twice, one for each number: 
 
     `printf("<Arithemtic Operation>:     %.2f + %.2f = %.2f\n", num1, num2, arithmeticOpeation(num1, num2));`
 
-    <details>
-    <summary>Possible Solution</summary>
+    ~~~admonish code collapsible=true title='Code: A solution... [23 lines]'
 
     ```c
     int main(){
@@ -179,15 +178,17 @@ subtraction, multiplication, and division). Each operation should be in its own 
     return 0;
     ```
 
-    </details>
+    ~~~
 
-12. **Output:**<p></p>
+12. ~~~admonish output
 
     <div align=center>
 
     ![](./figures/step2.png)
 
     </div>
+
+    ~~~
 
 ------------------------------
 ------------------------------
@@ -208,6 +209,7 @@ Let's further modify the solution so we can do some meaningful programming. In t
 
 14. Open `TemperatureConversion.h` and add the guard for this file.
 
+    ~~~admonish code collapsible=true title='Code: A solution... [3 lines]'
     <details>
     <summary>Possible Solution...</summary>
 
@@ -216,16 +218,15 @@ Let's further modify the solution so we can do some meaningful programming. In t
     #ifndef TEMPEATURECONVERSION_H
     #define TEMPEATURECONVERSION_H
 
-
     #endif
     ```
 
-    </details>
+    ~~~
+
 
 15. Inside the block ifndef block define the functions to convert to and from fahrehnhiet, celcius and kelvin, so there should be six functions altogether. The functions should return a `float` and take only one `float` as an argument:
 
-    <details>
-    <summary>Possible Solution...</summary>
+    ~~~admonish code collapsible=true title='Code: A solution... [13 lines]'
 
     ```h
     #pragma once
@@ -244,7 +245,7 @@ Let's further modify the solution so we can do some meaningful programming. In t
     #endif // TEMPEATURECONVERSION_H
     ```
 
-    </details>
+    ~~~
 
 16. Next build up the `TempeatureConversion.c` file:
     - include the `TemperatureConversion.h` file
@@ -265,11 +266,13 @@ Let's further modify the solution so we can do some meaningful programming. In t
 
           - \\(Fahrenheit = ((kel - 273.15) * 1.8) + 32.00 \\)
 
-    >**Note:**
-    >> Remember that the function are defined in the `TemperatureConversion.h`. 
+    ~~~admonish info
+    
+    Remember that the function are defined in the `TemperatureConversion.h`. 
 
-    <details>
-    <summary>Possible Solution...</summary>
+    ~~~
+
+    ~~~admonish code collapsible=true title='Code: A solution... [25 lines]'
 
     ```c
     #include "TemperatureConversion.h"
@@ -299,7 +302,8 @@ Let's further modify the solution so we can do some meaningful programming. In t
         return ((kel - 273.15) * 1.8) + 32.00;
     }
     ```
-    </details>
+   
+    ~~~
 
 17. Navigate to `main.c` and include the `TemperatureConversion.h` file underneath `#include <stdio.h>` line.
 
@@ -309,17 +313,23 @@ Let's further modify the solution so we can do some meaningful programming. In t
 
 19. To use our temperature functions, reproduce the following line and then replicate for the other temperature functions. I would suggest starting in the whitespace between `int main(){` and the `/*` line:
 
+    ~~~admonish code
+
     ```c
     float num1 = 100.0f;
 
     printf("Fahrenheit to Ceclius: %.2fF -> %.2fC \n", num1, fahrenheitToCelcius(num1));
     ```
 
-    >**Note:**
-    >> Remember that the functions you have implemented return a double, so the second format specifier , `%.2f` will be the returned value.
+    ~~~
 
-    <details>
-    <summary>Possible Solution</summary>
+    ~~~admonish info
+    
+    Remember that the functions you have implemented return a double, so the second format specifier , `%.2f` will be the returned value.
+
+    ~~~
+
+    ~~~admonish code collapsible=true title='Code: A solution... [20 lines]'
 
     ```c
     ...
@@ -346,10 +356,13 @@ Let's further modify the solution so we can do some meaningful programming. In t
     }
     ```
 
-    >**Note:**
-    >> The `...` means and rest of the code, that I have ommitted for readibility 
+    ~~~
 
-    </details>
+    ~~~admonish info
+    
+    The `...` means and rest of the code, that I have ommitted for readibility 
+
+    ~~~
 
 20. Run the code and you should see the following output:
 
@@ -379,8 +392,7 @@ Congratulations you reached the end of the guided part of the lab, now try and d
 
       - \\(Kelvin * 1.8\\)<p></p>
 
-    <details>
-    <summary>Output...</summary>
+    ~~~admonish output collapsible=true
     
     <div align=center>
 
@@ -388,66 +400,72 @@ Congratulations you reached the end of the guided part of the lab, now try and d
 
     </div>
 
-    </details> <p></p>
+    ~~~
 
-    <details>
-    <summary>Possible Solutions...</summary>
+    ~~~admonish code collapsible=true title='Code: TemperatureConversion.c ... [22 lines]'
 
-    - **TemperatureConversion.c**
-        ```c
-        ...
-        double fahrenheitToRankine(double fahr) {
-            return fahr + 459.67;
-        }
+    ```c
+    ...
+    double fahrenheitToRankine(double fahr) {
+        return fahr + 459.67;
+    }
 
-        double celciusToRankine(double cel) {
-            return (cel * (9 / 5) + 491.67);
-        }
+    double celciusToRankine(double cel) {
+        return (cel * (9 / 5) + 491.67);
+    }
 
-        double kelvinToRankine(double kel){
-            return kel * 1.8;
-        }
+    double kelvinToRankine(double kel){
+        return kel * 1.8;
+    }
 
-        double rankineToFahrenheit(double ran) {
-            return ran - 459.67;
-        }
-        double rankineToCelcius(double ran){
-            return (ran - 491.67) * (5 / 9);
+    double rankineToFahrenheit(double ran) {
+        return ran - 459.67;
+    }
+    double rankineToCelcius(double ran){
+        return (ran - 491.67) * (5 / 9);
 
-        }
-        double rankineToKelvin(double ran){
-            return ran * (9 / 5);
-        }
-        ```
+    }
+    double rankineToKelvin(double ran){
+        return ran * (9 / 5);
+    }
+    ```
+    
+    ~~~
 
-    - **TemperatureConversion.h**
-        ```h
-        ...
-        double fahrenheitToRankine(double fahr);
-        double celciusToRankine(double cel);
+    ~~~admonish code collapsible=true title='Code: TemperatureConversion.h ... [5 lines]'
+    
+    ```h
+    ...
+    double fahrenheitToRankine(double fahr);
+    double celciusToRankine(double cel);
 
-        double kelvinToRankine(double kel);
+    double kelvinToRankine(double kel);
 
-        double rankineToFahrenheit(double ran) ;
-        double rankineToCelcius(double ran);
-        double rankineToKelvin(double ran);
-        ```
-    - **ArithmeticOperations.c**
-        ```c
-        ... 
-        printf("Fahrenheit to Rankine: %.2fF -> %.2fR \n", num1, fahrenheitToRankine(num1));
-        ...
-        printf("Ceclius to Rankine: %.2fC -> %.2fR \n", num1, celciusToRankine(num1))
-        ...
-        printf("Kelvin to Rankine: %.2fK -> %.2fR \n", num1, kelvinToRankine(num1));
-       
-        printf("Rankine to Farhenheit: %.2fR -> %.2fF \n", num1, rankineToFahrenheit(num1));
+    double rankineToFahrenheit(double ran) ;
+    double rankineToCelcius(double ran);
+    double rankineToKelvin(double ran);
+    ```
 
-        printf("Rankine to Ceclius: %.2fR -> %.2fC \n", num1, rankineToCelcius(num1));
+    ~~~
 
-        printf("Rankine to Kelvin: %.2fR -> %.2fK \n", num1, rankineToKelvin(num1));
-        ```
-    </details> <p></p>
+    ~~~admonish code collapsible=true title='Code: ArithmeticOperations.c ... [13 lines]'
+
+    ```c
+    ... 
+    printf("Fahrenheit to Rankine: %.2fF -> %.2fR \n", num1, fahrenheitToRankine(num1));
+    ...
+    printf("Ceclius to Rankine: %.2fC -> %.2fR \n", num1, celciusToRankine(num1))
+    ...
+    printf("Kelvin to Rankine: %.2fK -> %.2fR \n", num1, kelvinToRankine(num1));
+    
+    printf("Rankine to Farhenheit: %.2fR -> %.2fF \n", num1, rankineToFahrenheit(num1));
+
+    printf("Rankine to Ceclius: %.2fR -> %.2fC \n", num1, rankineToCelcius(num1));
+
+    printf("Rankine to Kelvin: %.2fR -> %.2fK \n", num1, rankineToKelvin(num1));
+    ```
+    
+    ~~~
 
 
     

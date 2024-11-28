@@ -1,4 +1,4 @@
-# Lab 1: Learning C
+# Lab 3: Learning C
 
 We will be doing this lab inconjuction with the C lecture. Key concepts will be explained and you will put into practice.
 
@@ -7,30 +7,48 @@ We will be doing this lab inconjuction with the C lecture. Key concepts will be 
 
 - We need add a compiler to out `PATH` to do that revist the `~/.bashrc` file and append the `PATH` environment variable the following: 
 
+    ~~~admonish terminal
+
     ```sh
     $ vim ~/.bashrc
     export PATH=$PATH:"/c/Program Files/GCC-Windows-MingW-2.0.0/w64devkit/bin"
     ```
-    >**Note:**
-    >> - This collection of build tools are from [https://github.com/skeeto/w64devkit/releases](https://github.com/skeeto/w64devkit/releases)
-    >> - and only for our machines in Nelson 128 and Nelson 108, you can download and install using the release and then do the export above.
+
+    ~~~
+
+    ~~~admonish info    
+
+    - This collection of build tools are from [https://github.com/skeeto/w64devkit/releases](https://github.com/skeeto/w64devkit/releases)
+    - and only for our machines in Nelson 128 and Nelson 108, you can download and install using the release and then do the export above.
+
+    ~~~
 
 - Then source the `~/.bashrc` or use the alias we created last time `refresh`
+
+    ~~~admonish terminal
 
     ```sh
     $ source ~/.bashrc
     ```
+
+    ~~~
+
     or
+
+    ~~~admonish terminal
+
     ```sh
     $ refersh
     ```
+
+    ~~~
 
 - The following packages are now available:
 
     ![](figures/gccandtools.png)
 
 So let's make our first program.
-## 1. Create a Project in Visual Studio Code:
+## 1. Create a Project in Visual Studio:
 
 - Open Visual Studio Code and create a new folder called `Learning_C`..
 - Create a new file named `helloworld.c` inside the `Learning_C` directory.
@@ -42,6 +60,8 @@ So let's make our first program.
     </div>
 
 - Then open the file and edit:
+
+    ~~~admonish code
 
     ```c
     #include <stdio.h> // we need this library to get access to the input and out put methods for printing to terminal
@@ -55,6 +75,10 @@ So let's make our first program.
         return 0; // returns 0 to the int of main() and terminate the program
     }
     ```
+    
+    ~~~
+
+    ~~~admonish example title='Explanation of code'
 
     Some explanation about the above code:
 
@@ -72,33 +96,46 @@ So let's make our first program.
 
     - By including this header file we have access to the `printf()` function that enables us to return information to the terminal in string format.
 
+   
+    ~~~
+
     Now we are going to compile the code so that we have an executable file that can be run from the terminal, using the `gcc` compiler:
+
+    ~~~admonish terminal
 
     ```sh
     $ gcc helloworld.c -o helloworld.exe
     ```
 
-    >**Note:** 
-    >> - You can open the terminal in visual studio code using <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>'</kbd>
-    >> - If you do not have bash as the default, you can select it from the drop down arrow, like below.
-        ![](./figures/step1-1-1.png)
-    ----
+    ~~~~
 
-    <details>
-    <summary><b>Click for Expected Output</b></summary>
-    <p></p>
+    ~~~admonish tip
+
+    - You can open the terminal in visual studio code using <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>'</kbd>
+    - If you do not have bash as the default, you can select it from the drop down arrow, like below.
+
+       ![](./figures/step1-1-1.png)
+    
+    ~~~
+
+    ----
+    
+    ~~~admonish output collapsible=true title='Click for Expected Output'
+    
 
     ![](./figures/step1-1.png)
 
     Congratulations, [you used the programming language of the gods!](https://devhumor.com/media/god-s-programming-language)
 
-    </details>
+    ~~~
 
     ----
 
 ## 2. Data Type: Printing Integer
 
 - Now we are going to create a new program called `inputoutput.c` to look like below:
+
+    ~~~admonish code
 
     ```c
     #include <stdio.h>
@@ -109,6 +146,8 @@ So let's make our first program.
         return 0;
     }
     ```
+
+    ~~~
 
 - Now we are going to compile the code so that we have an executable file that can be run from the terminal, using the `gcc` compiler: 
  
@@ -126,6 +165,8 @@ So let's make our first program.
 
 - Modify the same file again to look like below:
 
+    ~~~admonish code
+
     ```c
     #include <stdio.h>
     int main()
@@ -141,7 +182,14 @@ So let's make our first program.
         return 0;
     }
     ```
+
+    ~~~
+
+    ~~~admonish warning
+
     - `...` means compressed code for brevity, don't write it.
+
+    ~~~
 
 - Run the code again and you will see this again...
 
@@ -166,6 +214,8 @@ So let's make our first program.
 
 - Modify the same file again to look like below:
 
+    ~~~admonish code
+
     ```c
     #include <stdio.h>
     int main()
@@ -177,6 +227,9 @@ So let's make our first program.
         return 0;
     } 
     ```
+
+    ~~~
+
 - Run the program again and you should see the following ouput:
 
     <div align=center>  
@@ -195,6 +248,8 @@ In C programming, `scanf()` is one of the commonly used function to take input f
 
 - Again we will modify the program to look like the code below:
 
+    ~~~admonish code
+
     ```c
     #include <stdio.h>
     int main()
@@ -210,6 +265,8 @@ In C programming, `scanf()` is one of the commonly used function to take input f
     }
     ```
 
+    ~~~
+
 - Run the program to get the following output, respond to the prompt and type in a number:
     
     <div align=center>
@@ -220,7 +277,11 @@ In C programming, `scanf()` is one of the commonly used function to take input f
 
     - Here, we have used `%d` format specifier inside the `scanf()` function to take `int` input from the user. When the user enters an integer, it is stored in the `testInteger` variable.
 
-    > Notice, that we have used `&testInteger` inside `scanf()`. It is because `&testInteger` gets the address of `testInteger`, and the value entered by the user is stored in that address. We will cover addressing and pointers at a later date.
+        ~~~admonish info
+
+        Notice, that we have used `&testInteger` inside `scanf()`. It is because `&testInteger` gets the address of `testInteger`, and the value entered by the user is stored in that address. We will cover addressing and pointers at a later date.
+
+        ~~~
 
 ---
 
@@ -253,6 +314,8 @@ Here is a table of possible format specifiers for input and output:
 
 - We are going to write a program that returns the size of each data type availabe in `c`, modify the program to look like below:
 
+    ~~~admonish code
+
     ```c
     #include<stdio.h>
     int main(){
@@ -271,6 +334,8 @@ Here is a table of possible format specifiers for input and output:
     }
     ```
 
+    ~~~
+
 - Run program to see the data types and there available sizes in bytes: 
     ![](./figures/step6.png)
 
@@ -283,10 +348,17 @@ In C, the `if` statement is a fundamental control structure that allows you to m
 ### Create a C Program
 1. Create a new C file using a text editor like `nano`:
 
+    ~~~admonish terminal
+
     ```c
     $ nano IfStatement.c
     ```
+
+    ~~~
+
 2. Write a program that applies the `if` statement in C to check `if` the variable `num` is greater than 5 using an `if` statement. If the condition is `true`, the code inside the `if` block is executed, and it prints a message.
+
+    ~~~admonish code
 
     ```c
     #include <stdio.h>
@@ -302,18 +374,29 @@ In C, the `if` statement is a fundamental control structure that allows you to m
     }
     ```
 
+    ~~~
+
 3. Save the file and exit the text editor.
 
 4. Compile your C code using the `gcc` compiler to generate an executable file:
+    
+    ~~~admonish terminal
+
     ```sh
     $ gcc IfStatement.c -o IfStatement.exe
     ```
 
+    ~~~
+
 5. Run your C program using the generated executable file:
+
+    ~~~admonish terminal
 
     ```sh
     $ ./IfStatement.exe
     ```
+
+    ~~~
 
 This program will output "The number is greater than 5" because the condition `num > 5` is `true`.
 
@@ -321,6 +404,8 @@ This program will output "The number is greater than 5" because the condition `n
 ### If-else statement
 
 You can use an `if-else` statement to execute different code blocks for true and false conditions. Update your code as follows:
+
+~~~admonish code
 
 ```c
 #include <stdio.h>
@@ -338,9 +423,13 @@ int main() {
 }
 ```
 
+~~~
+
 ### If-else if statement
 
 You can use the `if-else if` statement to handle multiple conditions. Update your code as follows:
+
+~~~admonish code
 
 ```c
 #include <stdio.h>
@@ -360,10 +449,14 @@ int main() {
 }
 ```
 
+~~~
+
 ## Exersices
 
 ### Exercise-1: Even or Odd
 Create a program that checks whether a given integer is even or odd. Prompt the user to enter an integer, and then display a message indicating whether it's even or odd.
+
+~~~admonish code
 
 ```c
 #include <stdio.h>
@@ -384,11 +477,18 @@ int main() {
 }
 ```
 
+~~~
+
 ### Exercise-2 Prime Number Checker
 Write a program that determines if a given number is prime or not.
 
-> **Note:**
->> - A prime number is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers. In other words, a prime number has only two positive divisors: 1 and itself. For example, the first few prime numbers are 2, 3, 5, 7, 11, 13, 17, and so on. These numbers are only divisible evenly by 1 and the number itself.
+~~~admonish info
+
+- A prime number is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers. In other words, a prime number has only two positive divisors: 1 and itself. For example, the first few prime numbers are 2, 3, 5, 7, 11, 13, 17, and so on. These numbers are only divisible evenly by 1 and the number itself.
+
+~~~
+
+~~~admonish code
 
 ```c
 
@@ -422,8 +522,12 @@ int main() {
 }
 ```
 
+~~~
+
 ### Exercise-3 : Simple Calculator
 Write a basic calculator program that allows the user to perform addition, subtraction, multiplication, and division on two numbers. Ask the user to enter the operation they want to perform and the numbers to operate on.
+
+~~~admonish code
 
 ```c
 #include <stdio.h>
@@ -463,3 +567,4 @@ int main() {
 
     return 0; 
 ```
+~~~

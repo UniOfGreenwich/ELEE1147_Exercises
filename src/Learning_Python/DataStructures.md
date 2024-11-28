@@ -1,7 +1,5 @@
 # Data Structures
 
- Python Data Structures Exercises - Part 1
-
 This document provides a comprehensive overview of Python's main data structures: **Lists, Tuples, Dictionaries,** and **Sets**.
 
 ---
@@ -16,6 +14,9 @@ A **list** is a mutable, ordered collection of items. Lists are useful for stori
 - **Sorting**: Sort items using `sort()` for in-place sorting or `sorted()` to get a new sorted list.
 
 ### Example: Working with Lists
+
+~~~admonish code
+
 ```python
 # Create a list of animals
 animals = ["lion", "tiger", "elephant", "giraffe"]
@@ -34,6 +35,8 @@ animals.sort()
 print("Sorted list:", animals)
 ```
 
+~~~
+
 ### Exercise 1: Basic List Operations
 1. Create a list called `wildlife` with at least six animal names.
 2. Add two more animals to the list.
@@ -41,18 +44,17 @@ print("Sorted list:", animals)
 4. Remove the last animal from the list.
 5. Print the list in alphabetical order without modifying the original list.
 6. Count how many times `"elephant"` appears in the list.
-7. <details><summary>Solution...</summary>
+7. ~~~admonish code collapsible=true title='Supressed code.. [5 lines]'
 
-    ```python
-    wildlife = ["lion", "tiger", "bear", "elephant", "zebra", "giraffe"]
-    wildlife.extend(["koala", "panda"])
-    wildlife[2] = "penguin"
-    wildlife.pop()
-    print("Alphabetical order:", sorted(wildlife))
-    print("Count of 'elephant':", wildlife.count("elephant"))
-    ```
-
-    </details>
+   ```python
+   wildlife = ["lion", "tiger", "bear", "elephant", "zebra", "giraffe"]
+   wildlife.extend(["koala", "panda"])
+   wildlife[2] = "penguin"
+   wildlife.pop()
+   print("Alphabetical order:", sorted(wildlife))
+   print("Count of 'elephant':", wildlife.count("elephant"))
+   ```
+   ~~~
 
 ---
 ---
@@ -66,6 +68,9 @@ A **tuple** is an immutable, ordered collection of items. Tuples are defined wit
 - **Indexing and Slicing**: Access elements like lists but without modification.
 
 ### Example: Using Tuples
+
+~~~admonish code
+
 ```python
 # Create a tuple of bird species
 birds = ("sparrow", "parrot", "eagle", "penguin")
@@ -79,13 +84,14 @@ print("Last bird:", birds[-1])
 # birds[1] = "canary"
 ```
 
+~~~
+
 ### Exercise 2: Tuple Basics
 1. Create a tuple called `amphibians` with three amphibian species.
 2. Print the second amphibian in the tuple.
 3. Attempt to add a new amphibian to the tuple (note the error).
 4. Convert the tuple to a list, add a new amphibian, and convert it back to a tuple.
-5. <details>
-   <summary>Solution...</summary>
+5. ~~~admonish code collapsible=true title='Supressed code.. [10 lines]'
 
     ```python
     amphibians = ("frog", "salamander", "newt")
@@ -101,7 +107,7 @@ print("Last bird:", birds[-1])
     print("Updated tuple:", amphibians)
     ```
 
-    </details>
+    ~~~
 
 ---
 ---
@@ -116,6 +122,8 @@ A **dictionary** is a mutable, unordered collection of key-value pairs. Dictiona
 - **Keys and Values**: Access all keys with `keys()` and all values with `values()`.
 
 ### Example: Animal Dictionary
+
+~~~admonish code
 
 ```python
 # Create a dictionary with animal categories
@@ -138,14 +146,15 @@ animal_classes.pop("reptiles")
 print("After removing reptiles:", animal_classes)
 ```
 
+~~~
+
 ### Exercise 3: Dictionary Basics
 1. Create a dictionary called `habitat` with three habitats (e.g., `"forest"`, `"desert"`, `"ocean"`), each containing a list of animals found there.
 2. Add a new habitat with its animals.
 3. Print all animals in the `"forest"` habitat.
 4. Remove a habitat from the dictionary.
 5. Print the dictionary’s keys and values.
-6. <details>
-   <summary>Solution...</summary>
+6.  ~~~admonish code collapsible=true title='Supressed code.. [10 lines]'
 
     ```python
     habitat = {
@@ -160,7 +169,7 @@ print("After removing reptiles:", animal_classes)
     print("All animals:", habitat.values())
     ```
 
-    </details>
+    ~~~
 
 ---
 ---
@@ -175,6 +184,9 @@ A **set** is an unordered, mutable collection of unique items. Sets are defined 
 - **Set Operations**: Use union (`|`), intersection (`&`), and difference (`-`).
 
 ### Example: Animal Set
+
+~~~admonish code
+
 ```python
 # Create a set of unique animals
 unique_animals = {"lion", "tiger", "zebra", "elephant"}
@@ -194,14 +206,15 @@ forest_animals = {"deer", "bear", "owl", "elephant"}
 print("Common animals:", savanna_animals & forest_animals)
 ```
 
+~~~
+
 ### Exercise 4: Set Operations
 1. Create a set called `farm_animals` with animals like `"cow"`, `"chicken"`, and `"sheep"`.
 2. Add `"duck"` and `"goat"` to the set.
 3. Create another set called `wild_animals` with `"lion"`, `"tiger"`, and `"bear"`.
 4. Find and print the union of `farm_animals` and `wild_animals`.
 5. Check if `"cow"` is in the `wild_animals` set.
-6. <details>
-   <summary>Solution...</summary>
+6.  ~~~admonish code collapsible=true title='Supressed code.. [5 lines]'
 
     ```python
     farm_animals = {"cow", "chicken", "sheep"}
@@ -211,7 +224,7 @@ print("Common animals:", savanna_animals & forest_animals)
     print("Is 'cow' a wild animal?", "cow" in wild_animals)
     ```
 
-    </details>
+    ~~~
 
 ---
 ---
@@ -221,6 +234,9 @@ print("Common animals:", savanna_animals & forest_animals)
 Python allows nesting of data structures, which means you can have lists of dictionaries, sets of tuples, and other complex combinations.
 
 ### Example: Nested Dictionary of Animal Facts
+
+~~~admonish code
+
 ```python
 # Dictionary containing animal facts
 animal_facts = {
@@ -232,13 +248,14 @@ print("Lion's diet:", animal_facts["lion"]["diet"])
 print("Parrot's lifespan:", animal_facts["parrot"]["lifespan"])
 ```
 
+~~~
+
+
 ### Exercise 5: Working with Nested Data Structures
 1. Create a dictionary called `zoo` where each key is an animal's name and each value is another dictionary with keys `"class"` (e.g., `"mammal"`, `"bird"`), `"habitat"`, and `"diet"`.
 2. Print the habitat of a specific animal.
 3. Add a new animal to the `zoo` dictionary with its details.
-4. <details>
-   <summary>Solution...</summary>
-
+4. ~~~admonish code collapsible=true title='Supressed code.. [12 lines]'
 
     ```python
     zoo = {
@@ -255,13 +272,15 @@ print("Parrot's lifespan:", animal_facts["parrot"]["lifespan"])
     print("Updated zoo:", zoo)
     ```
 
-    </details>
+    ~~~
 
 ---
 
 ### Example: Nested Lists and Dictionaries
 
 You can also use lists within dictionaries to store multiple related items.
+
+~~~admonish code
 
 ```python
 # Example of a dictionary where each animal has a list of traits
@@ -275,12 +294,14 @@ animal_traits = {
 print("Lion's traits:", animal_traits["lion"]["traits"])
 ```
 
+~~~
+
+
 ### Exercise 6: Complex Nested Structures
 1. Create a dictionary called `habitat_info` where each habitat (e.g., `"forest"`, `"ocean"`) contains a list of animal dictionaries. Each animal dictionary should include `"name"`, `"class"`, and `"diet"`.
 2. Add two habitats and at least two animals per habitat.
 3. Access the diet of an animal within a specific habitat.
-4. <details>
-   <summary>Solution...</summary>
+4. ~~~admonish code collapsible=true title='Supressed code.. [15 lines]'
 
     ```python
     habitat_info = {
@@ -300,7 +321,7 @@ print("Lion's traits:", animal_traits["lion"]["traits"])
             print("Bear's diet:", animal["diet"])
     ```
 
-    </details>
+   ~~~
 
 ---
 ---
@@ -319,8 +340,7 @@ For each of the following Parts, create a differently named file i.e. `part1.py`
 4. **Pop** the last item from the list and print the item that was removed.
 5. Remove `"tiger"` by value from the list.
 6. Print the final list.
-7.  <details>
-    <summary>Solution...</summary>
+7.  ~~~admonish code collapsible=true title='Supressed code.. [7 lines]'
 
     ```python
     animals = ["lion", "tiger", "elephant"]
@@ -332,7 +352,7 @@ For each of the following Parts, create a differently named file i.e. `part1.py`
     print("Final list:", animals)
     ```
 
-    </details>
+    ~~~
 
 ---
 
@@ -342,8 +362,7 @@ For each of the following Parts, create a differently named file i.e. `part1.py`
 3. Update the habitat of `"sparrow"` to `"grassland"`.
 4. **Pop** `"penguin"` from the dictionary and print its habitat.
 5. Print the final dictionary.
-6. <details>
-   <summary>Solution...</summary>
+6.  ~~~admonish code collapsible=true title='Supressed code.. [6 lines]'
 
     ```python
     bird_habitats = {"sparrow": "forest", "eagle": "mountain", "penguin": "ice"}
@@ -354,7 +373,7 @@ For each of the following Parts, create a differently named file i.e. `part1.py`
     print("Final dictionary:", bird_habitats)
     ```
 
-    </details>
+    ~~~
 
 ---
 
@@ -364,8 +383,7 @@ For each of the following Parts, create a differently named file i.e. `part1.py`
 3. **Discard** `"chicken"` from the set.
 4. **Pop** an element from the set (note that sets are unordered, so any element could be removed) and print the removed element.
 5. Print the final set.
-6. <details>
-   <summary>Solution...</summary>
+6.  ~~~admonish code collapsible=true title='Supressed code.. [7 lines]'
 
     ```python
     farm_animals = {"cow", "chicken", "sheep"}
@@ -377,7 +395,7 @@ For each of the following Parts, create a differently named file i.e. `part1.py`
     print("Final set:", farm_animals)
     ```
 
-    </details>
+    ~~~
 
 ---
 
@@ -387,8 +405,7 @@ For each of the following Parts, create a differently named file i.e. `part1.py`
 3. Add `"octopus"` to the list.
 4. Remove `"whale"` from the list.
 5. Convert the list back to a tuple and print the final tuple.
-6. <details>
-   <summary>Solution...</summary>
+6.  ~~~admonish code collapsible=true title='Supressed code.. [6 lines]'
 
     ```python
     ocean_animals = ("shark", "whale", "dolphin")
@@ -399,4 +416,4 @@ For each of the following Parts, create a differently named file i.e. `part1.py`
     print("Final tuple:", ocean_animals)
     ```
 
-    </details>
+    ~~~

@@ -9,15 +9,22 @@
 - Insertion Sort Example, \\(O(n^2) \\)
 
 
-> Note: 
->> - All timings are based on an 11th Gen Intel Core i5-11500 @ 2.70GHz 6 Cores.
->> - The C library function `clock_t clock(void)` returns the number of `clock ticks` elapsed since the program was launched. To get the number of seconds used by the CPU, you will need to divide by `CLOCKS_PER_SEC`, which will be implemented in `main()`.
+~~~admonish info
+- All timings are based on an 11th Gen Intel Core i5-11500 @ 2.70GHz 6 Cores.
 
+- The C library function `clock_t clock(void)` returns the number of `clock ticks` elapsed since the program was launched. To get the number of seconds used by the CPU, you will need to divide by `CLOCKS_PER_SEC`, which will be implemented in `main()`.
+
+~~~
 
 In this lab we are going to explore various sorting algorithms sorting a small dataset that is meant to describe heights of various people: 
 
--  `int array1[] = {90, 65, 70, 55, 60, 80};`
+~~~admonish code
 
+```c
+int array1[] = {90, 65, 70, 55, 60, 80};
+```
+
+~~~
 
 ## Quick Sort Algorithm \\(O(n\ log\ n)\\): 
 
@@ -37,6 +44,8 @@ In this lab we are going to explore various sorting algorithms sorting a small d
 
 3. Reproduce the following code in `Sort.h`:
 
+    ~~~admonish code
+
     ```c
     #pragma once
     #ifndef SORT_H
@@ -51,7 +60,12 @@ In this lab we are going to explore various sorting algorithms sorting a small d
     void printArray(int arr[], int size);
     #endif // SORT_H
     ```
+
+    ~~~
+
 4. Reproduce the following code in `Sort.c`:
+
+    ~~~admonish code
 
     ```c
     #include "Sort.h"
@@ -94,7 +108,11 @@ In this lab we are going to explore various sorting algorithms sorting a small d
     }
     ```
 
+    ~~~
+
 5. Now you have the first sorting algorithm is set up we need get the `SortingAlgorithms.c` file ready to invoke the sorting function and calcualte the how long it took. Modify the code, `SortingAlgorithms.c`, to include the following, pay close attention to the comments as they provide verbose guidance:
+
+    ~~~admonish code
 
     ```c
     #include "Sort.h"
@@ -130,6 +148,9 @@ In this lab we are going to explore various sorting algorithms sorting a small d
         return 0;
     }
     ```
+
+    ~~~
+
 6. If you have reproduce the above you should see the following output when you run the program:
 
     ![](./figures/quicksort.png)
@@ -166,6 +187,8 @@ The Bubble sort works by repeatedly stepping through the list to be sorted, comp
 
 2. Next open the `Sort.c` file and add the `bubblesort()` functionality, place the following between the two functions, `quicksortMiddle()`, `printArray()`:
 
+    ~~~admonish code
+
     ```c
     void quicksortMiddle(int arr[], int low, int high) { 
         ...
@@ -190,7 +213,12 @@ The Bubble sort works by repeatedly stepping through the list to be sorted, comp
 
     void printArray(int arr[], int size) ...
     ```
+
+    ~~~
+
 3. Like before we need to invoke the `bubblesort()` in the `main()`, you'll pleased to note we are adding one line, and commenting another, go back to `SortingAlgorithms.c`:
+
+    ~~~admonish code
 
     ```c
     int main()
@@ -208,6 +236,7 @@ The Bubble sort works by repeatedly stepping through the list to be sorted, comp
     }
     ```
 
+    ~~~
 
 4. If you have reproduce the above you should see the following output when you run the program:
 
@@ -247,6 +276,8 @@ Selection sort works by repeatedly finding the minimum element from the unsorted
 
 2. Next open the `Sort.c` file and add the `selectionsort()` functionality, place the following between the two functions, `bubblesort()`, `printArray()`:
 
+    ~~~admonish code
+
     ```c
     ...
     void bubblesort(nt arr[], int n){
@@ -277,7 +308,11 @@ Selection sort works by repeatedly finding the minimum element from the unsorted
     void printArray(int arr[], int size) ...
     ```
 
+    ~~~
+
 3. Like before we need to invoke the `selectionSort()` in the `main()`, you'll pleased to note we are adding one line, and commenting another, go back to `SortingAlgorithms.c`:
+
+    ~~~admonish code
 
     ```c
     int main()
@@ -296,6 +331,8 @@ Selection sort works by repeatedly finding the minimum element from the unsorted
       ...
     }
     ```
+
+    ~~~
 
 4. If you have reproduce the above you should see the following output when you run the program:
 
@@ -336,6 +373,8 @@ Insertion sort works by building a sorted array one element at a time by repeate
 
 2. Next open the `Sort.c` file and add the `insertionsort()` functionality, place the following between the two functions, `selectionSort()`, `printArray()`:
 
+    ~~~admonish code
+
     ```c
     ...
     void selectionSort(int arr[], int n) {
@@ -363,7 +402,11 @@ Insertion sort works by building a sorted array one element at a time by repeate
     void printArray(int arr[], int size) ...
     ```
 
+    ~~~
+
 3. Like before we need to invoke the `insertionsort()` in the `main()`, you'll pleased to note we are adding one line, and commenting another, go back to `SortingAlgorithms.c`:
+
+    ~~~admonish code
 
     ```c
     int main()
@@ -384,6 +427,8 @@ Insertion sort works by building a sorted array one element at a time by repeate
     }
     ```
 
+    ~~~
+    
 4. If you have reproduce the above you should see the following output:
 
     ![](./figures/insertionsort.png)

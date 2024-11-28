@@ -41,15 +41,21 @@ You could follow the [**Gitflow**](https://www.atlassian.com/git/tutorials/compa
 
 1. Create a feature branch based off of `develop`
 
+   ~~~admonish terminal
+
    ```
    $ git checkout develop
    $ git checkout -b MYTEAM-123-new-documentation
    $ git push --set-upstream MYTEAM-123-new-documentation
    ```
 
+   ~~~
+
 1. Develop the code for the new feature and commit. Push your changes often. This
    allows others to see your changes and suggest improvements/changes as well as
    provides a safety net should your hard drive crash.
+
+    ~~~admonish terminal
 
     ```
     $ ... make changes
@@ -60,6 +66,8 @@ You could follow the [**Gitflow**](https://www.atlassian.com/git/tutorials/compa
     $ git commit -m "Fix some spelling errors"
     $ git push
     ```
+
+    ~~~
 
 1. Navigate to the project on [Github](www.github.com) and open a pull request with
    the following branch settings:
@@ -81,20 +89,30 @@ There's nothing special about that. Each developer follows the above [Develop a 
    latest production code. This reduces the chance of a merge conflict during
    the release.
 
+   ~~~admonish terminal
+
    ```
    $ git checkout develop
    $ git merge master
    ```
 
-1. Create a new `release-vX.Y.Z` release branch off of `develop`.
+   ~~~
+
+2. Create a new `release-vX.Y.Z` release branch off of `develop`.
+
+   ~~~admonish terminal
 
    ```
    $ git checkout -b release-vX.Y.Z
    $ git push --set-upstream release-vX.Y.Z
    ```
 
-1. Stabilize the release by using bugfix branches off of the `release-vX.Y.Z` branch
+   ~~~
+
+3. Stabilize the release by using bugfix branches off of the `release-vX.Y.Z` branch
    (the same way you would do a feature branch off of `develop`).
+
+   ~~~admonish terminal
 
    ```
    $ git checkout release-vX.Y.Z
@@ -105,7 +123,9 @@ There's nothing special about that. Each developer follows the above [Develop a 
    $ git push
    ```
 
-1. When the code is ready to release, navigate to the project on
+   ~~~
+
+4. When the code is ready to release, navigate to the project on
    [Github](www.github.com) and open a pull request with the following branch
    settings:
    * Base: `master`
@@ -114,10 +134,10 @@ There's nothing special about that. Each developer follows the above [Develop a 
    checklist. It will vary across projects, but you can refer to the Astro [Release](https://github.com/mobify/astro/blob/develop/RELEASE.md) document
    for an example.
 
-1. At some point in the checklist you will merge the release branch into `master`.
+5. At some point in the checklist you will merge the release branch into `master`.
    You can do this by using the "Merge pull request" button on the release PR.
 
-1. Now you are ready to create the actual release. Navigate to the project page
+6. Now you are ready to create the actual release. Navigate to the project page
    on Github and draft a new release with the following settings:
    * Tag version: `vX.Y.Z`
    * Target: `master`
@@ -125,7 +145,9 @@ There's nothing special about that. Each developer follows the above [Develop a 
    * Description: Include a high-level list of things changed in this release.
    Click `Publish release`.
 
-1. Merge the `release-vX.Y.Z` into `develop`.
+7. Merge the `release-vX.Y.Z` into `develop`.
+
+    ~~~admonish terminal
 
     ```
     $ git checkout develop
@@ -133,10 +155,12 @@ There's nothing special about that. Each developer follows the above [Develop a 
     $ git push
     ```
 
-1. Finish off the tasks in the release checklist. Once everything is done, close
+   ~~~
+
+8. Finish off the tasks in the release checklist. Once everything is done, close
    the release PR.
 
-1. Delete the release branch on Github.
+9. Delete the release branch on Github.
 
 ### Change in plan, pull a feature from a release
 
@@ -155,31 +179,42 @@ Here is an example of creating a support branch for v1.0 assuming v2.0 of the pr
 
 1. Create the support branch and release branch for the patch release.
 
-    ```
-    // Checkout the tag for the 1.0.0 release
-    git checkout v1.0.0
+   ~~~admonish terminal
 
-    // Create the long living support branch
-    git checkout -b support-v1.x
+   ```sh
+   # Checkout the tag for the 1.0.0 release
+   git checkout v1.0.0
 
-    // Create the release branch
-    git checkout -b release-v1.0.1
-    ```
+   # Create the long living support branch
+   git checkout -b support-v1.x
 
-    Note: For subsequent releases (ex v1.0.2) the release branch will be branched off the `HEAD` of `support-v1.x`
+   # Create the release branch
+   git checkout -b release-v1.0.1
+   ```
+
+   ~~~
+
+   ~~~admonish note
+
+   For subsequent releases (ex v1.0.2) the release branch will be branched off the `HEAD` of `support-v1.x`
+
+   ~~~
 
 1. Make changes in the `release-v1.0.1`. Multiple PRs can be merged into this branch if several changes are necessary.
 
-1. As PRs are merged into the `release-v1.0.1` branch create associated PRs that cherry pick the changes back into `develop`. Ensure that these changes are desired by the team going forward and that they are compatible with the current state of the `develop` branch.
+2. As PRs are merged into the `release-v1.0.1` branch create associated PRs that cherry pick the changes back into `develop`. Ensure that these changes are desired by the team going forward and that they are compatible with the current state of the `develop` branch.
 
-1. Create release PR to merge `release-v1.0.1` into `support-v1.x`.
+3. Create release PR to merge `release-v1.0.1` into `support-v1.x`.
 
-1. Follow the standard release process treating `support-v1.x` as the `master` branch. As per the standard release process `release-v1.0.1` will get deleted and `support-v1.x` will remain in repo indefinitely.
+4. Follow the standard release process treating `support-v1.x` as the `master` branch. As per the standard release process `release-v1.0.1` will get deleted and `support-v1.x` will remain in repo indefinitely.
 
-1. Mark `support-v1.x` as a protected branch in github so that it does not get accidentally deleted.
+5. Mark `support-v1.x` as a protected branch in github so that it does not get accidentally deleted.
 
-*Pro-tip*: Try to maintain as few support branches as possible. These branches are expensive to maintain since you will need to cherry pick applicable bug fixes into each support branch seperately.
+   ~~~admonish tip
 
+   Try to maintain as few support branches as possible. These branches are expensive to maintain since you will need to cherry pick applicable bug fixes into each support branch seperately.
+
+   ~~~
 
 ### Production hot fix
 
@@ -192,13 +227,19 @@ code in it already.
 
 1. Create a hot fix branch based off of `master`.
 
+   ~~~admonish terminal
+
    ```
    $ git checkout master
    $ git checkout -b hotfix-documentation-broken-links
    $ git push --set-upstream origin hotfix-documentation-broken-links
    ```
 
+   ~~~
+
 1. Add a test case to validate the bug, fix the bug, and commit.
+
+   ~~~admonish terminal
 
    ```
    ... add test, fix bug, verify
@@ -206,6 +247,8 @@ code in it already.
    $ git commit -m "Fix broken links"
    $ git push
    ```
+
+   ~~~
 
 1. Navigate to the project on [Github](www.github.com) and open a pull request
    with the following branch settings:
@@ -233,11 +276,15 @@ code in it already.
 
 1. Merge the `hotfix-documentation-broken-links` into `develop`.
 
+   ~~~admonish terminal
+
    ```
    $ git checkout develop
    $ git merge hotfix-documentation-broken-links
    $ git push
    ```
+
+   ~~~
 
 1. Finish off the tasks in the release checklist. Once everything is done, close
    the hotfix PR.
@@ -263,30 +310,38 @@ The process for tagging and merging is a bit different when deploying a bundle, 
 
 	Ensure you have installed the automated bundle message script found [here] (https://	mobify.atlassian.net/wiki/questions/81789082/how-do-i-automate-a-bundle-message-using-bash). Follow these steps:
 
+   ~~~admonish terminal
+
 	```
 	$ grunt push -m "$(message Mobile X.Y.Z)"
 	```
+
+   ~~~
 
 1. When creating a pull request to merge the release branch into `master` ensure that the standard workflow for _creating a release_ is followed with these specific changes:
    * Name/Summary: `DEPLOYMENT MERGE: release-v.X.Y.Z, bundle <bundle number that was sent to customer>`
    * Description:
 
-   ```
-   Status: **Out to Customer**
-   Owner: <Your Github username>
-   Reviewers: Customer
+      ~~~admonish code
 
-   ## Bundle:
-   - <bundle link sent to customer>
+      ```md
+      Status: **Out to Customer**
+      Owner: <Your Github username>
+      Reviewers: Customer
 
-   ## Jira Tickets:
-	- [x] <List of JIRA Tickets associated with release>
+      ## Bundle:
+      - <bundle link sent to customer>
 
-	## Todos:
-	- [ ] Customer Approves Bundle <number>
-	- [ ] Deploy Bundle <number>
-	- [ ] Clean Up Repo
-   ```
+      ## Jira Tickets:
+      - [x] <List of JIRA Tickets associated with release>
+
+      ## Todos:
+      - [ ] Customer Approves Bundle <number>
+      - [ ] Deploy Bundle <number>
+      - [ ] Clean Up Repo
+      ```
+
+      ~~~
 
 1. Once the customer has approved the bundle. The bundle is published to production and post launch tests occur. Once all tests have passed, the pull request is merged into `master`.
 
@@ -296,4 +351,8 @@ The process for tagging and merging is a bit different when deploying a bundle, 
 
    Click `Publish release`.
 
-   **NOTE: the release tag will be 1 commit ahead of the bundle commit**
+   ~~~admonish note
+   
+   The release tag will be 1 commit ahead of the bundle commit**
+
+   ~~~

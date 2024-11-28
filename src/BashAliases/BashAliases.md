@@ -89,13 +89,19 @@ In summary, a shell is your command-line interface, the `.bashrc` file is where 
 
 From your current location which should be `~` or `g//` in:
 
+~~~admonish terminal
+
 ```
 $ vim ~/.bashrc
 ```
 
+~~~
+
 This should load an empty file with the text editor **vim** called `.bashrc` in the home directory denoted by the `~`. The `.` means it is a hidden file.
 
 Inside the file file remember to presse `i` on keyboard to enter **INSERT** mode, and reproduce the following: 
+
+~~~admonish code
 
 ```sh
 alias ga='git add'
@@ -109,6 +115,8 @@ alias glg='git log --graph --oneline --decorate --all'
 alias Git='cd ~//Documents//GitHub//'
 ```
 
+~~~
+
 Would look similar to below:
 
 ![](editedFile.png)
@@ -117,8 +125,12 @@ Remember to write and quit using first the escape key to exit **INSERT** mode to
 
 Now that you have your .bashrc file you need to get the current instant of the shell to recongnise it. 
 
+~~~admonish terminal
+
 ```sh
 $ source ~/.bashrc
 ```
+
+~~~
 
 You should now be able to use any of the aliases instead of typing out the full commands.
