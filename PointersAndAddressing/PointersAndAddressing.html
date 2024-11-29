@@ -179,17 +179,23 @@
 </li>
 <li>
 <p>Open <code>PointersAndAddressing.c</code> and modify to look like below:</p>
-<pre><code class="language-admonish code">
-```c
-#include &lt;stdio.h&gt;
+ <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+ <div class="admonition-title">
+ <div id="admonition-code-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code"></a>
+ </div>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(){
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 </ol>
 <h2 id="section-1-pointers"><a class="header" href="#section-1-pointers">Section 1: Pointers</a></h2>
@@ -201,9 +207,15 @@ int main(){
 <ol start="4">
 <li>
 <p>Modify <code>main()</code> by entering the following code:</p>
-<pre><code class="language-admonish code">
-```
-...
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code>...
     int a=1, b =2 ,c =0;
 
     printf("Address for the variable a: %lu \n", (long)&amp;a); // long casts the value in &amp;a to a long integer, upto 32 bits
@@ -211,51 +223,89 @@ int main(){
     printf("Address for the variable c: %lu \n", (long)&amp;c);
     return 0;
 }
-```
-
 </code></pre>
-<pre><code class="language-admonish info">
-The `...` in the code blocks means that there is code above or below that remains the same.
-
-</code></pre>
-<pre><code class="language-admonish output collapsible=true">
-![](./figures/step1.png)
-
-So it looks like the address are almost next to each other, we call this **contiguous**.
-
-</code></pre>
-<pre><code class="language-admonish info">
-- We must use format specifiers to tell the `printf()` how we would like our variables to be displayed.
-
-- So, `%` is the character for promising a specifier -&gt; `%lu` means `unsigned long` and is 32 bits in size. 
-
-- memory address are **never** negative.
-
-</code></pre>
+ </div>
+ </div>
+ <div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+ <div class="admonition-title">
+ <div id="admonition-info-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info"></a>
+ </div>
+ <div>
+<p>The <code>...</code> in the code blocks means that there is code above or below that remains the same.</p>
+ </div>
+ </div>
+ <details id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output"></a>
+ </summary>
+ <div>
+<p><img src="./figures/step1.png" alt="" /></p>
+<p>So it looks like the address are almost next to each other, we call this <strong>contiguous</strong>.</p>
+ </div>
+ </details>
+ <div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+ <div class="admonition-title">
+ <div id="admonition-info-1-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-1"></a>
+ </div>
+ <div>
+<ul>
+<li>
+<p>We must use format specifiers to tell the <code>printf()</code> how we would like our variables to be displayed.</p>
+</li>
+<li>
+<p>So, <code>%</code> is the character for promising a specifier -&gt; <code>%lu</code> means <code>unsigned long</code> and is 32 bits in size.</p>
+</li>
+<li>
+<p>memory address are <strong>never</strong> negative.</p>
+</li>
+</ul>
+ </div>
+ </div>
 </li>
 <li>
 <p>What would happen to the addresses if you ran the code again? <strong>Try it!</strong></p>
-<pre><code class="language-admonish output collapsible=true">
- ![](./figures/step2.png)
-
-You should have recieved different memory address locations, this because of the **Address Space Layout Randomiser** (ASLR) which provides a random address space for security reason. Consider if someone wanted to get certain information and new where it was stored all the time?
-
-</code></pre>
+ <details id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-1-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-1"></a>
+ </summary>
+ <div>
+<p><img src="./figures/step2.png" alt="" /></p>
+<p>You should have recieved different memory address locations, this because of the <strong>Address Space Layout Randomiser</strong> (ASLR) which provides a random address space for security reason. Consider if someone wanted to get certain information and new where it was stored all the time?</p>
+ </div>
+ </details>
 </li>
 </ol>
 <h2 id="section-2-what-are-pointers"><a class="header" href="#section-2-what-are-pointers">Section 2: What are Pointers?</a></h2>
 <p>A <strong>pointer</strong> is a variable whose value is the address of another variable, i.e., direct address of the memory location. Like any variable or constant, you must declare a pointer before using it to store any variable address. The general form of a pointer variable declaration is <code>type var-name</code>.</p>
 <p>Here, type is the pointer's base type; it must be a valid C data type and var-name is the name of the pointer variable. The asterisk <code>*</code> used to declare a pointer is the same asterisk used for multiplication.</p>
 <p>However, in this statement the asterisk is being used to designate a variable as a pointer. Take a look at some of the valid pointer declarations:</p>
-<pre><code class="language-admonish code">
-```c
-int    *ip;    /* pointer to an integer */
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
+<pre><code class="language-c">int    *ip;    /* pointer to an integer */
 double *dp;    /* pointer to a double */
 float  *fp;    /* pointer to a float */
 char   *ch     /* pointer to a character */
-```
-
 </code></pre>
+</div>
+</div>
 <p>The actual data type of the value of all pointers, whether integer, float, character, or otherwise, is the same, a long hexadecimal number that represents a memory address. The only difference between pointers of different data types is the data type of the variable or constant that the pointer points to.</p>
 <h2 id="section-3-how-to-use-pointers"><a class="header" href="#section-3-how-to-use-pointers">Section 3: How to Use Pointers?</a></h2>
 <p>To use the pointer, a C language feature, you must do the following steps:</p>
@@ -268,9 +318,15 @@ char   *ch     /* pointer to a character */
 <ol start="6">
 <li>
 <p>Again edit the contents of <code>main()</code> to match below:</p>
-<pre><code class="language-admonish code">
-``` c
-#include &lt;stdio.h&gt;
+ <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+ <div class="admonition-title">
+ <div id="admonition-code-3-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+ </div>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main () {
 
@@ -292,16 +348,23 @@ int main () {
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Run the code and you should see something similar to below,remember to compile first:</p>
-<pre><code class="language-admonish output collapsible=true">
-![](./figures/step3.png)
-
-</code></pre>
+ <details id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-2-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-2"></a>
+ </summary>
+ <div>
+<p><img src="./figures/step3.png" alt="" /></p>
+ </div>
+ </details>
 </li>
 </ol>
 <hr />
@@ -312,9 +375,15 @@ int main () {
 <ol start="8">
 <li>
 <p>Modify <code>main()</code> and enter the following:</p>
-<pre><code class="language-admonish code">
-``` c
-#include &lt;stdio.h&gt;
+ <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+ <div class="admonition-title">
+ <div id="admonition-code-4-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+ </div>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main () {
 
@@ -324,16 +393,23 @@ printf("The value of ptr is : %p\n", ptr  );
 
 return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Run the program:</p>
-<pre><code class="language-admonish output collapsible=true">
-![](./figures/step4.png)
-
-</code></pre>
+ <details id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-3-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-3"></a>
+ </summary>
+ <div>
+<p><img src="./figures/step4.png" alt="" /></p>
+ </div>
+ </details>
 <ul>
 <li>
 <p>In most of the operating systems, programs are not permitted to access memory at address <code>0</code> because that memory is reserved by the operating system.</p>
@@ -343,13 +419,19 @@ return 0;
 </li>
 <li>
 <p>To check for a null pointer, you can use an <code>if</code> statement as follows:</p>
-<pre><code class="language-admonish code">
-``` c
-if(ptr)     /* succeeds if p is not null */
+  <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+  <div class="admonition-title">
+  <div id="admonition-code-5-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+  </div>
+  <div>
+<pre><code class="language-c">if(ptr)     /* succeeds if p is not null */
 if(!ptr)    /* succeeds if p is null */
-```
-
 </code></pre>
+  </div>
+  </div>
 </li>
 </ul>
 </li>
@@ -399,76 +481,124 @@ if(!ptr)    /* succeeds if p is null */
 <ol>
 <li>
 <p>Define and assign an integer with the value 10, which we are going to use for looping.</p>
-<pre><code class="language-admonish code">
-``` c
-int bin = 10;
-```
-
+<div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+<div class="admonition-title">
+<div id="admonition-code-6-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-6"></a>
+</div>
+<div>
+<pre><code class="language-c">int bin = 10;
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Create another integer and this time give it the value 123456789.</p>
-<pre><code class="language-admonish code">
-``` c
-int value = 123456789:
-```
-
+<div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+<div class="admonition-title">
+<div id="admonition-code-7-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-7"></a>
+</div>
+<div>
+<pre><code class="language-c">int value = 123456789:
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Initialise a new variable in the pointer region of the code to point to the address of <code>value</code></p>
-<pre><code class="language-admonish code">
-``` c
-int* pointer = (&amp;value);
-```
-
+<div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+<div class="admonition-title">
+<div id="admonition-code-8-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-8"></a>
+</div>
+<div>
+<pre><code class="language-c">int* pointer = (&amp;value);
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Add the following <code>printf</code>s</p>
-<pre><code class="language-admonish code">
-```c
- printf("Memory Address        ||    Value        \n");
+<div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+<div class="admonition-title">
+<div id="admonition-code-9-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-9"></a>
+</div>
+<div>
+<pre><code class="language-c"> printf("Memory Address        ||    Value        \n");
  printf("------------------------------------------\n");
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Now you need to write of the <code>for</code> loop to return the address the pointer holds and the value at that address.</p>
-<pre><code class="language-admonish code">
-``` c
-for (int i = 0; i &lt; bin; ++i)
+<div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+<div class="admonition-title">
+<div id="admonition-code-10-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-10"></a>
+</div>
+<div>
+<pre><code class="language-c">for (int i = 0; i &lt; bin; ++i)
 {   
 
 
 }
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Inside the for loop between the braces { } enter this line to print out the values to console.</p>
-<pre><code class="language-admonish code">
-``` c
-printf(" %lu      ||    %d \t\t \n",(unsigned long)
+<div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+<div class="admonition-title">
+<div id="admonition-code-11-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-11"></a>
+</div>
+<div>
+<pre><code class="language-c">printf(" %lu      ||    %d \t\t \n",(unsigned long)
 
 pointer,(unsigned int)*pointer);
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Finally, we need to take one off of the pointer's value thereby decreasing the address. Add the following direcitly on the line below<code>printf();</code></p>
-<pre><code class="language-admonish code">
-``` c
-pointer = pointer - 1;
-```
-
+<div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+<div class="admonition-title">
+<div id="admonition-code-12-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-12"></a>
+</div>
+<div>
+<pre><code class="language-c">pointer = pointer - 1;
 </code></pre>
-<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code ... [22 slines]&#39;">
-```c
-#include &lt;stdio.h&gt;
+</div>
+</div>
+<details id="admonition-suppressed-code--22-slines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code--22-slines-title">
+<summary class="admonition-title">
+<div id="admonition-suppressed-code--22-slines-title">
+<p>Suppressed Code ... [22 slines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-suppressed-code--22-slines"></a>
+</summary>
+<div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 int main () {
    // define your variables in this region 
     int bin = 10;
@@ -491,20 +621,34 @@ int main () {
     // end of for loop
     return 0;
 }
-```
-
 </code></pre>
+</div>
+</details>
 </li>
 <li>
 <p>Run the code and you should see something like below:</p>
-<pre><code class="language-admonish output collapsible=true">    
-![](./figures/step5.png)
-
-</code></pre>
-<pre><code class="language-admonish info">
-Remember you will get different memory address and other than the `123456789` value the rest of the values are generally nonsense, unless they are used by the program.
-
-</code></pre>
+ <details id="admonition-output-4" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-4-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-4-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-4"></a>
+ </summary>
+ <div>
+<p><img src="./figures/step5.png" alt="" /></p>
+ </div>
+ </details>
+ <div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
+ <div class="admonition-title">
+ <div id="admonition-info-2-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-2"></a>
+ </div>
+ <div>
+<p>Remember you will get different memory address and other than the <code>123456789</code> value the rest of the values are generally nonsense, unless they are used by the program.</p>
+ </div>
+ </div>
 <ul>
 <li>
 <p>Now that the script has executed you can see we have a list of 10 memory addresses and the values those address hold.</p>
@@ -527,9 +671,15 @@ Remember you will get different memory address and other than the `123456789` va
 <ol start="9">
 <li>
 <p>This time we will store a <code>char[]</code> and print out the each element of the array and the corresponding memory address which will be formatted as a hexadecimal number. Modifiy <code>main()</code> to look like the following code:</p>
-<pre><code class="language-admonish code">
-``` c
-#include&lt;stdio.h&gt;
+<div id="admonition-code-13" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-13-title">
+<div class="admonition-title">
+<div id="admonition-code-13-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-13"></a>
+</div>
+<div>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
 #include&lt;stdlib.h&gt;
 int main ()
 {
@@ -556,20 +706,31 @@ int main ()
 
     return 0;
 }
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Run this code and see the expected output below:</p>
-<pre><code class="language-admonish output collapsible=true">
-![](./figures/step6.png)
-
-- So you should be able to see that arrays are indeed **Contiguous**
-
-- The starting memory address of the array is the same the zeroth element (`h`). 
-
-</code></pre>
+ <details id="admonition-output-5" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-5-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-5-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-5"></a>
+ </summary>
+ <div>
+<p><img src="./figures/step6.png" alt="" /></p>
+<ul>
+<li>
+<p>So you should be able to see that arrays are indeed <strong>Contiguous</strong></p>
+</li>
+<li>
+<p>The starting memory address of the array is the same the zeroth element (<code>h</code>).</p>
+</li>
+</ul>
+ </div>
+ </details>
 </li>
 </ol>
 <hr />
@@ -580,56 +741,91 @@ int main ()
 <h3 id="subsection-71-malloc"><a class="header" href="#subsection-71-malloc">Subsection 7.1: <code>malloc()</code></a></h3>
 <p>The name <code>malloc</code> stands for <strong>m</strong>emory <strong>alloc</strong>ation.</p>
 <p>The <code>malloc()</code> function reserves a block of memory of the specified number of bytes. And, it returns a pointer of <code>void</code> which can be casted into pointers of any form.</p>
-<pre><code class="language-admonish code">
-```c
-ptr = (castType*) malloc(size);
-```
-
+<div id="admonition-code-14" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-14-title">
+<div class="admonition-title">
+<div id="admonition-code-14-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-14"></a>
+</div>
+<div>
+<pre><code class="language-c">ptr = (castType*) malloc(size);
 </code></pre>
+</div>
+</div>
 <p>Example:</p>
-<pre><code class="language-admonish code">
-```c
-ptr = (float*) malloc(100 * sizeof(float));
-```
-
+<div id="admonition-code-15" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-15-title">
+<div class="admonition-title">
+<div id="admonition-code-15-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-15"></a>
+</div>
+<div>
+<pre><code class="language-c">ptr = (float*) malloc(100 * sizeof(float));
 </code></pre>
+</div>
+</div>
 <p>The above statement allocates 400 bytes of memory. It's because the size of <code>float</code> is 4 bytes. And, the pointer <code>ptr</code> holds the address of the first byte in the allocated memory.</p>
 <p>The expression results in a <code>NULL</code> pointer if the memory cannot be allocated.</p>
 <h3 id="subsection-72-calloc"><a class="header" href="#subsection-72-calloc">Subsection 7.2: <code>calloc()</code></a></h3>
 <p>The name <code>calloc</code> stands for contiguous allocation.</p>
 <p>The <code>malloc()</code> function allocates memory and leaves the memory uninitialized, whereas the <code>calloc()</code> function allocates memory and initialises all bits to zero.</p>
-<pre><code class="language-admonish code">
-```c
-ptr = (castType*)calloc(n, size);
-```
-
+<div id="admonition-code-16" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-16-title">
+<div class="admonition-title">
+<div id="admonition-code-16-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-16"></a>
+</div>
+<div>
+<pre><code class="language-c">ptr = (castType*)calloc(n, size);
 </code></pre>
+</div>
+</div>
 <p>Example:</p>
-<pre><code class="language-admonish code">
-```c
-ptr = (float*) calloc(25, sizeof(float));
-```
-
+<div id="admonition-code-17" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-17-title">
+<div class="admonition-title">
+<div id="admonition-code-17-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-17"></a>
+</div>
+<div>
+<pre><code class="language-c">ptr = (float*) calloc(25, sizeof(float));
 </code></pre>
+</div>
+</div>
 <p>The above statement allocates contiguous space in memory for 25 elements of type <code>float</code>.</p>
 <p><img src="./figures/mallocvscalloc.jpg" alt="" /></p>
 <h3 id="subsection-73-free"><a class="header" href="#subsection-73-free">Subsection 7.3: <code>free()</code></a></h3>
 <p>Dynamically allocated memory created with either <code>calloc()</code> or <code>malloc()</code> doesn't get freed on their own. You must explicitly use <code>free()</code> to release the space.</p>
-<pre><code class="language-admonish code">
-```c
-free(ptr);
-```
-
-This statement frees the space allocated in the memory pointed by `ptr`.
-
+<div id="admonition-code-18" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-18-title">
+<div class="admonition-title">
+<div id="admonition-code-18-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-18"></a>
+</div>
+<div>
+<pre><code class="language-c">free(ptr);
 </code></pre>
+<p>This statement frees the space allocated in the memory pointed by <code>ptr</code>.</p>
+</div>
+</div>
 <h4 id="example-1"><a class="header" href="#example-1">Example 1:</a></h4>
 <ol start="10">
 <li>
 <p>Modify <code>main()</code> again so that and reproduce the following code  so that the program dynamically allocates the memory for <code>n</code> number of <code>int</code>s using <code>malloc()</code> and <code>free()</code>:</p>
-<pre><code class="language-admonish code">
-```c
-// Program to calculate the sum of n numbers entered by the user
+<div id="admonition-code-19" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-19-title">
+<div class="admonition-title">
+<div id="admonition-code-19-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-19"></a>
+</div>
+<div>
+<pre><code class="language-c">// Program to calculate the sum of n numbers entered by the user
 
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
@@ -662,25 +858,38 @@ free(ptr);
 return 0;
 }
 
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Run the program and try to enter a number equal to or than greater that zero:</p>
-<pre><code class="language-admonish output collapsibl=true">
-![](./figures/step7.png)
-
-</code></pre>
+<div id="admonition-output-6" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-6-title">
+<div class="admonition-title">
+<div id="admonition-output-6-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-6"></a>
+</div>
+<div>
+<p><img src="./figures/step7.png" alt="" /></p>
+</div>
+</div>
 </li>
 </ol>
 <h3 id="example-2"><a class="header" href="#example-2">Example 2:</a></h3>
 <ol start="12">
 <li>
 <p>Modify <code>main()</code> again so that and reproduce the following code that dynamically allocates the memory for <code>n</code> number of <code>int</code> using <code>calloc()</code> and <code>free()</code>:</p>
-<pre><code class="language-admonish code">
-```c
-// Program to calculate the sum of n numbers entered by the user
+<div id="admonition-code-20" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-20-title">
+<div class="admonition-title">
+<div id="admonition-code-20-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-20"></a>
+</div>
+<div>
+<pre><code class="language-c">// Program to calculate the sum of n numbers entered by the user
 
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
@@ -707,35 +916,53 @@ free(ptr);
 return 0;
 }
 
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Now, run the code and you should see the following output, remember to enter a number equal to or greater than zero:</p>
-<pre><code class="language-admonish output collapsibl=true">
-
-![](./figures/step8.png)
-
-</code></pre>
+<div id="admonition-output-7" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-7-title">
+<div class="admonition-title">
+<div id="admonition-output-7-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-7"></a>
+</div>
+<div>
+<p><img src="./figures/step8.png" alt="" /></p>
+</div>
+</div>
 </li>
 </ol>
 <h3 id="subsection-74-realloc"><a class="header" href="#subsection-74-realloc">Subsection 7.4: <code>realloc()</code></a></h3>
 <p>If the dynamically allocated memory is insufficient or more than required, you can change the size of previously allocated memory using the <code>realloc()</code> function.</p>
-<pre><code class="language-admonish code">
-```c
-ptr = realloc(ptr, x);
-```
-
+<div id="admonition-code-21" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-21-title">
+<div class="admonition-title">
+<div id="admonition-code-21-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-21"></a>
+</div>
+<div>
+<pre><code class="language-c">ptr = realloc(ptr, x);
 </code></pre>
+</div>
+</div>
 <p>Here, <code>ptr</code> is reallocated with a new size <code>x</code>.</p>
 <h3 id="example-3"><a class="header" href="#example-3">Example 3:</a></h3>
 <ol start="14">
 <li>
 <p>Modify <code>main()</code> again so that and reproduce the following code that dynamically allocates the memory for <code>n</code> number of <code>int</code> using <code>malloc()</code>, <code>realloc()</code> and <code>free()</code>:</p>
-<pre><code class="language-admonish code">
-```c
-#include &lt;stdio.h&gt;
+<div id="admonition-code-22" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-22-title">
+<div class="admonition-title">
+<div id="admonition-code-22-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-22"></a>
+</div>
+<div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 int main() {
@@ -763,16 +990,23 @@ free(ptr);
 
 return 0;
 }
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Run the program and remeber the enter a number equal to or greater than zero:</p>
-<pre><code class="language-admonish output collapsibl=true">
-![](./figures/step9.png)
-
-</code></pre>
+<div id="admonition-output-8" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-8-title">
+<div class="admonition-title">
+<div id="admonition-output-8-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-8"></a>
+</div>
+<div>
+<p><img src="./figures/step9.png" alt="" /></p>
+</div>
+</div>
 </li>
 </ol>
 <h2 id="section--stack-heap-and-static"><a class="header" href="#section--stack-heap-and-static">Section *: Stack, Heap and Static</a></h2>
@@ -842,9 +1076,15 @@ return 0;
 </li>
 <li>
 <p>Compile and run the program to observe the outputs for different memory types.</p>
-<pre><code class="language-admonish code">
-```c
-#include &lt;stdio.h&gt;
+<div id="admonition-code-23" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-23-title">
+<div class="admonition-title">
+<div id="admonition-code-23-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-23"></a>
+</div>
+<div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 void stackMemory() {
@@ -914,9 +1154,9 @@ int main() {
 
     return 0;
 }
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 </ul>
 </li>

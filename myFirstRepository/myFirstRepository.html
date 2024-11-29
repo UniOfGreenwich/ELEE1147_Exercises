@@ -172,22 +172,42 @@
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
 <p>The first two things you'll want to do are install git and create a free GitHub account.</p>
 <p>Follow the instructions <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">here</a> to install git (if it's not already installed). Note that for this tutorial we will be using git on the command line only. While there are some great git GUIs (graphical user interfaces), It's easier to learn git using git-specific commands first and then to try out a git GUI once you're more comfortable with the command.</p>
-<pre><code class="language-admonish note">
-95% of other online git resources and discussions will also be for the command-line interface. 
-
-</code></pre>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
+</div>
+<div>
+<p>95% of other online git resources and discussions will also be for the command-line interface.</p>
+</div>
+</div>
 <p>Once you've done that, create a GitHub account <a href="https://github.com/join">here</a>, you should use your university email account, but choose a different password.</p>
-<pre><code class="language-admonish info">
-Git and GitHub are **not** the same thing. Git is an open-source, version control tool created in 2005 by developers working on the Linux operating system; GitHub is a company founded in 2008 that makes tools which integrate with git. You do not need GitHub to use git, but you cannot use GitHub without using git. There are many other alternatives to GitHub, such as GitLab, BitBucket, and “host-your-own” solutions such as gogs and gittea. All of these are referred to in git-speak as “remotes”, and all are completely optional. You do not need to use a remote to use git, but it will make sharing your code with others easier.
-
-</code></pre>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
+<p>Git and GitHub are <strong>not</strong> the same thing. Git is an open-source, version control tool created in 2005 by developers working on the Linux operating system; GitHub is a company founded in 2008 that makes tools which integrate with git. You do not need GitHub to use git, but you cannot use GitHub without using git. There are many other alternatives to GitHub, such as GitLab, BitBucket, and “host-your-own” solutions such as gogs and gittea. All of these are referred to in git-speak as “remotes”, and all are completely optional. You do not need to use a remote to use git, but it will make sharing your code with others easier.</p>
+</div>
+</div>
 <h2 id="step-1-create-a-local-git-repository"><a class="header" href="#step-1-create-a-local-git-repository">Step 1: Create a local git repository</a></h2>
 <p>When creating a new project on your local machine using git, you'll first create a new repository (or often, 'repo', for short).</p>
 <p>To use git we'll be using the terminal. If you don't have much experience with the terminal and basic commands, check out this tutorial (If you don’t want/ need a short history lesson, skip to step three.)</p>
 <p>To begin, open up a terminal and move to where you want to place the project on your local machine using the cd (change directory) command. For example, if you have a 'projects' folder on your desktop, you'd do something like:</p>
-<pre><code class="language-admonish terminal">
-```sh
-❯ cd Documents/
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code class="language-sh">❯ cd Documents/
 
 ~/Documents
 ❯ mkdir myfirstrepository
@@ -196,17 +216,33 @@ Git and GitHub are **not** the same thing. Git is an open-source, version contro
 ❯ cd myfirstrepository
 
 ~/Documents/myfirstrepository
-```
 </code></pre>
-<pre><code class="language-admonish warning">
-- Do not use a directory monitored by OneDrive, as there will be conflicts between git and OneDrive. 
-- On University machines navigate to the `G` drive and use Documents or some other Directory 
-
-</code></pre>
+</div>
+</div>
+<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div class="admonition-title">
+<div id="admonition-warning-title">
+<p>Warning</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-warning"></a>
+</div>
+<div>
+<ul>
+<li>Do not use a directory monitored by OneDrive, as there will be conflicts between git and OneDrive.</li>
+<li>On University machines navigate to the <code>G</code> drive and use Documents or some other Directory</li>
+</ul>
+</div>
+</div>
 <p>To initialize a git repository in the root of the folder, run the <code>git init</code> command:</p>
-<pre><code class="language-admonish output">
-```sh
-~/Documents/myfirstrepository
+<div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<div class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</div>
+<div>
+<pre><code class="language-sh">~/Documents/myfirstrepository
 ❯ git init
 hint: Using 'master' as the name for the initial branch. This default branch name
 hint: is subject to change. To configure the initial branch name to use in all
@@ -219,39 +255,57 @@ hint: 'development'. The just-created branch can be renamed via this command:
 hint:
 hint: 	git branch -m &lt;name&gt;
 Initialized empty Git repository in /home/seb/Documents/myfirstrepository/.git/
-```
-
 </code></pre>
+</div>
+</div>
 <p>Regardless of the output above, rename the current branch with:</p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on master
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on master
 ❯ git branch -M main
 
 myfirstrepository on main
 ❯
-```
-
 </code></pre>
+</div>
+</div>
 <h2 id="step-2-add-a-new-file-to-the-repo"><a class="header" href="#step-2-add-a-new-file-to-the-repo">Step 2: Add a new file to the repo</a></h2>
 <p>Go ahead and add a new file to the project, using any text editor you like or running a touch command. <code>touch newfile.txt</code> just creates and saves a blank file named <code>newfile.txt</code>.</p>
 <p>Once you've added or modified files in a folder containing a git repo, git will notice that  the file exists inside the repo. But, git won't track the file unless you explicitly tell it to. Git only saves/manages changes to files that it tracks, so we’ll need to send a command to confirm that yes, we want git to track our new file.</p>
-<pre><code class="language-admonish terminal">
-```sh
-
+<div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+<div class="admonition-title">
+<div id="admonition-terminal-2-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+</div>
+<div>
+<pre><code class="language-sh">
 myfirstrepository on main
 ❯ touch compeng0001.txt
 
 myfirstrepository on main
 ❯ ls
 compeng0001.txt
-```
-
 </code></pre>
+</div>
+</div>
 <p>After creating the new file, you can use the <code>git status</code> command to see which files git knows exist.</p>
-<pre><code class="language-admonish output">
-```sh
-❯ git status
+<div id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+<div class="admonition-title">
+<div id="admonition-output-1-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">❯ git status
 On branch main
 
 No commits yet
@@ -261,39 +315,68 @@ Untracked files:
 	compeng0001.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
-```
-
 </code></pre>
+</div>
+</div>
 <p>What this basically says is, "Hey, we noticed you created a new file called compeng0001.txt, but unless you use the <code>git add</code> command we aren't going to do anything with it."</p>
-<pre><code class="language-admonish note title=&#39;An interlude: The staging environment  the commit  and you&#39;">
-- One of the most confusing parts when you're first learning git is the concept of the staging environment and how it relates to a `commit`.
-
-- A [commit](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#:~:text=the%20repository%20owner.-,commit,- o%20made%20them%20and%20when.) is a record of what changes you have made since the last time you made a commit. Essentially, you make changes to your repo (for example, - ding a file or modifying one) and then tell git to put those changes into a `commit`.
- 
-- Commits make up the essence of your project and allow you to jump to the state of a project at any other `commit`.
- 
-- So, how do you tell git which files to put into a `commit`? This is where the [staging environment](https://git-scm.com/book/en/v2/- t-Basics-Recording-Changes-to-the-Repository) or index come in. As seen in Step 2, when you make changes to your repo, git notices that a file has changed but won't do - ything with it (like adding it in a commit).
- 
-- To add a file to a commit, you first need to add it to the staging environment. To do this, you can use the [`git add &lt;filename]&gt;`](http://git-scm.com/docs/git-add) - mmand (see Step 3 below).
- 
-- Once you've used the git add command to add all the files you want to the staging environment, you can then tell git to package them into a commit using the [`git commit`](http://git-scm.com/docs/git-commit) command. 
- 
-- Note: The staging environment, also called 'staging', is the new preferred term for this, but you can also see it referred to as the 'index'.
-
-</code></pre>
+<div id="admonition-an-interlude-the-staging-environment-the-commit-and-you" class="admonition admonish-note" role="note" aria-labelledby="admonition-an-interlude-the-staging-environment-the-commit-and-you-title">
+<div class="admonition-title">
+<div id="admonition-an-interlude-the-staging-environment-the-commit-and-you-title">
+<p>An interlude: The staging environment, the commit, and you</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-an-interlude-the-staging-environment-the-commit-and-you"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>One of the most confusing parts when you're first learning git is the concept of the staging environment and how it relates to a <code>commit</code>.</p>
+</li>
+<li>
+<p>A [commit](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#:~:text=the%20repository%20owner.-,commit,- o%20made%20them%20and%20when.) is a record of what changes you have made since the last time you made a commit. Essentially, you make changes to your repo (for example, - ding a file or modifying one) and then tell git to put those changes into a <code>commit</code>.</p>
+</li>
+<li>
+<p>Commits make up the essence of your project and allow you to jump to the state of a project at any other <code>commit</code>.</p>
+</li>
+<li>
+<p>So, how do you tell git which files to put into a <code>commit</code>? This is where the [staging environment](https://git-scm.com/book/en/v2/- t-Basics-Recording-Changes-to-the-Repository) or index come in. As seen in Step 2, when you make changes to your repo, git notices that a file has changed but won't do - ything with it (like adding it in a commit).</p>
+</li>
+<li>
+<p>To add a file to a commit, you first need to add it to the staging environment. To do this, you can use the <a href="http://git-scm.com/docs/git-add"><code>git add &lt;filename]&gt;</code></a> - mmand (see Step 3 below).</p>
+</li>
+<li>
+<p>Once you've used the git add command to add all the files you want to the staging environment, you can then tell git to package them into a commit using the <a href="http://git-scm.com/docs/git-commit"><code>git commit</code></a> command.</p>
+</li>
+<li>
+<p>Note: The staging environment, also called 'staging', is the new preferred term for this, but you can also see it referred to as the 'index'.</p>
+</li>
+</ul>
+</div>
+</div>
 <h2 id="step-3-add-a-file-to-the-staging-environment"><a class="header" href="#step-3-add-a-file-to-the-staging-environment">Step 3: Add a file to the staging environment</a></h2>
 <p>Add a file to the staging environment using the <code>git add</code> command.</p>
-<pre><code class="language-admonish teminal">
-```sh
-myfirstrepository on main
+<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+<div class="admonition-title">
+<div id="admonition-note-1-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on main
 ❯ git add compeng0001.txt
-```
-
 </code></pre>
+</div>
+</div>
 <p>If you rerun the <code>git status</code> command, you'll see that git has added the file to the staging environment (notice the "Changes to be committed" line).</p>
-<pre><code class="language-admonish admonish">
-```sh
-❯ git status
+<div id="admonition-note-2" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-2-title">
+<div class="admonition-title">
+<div id="admonition-note-2-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note-2"></a>
+</div>
+<div>
+<pre><code class="language-sh">❯ git status
 On branch main
 
 No commits yet
@@ -301,74 +384,124 @@ No commits yet
 Changes to be committed:
   (use "git rm --cached &lt;file&gt;..." to unstage)
 	new file:   compeng0001.txt
-```
-
 </code></pre>
+</div>
+</div>
 <p>To reiterate, the file has <strong>not</strong> yet been added to a commit, but it's about to be.</p>
 <p>However, first we need to make sure we have some creditentials for the commit to log who and when.</p>
 <p>First set your username:</p>
-<pre><code class="language-admonish terminal">
-```sh
-git config --global user.name "YourGitHubUserName"
-```
-
+<div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+<div class="admonition-title">
+<div id="admonition-terminal-3-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+</div>
+<div>
+<pre><code class="language-sh">git config --global user.name "YourGitHubUserName"
 </code></pre>
+</div>
+</div>
 <p>Next set your email:</p>
-<pre><code class="language-admonish terminal">
-```sh
-git config --global user.email "TheEmailYouUsedForGitHub"
-```
-
+<div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+<div class="admonition-title">
+<div id="admonition-terminal-4-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+</div>
+<div>
+<pre><code class="language-sh">git config --global user.email "TheEmailYouUsedForGitHub"
 </code></pre>
+</div>
+</div>
 <h2 id="step-4-create-a-commit"><a class="header" href="#step-4-create-a-commit">Step 4: Create a commit</a></h2>
 <p>It's time to create your first commit!</p>
 <p>Run the command <code>git commit -m "Your message about the commit"</code></p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on main
+<div id="admonition-terminal-5" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-5-title">
+<div class="admonition-title">
+<div id="admonition-terminal-5-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-5"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on main
 ❯ git commit -m "init: This is my first commit"
 [main (root-commit) f2e1069] init: This is my first commit
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 compeng0001.txt
-```
-
 </code></pre>
-<pre><code class="language-admonish important">
-The message at the end of the commit should be something related to what the commit contains - maybe it's a new feature, maybe it's a bug fix, maybe it's just fixing a typo. Don't put a message like "asdfadsf" or "foobar". That makes the other people who see your commit sad. Very, very, sad. Commits live forever in a repository (technically you can delete them if you really, really need to but it’s messy), so if you leave a clear explanation of your changes it can be extremely helpful for future programmers (perhaps future you!) who are trying to figure out why some change was made years later.
-
-</code></pre>
+</div>
+</div>
+<div id="admonition-important" class="admonition admonish-tip" role="note" aria-labelledby="admonition-important-title">
+<div class="admonition-title">
+<div id="admonition-important-title">
+<p>Important</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-important"></a>
+</div>
+<div>
+<p>The message at the end of the commit should be something related to what the commit contains - maybe it's a new feature, maybe it's a bug fix, maybe it's just fixing a typo. Don't put a message like "asdfadsf" or "foobar". That makes the other people who see your commit sad. Very, very, sad. Commits live forever in a repository (technically you can delete them if you really, really need to but it’s messy), so if you leave a clear explanation of your changes it can be extremely helpful for future programmers (perhaps future you!) who are trying to figure out why some change was made years later.</p>
+</div>
+</div>
 <h2 id="step-5-create-a-new-branch"><a class="header" href="#step-5-create-a-new-branch">Step 5: Create a new branch</a></h2>
 <p>Now that you've made a new commit, let's try something a little more advanced.</p>
 <p>Say you want to make a new feature but are worried about making changes to the main project while developing the feature. This is where <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell">git branches</a> come in.</p>
 <p>Branches allow you to move back and forth between 'states' of a project. Official git docs describe branches this way: ‘A branch in Git is simply a lightweight movable pointer to one of these commits.’ For instance, if you want to add a new page to your website you can create a new branch just for that page without affecting the main part of the project. Once you're done with the page, you can <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging"><code>merge</code></a> your changes from your branch into the primary branch. When you create a new branch, Git keeps track of which commit your branch 'branched' off of, so it knows the history behind all the files.</p>
 <p>Let's say you are on the primary branch and want to create a new branch to develop your web page. Here's what you'll do: Run <a href="https://git-scm.com/docs/git-checkout"><code>git checkout -b &lt;my branch name&gt;</code></a>. This command will automatically create a new branch and then 'check you out' on it, meaning git will move you to that branch, off of the primary branch.</p>
 <p>After running the above command, you can use the <a href="http://git-scm.com/docs/git-branch"><code>git branch</code></a> command to confirm that your branch was created:</p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on main
+<div id="admonition-terminal-6" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-6-title">
+<div class="admonition-title">
+<div id="admonition-terminal-6-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-6"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on main
 ❯ git checkout -b dev
 Switched to a new branch 'dev'
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```sh 
-myfirstrepository on mainmerge
+</div>
+</div>
+<div id="admonition-terminal-7" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-7-title">
+<div class="admonition-title">
+<div id="admonition-terminal-7-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-7"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on mainmerge
 ❯ git branch
 * dev
   main
-```
-
 </code></pre>
+</div>
+</div>
 <p>The branch name with the asterisk next to it indicates which branch you're on at that given time.</p>
-<pre><code class="language-admonish note title=&#39;A note on branch names&#39;">
-- By default, every git repository’s first branch is named `master` (and is typically used as the primary branch in the project). As part of the tech industry’s general anti-racism work, some groups have begun to use alternate names for the default branch (we are using “primary” in this tutorial, for example). In other documentation and discussions, you may see “master”, or other terms, used to refer to the primary branch. Regardless of the name, just keep in mind that nearly every repository has a primary branch that can be thought of as the official version of the repository. If it’s a website, then the primary branch is the version that users see. If it’s an application, then the primary branch is the version that users download. This isn’t technically necessary (git doesn’t treat any branches differently from other branches), but it’s how git is traditionally used in a project.
-
-- If you are curious about the decision to use different default branch names, GitHub has an explanation of their change here: [https://github.com/github/renaming](https://github.com/github/renaming)
-
-- Now, if you switch back to the primary branch and make some more commits, your new branch won't see any of those changes until you [`merge`](http://git-scm.com/docs/git-merge) those changes onto your new branch.
-
-</code></pre>
+<div id="admonition-a-note-on-branch-names" class="admonition admonish-note" role="note" aria-labelledby="admonition-a-note-on-branch-names-title">
+<div class="admonition-title">
+<div id="admonition-a-note-on-branch-names-title">
+<p>A note on branch names</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-a-note-on-branch-names"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>By default, every git repository’s first branch is named <code>master</code> (and is typically used as the primary branch in the project). As part of the tech industry’s general anti-racism work, some groups have begun to use alternate names for the default branch (we are using “primary” in this tutorial, for example). In other documentation and discussions, you may see “master”, or other terms, used to refer to the primary branch. Regardless of the name, just keep in mind that nearly every repository has a primary branch that can be thought of as the official version of the repository. If it’s a website, then the primary branch is the version that users see. If it’s an application, then the primary branch is the version that users download. This isn’t technically necessary (git doesn’t treat any branches differently from other branches), but it’s how git is traditionally used in a project.</p>
+</li>
+<li>
+<p>If you are curious about the decision to use different default branch names, GitHub has an explanation of their change here: <a href="https://github.com/github/renaming">https://github.com/github/renaming</a></p>
+</li>
+<li>
+<p>Now, if you switch back to the primary branch and make some more commits, your new branch won't see any of those changes until you <a href="http://git-scm.com/docs/git-merge"><code>merge</code></a> those changes onto your new branch.</p>
+</li>
+</ul>
+</div>
+</div>
 <h2 id="step-6-create-a-new-repository-on-github"><a class="header" href="#step-6-create-a-new-repository-on-github">Step 6: Create a new repository on GitHub</a></h2>
 <p>If you only want to keep track of your code locally, you don't need to use GitHub. But if you want to work with a team, you can use GitHub to collaboratively modify the project's code.</p>
 <p>To create a new repo on GitHub, log in and go to the GitHub home page. You can find the “New repository” option under the “+” sign next to your profile picture, in the top right corner of the navbar:</p>
@@ -390,14 +523,20 @@ myfirstrepository on mainmerge
 <p><img src="./figures/git%20config.gif" alt="" /></p>
 <p>Now you need to get your public key you have generated and add to GitHub.</p>
 <p><img src="./figures/ssh%20keygen.gif" alt="" /></p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on  dev
+<div id="admonition-terminal-8" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-8-title">
+<div class="admonition-title">
+<div id="admonition-terminal-8-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-8"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on  dev
 ❯ cat ~/.ssh/id_ed25519.pub
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJf5t9RcKdkZwlxS14EZn91hDQndAjMIDz+c92kFtfC YourGitEmail
-```
-
 </code></pre>
+</div>
+</div>
 <p>The copy the output from <code>ssh-ed25519 ... YourGitEmail</code> and follow the screenshots below.</p>
 <div align=center>
 <p><img src="./figures/step6-4.png" alt="" />
@@ -408,53 +547,91 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJf5t9RcKdkZwlxS14EZn91hDQndAjMIDz+c92kFtfC
 <p>Once completed, go back to the terminal and lets check for a connection:</p>
 <p><img src="./figures/ssh%20git%20auth.gif" alt="" /></p>
 <p>You may see a similar output below, ensure you write <code>yes</code>...</p>
-<pre><code class="language-admonish output">
-```sh
-The authenticity of host 'github.com (140.82.121.4)' can't be established.
+<div id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+<div class="admonition-title">
+<div id="admonition-output-2-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-2"></a>
+</div>
+<div>
+<pre><code class="language-sh">The authenticity of host 'github.com (140.82.121.4)' can't be established.
 ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
 This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-```
-
 </code></pre>
-<pre><code class="language-admonish output">
-```sh
-Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+</div>
+</div>
+<div id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+<div class="admonition-title">
+<div id="admonition-output-3-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-3"></a>
+</div>
+<div>
+<pre><code class="language-sh">Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
 PTY allocation request failed on channel 0
 Hi CompEng0001! You've successfully authenticated, but GitHub does not provide shell access.
 Connection to github.com closed.
-```
-
 </code></pre>
-<pre><code class="language-admonish note">
- - You only have do this once per machine.
-
- - If you see the following: 
-
-    ![](./figures/nosshdir.png)
-
- - Then run the following command:
-
-    - `mkdir ~/.ssh`
-
- - Then repeat the `ssh-keygen.exe ...` command
-
-</code></pre>
+</div>
+</div>
+<div id="admonition-note-3" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-3-title">
+<div class="admonition-title">
+<div id="admonition-note-3-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note-3"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>You only have do this once per machine.</p>
+</li>
+<li>
+<p>If you see the following:</p>
+<p><img src="./figures/nosshdir.png" alt="" /></p>
+</li>
+<li>
+<p>Then run the following command:</p>
+<ul>
+<li><code>mkdir ~/.ssh</code></li>
+</ul>
+</li>
+<li>
+<p>Then repeat the <code>ssh-keygen.exe ...</code> command</p>
+</li>
+</ul>
+</div>
+</div>
 <p>Now that is done, we can actually push our work to the cloud.</p>
 <h2 id="step-7-push-a-branch-to-github"><a class="header" href="#step-7-push-a-branch-to-github">Step 7: Push a branch to GitHub</a></h2>
 <p>Now we'll <code>push</code> the commit in your branch to your new GitHub repo. This allows other people to see the changes you've made. If they're approved by the repository's owner, the changes can then be merged into the primary branch.</p>
 <p>First create a reference to the online repo.</p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on dev
+<div id="admonition-terminal-9" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-9-title">
+<div class="admonition-title">
+<div id="admonition-terminal-9-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-9"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on dev
 ❯ git remote add origin git@github.com:CompEng0001/myFirstRepo.git
-```
-
 </code></pre>
+</div>
+</div>
 <p>To push changes onto a new branch on GitHub, you'll want to run <code>git push origin yourbranchname</code>. GitHub will automatically create the branch for you on the remote repository:</p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on dev
+<div id="admonition-terminal-10" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-10-title">
+<div class="admonition-title">
+<div id="admonition-terminal-10-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-10"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on dev
 ❯ git push origin dev
 Enumerating objects: 3, done.
 Counting objects: 100% (3/3), done.
@@ -462,13 +639,19 @@ Writing objects: 100% (3/3), 236 bytes | 236.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To github.com:CompEng0001/myFirstRepo.git
  * [new branch]      dev -&gt; dev
-```
-
 </code></pre>
+</div>
+</div>
 <p>Now go back to the main branch and lets make sure that is pushed to the cloud aswell.</p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on dev
+<div id="admonition-terminal-11" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-11-title">
+<div class="admonition-title">
+<div id="admonition-terminal-11-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-11"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on dev
 ❯ git checkout main
 Switched to branch 'main'
 
@@ -479,13 +662,19 @@ To push the current branch and set the remote as upstream, use
 
     git push --set-upstream origin main
 
-```
-
 </code></pre>
+</div>
+</div>
 <p>...then:</p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on main
+<div id="admonition-terminal-12" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-12-title">
+<div class="admonition-title">
+<div id="admonition-terminal-12-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-12"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on main
 ❯ git push --set-upstream origin main
 Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
 remote:
@@ -496,59 +685,96 @@ To github.com:CompEng0001/myFirstRepo.git
  * [new branch]      main -&gt; main
 branch 'main' set up to track 'origin/main'.
 
-```
-
 </code></pre>
+</div>
+</div>
 <p>You might be wondering what that "origin" word means in the command above. What happens is that when you clone a remote repository to your local machine, git creates an alias for you. In nearly all cases this alias is called "<a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">origin</a>." It's essentially shorthand for the remote repository's URL. So, to push your changes to the remote repository, you could've used either the command: <code>git push git@github.com:git/git.git yourbranchname </code>or <code>git push origin yourbranchname</code></p>
 <p>(If this is your first time using GitHub locally, it might prompt you to log in with your GitHub username and password.)</p>
 <p>If you refresh the GitHub page, you'll see note saying a branch with your name has just been pushed into the repository. You can also click the 'branches' link to see your branch listed there.</p>
 <p>Now lets make a change locally in the <code>dev</code> branch.</p>
-<pre><code class="language-admonish terminal">```sh 
-myfirstrepository on main
+<div id="admonition-terminal-13" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-13-title">
+<div class="admonition-title">
+<div id="admonition-terminal-13-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-13"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on main
 ❯ git checkout dev
 Switched to branch 'dev'
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on  dev
+</div>
+</div>
+<div id="admonition-terminal-14" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-14-title">
+<div class="admonition-title">
+<div id="admonition-terminal-14-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-14"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on  dev
 ❯ touch anewfile.txt
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on dev [?]
+</div>
+</div>
+<div id="admonition-terminal-15" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-15-title">
+<div class="admonition-title">
+<div id="admonition-terminal-15-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-15"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on dev [?]
 ❯ git add anewfile.txt
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on dev [+]
+</div>
+</div>
+<div id="admonition-terminal-16" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-16-title">
+<div class="admonition-title">
+<div id="admonition-terminal-16-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-16"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on dev [+]
 ❯ git commit -m "add: a new file added"
 [dev 8285ba4] add: a new file added
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 anewfile.txt
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on dev
+</div>
+</div>
+<div id="admonition-terminal-17" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-17-title">
+<div class="admonition-title">
+<div id="admonition-terminal-17-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-17"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on dev
 ❯ git push
 fatal: The current branch dev has no upstream branch.
 To push the current branch and set the remote as upstream, use
 
     git push --set-upstream origin dev
 
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on dev
+</div>
+</div>
+<div id="admonition-terminal-18" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-18-title">
+<div class="admonition-title">
+<div id="admonition-terminal-18-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-18"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on dev
 ❯ git push --set-upstream origin dev
 Enumerating objects: 3, done.
 Counting objects: 100% (3/3), done.
@@ -560,9 +786,9 @@ To github.com:CompEng0001/myFirstRepo.git
    f2e1069..8285ba4  dev -&gt; dev
 branch 'dev' set up to track 'origin/dev'.
 
-```
-
 </code></pre>
+</div>
+</div>
 <p><img src="./figures/step7-1.png" alt="" /></p>
 <h2 id="step-8-create-a-pull-request-pr"><a class="header" href="#step-8-create-a-pull-request-pr">Step 8: Create a pull request (PR)</a></h2>
 <p>A pull request (or PR) is a way to alert a repo's owners that you want to make some changes to their code. It allows them to review the code and make sure it looks good before putting your changes on the primary branch.</p>
@@ -588,17 +814,29 @@ You might see a big green button at the bottom that says 'Merge pull request'. C
 <h2 id="step-10-get-changes-on-github-back-to-your-computer"><a class="header" href="#step-10-get-changes-on-github-back-to-your-computer">Step 10: Get changes on GitHub back to your computer</a></h2>
 <p>Right now, the repo on GitHub looks a little different than what you have on your local machine. For example, the commit you made in your branch and merged into the primary branch doesn't exist in the primary branch on your local machine.</p>
 <p>In order to get the most recent changes that you or others have merged on GitHub, use the <code>git pull origin master</code>command(when working on the primary branch). In most cases, this can be shortened to <code>git pull</code>.</p>
-<pre><code class="language-admonish terminal">
-```sh
-❯ git checkout main
+<div id="admonition-terminal-19" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-19-title">
+<div class="admonition-title">
+<div id="admonition-terminal-19-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-19"></a>
+</div>
+<div>
+<pre><code class="language-sh">❯ git checkout main
 Switched to branch 'main'
 Your branch is up to date with 'origin/main'.
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on  main
+</div>
+</div>
+<div id="admonition-terminal-20" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-20-title">
+<div class="admonition-title">
+<div id="admonition-terminal-20-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-20"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on  main
 ❯ git pull
 remote: Enumerating objects: 2, done.
 remote: Counting objects: 100% (2/2), done.
@@ -613,15 +851,21 @@ Fast-forward
  anewfile.txt | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 anewfile.txt
-```
-
 </code></pre>
+</div>
+</div>
 <p>This shows you all the files that have changed and how they've changed.</p>
 <p>Now we can use the <a href="http://git-scm.com/docs/git-log"><code>git log</code></a> command again to see all new commits.</p>
 <p>(You may need to switch branches back to the primary branch. You can do that using the git checkout master command.)</p>
-<pre><code class="language-admonish terminal">
-```sh
-myfirstrepository on main
+<div id="admonition-terminal-21" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-21-title">
+<div class="admonition-title">
+<div id="admonition-terminal-21-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-21"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on main
 ❯ git log
 commit bc64b101b966bcee5f8b87c451b674450638d981 (HEAD -&gt; main, origin/main)
 Merge: f2e1069 8285ba4
@@ -643,9 +887,9 @@ Author: CompEng0001 &lt;sb1501@canterbury.ac.uk&gt;
 Date:   Sat Nov 5 11:52:16 2022 +0000
 
     init: This is my first commit
-```
-
 </code></pre>
+</div>
+</div>
 <p>Well done, you have completed the first git workflow!</p>
 
                     </main>

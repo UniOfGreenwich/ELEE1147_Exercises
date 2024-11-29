@@ -215,31 +215,43 @@ deployed all at once.</p>
 </li>
 <li>
 <p>Create a feature branch based off of <code>develop</code></p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout develop
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code>$ git checkout develop
 $ git checkout -b MYTEAM-123-new-documentation
 $ git push --set-upstream MYTEAM-123-new-documentation
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Develop the code for the new feature and commit. Push your changes often. This
 allows others to see your changes and suggest improvements/changes as well as
 provides a safety net should your hard drive crash.</p>
-<pre><code class="language-admonish terminal">
-```
-$ ... make changes
+ <div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-1-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+ </div>
+ <div>
+<pre><code>$ ... make changes
 $ git add -A .
 $ git commit -m "Add new documentation files"
 $ ... make more changes
 $ git add -A .
 $ git commit -m "Fix some spelling errors"
 $ git push
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Navigate to the project on <a href="www.github.com">Github</a> and open a pull request with
@@ -263,38 +275,56 @@ the following branch settings:</p>
 <p>Merge <code>master</code> into <code>develop</code> to ensure the new release will contain the
 latest production code. This reduces the chance of a merge conflict during
 the release.</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout develop
+<div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+<div class="admonition-title">
+<div id="admonition-terminal-2-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+</div>
+<div>
+<pre><code>$ git checkout develop
 $ git merge master
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Create a new <code>release-vX.Y.Z</code> release branch off of <code>develop</code>.</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout -b release-vX.Y.Z
+<div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+<div class="admonition-title">
+<div id="admonition-terminal-3-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+</div>
+<div>
+<pre><code>$ git checkout -b release-vX.Y.Z
 $ git push --set-upstream release-vX.Y.Z
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Stabilize the release by using bugfix branches off of the <code>release-vX.Y.Z</code> branch
 (the same way you would do a feature branch off of <code>develop</code>).</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout release-vX.Y.Z
+<div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+<div class="admonition-title">
+<div id="admonition-terminal-4-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+</div>
+<div>
+<pre><code>$ git checkout release-vX.Y.Z
 $ git checkout -b fix-label-alignment
 $ git push --set-upstream fix-label-alignment
 ... do work
 $ git commit -m "Adjust label to align with button"
 $ git push
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>When the code is ready to release, navigate to the project on
@@ -325,14 +355,20 @@ Click <code>Publish release</code>.</li>
 </li>
 <li>
 <p>Merge the <code>release-vX.Y.Z</code> into <code>develop</code>.</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout develop
+ <div id="admonition-terminal-5" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-5-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-5-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-5"></a>
+ </div>
+ <div>
+<pre><code>$ git checkout develop
 $ git merge release-vX.Y.Z
 $ git push
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Finish off the tasks in the release checklist. Once everything is done, close
@@ -353,9 +389,15 @@ Mike N: That probably means recreating the release branch, unless we have short-
 <ol>
 <li>
 <p>Create the support branch and release branch for the patch release.</p>
-<pre><code class="language-admonish terminal">
-```sh
-# Checkout the tag for the 1.0.0 release
+<div id="admonition-terminal-6" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-6-title">
+<div class="admonition-title">
+<div id="admonition-terminal-6-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-6"></a>
+</div>
+<div>
+<pre><code class="language-sh"># Checkout the tag for the 1.0.0 release
 git checkout v1.0.0
 
 # Create the long living support branch
@@ -363,13 +405,20 @@ git checkout -b support-v1.x
 
 # Create the release branch
 git checkout -b release-v1.0.1
-```
-
 </code></pre>
-<pre><code class="language-admonish note">
-For subsequent releases (ex v1.0.2) the release branch will be branched off the `HEAD` of `support-v1.x`
-
-</code></pre>
+</div>
+</div>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
+</div>
+<div>
+<p>For subsequent releases (ex v1.0.2) the release branch will be branched off the <code>HEAD</code> of <code>support-v1.x</code></p>
+</div>
+</div>
 </li>
 <li>
 <p>Make changes in the <code>release-v1.0.1</code>. Multiple PRs can be merged into this branch if several changes are necessary.</p>
@@ -385,10 +434,17 @@ For subsequent releases (ex v1.0.2) the release branch will be branched off the 
 </li>
 <li>
 <p>Mark <code>support-v1.x</code> as a protected branch in github so that it does not get accidentally deleted.</p>
-<pre><code class="language-admonish tip">
-Try to maintain as few support branches as possible. These branches are expensive to maintain since you will need to cherry pick applicable bug fixes into each support branch seperately.
-
-</code></pre>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip"></a>
+</div>
+<div>
+<p>Try to maintain as few support branches as possible. These branches are expensive to maintain since you will need to cherry pick applicable bug fixes into each support branch seperately.</p>
+</div>
+</div>
 </li>
 </ol>
 <h3 id="production-hot-fix"><a class="header" href="#production-hot-fix">Production hot fix</a></h3>
@@ -400,26 +456,38 @@ code in it already.</p>
 <ol>
 <li>
 <p>Create a hot fix branch based off of <code>master</code>.</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout master
+<div id="admonition-terminal-7" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-7-title">
+<div class="admonition-title">
+<div id="admonition-terminal-7-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-7"></a>
+</div>
+<div>
+<pre><code>$ git checkout master
 $ git checkout -b hotfix-documentation-broken-links
 $ git push --set-upstream origin hotfix-documentation-broken-links
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Add a test case to validate the bug, fix the bug, and commit.</p>
-<pre><code class="language-admonish terminal">
-```
-... add test, fix bug, verify
+<div id="admonition-terminal-8" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-8-title">
+<div class="admonition-title">
+<div id="admonition-terminal-8-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-8"></a>
+</div>
+<div>
+<pre><code>... add test, fix bug, verify
 $ git add -A .
 $ git commit -m "Fix broken links"
 $ git push
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Navigate to the project on <a href="www.github.com">Github</a> and open a pull request
@@ -454,14 +522,20 @@ through the process of creating a release like this.</em></p>
 <ol>
 <li>
 <p>Merge the <code>hotfix-documentation-broken-links</code> into <code>develop</code>.</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout develop
+<div id="admonition-terminal-9" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-9-title">
+<div class="admonition-title">
+<div id="admonition-terminal-9-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-9"></a>
+</div>
+<div>
+<pre><code>$ git checkout develop
 $ git merge hotfix-documentation-broken-links
 $ git push
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Finish off the tasks in the release checklist. Once everything is done, close
@@ -483,12 +557,18 @@ in the <a href="migration.html">Migration</a> document.</p>
 <li>
 <p>Create a bundle to be sent to the customer for verification and approval off of the <code>release-vX.Y.Z</code> branch.</p>
 <p>Ensure you have installed the automated bundle message script found [here] (https://	mobify.atlassian.net/wiki/questions/81789082/how-do-i-automate-a-bundle-message-using-bash). Follow these steps:</p>
-<pre><code class="language-admonish terminal">
- ```
- $ grunt push -m "$(message Mobile X.Y.Z)"
- ```
-
+<div id="admonition-terminal-10" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-10-title">
+<div class="admonition-title">
+<div id="admonition-terminal-10-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-10"></a>
+</div>
+<div>
+<pre><code>$ grunt push -m "$(message Mobile X.Y.Z)"
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>When creating a pull request to merge the release branch into <code>master</code> ensure that the standard workflow for <em>creating a release</em> is followed with these specific changes:</p>
@@ -498,9 +578,15 @@ in the <a href="migration.html">Migration</a> document.</p>
 </li>
 <li>
 <p>Description:</p>
-<pre><code class="language-admonish code">
-```md
-Status: **Out to Customer**
+ <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+ <div class="admonition-title">
+ <div id="admonition-code-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code"></a>
+ </div>
+ <div>
+<pre><code class="language-md">Status: **Out to Customer**
 Owner: &lt;Your Github username&gt;
 Reviewers: Customer
 
@@ -514,9 +600,9 @@ Reviewers: Customer
 - [ ] Customer Approves Bundle &lt;number&gt;
 - [ ] Deploy Bundle &lt;number&gt;
 - [ ] Clean Up Repo
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 </ul>
 </li>
@@ -530,11 +616,17 @@ Reviewers: Customer
 <li>Description: This should also include a link to a confluence JIRA report page that lists all issues in the release.</li>
 </ul>
 <p>Click <code>Publish release</code>.</p>
-<pre><code class="language-admonish note">
-The release tag will be 1 commit ahead of the bundle commit**
-
-</code></pre>
-</li>
+<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+<div class="admonition-title">
+<div id="admonition-note-1-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note-1"></a>
+</div>
+<div>
+<p>The release tag will be 1 commit ahead of the bundle commit**</p>
+</div>
+</div></li>
 </ol>
 
                     </main>

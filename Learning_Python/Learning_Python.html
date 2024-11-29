@@ -174,19 +174,32 @@
 <ul>
 <li>
 <p>We should not need to do anything for the university machines to run python as this is already part of the PATH, you can run the following commands:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ which python
+  <div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+  <div class="admonition-title">
+  <div id="admonition-terminal-title">
+<p>Terminal</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal"></a>
+  </div>
+  <div>
+<pre><code class="language-sh">$ which python
 $ python --version
 $ which pip
 $ pip --version
-```
-
 </code></pre>
-<pre><code class="language-admonish output">
-![](./figures/versions.PNG)
-
-</code></pre>
+  </div>
+  </div>
+  <div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+  <div class="admonition-title">
+  <div id="admonition-output-title">
+<p>Output</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-output"></a>
+  </div>
+  <div>
+<p><img src="./figures/versions.PNG" alt="" /></p>
+  </div>
+  </div>
 </li>
 </ul>
 <p>So let's make our first program.</p>
@@ -198,17 +211,23 @@ $ pip --version
 </li>
 <li>
 <p>Modify the files content to contain the following:</p>
-<pre><code class="language-admonish code">
-```py
-def main():
+ <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+ <div class="admonition-title">
+ <div id="admonition-code-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code"></a>
+ </div>
+ <div>
+<pre><code class="language-py">def main():
     print("Hello World!")
     print("Goodbye World!")
 
 if __name__=="__main__":
     main()
-```
-
 </code></pre>
+ </div>
+ </div>
 <p><img src="./figures/helloworld.gif" alt="" /></p>
 </li>
 </ol>
@@ -232,27 +251,39 @@ if __name__=="__main__":
 </li>
 <li>
 <p>and then run it.</p>
-<pre><code class="language-admonish code">
-```python
-name = "Your name"
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code class="language-python">name = "Your name"
 age = 25
 height = 1.75
 
 print(name)
 print(age)
 print(height)
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```bash
-$ python variables.py
+ </div>
+ </div>
+ <div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-1-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+ </div>
+ <div>
+<pre><code class="language-bash">$ python variables.py
 &gt; Your name
 &gt; 25
 &gt; 1.75
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 </ol>
 <h2 id="exercise-3-basic-operations"><a class="header" href="#exercise-3-basic-operations">Exercise 3: Basic Operations</a></h2>
@@ -272,9 +303,15 @@ $ python variables.py
 </li>
 <li>
 <p>and then run it.</p>
-<pre><code class="language-admonish code">
-```python
-a = 10
+ <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+ <div class="admonition-title">
+ <div id="admonition-code-2-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+ </div>
+ <div>
+<pre><code class="language-python">a = 10
 b = 3
 
 print("Addition:", a + b)
@@ -282,20 +319,26 @@ print("Subtraction:", a - b)
 print("Multiplication:", a * b)
 print("Division:", a / b)
 print("Modulus:", a % b)
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```bash
-$ python basicMaths.py
+ </div>
+ </div>
+ <div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-2-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+ </div>
+ <div>
+<pre><code class="language-bash">$ python basicMaths.py
 &gt; Addition: 13
 &gt; Subtraction: 7
 &gt; Multiplication: 30
 &gt; Division: 3.3333333333333335
 &gt; Modulus: 1
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 </ol>
 <h2 id="exercise-4-lists-and-indexing"><a class="header" href="#exercise-4-lists-and-indexing">Exercise 4: Lists and Indexing</a></h2>
@@ -318,9 +361,15 @@ $ python basicMaths.py
 </li>
 <li>
 <p>and then run it</p>
-<pre><code class="language-admonish code">
-```python
-fruits = ["apple", "banana", "cherry"]
+ <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+ <div class="admonition-title">
+ <div id="admonition-code-3-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+ </div>
+ <div>
+<pre><code class="language-python">fruits = ["apple", "banana", "cherry"]
 print("First fruit:", fruits[0])
 
 fruits.append("orange")
@@ -328,18 +377,24 @@ print("Updated list:", fruits)
 
 fruits.remove("banana")
 print("List after removing banana:", fruits)
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```bash
-$ python lists.py
+ </div>
+ </div>
+ <div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-3-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+ </div>
+ <div>
+<pre><code class="language-bash">$ python lists.py
 &gt; First fruit: apple
 &gt; Updated list: ['apple', 'banana', 'cherry', 'orange']
 &gt; List after removing banana: ['apple', 'cherry', 'orange']
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 </ol>
 <h2 id="exercise-5-conditional-statements"><a class="header" href="#exercise-5-conditional-statements">Exercise 5: Conditional Statements</a></h2>
@@ -364,9 +419,15 @@ $ python lists.py
 </li>
 <li>
 <p>change 5 to 0 and run again</p>
-<pre><code class="language-admonish code">
-```python
-number = 5
+ <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+ <div class="admonition-title">
+ <div id="admonition-code-4-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+ </div>
+ <div>
+<pre><code class="language-python">number = 5
 
 if number &gt; 0:
     print("Positive")
@@ -374,18 +435,24 @@ elif number &lt; 0:
     print("Negative")
 else:
     print("Zero")
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```bash
-python conditionals.py
+ </div>
+ </div>
+ <div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-4-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+ </div>
+ <div>
+<pre><code class="language-bash">python conditionals.py
 Positive
 python conditionals.py
 Zero
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 </ol>
 <h2 id="exercise-6-loops"><a class="header" href="#exercise-6-loops">Exercise 6: Loops</a></h2>
@@ -405,9 +472,15 @@ Zero
 </li>
 <li>
 <p>run the program</p>
-<pre><code class="language-admonish code">
-```python
-# For loop to print numbers from 1 to 5
+ <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+ <div class="admonition-title">
+ <div id="admonition-code-5-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+ </div>
+ <div>
+<pre><code class="language-python"># For loop to print numbers from 1 to 5
 for i in range(1, 6):
     print(i)
 
@@ -421,12 +494,18 @@ n = 10
 while n &gt; 0:
     print(n)
     n -= 1
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```bash
-$ python loops.py
+ </div>
+ </div>
+ <div id="admonition-terminal-5" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-5-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-5-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-5"></a>
+ </div>
+ <div>
+<pre><code class="language-bash">$ python loops.py
 &gt; 1
 &gt; 2
 &gt; 3
@@ -445,9 +524,9 @@ $ python loops.py
 &gt; 3
 &gt; 2
 &gt; 1
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 </ol>
 <h2 id="exercise-7-functions"><a class="header" href="#exercise-7-functions">Exercise 7: Functions</a></h2>
@@ -464,9 +543,15 @@ $ python loops.py
 </li>
 <li>
 <p>Test both functions by calling them with sample inputs.</p>
-<pre><code class="language-admonish code">
-```python
-def greet(name):
+ <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+ <div class="admonition-title">
+ <div id="admonition-code-6-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+ </div>
+ <div>
+<pre><code class="language-python">def greet(name):
     print(f"Hello, {name}!")
 
 def square(number):
@@ -475,17 +560,23 @@ def square(number):
 # Testing the functions
 greet("Alice")
 print("Square of 4:", square(4))
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```bash
-$ python functions.py
+ </div>
+ </div>
+ <div id="admonition-terminal-6" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-6-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-6-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-6"></a>
+ </div>
+ <div>
+<pre><code class="language-bash">$ python functions.py
 &gt; Hello, Alice!
 &gt; Square of 4: 16
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 </ol>
 <h2 id="exercise-8-dictionaries"><a class="header" href="#exercise-8-dictionaries">Exercise 8: Dictionaries</a></h2>
@@ -505,9 +596,15 @@ $ python functions.py
 </li>
 <li>
 <p>and run it.</p>
-<pre><code class="language-admonish code">
-```python
-student = {
+ <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+ <div class="admonition-title">
+ <div id="admonition-code-7-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+ </div>
+ <div>
+<pre><code class="language-python">student = {
     "name": "Your name",
     "age": 21,
     "courses": ["Subject1", "Subject2"]
@@ -518,19 +615,24 @@ print("Age:", student["age"])
 
 student["graduation_year"] = 2025
 print("Updated student dictionary:", student)
-```
-
 </code></pre>
-<pre><code class="language-admonish terminal">
-```bash
-$ python dictionaries.py
+ </div>
+ </div>
+ <div id="admonition-terminal-7" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-7-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-7-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-7"></a>
+ </div>
+ <div>
+<pre><code class="language-bash">$ python dictionaries.py
 &gt; Name: Your name
 &gt; Age: 21
 &gt; Updated student dictionary: {'name': 'Your name', 'age': 21, 'courses': ['Subject1', 'Subject2'], 'graduation_year': 2025}
-```
-
 </code></pre>
-</li>
+ </div>
+ </div></li>
 </ol>
 
                     </main>

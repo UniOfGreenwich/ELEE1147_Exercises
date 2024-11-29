@@ -183,18 +183,37 @@
 <p>Insertion Sort Example, \(O(n^2) \)</p>
 </li>
 </ul>
-<pre><code class="language-admonish info">- All timings are based on an 11th Gen Intel Core i5-11500 @ 2.70GHz 6 Cores.
-
-- The C library function `clock_t clock(void)` returns the number of `clock ticks` elapsed since the program was launched. To get the number of seconds used by the CPU, you will need to divide by `CLOCKS_PER_SEC`, which will be implemented in `main()`.
-
-</code></pre>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>All timings are based on an 11th Gen Intel Core i5-11500 @ 2.70GHz 6 Cores.</p>
+</li>
+<li>
+<p>The C library function <code>clock_t clock(void)</code> returns the number of <code>clock ticks</code> elapsed since the program was launched. To get the number of seconds used by the CPU, you will need to divide by <code>CLOCKS_PER_SEC</code>, which will be implemented in <code>main()</code>.</p>
+</li>
+</ul>
+</div>
+</div>
 <p>In this lab we are going to explore various sorting algorithms sorting a small dataset that is meant to describe heights of various people:</p>
-<pre><code class="language-admonish code">
-```c
-int array1[] = {90, 65, 70, 55, 60, 80};
-```
-
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-c">int array1[] = {90, 65, 70, 55, 60, 80};
 </code></pre>
+</div>
+</div>
 <h2 id="quick-sort-algorithm-on-log-n"><a class="header" href="#quick-sort-algorithm-on-log-n">Quick Sort Algorithm \(O(n\ log\ n)\):</a></h2>
 <ol>
 <li>
@@ -224,9 +243,15 @@ int array1[] = {90, 65, 70, 55, 60, 80};
 </li>
 <li>
 <p>Reproduce the following code in <code>Sort.h</code>:</p>
-<pre><code class="language-admonish code">
-```c
-#pragma once
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code class="language-c">#pragma once
 #ifndef SORT_H
 #define SORT_H
 
@@ -238,15 +263,21 @@ void quicksortMiddle(int arr[], int low, int high);
 
 void printArray(int arr[], int size);
 #endif // SORT_H
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Reproduce the following code in <code>Sort.c</code>:</p>
-<pre><code class="language-admonish code">
-```c
-#include "Sort.h"
+ <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+ <div class="admonition-title">
+ <div id="admonition-code-2-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+ </div>
+ <div>
+<pre><code class="language-c">#include "Sort.h"
 
 void quicksortMiddle(int arr[], int low, int high) {
     if (low &lt; high) {
@@ -284,15 +315,21 @@ void printArray(int arr[], int size)
     }
     printf("\n");
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Now you have the first sorting algorithm is set up we need get the <code>SortingAlgorithms.c</code> file ready to invoke the sorting function and calcualte the how long it took. Modify the code, <code>SortingAlgorithms.c</code>, to include the following, pay close attention to the comments as they provide verbose guidance:</p>
-<pre><code class="language-admonish code">
-```c
-#include "Sort.h"
+ <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+ <div class="admonition-title">
+ <div id="admonition-code-3-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+ </div>
+ <div>
+<pre><code class="language-c">#include "Sort.h"
 
 int main()
 {
@@ -324,9 +361,9 @@ int main()
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>If you have reproduce the above you should see the following output when you run the program:</p>
@@ -376,9 +413,15 @@ Timing:  \[33.5ns \equiv 33.5 \cdot 10^{-8} =  \frac{335 \cdot 10^{-3}}{10 \cdot
 </li>
 <li>
 <p>Next open the <code>Sort.c</code> file and add the <code>bubblesort()</code> functionality, place the following between the two functions, <code>quicksortMiddle()</code>, <code>printArray()</code>:</p>
-<pre><code class="language-admonish code">
-```c
-void quicksortMiddle(int arr[], int low, int high) { 
+ <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+ <div class="admonition-title">
+ <div id="admonition-code-4-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+ </div>
+ <div>
+<pre><code class="language-c">void quicksortMiddle(int arr[], int low, int high) { 
     ...
 }
 
@@ -400,15 +443,21 @@ void bubbleSort(int arr[], int n) {
 }
 
 void printArray(int arr[], int size) ...
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Like before we need to invoke the <code>bubblesort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>SortingAlgorithms.c</code>:</p>
-<pre><code class="language-admonish code">
-```c
-int main()
+ <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+ <div class="admonition-title">
+ <div id="admonition-code-5-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+ </div>
+ <div>
+<pre><code class="language-c">int main()
 {
   ...
 
@@ -421,9 +470,9 @@ int main()
     }
   ...
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>If you have reproduce the above you should see the following output when you run the program:</p>
@@ -479,9 +528,15 @@ int main()
 </li>
 <li>
 <p>Next open the <code>Sort.c</code> file and add the <code>selectionsort()</code> functionality, place the following between the two functions, <code>bubblesort()</code>, <code>printArray()</code>:</p>
-<pre><code class="language-admonish code">
-```c
-...
+ <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+ <div class="admonition-title">
+ <div id="admonition-code-6-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+ </div>
+ <div>
+<pre><code class="language-c">...
 void bubblesort(nt arr[], int n){
     ...
 }
@@ -508,15 +563,21 @@ void selectionSort(int arr[], int n) {
 }
 
 void printArray(int arr[], int size) ...
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Like before we need to invoke the <code>selectionSort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>SortingAlgorithms.c</code>:</p>
-<pre><code class="language-admonish code">
-```c
-int main()
+ <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+ <div class="admonition-title">
+ <div id="admonition-code-7-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+ </div>
+ <div>
+<pre><code class="language-c">int main()
 {
   ...
 
@@ -531,9 +592,9 @@ int main()
     }
   ...
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>If you have reproduce the above you should see the following output when you run the program:</p>
@@ -592,9 +653,15 @@ int main()
 </li>
 <li>
 <p>Next open the <code>Sort.c</code> file and add the <code>insertionsort()</code> functionality, place the following between the two functions, <code>selectionSort()</code>, <code>printArray()</code>:</p>
-<pre><code class="language-admonish code">
-```c
-...
+ <div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+ <div class="admonition-title">
+ <div id="admonition-code-8-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-8"></a>
+ </div>
+ <div>
+<pre><code class="language-c">...
 void selectionSort(int arr[], int n) {
 ...
 }
@@ -618,15 +685,21 @@ void insertionSort(int arr[], int n) {
 }
 
 void printArray(int arr[], int size) ...
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Like before we need to invoke the <code>insertionsort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>SortingAlgorithms.c</code>:</p>
-<pre><code class="language-admonish code">
-```c
-int main()
+ <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+ <div class="admonition-title">
+ <div id="admonition-code-9-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+ </div>
+ <div>
+<pre><code class="language-c">int main()
 {
   ...
 
@@ -642,9 +715,9 @@ int main()
     }
   ...
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>If you have reproduce the above you should see the following output:</p>

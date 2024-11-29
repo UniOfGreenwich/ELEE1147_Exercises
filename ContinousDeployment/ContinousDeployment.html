@@ -201,29 +201,41 @@ and how to deal with them from a branching point of view.</p>
 <ol>
 <li>
 <p>Create a feature branch based off of <code>master</code>.</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout master
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code>$ git checkout master
 $ git checkout -b MYTEAM-123-new-documentation
 $ git push --set-upstream MYTEAM-123-new-documentation
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Develop the code for the new feature and commit as you go.</p>
-<pre><code class="language-admonish terminal">
-```
-$ ... make changes
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code>$ ... make changes
 $ git add -A .
 $ git commit -m "Add new documentation files"
 $ ... make more changes
 $ git add -A .
 $ git commit -m "Fix some spelling errors"
 $ git push
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Navigate to the project on <a href="www.github.com">Github</a> and open a pull request
@@ -265,24 +277,36 @@ described above.*
 <ol>
 <li>
 <p>Make sure your <code>master</code> branch is up-to-date</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout master
+<div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+<div class="admonition-title">
+<div id="admonition-terminal-2-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+</div>
+<div>
+<pre><code>$ git checkout master
 $ git fetch
 $ git merge origin/master
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Create a hot fix branch based off of <code>master</code></p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout -b hotfix-documentation-broken-links
+<div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+<div class="admonition-title">
+<div id="admonition-terminal-3-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+</div>
+<div>
+<pre><code>$ git checkout -b hotfix-documentation-broken-links
 $ git push --set-upstream hotfix-documentation-broken-links
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Add a test case to validate the bug, fix the bug, and commit
@@ -290,15 +314,21 @@ $ git push --set-upstream hotfix-documentation-broken-links
 review it in person with one other engineer before releasing it. We're
 running without training wheels here and want to do our best not to have to
 do a stream of hotfixes in production.</em></p>
-<pre><code class="language-admonish terminal">
-```
-... add test, fix bug, verify
+<div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+<div class="admonition-title">
+<div id="admonition-terminal-4-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+</div>
+<div>
+<pre><code>... add test, fix bug, verify
 $ git add -A .
 $ git commit -m "Fix broken links"
 $ git push
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Navigate to the project on <a href="www.github.com">Github</a> and open a pull request

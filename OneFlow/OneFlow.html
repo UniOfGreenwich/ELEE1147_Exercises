@@ -195,20 +195,32 @@
 <p>Feature branches often exist only in the developer’s repository, and are never pushed – however, if there are multiple people working on one feature, or if the feature will take a long time to develop, it’s typical to push them to the central repository (if only to make sure the code isn’t lost with a single disk failure).</p>
 <h3 id="starting-a-feature-branch"><a class="header" href="#starting-a-feature-branch">Starting a feature branch</a></h3>
 <p>To start a feature branch, simply create a new branch from <code>master</code>:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout -b feature/my-feature master
-```
-
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout -b feature/my-feature master
 </code></pre>
+</div>
+</div>
 <h2 id="finishing-a-feature-branch"><a class="header" href="#finishing-a-feature-branch">Finishing a feature branch</a></h2>
 <p>Once work on the given feature is done, it needs to be integrated back into <code>master</code>. There are several ways this can be accomplished.</p>
 <p>Note: the choice of the feature branch integration method is immaterial as far as the workflow is concerned. It should be based on personal or team preference, however the branching model will work exactly the same, regardless of which option is chosen. My personal recommendation is to use option #1.</p>
 <h2 id="option-1---rebase"><a class="header" href="#option-1---rebase">Option #1 - <code>rebase</code></a></h2>
 <p>This method uses Git’s <code>rebase</code> command (with the <code>-i</code>, meaning interactive, switch) to integrate the feature branch with <code>master</code>.</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout feature/my-feature
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout feature/my-feature
 
 $ git rebase -i master
 
@@ -219,9 +231,9 @@ $ git merge --ff-only feature/my-feature
 $ git push origin master
 
 $ git branch -d feature/my-feature
-```
-
 </code></pre>
+</div>
+</div>
 <p>If you’re not yet well acquainted with the rebase command, I recommend <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History">this chapter</a> from the Pro Git SCM book.</p>
 <p>Here’s a visual illustration of how that method works:</p>
 <div align=center>
@@ -242,16 +254,22 @@ $ git branch -d feature/my-feature
 </ul>
 <h2 id="option-2---merger--no-ff"><a class="header" href="#option-2---merger--no-ff">Option #2 - <code>merger -no-ff</code></a></h2>
 <p>This is the method that GitFlow advocates.</p>
-<pre><code class="language-admonish terminal">
-```sh
-
+<div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+<div class="admonition-title">
+<div id="admonition-terminal-2-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+</div>
+<div>
+<pre><code class="language-sh">
 $ git checkout master
 $ git merge --no-ff feature/my-feature
 $ git push origin master
 $ git branch -d feature/my-feature
-```
-
 </code></pre>
+</div>
+</div>
 <p>Visually:</p>
 <div align=center>
 <p><img src="./figures/feature-branch-merge-final.png" alt="" /></p>
@@ -271,9 +289,15 @@ $ git branch -d feature/my-feature
 </ul>
 <h2 id="option-3---rebase--merge--no-ff"><a class="header" href="#option-3---rebase--merge--no-ff">Option #3 - <code>rebase</code> + <code>merge -no-ff</code></a></h2>
 <p>This method is a combination of the previous two, trying to keep their advantages while simultaneously getting rid of the disadvantages:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout feature/my-feature
+<div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+<div class="admonition-title">
+<div id="admonition-terminal-3-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout feature/my-feature
 
 $ git rebase -i master
 
@@ -285,9 +309,9 @@ $ git push origin master
 
 $ git branch -d feature/my-feature
 
-```
-
 </code></pre>
+</div>
+</div>
 <p>Visually:</p>
 <div align=center>
 <p><img src="./figures/feature-branch-rebase-and-merge-final.png" alt="" /></p>
@@ -302,29 +326,47 @@ $ git branch -d feature/my-feature
 <li>It’s difficult to enforce this method programmatically, so it has to rely on best-effort convention.</li>
 </ul>
 <p>Finally, regardless of the method used, if the feature branch was pushed to the central repository, you need to now remove it:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git push origin :feature/my-feature
-```
-
+<div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+<div class="admonition-title">
+<div id="admonition-terminal-4-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git push origin :feature/my-feature
 </code></pre>
+</div>
+</div>
 <h2 id="release-branches"><a class="header" href="#release-branches">Release branches</a></h2>
 <p>Release branches are created to prepare the software for being released. Obviously, what exactly that means varies on a project-per-project basis. This could be as simple as bumping the version number in the configuration, or involve things like code freezes, producing Release Candidates, and having a full QA process. The important thing is all that happens on a separate branch, so that day-to-day development can continue as usual on <code>master</code>.</p>
 <p>The naming convention for these is <code>release/&lt;version-number&gt;</code>.</p>
 <h2 id="starting-a-release-branch"><a class="header" href="#starting-a-release-branch">Starting a release branch</a></h2>
 <p>Release branches also start from master, however they often don’t start from the tip – instead, they have their origin in whatever commit on master you think contains all of the features that you want to include in the given release.</p>
 <p>For example, here we start the branch for the version <code>2.3.0</code> release on a commit with the hash <code>9efc5d</code>:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout -b release/2.3.0 9efc5d
-```
-
+<div id="admonition-terminal-5" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-5-title">
+<div class="admonition-title">
+<div id="admonition-terminal-5-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-5"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout -b release/2.3.0 9efc5d
 </code></pre>
+</div>
+</div>
 <h2 id="finishing-a-release-branch"><a class="header" href="#finishing-a-release-branch">Finishing a release branch</a></h2>
 <p>Once whatever process you use for releasing is finished, the tip of the branch is tagged with the version number. After that, the branch needs to be merged into <code>master</code> to be versioned permanently:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout release/2.3.0
+<div id="admonition-terminal-6" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-6-title">
+<div class="admonition-title">
+<div id="admonition-terminal-6-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-6"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout release/2.3.0
 
 $ git tag 2.3.0
 
@@ -335,9 +377,9 @@ $ git merge release/2.3.0
 $ git push --tags origin master
 
 $ git branch -d release/2.3.0
-```
-
 </code></pre>
+</div>
+</div>
 <p>Here’s a diagram illustrating the above commands (assuming the release took two commits):</p>
 <div align=center>
 <p><img src="./figures/release-branch-merge-final.png" alt="" /></p>
@@ -350,17 +392,29 @@ $ git branch -d release/2.3.0
 <p>They are named <code>hotfix/&lt;version-number&gt;</code>. Note that if you use <a href="http://semver.org/http://semver.org/">Semantic Versioning</a>, regular releases bump either the Major or Minor number, while hotfixes bump the Patch number.</p>
 <p>Starting a hotfix branch
 Hotfix branches are cut from the commit that the latest version tag points to. Continuing our example from the release branch:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout -b hotfix/2.3.1 2.3.0
-```
-
+<div id="admonition-terminal-7" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-7-title">
+<div class="admonition-title">
+<div id="admonition-terminal-7-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-7"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout -b hotfix/2.3.1 2.3.0
 </code></pre>
+</div>
+</div>
 <h2 id="finishing-a-hotfix-branch"><a class="header" href="#finishing-a-hotfix-branch">Finishing a hotfix branch</a></h2>
 <p>Finishing a hotfix branch is pretty much the same as finishing a release branch: tag the tip, merge it to <code>master</code>, then delete the branch.</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout hotfix/2.3.1
+<div id="admonition-terminal-8" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-8-title">
+<div class="admonition-title">
+<div id="admonition-terminal-8-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-8"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout hotfix/2.3.1
 
 $ git tag 2.3.1
 
@@ -371,21 +425,27 @@ $ git merge hotfix/2.3.1
 $ git push --tags origin master
 
 $ git branch -d hotfix/2.3.1
-```
-
 </code></pre>
+</div>
+</div>
 <p>Here’s a visual illustration:</p>
 <div align=center>
 <p><img src="./figures/hotfix-branch-merge-final.png" alt="" /></p>
 </div>
 <p>There is one special case when finishing a hotfix branch. If a release branch has already been cut in preparation for the next release before the hotfix was finished, you need to merge the hotfix branch not to <code>master</code>, but to the release branch. Otherwise, the new release will bring back the original bug that the hotfix corrected. The fix will eventually get to <code>master</code> – when the release branch is merged back to it.</p>
 <p>As always, if the hotfix branch was pushed to the central repository, you need to remove it now:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git push origin :hotfix/2.3.1
-```
-
+<div id="admonition-terminal-9" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-9-title">
+<div class="admonition-title">
+<div id="admonition-terminal-9-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-9"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git push origin :hotfix/2.3.1
 </code></pre>
+</div>
+</div>
 <h1 id="variation--develop--master"><a class="header" href="#variation--develop--master"># Variation – <code>develop</code> + <code>master</code></a></h1>
 <p>There is one small wrinkle with the branching model described above. In order to find the latest production version of the code, you need to look at all of the tags in the repository, and checkout the latest one.</p>
 <p>This problem has a very simple solution. You add another, ‘latest’, long-lived branch, whose only purpose is to point to the last released commit. Each time the version number is bumped, the ‘latest’ branch is fast-forwarded to the newly created tag.</p>
@@ -397,17 +457,29 @@ $ git push origin :hotfix/2.3.1
 <h2 id="feature-branches-1"><a class="header" href="#feature-branches-1">Feature branches</a></h2>
 <p>Feature branches work exactly the same as already explained, except you need to substitute <code>master</code> with <code>develop</code> in the description above.</p>
 <h3 id="starting-a-feature-branch-1"><a class="header" href="#starting-a-feature-branch-1">Starting a feature branch</a></h3>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout -b feature/my-feature develop
-```
-
+<div id="admonition-terminal-10" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-10-title">
+<div class="admonition-title">
+<div id="admonition-terminal-10-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-10"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout -b feature/my-feature develop
 </code></pre>
+</div>
+</div>
 <h3 id="finishing-a-feature-branch-1"><a class="header" href="#finishing-a-feature-branch-1">Finishing a feature branch</a></h3>
 <p><strong>Option #1 – <code>rebase</code></strong></p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout feature/my-feature
+<div id="admonition-terminal-11" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-11-title">
+<div class="admonition-title">
+<div id="admonition-terminal-11-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-11"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout feature/my-feature
 
 $ git rebase -i develop
 
@@ -418,26 +490,38 @@ $ git merge --ff-only feature/my-feature
 $ git push origin develop
 
 $ git branch -d feature/my-feature
-```
-
 </code></pre>
-<p><strong>Option #2 – <code>merge –no-ff</code></strong></p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout develop
+</div>
+</div>
+**Option #2 – `merge –no-ff`**
+<div id="admonition-terminal-12" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-12-title">
+<div class="admonition-title">
+<div id="admonition-terminal-12-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-12"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout develop
 
 $ git merge --no-ff feature/my-feature
 
 $ git push origin develop
 
 $ git branch -d feature/my-feature
-```
-
 </code></pre>
+</div>
+</div>
 <p><strong>Option #3 – <code>rebase</code> + <code>merge –no–ff</code></strong></p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout feature/my-feature
+<div id="admonition-terminal-13" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-13-title">
+<div class="admonition-title">
+<div id="admonition-terminal-13-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-13"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout feature/my-feature
 
 $ git rebase -i develop
 
@@ -448,22 +532,34 @@ $ git merge --no-ff feature/my-feature
 $ git push origin develop
 
 $ git branch -d feature/my-feature
-```
-
 </code></pre>
+</div>
+</div>
 <h2 id="release-branches-1"><a class="header" href="#release-branches-1">Release branches</a></h2>
 <p>Release branches work the same as described above (with <code>master</code> substituted for <code>develop</code>, of course), except one small detail. There is an extra step when finishing the release branch: fast-forwarding the marker branch to the newly created release <code>tag</code>.</p>
 <h3 id="starting-a-release-branch-1"><a class="header" href="#starting-a-release-branch-1">Starting a release branch</a></h3>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout -b release/2.3.0 9efc5d
-```
-
+<div id="admonition-terminal-14" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-14-title">
+<div class="admonition-title">
+<div id="admonition-terminal-14-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-14"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout -b release/2.3.0 9efc5d
 </code></pre>
+</div>
+</div>
 <h3 id="finishing-a-release-branch-1"><a class="header" href="#finishing-a-release-branch-1">Finishing a release branch</a></h3>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout release/2.3.0
+<div id="admonition-terminal-15" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-15-title">
+<div class="admonition-title">
+<div id="admonition-terminal-15-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-15"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout release/2.3.0
 
 $ git tag 2.3.0
 
@@ -474,20 +570,26 @@ $ git merge release/2.3.0
 $ git push --tags origin develop
 
 $ git branch -d release/2.3.0
-```
-
 </code></pre>
+</div>
+</div>
 <p>And here is the extra step – fast-forwarding <code>master</code> to the latest release tag:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout master
+<div id="admonition-terminal-16" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-16-title">
+<div class="admonition-title">
+<div id="admonition-terminal-16-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-16"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout master
 
 $ git merge --ff-only 2.3.0
 
 $ git push origin master
-```
-
 </code></pre>
+</div>
+</div>
 <p>Here’s a visualization of the state of the repository after finishing the release branch:</p>
 <div align=center>
 <p><img src="./figures/develop-release-branch-merge.png" alt="" /></p>
@@ -496,16 +598,28 @@ $ git push origin master
 <p>Hotfix branches, because they result in publishing a new version as well, also require the additional step of fast-forwarding <code>master</code> to the newly created <code>tag</code>.</p>
 <h3 id="starting-a-hotfix-branch"><a class="header" href="#starting-a-hotfix-branch">Starting a hotfix branch</a></h3>
 <p>Because <code>master</code> always tracks the latest tag, creating a <code>hotfix</code> branch is a tiny bit easier in this variant (note however that you still need to look at the tags to determine what the previous version number was, in order to name your <code>hotfix</code> branch correctly):</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout -b hotfix/2.3.1 `master`
-```
-
+<div id="admonition-terminal-17" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-17-title">
+<div class="admonition-title">
+<div id="admonition-terminal-17-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-17"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout -b hotfix/2.3.1 `master`
 </code></pre>
+</div>
+</div>
 <h3 id="finishing-a-hotfix-branch-1"><a class="header" href="#finishing-a-hotfix-branch-1">Finishing a hotfix branch</a></h3>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout hotfix/2.3.1
+<div id="admonition-terminal-18" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-18-title">
+<div class="admonition-title">
+<div id="admonition-terminal-18-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-18"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout hotfix/2.3.1
 
 $ git tag 2.3.1
 
@@ -516,20 +630,26 @@ $ git merge hotfix/2.3.1
 $ git push --tags origin develop
 
 $ git branch -d hotfix/2.3.1
-```
-
 </code></pre>
+</div>
+</div>
 <p>And here is the additional step of fast-forwarding <code>master</code> to the latest release <code>tag</code>:</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ git checkout master
+<div id="admonition-terminal-19" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-19-title">
+<div class="admonition-title">
+<div id="admonition-terminal-19-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-19"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ git checkout master
 
 $ git merge --ff-only 2.3.1
 
 $ git push origin master
-```
-
 </code></pre>
+</div>
+</div>
 <p>If we continue our release example, the visual illustration looks something</p>
 <div align=center>
 <p><img src="./figures/hotfix-branch-merge-final.png" alt="" /></p>

@@ -190,10 +190,17 @@
 <hr />
 <hr />
 <h2 id="task-1-header-files"><a class="header" href="#task-1-header-files">Task 1: Header Files</a></h2>
-<pre><code class="language-admonish info title=&#39;So What is a Header File?&#39;">
-A header file is a file containing declarations and macro definitions that can be shared between multiple source files. Commonly used header files, such as `stdio.h`, `stdlib.h`, and `math.h`, provide essential functions and constants.
-
-</code></pre>
+<div id="admonition-so-what-is-a-header-file" class="admonition admonish-info" role="note" aria-labelledby="admonition-so-what-is-a-header-file-title">
+<div class="admonition-title">
+<div id="admonition-so-what-is-a-header-file-title">
+<p>So What is a Header File?</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-so-what-is-a-header-file"></a>
+</div>
+<div>
+<p>A header file is a file containing declarations and macro definitions that can be shared between multiple source files. Commonly used header files, such as <code>stdio.h</code>, <code>stdlib.h</code>, and <code>math.h</code>, provide essential functions and constants.</p>
+</div>
+</div>
 <ol>
 <li>
 <p>Open visual studio code and open an existing folder or make a new one and call it something meaningful like <code>HeadersLab</code>.</p>
@@ -209,22 +216,34 @@ A header file is a file containing declarations and macro definitions that can b
 <ol start="3">
 <li>
 <p>Open the newly created header file and add a guard using the the keywords, <code>#ifndef</code>, <code>#define</code> and <code>#endif</code>. In at the end of <code>#ifndef</code> and <code>#define</code>, write the name of the header file in captial letters, and replace the <code>.h</code> with <code>_h</code>.</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: Solution... [5 lines]&#39;">
-```h
-// myheader.h
+ <details id="admonition-code-solution-5-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-solution-5-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-solution-5-lines-title">
+<p>Code: Solution... [5 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-solution-5-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-h">// myheader.h
 #ifndef MYHEADER_H
 #define MYHEADER_H
 
 #endif // MYHEADER_H
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Inside the ifndef and endif block add a declaration/definition for a <code>greet</code> function that returns <code>void</code> and has no arguments and a second function called <code>add</code> that returns an <code>int</code> and takes two arguments that are <code>int</code>s:</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: Solution... [9 lines]&#39;">
-```h
-// myheader.h
+ <details id="admonition-code-solution-9-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-solution-9-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-solution-9-lines-title">
+<p>Code: Solution... [9 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-solution-9-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-h">// myheader.h
 #ifndef MYHEADER_H
 #define MYHEADER_H
 
@@ -233,15 +252,21 @@ void greet();
 int add(int a, int b);
 
 #endif // MYHEADER_H
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Now create the <code>myheader.c</code> file that will provide the functionality of the <code>myheader.h</code> decalarations. Once created reproduce the following:</p>
-<pre><code class="language-admonish code">
-```c
-#include &lt;stdio.h&gt;
+ <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+ <div class="admonition-title">
+ <div id="admonition-code-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code"></a>
+ </div>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include "myheader.h"
 
 void greet() {
@@ -251,13 +276,20 @@ void greet() {
 int add(int a, int b) {
     return a + b;
 }
-```
-
 </code></pre>
-<pre><code class="language-admonish info">
-You can see the that the `"myheader.h"` has different syntax to `&lt;stdio.h&gt;`. This is because `&lt;someheader.h&gt;` is part of the global library of header files that come with the C/C++ compilers. Whereas, the `"someotherheader.h"` indicates that this file is located somewhere else, defined generally by the user. The location is generally part of the project folder, but can be located else and you simply provide the path to it `"/path/to/file.h"`
-
-</code></pre>
+ </div>
+ </div>
+ <div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+ <div class="admonition-title">
+ <div id="admonition-info-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info"></a>
+ </div>
+ <div>
+<p>You can see the that the <code>"myheader.h"</code> has different syntax to <code>&lt;stdio.h&gt;</code>. This is because <code>&lt;someheader.h&gt;</code> is part of the global library of header files that come with the C/C++ compilers. Whereas, the <code>"someotherheader.h"</code> indicates that this file is located somewhere else, defined generally by the user. The location is generally part of the project folder, but can be located else and you simply provide the path to it <code>"/path/to/file.h"</code></p>
+ </div>
+ </div>
 </li>
 <li>
 <p>Go back to the the <code>HeadersLab.c</code> file where the <code>main() </code>function is and include the <code>"myheader.h"</code> at the top of the script.</p>
@@ -274,9 +306,15 @@ You can see the that the `"myheader.h"` has different syntax to `&lt;stdio.h&gt;
 </ul>
 </li>
 </ul>
-<pre><code class="language-admonish code collapsible=true title=&#39;HeadersLab.c: Solution... [10 lines]&#39;">
-```c
-// main.c
+ <details id="admonition-headerslabc-solution-10-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-headerslabc-solution-10-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-headerslabc-solution-10-lines-title">
+<p>HeadersLab.c: Solution... [10 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-headerslabc-solution-10-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">// main.c
 #include "myheader.h"
 
 int main() {
@@ -287,9 +325,9 @@ int main() {
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Run the program and you should recieve the following:</p>
@@ -305,24 +343,43 @@ int main() {
 <p>Macros are a powerful feature in C that allow us to define constants and perform code substitution. Let's explore their basic syntax and advantages.</p>
 <p><strong>Commonly Used Macros</strong></p>
 <p>Common macros, such as <code>#define PI 3.14</code>, simplify code maintenance by replacing repetitive values with named constants. <strong>Macros</strong> also play a role in conditional compilation using <code>#ifdef</code>, <code>#ifndef</code>, and <code>#endif</code>.</p>
-<pre><code class="language-admonish info">
-The `#include` directive is used to include the contents of a file in another file. The inclusion happens during the preprocessing phase, before the actual compilation. It's used to include header files that contain declarations, macro definitions, and other necessary information so it is not a macro itself.
-
-</code></pre>
+<div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+<div class="admonition-title">
+<div id="admonition-info-1-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-1"></a>
+</div>
+<div>
+<p>The <code>#include</code> directive is used to include the contents of a file in another file. The inclusion happens during the preprocessing phase, before the actual compilation. It's used to include header files that contain declarations, macro definitions, and other necessary information so it is not a macro itself.</p>
+</div>
+</div>
 <ol start="9">
 <li>
 <p>Let's modify our current <code>HeaderLab.c</code> file to includes some macros. after the <code>#include</code> directives and the macro <code>#define PI 3.14159</code></p>
-<pre><code class="language-admonish info">
-
-Macros variables/functions names follow a UPPERCASE name convention. 
-
-</code></pre>
+ <div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
+ <div class="admonition-title">
+ <div id="admonition-info-2-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-2"></a>
+ </div>
+ <div>
+<p>Macros variables/functions names follow a UPPERCASE name convention.</p>
+ </div>
+ </div>
 </li>
 <li>
 <p>Inside <code>main()</code> use <code>printf()</code> to output PI to the terminal.</p>
-<pre><code class="language-admonish code">
-```c
-#include "myheader.h"
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
+<pre><code class="language-c">#include "myheader.h"
 #define PI 3.14159
 
 int main() {
@@ -335,9 +392,9 @@ int main() {
 
     return 0;
 }
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Run and you should see the following output:</p>
@@ -346,23 +403,35 @@ int main() {
 </li>
 <li>
 <p>Continuing, define a second macro as function that computes the square of a number:</p>
-<pre><code class="language-admonish code">
-```c
-#define SQUARE(x) ((x) * (x))
-```
-
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
+<pre><code class="language-c">#define SQUARE(x) ((x) * (x))
 </code></pre>
+</div>
+</div>
 <p>This function only use 4 Byte values, so anything larger than a <code>int</code> would not work.</p>
 </li>
 <li>
 <p>Inside <code>main()</code> call the macro defined function SQAURE inside a printf statement, where the statement outputs the result of the SQUARE and the number being squared:</p>
-<pre><code class="language-admonish code">
-```c
-int num = 5;
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
+<pre><code class="language-c">int num = 5;
 printf("The square of %d is: %d\n", num, SQUARE(num));
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Run the program and you should see the following:</p>
@@ -370,9 +439,15 @@ printf("The square of %d is: %d\n", num, SQUARE(num));
 </li>
 <li>
 <p>Laslty we are going to look a very common marco useage implementing debugging. Reproduce the following at the top of the file,above the <code>#include</code> directive:</p>
-<pre><code class="language-admonish code">
-```c
-// Example of conditional compilation macros
+<div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+<div class="admonition-title">
+<div id="admonition-code-4-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-4"></a>
+</div>
+<div>
+<pre><code class="language-c">// Example of conditional compilation macros
 #define DEBUG_MODE 1
 
 #ifdef DEBUG_MODE
@@ -381,15 +456,21 @@ printf("The square of %d is: %d\n", num, SQUARE(num));
 #define DEBUG_PRINT(msg)
 #endif
 ...
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p><code>Inside main()</code> place this <code>DEBUG_PRINT("This is a debug message");</code> :</p>
-<pre><code class="language-admonish code">
-```c
-int main() {
+<div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+<div class="admonition-title">
+<div id="admonition-code-5-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-5"></a>
+</div>
+<div>
+<pre><code class="language-c">int main() {
 
 printf("PI is: %.5f\n", PI);
 
@@ -398,9 +479,9 @@ printf("The square of %d is: %d\n", num, SQUARE(num));
 
 DEBUG_PRINT("This is a debug message");
 ...
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>If you run this program the you should see the following output:</p>
@@ -408,18 +489,31 @@ DEBUG_PRINT("This is a debug message");
 </li>
 <li>
 <p>Remove the macro <code>DEBUG_MODE</code> and run the program again.</p>
-<pre><code class="language-admonish output collapsible=true">
-![](./figures/step9.png)
-
-This is because `DEBUG_MODE` is no longer defined so the `DEBUG_PRINT()` isn't invoked now.
-
-</code></pre>
+<details id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<summary class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</summary>
+<div>
+<p><img src="./figures/step9.png" alt="" /></p>
+<p>This is because <code>DEBUG_MODE</code> is no longer defined so the <code>DEBUG_PRINT()</code> isn't invoked now.</p>
+</div>
+</details>
 </li>
 </ol>
-<pre><code class="language-admonish info">
-The term **debugging** can be traced back to Admiral Grace Hopper, who worked at Harvard University in the 1940s. When one of her colleagues found a moth impeding the operation of one of the university's computers, she told them they were debugging the system. Computer programmers were first recorded as using the terms bugs and debugging by the 1950s, and by the early 1960s, the term debugging was commonly accepted in the programming community.
-
-</code></pre>
+<div id="admonition-info-3" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-3-title">
+<div class="admonition-title">
+<div id="admonition-info-3-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-3"></a>
+</div>
+<div>
+<p>The term <strong>debugging</strong> can be traced back to Admiral Grace Hopper, who worked at Harvard University in the 1940s. When one of her colleagues found a moth impeding the operation of one of the university's computers, she told them they were debugging the system. Computer programmers were first recorded as using the terms bugs and debugging by the 1950s, and by the early 1960s, the term debugging was commonly accepted in the programming community.</p>
+</div>
+</div>
 <hr />
 <hr />
 <h2 id="task-3-advanced-macros"><a class="header" href="#task-3-advanced-macros">Task 3: Advanced Macros</a></h2>
@@ -427,9 +521,15 @@ The term **debugging** can be traced back to Admiral Grace Hopper, who worked at
 <ol start="22">
 <li>
 <p><strong>Variadic</strong> macros extend the function-like macros to handle a variable number of arguments using variadic macros. For example you can create your own macro for <code>printf</code>, try the following:</p>
-<pre><code class="language-admonish code">
-```c
-// Example of a variadic macro for printing values
+<div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+<div class="admonition-title">
+<div id="admonition-code-6-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-6"></a>
+</div>
+<div>
+<pre><code class="language-c">// Example of a variadic macro for printing values
 #define PRINT_VALUES(...) printf("Values: " __VA_ARGS__)
 
 // Usage in a C program
@@ -439,43 +539,83 @@ int main() {
     PRINT_VALUES("%d, %f, %s\n", 10, 3.14, "Hello");
     return 0;
 }
-```
-
 </code></pre>
-<pre><code class="language-admonish example title=&#39;Explanation of Code&#39;">
-- `#define`: This is the preprocessor directive used to define macros in C.
-
-- `PRINT_VALUES`: This is the name of the macro being defined.
-
-- `(...)` (ellipsis): The ellipsis `(...)` in the parameter list indicates that the macro accepts a variable number of arguments. It is a feature known as variadic macros.
-
-- printf("Values: " __VA_ARGS__): This is the body of the macro. It's essentially a printf statement that prints a formatted string. The __VA_ARGS__ is a special identifier in C that represents the variable arguments passed to the macro.
-
-</code></pre>
-<pre><code class="language-admonish output">
-![](./figures/step10.png)
-
-</code></pre>
-<pre><code class="language-admonish tip title=&#39;Challenge&#39;">
-Can you create your own variadic macros and experiment with different argument types and formats.
-
-</code></pre>
+</div>
+</div>
+<div id="admonition-explanation-of-code" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-title">
+<p>Explanation of Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code"></a>
+</div>
+<div>
+<ul>
+<li>
+<p><code>#define</code>: This is the preprocessor directive used to define macros in C.</p>
+</li>
+<li>
+<p><code>PRINT_VALUES</code>: This is the name of the macro being defined.</p>
+</li>
+<li>
+<p><code>(...)</code> (ellipsis): The ellipsis <code>(...)</code> in the parameter list indicates that the macro accepts a variable number of arguments. It is a feature known as variadic macros.</p>
+</li>
+<li>
+<p>printf("Values: " <strong>VA_ARGS</strong>): This is the body of the macro. It's essentially a printf statement that prints a formatted string. The <strong>VA_ARGS</strong> is a special identifier in C that represents the variable arguments passed to the macro.</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+<div class="admonition-title">
+<div id="admonition-output-1-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-1"></a>
+</div>
+<div>
+<p><img src="./figures/step10.png" alt="" /></p>
+</div>
+</div>
+<div id="admonition-challenge" class="admonition admonish-tip" role="note" aria-labelledby="admonition-challenge-title">
+<div class="admonition-title">
+<div id="admonition-challenge-title">
+<p>Challenge</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-challenge"></a>
+</div>
+<div>
+<p>Can you create your own variadic macros and experiment with different argument types and formats.</p>
+</div>
+</div>
 </li>
 <li>
 <p>Stringifcation(<code>STRINGIFY</code>):</p>
 <p>The <code>STRINGIFY</code> macro takes a single argument <code>x</code> and converts it into a string literal. The <code>#</code> operator, when used before an argument in a macro, is called the <strong>stringification</strong> operator. It converts the argument into a string.</p>
-<pre><code class="language-admonish code">
-```c
-#define STRINGIFY(x) #x
-```
-
+<div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+<div class="admonition-title">
+<div id="admonition-code-7-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-7"></a>
+</div>
+<div>
+<pre><code class="language-c">#define STRINGIFY(x) #x
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Reproduce the following:</p>
-<pre><code class="language-admonish code">
-```c
-// Example of stringification and token pasting
+<div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+<div class="admonition-title">
+<div id="admonition-code-8-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-8"></a>
+</div>
+<div>
+<pre><code class="language-c">// Example of stringification and token pasting
 #define STRINGIFY(x) #x
 
 // Usage in a C program
@@ -486,16 +626,32 @@ int main() {
             
     return 0;
 }
-```
 </code></pre>
-<pre><code class="language-admonish example title=&#39;Explanation of code&#39;">
-- Stringification Example (`STRINGIFY`):
-
-  - The macro `STRINGIFY(Hello)` converts the identifier Hello into the string literal `"Hello"`.
- 
-  - The `printf` statement prints `"Stringified: Hello\n"` to the console.
-
-</code></pre>
+</div>
+</div>
+<div id="admonition-explanation-of-code-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-1-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-1-title">
+<p>Explanation of code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code-1"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>Stringification Example (<code>STRINGIFY</code>):</p>
+<ul>
+<li>
+<p>The macro <code>STRINGIFY(Hello)</code> converts the identifier Hello into the string literal <code>"Hello"</code>.</p>
+</li>
+<li>
+<p>The <code>printf</code> statement prints <code>"Stringified: Hello\n"</code> to the console.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </li>
 <li>
 <p>These features are useful in advanced macro usage, especially in situations where the names of identifiers need to be converted into strings during preprocessing.</p>
@@ -510,9 +666,15 @@ int main() {
 </li>
 <li>
 <p>You would <code>#include "mymacros_h"</code> in your file with <code>main()</code> and then #define DEBUG_MODE with 0 or 1, you can then access those functions.</p>
-<pre><code class="language-admonish code">
-```C
-// Example of header file with guarded macros
+<div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+<div class="admonition-title">
+<div id="admonition-code-9-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-9"></a>
+</div>
+<div>
+<pre><code class="language-C">// Example of header file with guarded macros
 #ifndef MYMACROS_H
 #define MYMACROS_H
 
@@ -526,9 +688,9 @@ int main() {
 #endif
 
 #endif // MYMACROS_H
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Try and do this now.</p>
@@ -540,9 +702,15 @@ int main() {
 <ol start="29">
 <li>
 <p>The code below is an example of using macros to define a <em>generic structure</em> for a linked list node in C. This allows you to create linked lists for different data types using the same basic structure <strong>template</strong>.</p>
-<pre><code class="language-admonish code">
-```c
-// Example of macros for a linked list
+<div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+<div class="admonition-title">
+<div id="admonition-code-10-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-10"></a>
+</div>
+<div>
+<pre><code class="language-c">// Example of macros for a linked list
 #define DECLARE_NODE_TYPE(type) \
     struct type##_Node {          \
         type data;                \
@@ -550,22 +718,40 @@ int main() {
     }
 
 DECLARE_NODE_TYPE(int);
-```
-
 </code></pre>
-<pre><code class="language-admonish example title=&#39;Explanation of code&#39;">
-- `DECLARE_NODE_TYPE`(type) Macro:
-    - This macro is designed to declare a structure template for a linked list node.
-    - The type parameter allows the user to specify the data type of the elements that the linked list will store.
-    - The `##` operator concatenates the type with the `"_Node"` suffix to form the structure name
-
-</code></pre>
+</div>
+</div>
+<div id="admonition-explanation-of-code-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-2-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-2-title">
+<p>Explanation of code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code-2"></a>
+</div>
+<div>
+<ul>
+<li><code>DECLARE_NODE_TYPE</code>(type) Macro:
+<ul>
+<li>This macro is designed to declare a structure template for a linked list node.</li>
+<li>The type parameter allows the user to specify the data type of the elements that the linked list will store.</li>
+<li>The <code>##</code> operator concatenates the type with the <code>"_Node"</code> suffix to form the structure name</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </li>
 <li>
 <p>The <code>main()</code> function below,</p>
-<pre><code class="language-admonish code">
-```c
-#include &lt;stdio.h&gt;
+<div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+<div class="admonition-title">
+<div id="admonition-code-11-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-11"></a>
+</div>
+<div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 ...
 
@@ -579,23 +765,42 @@ int main() {
 
     return 0;
 }
-```
-
 </code></pre>
-<pre><code class="language-admonish example title=&#39;Explanation of code&#39;">
-- In the `())` function, a linked list node for integers is declared using the `DECLARE_NODE_TYPE(int)` macro. This creates a structure named `int_Node` with fields for storing data of type `int` and a pointer to the next node in the list.
-
-- An instance of the structure, `myNode`, is then created and initialised with a data value of `42` and a `NULL` pointer for the next node.
-
-- The program prints the data value of the node, which is `42`, to the console.
-
-</code></pre>
+</div>
+</div>
+<div id="admonition-explanation-of-code-3" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-3-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-3-title">
+<p>Explanation of code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code-3"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>In the <code>())</code> function, a linked list node for integers is declared using the <code>DECLARE_NODE_TYPE(int)</code> macro. This creates a structure named <code>int_Node</code> with fields for storing data of type <code>int</code> and a pointer to the next node in the list.</p>
+</li>
+<li>
+<p>An instance of the structure, <code>myNode</code>, is then created and initialised with a data value of <code>42</code> and a <code>NULL</code> pointer for the next node.</p>
+</li>
+<li>
+<p>The program prints the data value of the node, which is <code>42</code>, to the console.</p>
+</li>
+</ul>
+</div>
+</div>
 </li>
 <li>
 <p>Reproducing the following and try with <code>int</code>, <code>float</code>, <code>double</code>, <code>char</code>:</p>
-<pre><code class="language-admonish code">
-```c
-// Example of macros for a linked list
+<div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+<div class="admonition-title">
+<div id="admonition-code-12-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-12"></a>
+</div>
+<div>
+<pre><code class="language-c">// Example of macros for a linked list
 #define DECLARE_NODE_TYPE(type) \
     struct type##_Node {          \
         type data;                \
@@ -616,9 +821,9 @@ int main() {
     
     return 0;
 }
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Run the code to see the output:</p>

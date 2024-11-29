@@ -183,23 +183,35 @@ instructions <a href="continuous-deployment.html">here</a>.</p>
 </li>
 <li>
 <p>Merge <code>current-prod</code> into <code>master</code></p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout master
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code>$ git checkout master
 $ git merge current-prod
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Create a <code>develop</code> branch off of <code>master</code> if none exists</p>
-<pre><code class="language-admonish terminal">
-```
-$ git checkout master
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code>$ git checkout master
 $ git checkout -b develop
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Notify your team branching &amp; release Czar so that he or she can protect the following branches:</p>

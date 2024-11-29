@@ -176,52 +176,83 @@
 <h3 id="1-bitwise-and-"><a class="header" href="#1-bitwise-and-">1. Bitwise AND (<code>&amp;</code>):</a></h3>
 <p>The bitwise AND operator (<code>&amp;</code>) performs a binary AND operation between corresponding bits of two integers. If both bits are 1, the result is 1; otherwise, it's 0.</p>
 <p>Example:</p>
-<pre><code class="language-admonish code">
-```sql
-0101   (5 in binary)
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-sql">0101   (5 in binary)
 0011   (3 in binary)
 ----
 0001   (Result: 1)
-```
-
 </code></pre>
+</div>
+</div>
 <h3 id="2-bitwise-or-"><a class="header" href="#2-bitwise-or-">2. Bitwise OR (|):</a></h3>
 <p>The bitwise OR operator (|) performs a binary OR operation between corresponding bits of two integers. If at least one of the bits is 1, the result is 1; otherwise, it's 0.</p>
 <p>Example:</p>
-<pre><code class="language-admonish code">
-```sql
-0101   (5 in binary)
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
+<pre><code class="language-sql">0101   (5 in binary)
 0011   (3 in binary)
 ----
 0111   (Result: 7)
-```
-
 </code></pre>
+</div>
+</div>
 <h3 id="bitwise-xor-"><a class="header" href="#bitwise-xor-">Bitwise XOR (^):</a></h3>
 <p>The bitwise XOR operator (^) performs a binary XOR (exclusive OR) operation between corresponding bits of two integers. If the bits are different, the result is 1; if the bits are the same, the result is 0.</p>
-<pre><code class="language-admonish code">
-```sql
-0101   (5 in binary)
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
+<pre><code class="language-sql">0101   (5 in binary)
 0011   (3 in binary)
 ----
 0110   (Result: 6)
-```
-
 </code></pre>
+</div>
+</div>
 <h3 id="bitwise-notnegation-"><a class="header" href="#bitwise-notnegation-">Bitwise NOT/Negation (~)</a></h3>
 <p>The bitwise NOT operator (~) performs a unary operation, inverting each bit of the operand. If the bit is 0, it becomes 1, and if the bit is 1, it becomes 0.</p>
-<pre><code class="language-admonish info">
-The result of the NOT operation is often interpreted in two's complement form for signed integers.
-
-</code></pre>
-<pre><code class="language-admonish code">
-```sql
-0101   (5 in binary)
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
+<p>The result of the NOT operation is often interpreted in two's complement form for signed integers.</p>
+</div>
+</div>
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
+<pre><code class="language-sql">0101   (5 in binary)
 ----
 1010   (Result: -6 in two's complement form)
-```
-
 </code></pre>
+</div>
+</div>
 <hr />
 <hr />
 <h2 id="task-1"><a class="header" href="#task-1">Task 1</a></h2>
@@ -234,25 +265,37 @@ The result of the NOT operation is often interpreted in two's complement form fo
 <ol start="2">
 <li>
 <p>Reproduce the following:</p>
-<pre><code class="language-admonish code">
-```c
-#include &lt;stdio.h&gt;
+ <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+ <div class="admonition-title">
+ <div id="admonition-code-4-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+ </div>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 int main(){
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>After the <code>#include &lt;stdio.h&gt;</code> line add <code>void bitwiseOperations(int a, int b);</code></p>
 </li>
 <li>
 <p>Go to the closing <code>}</code> of <code>main()</code> and after it reproduce the following code to so that the declaration of the <code>bitwiseOperations()</code> actually does something:</p>
-<pre><code class="language-admonish code">
-```c
-
+ <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+ <div class="admonition-title">
+ <div id="admonition-code-5-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+ </div>
+ <div>
+<pre><code class="language-c">
 void bitwiseOperations(int a, int b) {
     // AND operation
     int andResult = a &amp; b;
@@ -271,35 +314,62 @@ void bitwiseOperations(int a, int b) {
     int negationB = ~b;
     printf("Negation result: ~%d = %d, ~%d = %d\n", a, negationA, b, negationB);
 }
-```
 </code></pre>
-<pre><code class="language-admonish example title=&#39;Explanation of Code&#39;">
-- Bitwise AND (`&amp;`):
-    - `int andResult = a &amp; b;` performs a bitwise AND operation between corresponding bits of integers `a` and `b`.
-    - `printf("AND result: %d &amp; %d = %d\n", a, b, andResult);` prints the result using the `%d` format specifier in the `printf` statement.
-
-- Bitwise OR (`|`):
-    - `int orResult = a | b;` performs a bitwise OR operation between corresponding bits of integers `a` and `b`.
-    - `printf("OR result: %d | %d = %d\n", a, b, orResult);` prints the result using the `%d` format specifier in the `printf` statement.
-
-- Bitwise XOR (`^`):
-    - `int xorResult = a ^ b;` performs a bitwise XOR operation between corresponding bits of integers `a` and `b`.
-    - `printf("XOR result: %d ^ %d = %d\n", a, b, xorResult);` prints the result using the `%d` format specifier in the `printf` statement.
-
-- Bitwise Negation (`~`):
-    - `int negationA = ~a;` and `int negationB = ~b;` perform bitwise negation operations on integers `a` and `b`, respectively.
-    - `printf("Negation result: ~%d = %d, ~%d = %d\n", a, negationA, b, negationB);` prints the negation results using the `%d` format specifier in the `printf` statement.
-
-
-These `printf` statements help visualize and understand the results of each bitwise operation by displaying the values of the operands and their outcomes. The `%d` format specifier is used to print integers in the output.
-
-</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-of-code" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-of-code-title">
+<p>Explanation of Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-of-code"></a>
+ </div>
+ <div>
+<ul>
+<li>
+<p>Bitwise AND (<code>&amp;</code>):</p>
+<ul>
+<li><code>int andResult = a &amp; b;</code> performs a bitwise AND operation between corresponding bits of integers <code>a</code> and <code>b</code>.</li>
+<li><code>printf("AND result: %d &amp; %d = %d\n", a, b, andResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
+</ul>
+</li>
+<li>
+<p>Bitwise OR (<code>|</code>):</p>
+<ul>
+<li><code>int orResult = a | b;</code> performs a bitwise OR operation between corresponding bits of integers <code>a</code> and <code>b</code>.</li>
+<li><code>printf("OR result: %d | %d = %d\n", a, b, orResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
+</ul>
+</li>
+<li>
+<p>Bitwise XOR (<code>^</code>):</p>
+<ul>
+<li><code>int xorResult = a ^ b;</code> performs a bitwise XOR operation between corresponding bits of integers <code>a</code> and <code>b</code>.</li>
+<li><code>printf("XOR result: %d ^ %d = %d\n", a, b, xorResult);</code> prints the result using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
+</ul>
+</li>
+<li>
+<p>Bitwise Negation (<code>~</code>):</p>
+<ul>
+<li><code>int negationA = ~a;</code> and <code>int negationB = ~b;</code> perform bitwise negation operations on integers <code>a</code> and <code>b</code>, respectively.</li>
+<li><code>printf("Negation result: ~%d = %d, ~%d = %d\n", a, negationA, b, negationB);</code> prints the negation results using the <code>%d</code> format specifier in the <code>printf</code> statement.</li>
+</ul>
+</li>
+</ul>
+<p>These <code>printf</code> statements help visualize and understand the results of each bitwise operation by displaying the values of the operands and their outcomes. The <code>%d</code> format specifier is used to print integers in the output.</p>
+ </div>
+ </div>
 </li>
 <li>
 <p>Modify <code>main()</code> to look like this:</p>
-<pre><code class="language-admonish code">
-```c
-int main() {
+ <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+ <div class="admonition-title">
+ <div id="admonition-code-6-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+ </div>
+ <div>
+<pre><code class="language-c">int main() {
     // Example values for demonstration
     int value1 = 15;
     int value2 = 7;
@@ -309,33 +379,58 @@ int main() {
 
     return 0;
 }
-```
-
 </code></pre>
-<pre><code class="language-admonish example title=&#39;Explanation of Code&#39;">
-The `main` function serves as the entry point of the program. It is the function that is automatically called when the program is executed. Let's break down its components:
-
-- **Example Values:**
-    - `int value1 = 15;` and `int value2 = 7;` declare two integer variables (`value1` and `value2`) and assign them example values. These values are chosen for demonstration purposes and will be used as operands in the bitwise operations.
-
-- **Function Call:**
-    the example values `value1` and `value2` as arguments. This initiates the execution of the bitwise operations on these values.
-
-- **Print Statement:**
-    - `printf("Bitwise operations demonstration:\n");` prints a message to the console indicating that the program is demonstrating bitwise operations. This provides a clear context for the output that follows.
-
-- **Return Statement:**
-    - `return 0;` signifies the successful completion of the program. In C, a return value of 0 conventionally indicates that the program executed without errors.
-
-</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-of-code-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-of-code-1-title">
+<p>Explanation of Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-of-code-1"></a>
+ </div>
+ <div>
+<p>The <code>main</code> function serves as the entry point of the program. It is the function that is automatically called when the program is executed. Let's break down its components:</p>
+<ul>
+<li>
+<p><strong>Example Values:</strong></p>
+<ul>
+<li><code>int value1 = 15;</code> and <code>int value2 = 7;</code> declare two integer variables (<code>value1</code> and <code>value2</code>) and assign them example values. These values are chosen for demonstration purposes and will be used as operands in the bitwise operations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Function Call:</strong>
+the example values <code>value1</code> and <code>value2</code> as arguments. This initiates the execution of the bitwise operations on these values.</p>
+</li>
+<li>
+<p><strong>Print Statement:</strong></p>
+<ul>
+<li><code>printf("Bitwise operations demonstration:\n");</code> prints a message to the console indicating that the program is demonstrating bitwise operations. This provides a clear context for the output that follows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Return Statement:</strong></p>
+<ul>
+<li><code>return 0;</code> signifies the successful completion of the program. In C, a return value of 0 conventionally indicates that the program executed without errors.</li>
+</ul>
+</li>
+</ul>
+ </div>
+ </div>
 </li>
 <li>
 <p>Run the program and predict the outputs:</p>
-<pre><code class="language-admonish output collapsible=true">
-
-![](./figures/step2.png)
-
-</code></pre>
+<details id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<summary class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</summary>
+<div>
+<p><img src="./figures/step2.png" alt="" /></p>
+</div>
+</details>
 </li>
 </ol>
 <hr />
@@ -347,34 +442,52 @@ The `main` function serves as the entry point of the program. It is the function
 </li>
 <li>
 <p>Add more bitwise operations to the <code>bitwiseOperations</code> function. For example, introduce left shift (<code>&lt;&lt;</code>) and right shift (<code>&gt;&gt;</code>) operations. Explain their purpose and demonstrate their usage.</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Sample Code... [6 lines]&#39;">
-```c
-// Left shift operation
+ <details id="admonition-sample-code-6-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-sample-code-6-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-sample-code-6-lines-title">
+<p>Sample Code... [6 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-sample-code-6-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">// Left shift operation
 int leftShiftResult = a &lt;&lt; 1;
 printf("Left Shift result: %d &lt;&lt; 1 = %d\n", a, leftShiftResult);
 
 // Right shift operation
 int rightShiftResult = b &gt;&gt; 1;
 printf("Right Shift result: %d &gt;&gt; 1 = %d\n", b, rightShiftResult);
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Modify the <code>printf</code> statements to display the results in hexadecimal format using <code>%x</code> format specifier. This will introduce you to the hexadecimal representation of numbers.</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Sample Code... [2 lines]&#39;">
-```c
-printf("AND result: %d &amp; %d = %x\n", a, b, andResult);
+ <details id="admonition-sample-code-2-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-sample-code-2-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-sample-code-2-lines-title">
+<p>Sample Code... [2 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-sample-code-2-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">printf("AND result: %d &amp; %d = %x\n", a, b, andResult);
 // Repeat for other operations
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Experiment with bit manipulation techniques. For example, check if a specific bit is set or unset, and set or clear a particular bit.</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Sample Code... [9 lines]&#39;">
-```c
-// Check if the 3rd bit is set in a
+<details id="admonition-sample-code-9-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-sample-code-9-lines-title">
+<summary class="admonition-title">
+<div id="admonition-sample-code-9-lines-title">
+<p>Sample Code... [9 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-sample-code-9-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">// Check if the 3rd bit is set in a
 if ((a &amp; (1 &lt;&lt; 2)) != 0) {
     printf("3rd bit is set in %d\n", a);
 } else {
@@ -384,10 +497,9 @@ if ((a &amp; (1 &lt;&lt; 2)) != 0) {
 // Set the 4th bit in b
 b = b | (1 &lt;&lt; 3);
 printf("After setting 4th bit: %d\n", b);
-```
-
 </code></pre>
-</li>
+</div>
+</details></li>
 </ol>
 
                     </main>

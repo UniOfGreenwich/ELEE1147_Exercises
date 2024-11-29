@@ -184,17 +184,23 @@ subtraction, multiplication, and division). Each operation should be in its own 
 </li>
 <li>
 <p>Next create a Guard for the new header file:</p>
-<pre><code class="language-admonish code">
-```h
-#pragma once
+ <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+ <div class="admonition-title">
+ <div id="admonition-code-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code"></a>
+ </div>
+ <div>
+<pre><code class="language-h">#pragma once
 
 #ifndef MYMATHS_H
 #define MYMATHS_H
 
 #endif
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Now we are ready to place declare for reference various arithemtic functions. Add the following functions where the parameters are <code>floats</code>:</p>
@@ -205,9 +211,15 @@ subtraction, multiplication, and division). Each operation should be in its own 
 <li>divide</li>
 <li>square <p></p></li>
 </ul>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [13 lines]&#39;">
-```h
-#pragma once
+ <details id="admonition-code-a-solution-13-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-13-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-a-solution-13-lines-title">
+<p>Code: A solution... [13 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-a-solution-13-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-h">#pragma once
 
 #ifndef MYMATHS_H
 #define MYMATHS_H
@@ -221,21 +233,27 @@ float divide(float a, float b);
 float square(float a);
 
 #endif // End of Guard
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>To provide the actual code for each of these prototype functions in <code>MyMaths.h</code>, modify the  <code>MyMaths.c</code> file.</p>
 </li>
 <li>
 <p>Modify the content on <code>MyMaths.c</code> so that it <code>includes</code> the <code>MyMaths.h</code> file:</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [1 line]&#39;">
-```c
-#include "MyMaths.h"
-```
-
+ <details id="admonition-code-a-solution-1-line" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-1-line-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-a-solution-1-line-title">
+<p>Code: A solution... [1 line]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-a-solution-1-line"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include "MyMaths.h"
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Now start to build out the functionality of each of the arthimetic functions you declared in the <code>MyMaths.h</code> file:</p>
@@ -246,9 +264,15 @@ float square(float a);
 <li>divide</li>
 <li>square <p></p></li>
 </ul>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [26 lines]&#39;">
-```c
-#include "MyMaths.h"
+ <details id="admonition-code-a-solution-26-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-26-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-a-solution-26-lines-title">
+<p>Code: A solution... [26 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-a-solution-26-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include "MyMaths.h"
 
 float add(float a, float b)
 {
@@ -275,44 +299,62 @@ float square(float a)
 {
     return a*a;
 }
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Go back to <code>main.c</code> and modify the contents so that it <code>includes</code> <code>MyMaths.h</code> and remove the code in side the <code>main()</code> block (keeping the <code>return 0;</code>), do this now:</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [6 lines]&#39;">
-```c
-#include "MyMaths.h"
+ <details id="admonition-code-a-solution-6-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-6-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-a-solution-6-lines-title">
+<p>Code: A solution... [6 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-a-solution-6-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include "MyMaths.h"
 
 int main()
 {
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Declare two <code>float</code>s as <code>num1</code> and <code>num2</code> initialising them with the value <code>0.0f</code> inside of <code>main()</code>:</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [5 lines]&#39;">
-```c
-int main(){
+ <details id="admonition-code-a-solution-5-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-5-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-a-solution-5-lines-title">
+<p>Code: A solution... [5 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-a-solution-5-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">int main(){
 
     float num1 = 0.0f, num2 = 0.0f;
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Using <code>printf</code>, request the user to enter two numbers, where second number that must be greater than zero. Then using <code>scanf</code> read what the user inputted and assign those two numbers to <code>num1</code> and <code>num2</code>.</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [7 lines]&#39;">
-```c
-int main(){
+<details id="admonition-code-a-solution-7-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-7-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-a-solution-7-lines-title">
+<p>Code: A solution... [7 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-a-solution-7-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">int main(){
 
     float num1 = 0.0f, num2 = 0.0f;
     printf("Enter two numbers, the second number must not be zero: ");
@@ -320,16 +362,22 @@ int main(){
 
     return 0;
 }
-```
-
 </code></pre>
+</div>
+</details>
 </li>
 <li>
 <p>Reproducing the following format perform each of the arithmetic operations on the supplied numbers, you will need to do square twice, one for each number:</p>
 <p><code>printf("&lt;Arithemtic Operation&gt;:     %.2f + %.2f = %.2f\n", num1, num2, arithmeticOpeation(num1, num2));</code></p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [23 lines]&#39;">
-```c
-int main(){
+<details id="admonition-code-a-solution-23-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-23-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-a-solution-23-lines-title">
+<p>Code: A solution... [23 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-a-solution-23-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">int main(){
 
 float num1 = 0.0f, num2 = 0.0f;
 printf("Enter two numbers, the second number must not be zero: ");
@@ -343,19 +391,23 @@ printf("squared:     %.2f * %.2f = %.2f\n", num1, num1, square(num1));
 printf("squared:     %.2f * %.2f = %.2f\n", num2, num2, square(num2));
 
 return 0;
-```
-
 </code></pre>
+</div>
+</details>
 </li>
-<li>
-<pre><code class="language-admonish output">
-&lt;div align=center&gt;
-
-![](./figures/step2.png)
-
-&lt;/div&gt;
-
-</code></pre>
+<li><div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<div class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</div>
+<div>
+<div align=center>
+<p><img src="./figures/step2.png" alt="" /></p>
+</div>
+</div>
+</div>
 </li>
 </ol>
 <hr />
@@ -376,24 +428,37 @@ return 0;
 <ol start="14">
 <li>
 <p>Open <code>TemperatureConversion.h</code> and add the guard for this file.</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [3 lines]&#39;">&lt;details&gt;
-&lt;summary&gt;Possible Solution...&lt;/summary&gt;
-
-```h
-#pragma once
+<details id="admonition-code-a-solution-3-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-3-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-a-solution-3-lines-title">
+<p>Code: A solution... [3 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-a-solution-3-lines"></a>
+</summary>
+<div>
+<pre><code>&lt;details&gt;
+</code></pre>
+<summary>Possible Solution...</summary>
+<pre><code class="language-h">#pragma once
 #ifndef TEMPEATURECONVERSION_H
 #define TEMPEATURECONVERSION_H
 
 #endif
-```
-
 </code></pre>
+</div>
+</details>
 </li>
 <li>
 <p>Inside the block ifndef block define the functions to convert to and from fahrehnhiet, celcius and kelvin, so there should be six functions altogether. The functions should return a <code>float</code> and take only one <code>float</code> as an argument:</p>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [13 lines]&#39;">
-```h
-#pragma once
+<details id="admonition-code-a-solution-13-lines-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-13-lines-1-title">
+<summary class="admonition-title">
+<div id="admonition-code-a-solution-13-lines-1-title">
+<p>Code: A solution... [13 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-a-solution-13-lines-1"></a>
+</summary>
+<div>
+<pre><code class="language-h">#pragma once
 #ifndef TEMPEATURECONVERSION_H
 #define TEMPEATURECONVERSION_H
 
@@ -407,9 +472,9 @@ double kelvinToCelcius(double kel);
 double kelvinToFahrenheit(double kel);
 
 #endif // TEMPEATURECONVERSION_H
-```
-
 </code></pre>
+</div>
+</details>
 </li>
 <li>
 <p>Next build up the <code>TempeatureConversion.c</code> file:</p>
@@ -456,13 +521,26 @@ double kelvinToFahrenheit(double kel);
 </ul>
 </li>
 </ul>
-<pre><code class="language-admonish info">
-Remember that the function are defined in the `TemperatureConversion.h`. 
-
-</code></pre>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [25 lines]&#39;">
-```c
-#include "TemperatureConversion.h"
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
+<p>Remember that the function are defined in the <code>TemperatureConversion.h</code>.</p>
+</div>
+</div>
+<details id="admonition-code-a-solution-25-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-25-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-a-solution-25-lines-title">
+<p>Code: A solution... [25 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-a-solution-25-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">#include "TemperatureConversion.h"
 
 double fahrenheitToCelcius(double fahr) {
     return (5.0 / 9.0) * (fahr - 32.0);
@@ -488,9 +566,9 @@ double kelvinToCelcius(double kel) {
 double kelvinToFahrenheit(double kel) {
     return ((kel - 273.15) * 1.8) + 32.00;
 }
-```
-
 </code></pre>
+</div>
+</details>
 </li>
 <li>
 <p>Navigate to <code>main.c</code> and include the <code>TemperatureConversion.h</code> file underneath <code>#include &lt;stdio.h&gt;</code> line.</p>
@@ -500,21 +578,40 @@ double kelvinToFahrenheit(double kel) {
 </li>
 <li>
 <p>To use our temperature functions, reproduce the following line and then replicate for the other temperature functions. I would suggest starting in the whitespace between <code>int main(){</code> and the <code>/*</code> line:</p>
-<pre><code class="language-admonish code">
-```c
-float num1 = 100.0f;
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
+<pre><code class="language-c">float num1 = 100.0f;
 
 printf("Fahrenheit to Ceclius: %.2fF -&gt; %.2fC \n", num1, fahrenheitToCelcius(num1));
-```
-
 </code></pre>
-<pre><code class="language-admonish info">
-Remember that the functions you have implemented return a double, so the second format specifier , `%.2f` will be the returned value.
-
-</code></pre>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: A solution... [20 lines]&#39;">
-```c
-...
+</div>
+</div>
+<div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+<div class="admonition-title">
+<div id="admonition-info-1-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-1"></a>
+</div>
+<div>
+<p>Remember that the functions you have implemented return a double, so the second format specifier , <code>%.2f</code> will be the returned value.</p>
+</div>
+</div>
+<details id="admonition-code-a-solution-20-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-a-solution-20-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-a-solution-20-lines-title">
+<p>Code: A solution... [20 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-a-solution-20-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">...
 int main(){
     float num1 = 100.0f;
 
@@ -536,13 +633,20 @@ int main(){
     */
     return 0;
 }
-```
-
 </code></pre>
-<pre><code class="language-admonish info">
-The `...` means and rest of the code, that I have ommitted for readibility 
-
-</code></pre>
+</div>
+</details>
+<div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
+<div class="admonition-title">
+<div id="admonition-info-2-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-2"></a>
+</div>
+<div>
+<p>The <code>...</code> means and rest of the code, that I have ommitted for readibility</p>
+</div>
+</div>
 </li>
 <li>
 <p>Run the code and you should see the following output:</p>
@@ -581,17 +685,28 @@ The `...` means and rest of the code, that I have ommitted for readibility
 </ul>
 </li>
 </ul>
-<pre><code class="language-admonish output collapsible=true">
-&lt;div align=center&gt;
-
-![](./figures/step4.png)
-
-&lt;/div&gt;
-
-</code></pre>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: TemperatureConversion.c ... [22 lines]&#39;">
-```c
-...
+<details id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+<summary class="admonition-title">
+<div id="admonition-output-1-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-1"></a>
+</summary>
+<div>
+<div align=center>
+<p><img src="./figures/step4.png" alt="" /></p>
+</div>
+</div>
+</details>
+<details id="admonition-code-temperatureconversionc--22-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-temperatureconversionc--22-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-temperatureconversionc--22-lines-title">
+<p>Code: TemperatureConversion.c ... [22 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-temperatureconversionc--22-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">...
 double fahrenheitToRankine(double fahr) {
     return fahr + 459.67;
 }
@@ -614,12 +729,18 @@ double rankineToCelcius(double ran){
 double rankineToKelvin(double ran){
     return ran * (9 / 5);
 }
-```
-
 </code></pre>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: TemperatureConversion.h ... [5 lines]&#39;">
-```h
-...
+</div>
+</details>
+<details id="admonition-code-temperatureconversionh--5-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-temperatureconversionh--5-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-temperatureconversionh--5-lines-title">
+<p>Code: TemperatureConversion.h ... [5 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-temperatureconversionh--5-lines"></a>
+</summary>
+<div>
+<pre><code class="language-h">...
 double fahrenheitToRankine(double fahr);
 double celciusToRankine(double cel);
 
@@ -628,12 +749,18 @@ double kelvinToRankine(double kel);
 double rankineToFahrenheit(double ran) ;
 double rankineToCelcius(double ran);
 double rankineToKelvin(double ran);
-```
-
 </code></pre>
-<pre><code class="language-admonish code collapsible=true title=&#39;Code: ArithmeticOperations.c ... [13 lines]&#39;">
-```c
-... 
+</div>
+</details>
+<details id="admonition-code-arithmeticoperationsc--13-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-arithmeticoperationsc--13-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-arithmeticoperationsc--13-lines-title">
+<p>Code: ArithmeticOperations.c ... [13 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-arithmeticoperationsc--13-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">... 
 printf("Fahrenheit to Rankine: %.2fF -&gt; %.2fR \n", num1, fahrenheitToRankine(num1));
 ...
 printf("Ceclius to Rankine: %.2fC -&gt; %.2fR \n", num1, celciusToRankine(num1))
@@ -645,9 +772,9 @@ printf("Rankine to Farhenheit: %.2fR -&gt; %.2fF \n", num1, rankineToFahrenheit(
 printf("Rankine to Ceclius: %.2fR -&gt; %.2fC \n", num1, rankineToCelcius(num1));
 
 printf("Rankine to Kelvin: %.2fR -&gt; %.2fK \n", num1, rankineToKelvin(num1));
-```
-
 </code></pre>
+</div>
+</details>
 </li>
 </ol>
 

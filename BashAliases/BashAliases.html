@@ -228,17 +228,29 @@ v
 <hr />
 <h2 id="editing-your-bashrc"><a class="header" href="#editing-your-bashrc">Editing your <code>.bashrc</code></a></h2>
 <p>From your current location which should be <code>~</code> or <code>g//</code> in:</p>
-<pre><code class="language-admonish terminal">
-```
-$ vim ~/.bashrc
-```
-
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code>$ vim ~/.bashrc
 </code></pre>
+</div>
+</div>
 <p>This should load an empty file with the text editor <strong>vim</strong> called <code>.bashrc</code> in the home directory denoted by the <code>~</code>. The <code>.</code> means it is a hidden file.</p>
 <p>Inside the file file remember to presse <code>i</code> on keyboard to enter <strong>INSERT</strong> mode, and reproduce the following:</p>
-<pre><code class="language-admonish code">
-```sh
-alias ga='git add'
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-sh">alias ga='git add'
 alias gaa='git add .'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
@@ -247,19 +259,25 @@ alias gfa='git fetch -va'
 alias gpl='git pull'
 alias glg='git log --graph --oneline --decorate --all'
 alias Git='cd ~//Documents//GitHub//'
-```
-
 </code></pre>
+</div>
+</div>
 <p>Would look similar to below:</p>
 <p><img src="editedFile.png" alt="" /></p>
 <p>Remember to write and quit using first the escape key to exit <strong>INSERT</strong> mode to enter <strong>COMMAND</strong> mode and press the <code>:</code> and type <code>wq</code> to write and quit.</p>
 <p>Now that you have your .bashrc file you need to get the current instant of the shell to recongnise it.</p>
-<pre><code class="language-admonish terminal">
-```sh
-$ source ~/.bashrc
-```
-
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ source ~/.bashrc
 </code></pre>
+</div>
+</div>
 <p>You should now be able to use any of the aliases instead of typing out the full commands.</p>
 
                     </main>

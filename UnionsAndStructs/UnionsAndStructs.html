@@ -170,21 +170,33 @@
                     <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <h1 id="lab-7-unions-and-structs"><a class="header" href="#lab-7-unions-and-structs">Lab 7: Unions and Structs</a></h1>
 <ul>
-<li>You need to open a new Visual Studio Code, give it a meaningful name.</li>
-<li>Create a new file called <code>unionsandstructs.exe</code></li>
-<li>modify the contents to look like this:</li>
 <li>
-<pre><code class="language-admonish code">```c
-#include &lt;stdio.h&gt;
+<p>You need to open a new Visual Studio Code, give it a meaningful name.</p>
+</li>
+<li>
+<p>Create a new file called <code>unionsandstructs.exe</code></p>
+</li>
+<li>
+<p>modify the contents to look like this:</p>
+</li>
+<li><div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(){
 
 
-    return 0;
+ return 0;
 }
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 </ul>
 <h2 id="exercise-1-structs"><a class="header" href="#exercise-1-structs">Exercise 1: Structs</a></h2>
@@ -204,16 +216,27 @@ int main(){
 <li>
 <p>In the main function, create an instance of the <code>Person</code> <code>struct</code>,populate its attributes with your name, age and height, and use the <code>printPerson</code> function to display the details.</p>
 </li>
-<li>
-<pre><code class="language-admonish output">
-![](./figures/step1.PNG)
-
-</code></pre>
+<li><div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<div class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</div>
+<div>
+<p><img src="./figures/step1.PNG" alt="" /></p>
+</div>
+</div>
 </li>
-<li>
-<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [29 lines]&#39;">
-```c
-#include &lt;stdio.h&gt;
+<li> <details id="admonition-suppressed-code-29-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-29-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-suppressed-code-29-lines-title">
+<p>Suppressed Code... [29 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-suppressed-code-29-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 /**
 * @struct Person
@@ -243,9 +266,9 @@ int main() {
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 </ol>
 <hr />
@@ -267,16 +290,27 @@ int main() {
 <li>
 <p>In the main function, create an instance of the <code>Data</code> <code>union</code>, assign values to different members, and use the <code>printData</code> function to display the values.</p>
 </li>
-<li>
-<pre><code class="language-admonish output">
- ![](./figures/step2.PNG)
-
-</code></pre>
+<li><div id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+<div class="admonition-title">
+<div id="admonition-output-1-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-1"></a>
+</div>
+<div>
+<p><img src="./figures/step2.PNG" alt="" /></p>
+</div>
+</div>
 </li>
-<li>
-<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [32 lines]&#39;">
-```c
-#include &lt;stdio.h&gt;
+<li> <details id="admonition-suppressed-code-32-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-32-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-suppressed-code-32-lines-title">
+<p>Suppressed Code... [32 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-suppressed-code-32-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 /**
 * @union Data
@@ -309,9 +343,9 @@ int main() {
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 </ol>
 <hr />
@@ -340,9 +374,15 @@ int main() {
 </li>
 <li>
 <p>Reproduce the following code to assign <code>person.age</code> and <code>data.integerData</code> and <code>data.floatData</code>:</p>
-<pre><code class="language-admonish code">
-```c
-...
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code class="language-c">...
  // Accessing struct members
 person.age = 25;
 printf("Struct Member - Age: %d\n", person.age);
@@ -354,100 +394,136 @@ printf("Union Member - Integer Data: %d\n", data.integerData);
 // Modify union member and access another member
 data.floatData = 3.14;
 printf("Union Member - Float Data: %.2f\n", data.floatData);
-```
-
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Now we are going to compare the size of the <code>struct</code> and the <code>union</code>, reproduce the following after last <code>printf(...)</code> line:</p>
-<pre><code class="language-admonish code">
-```c
-...
+ <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+ <div class="admonition-title">
+ <div id="admonition-code-2-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+ </div>
+ <div>
+<pre><code class="language-c">...
 // Demonstrate the size difference between struct and union
 printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
 printf("Size of Union (Data): %lu bytes\n", sizeof(union Data));
-```
-
 </code></pre>
+ </div>
+ </div>
+</li>
+<li><div id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+<div class="admonition-title">
+<div id="admonition-output-2-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-2"></a>
+</div>
+<div>
+<p><img src="./figures/step3.PNG" alt="" /></p>
+</div>
+</div>
+</li>
+<li><details id="admonition-suppressed-code-48-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-48-lines-title">
+<summary class="admonition-title">
+<div id="admonition-suppressed-code-48-lines-title">
+<p>Suppressed Code... [48 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-suppressed-code-48-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+/**
+    * @struct Person
+    * @brief Represents personal information about a person.
+    */
+struct Person {
+    char name[50]; ///&lt; Name of the person.
+    int age;       ///&lt; Age of the person.
+    float height;  ///&lt; Height of the person.
+};
+
+/**
+    * @union Data
+    * @brief Represents different types of data (integer, float, char).
+    */
+union Data {
+    int integerData; ///&lt; Integer data.
+    float floatData; ///&lt; Float data.
+    char charData;   ///&lt; Character data.
+};
+
+/**
+    * @brief Main function where the program starts execution.
+    * @return 0 on successful execution.
+    */
+int main() {
+    // Create an instance of the struct and union
+    struct Person person;
+    union Data data;
+
+    // Accessing struct members
+    person.age = 25;
+    printf("Struct Member - Age: %d\n", person.age);
+
+    // Accessing union members
+    data.integerData = 42;
+    printf("Union Member - Integer Data: %d\n", data.integerData);
+
+    // Modify union member and access another member
+    data.floatData = 3.14;
+    printf("Union Member - Float Data: %.2f\n", data.floatData);
+
+    // Demonstrate the size difference between struct and union
+    printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
+    printf("Size of Union (Data): %llu bytes\n", sizeof(union Data));
+
+    return 0;
+}
+</code></pre>
+</div>
+</details>
+ <div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+ <div class="admonition-title">
+ <div id="admonition-info-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info"></a>
+ </div>
+ <div>
+<ul>
+<li>
+<p>A <code>struct Person</code> is defined with attributes representing personal information.</p>
 </li>
 <li>
-<pre><code class="language-admonish output">
-![](./figures/step3.PNG)
-
-</code></pre>
+<p>A <code>union Data</code> is defined with three members: <code>integerData</code>, <code>floatData</code>, and <code>charData</code>.</p>
 </li>
 <li>
-<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [48 lines]&#39;">
- ```c
- #include &lt;stdio.h&gt;
-
- /**
-     * @struct Person
-     * @brief Represents personal information about a person.
-     */
- struct Person {
-     char name[50]; ///&lt; Name of the person.
-     int age;       ///&lt; Age of the person.
-     float height;  ///&lt; Height of the person.
- };
-
- /**
-     * @union Data
-     * @brief Represents different types of data (integer, float, char).
-     */
- union Data {
-     int integerData; ///&lt; Integer data.
-     float floatData; ///&lt; Float data.
-     char charData;   ///&lt; Character data.
- };
-
- /**
-     * @brief Main function where the program starts execution.
-     * @return 0 on successful execution.
-     */
- int main() {
-     // Create an instance of the struct and union
-     struct Person person;
-     union Data data;
-
-     // Accessing struct members
-     person.age = 25;
-     printf("Struct Member - Age: %d\n", person.age);
-
-     // Accessing union members
-     data.integerData = 42;
-     printf("Union Member - Integer Data: %d\n", data.integerData);
-
-     // Modify union member and access another member
-     data.floatData = 3.14;
-     printf("Union Member - Float Data: %.2f\n", data.floatData);
-
-     // Demonstrate the size difference between struct and union
-     printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
-     printf("Size of Union (Data): %llu bytes\n", sizeof(union Data));
-
-     return 0;
- }
- ```
-
-</code></pre>
-<pre><code class="language-admonish info">
-- A `struct Person` is defined with attributes representing personal information.
-
-- A `union Data` is defined with three members: `integerData`, `floatData`, and `charData`.
-
-- In the `main` function, an instance of both the `struct` and the `union` is created.
-
-- The program demonstrates how to access and modify members of the `struct` and the `union`.
-
-- It prints the size of the `struct` and `union` to highlight the memory usage difference.
-
-- This exercise illustrates the key differences between `structs` and `unions`:
-
-- `Struct`: Each member has its own memory space, and the size of the `struct` is the sum of the sizes of its members.
-- `Union`: All members share the same memory space, and the size of the `union` is determined by the largest member.
-
-</code></pre>
+<p>In the <code>main</code> function, an instance of both the <code>struct</code> and the <code>union</code> is created.</p>
+</li>
+<li>
+<p>The program demonstrates how to access and modify members of the <code>struct</code> and the <code>union</code>.</p>
+</li>
+<li>
+<p>It prints the size of the <code>struct</code> and <code>union</code> to highlight the memory usage difference.</p>
+</li>
+<li>
+<p>This exercise illustrates the key differences between <code>structs</code> and <code>unions</code>:</p>
+</li>
+<li>
+<p><code>Struct</code>: Each member has its own memory space, and the size of the <code>struct</code> is the sum of the sizes of its members.</p>
+</li>
+<li>
+<p><code>Union</code>: All members share the same memory space, and the size of the <code>union</code> is determined by the largest member.</p>
+</li>
+</ul>
+ </div>
+ </div>
 </li>
 </ol>
 <hr />
@@ -468,16 +544,27 @@ printf("Size of Union (Data): %lu bytes\n", sizeof(union Data));
 <li>
 <p>In the main function, create an instance of the <code>Employee</code> <code>struct</code>, populate its attributes, and use the <code>printEmployee</code> function to display the details.</p>
 </li>
-<li>
-<pre><code class="language-admonish output">
-![](./figures/step4.PNG)
-
-</code></pre>
+<li><div id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+<div class="admonition-title">
+<div id="admonition-output-3-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-3"></a>
+</div>
+<div>
+<p><img src="./figures/step4.PNG" alt="" /></p>
+</div>
+</div>
 </li>
-<li>
-<pre><code class="language-admonish code collapsible=true title=&#39;Suppressed Code... [75 lines]&#39;">
-```c
-#include &lt;stdio.h&gt;
+<li> <details id="admonition-suppressed-code-75-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-75-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-suppressed-code-75-lines-title">
+<p>Suppressed Code... [75 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-suppressed-code-75-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 /**
 * @struct Person
@@ -553,20 +640,34 @@ int main() {
 
     return 0;
 }
-```
-
 </code></pre>
+ </div>
+ </details>
 </li>
 </ol>
 <h2 id="additional-challenges"><a class="header" href="#additional-challenges">Additional Challenges:</a></h2>
-<pre><code class="language-admonish tip title=&#39;Challenge 1&#39;">
-Modify the `Person` `struct` to include an array of hobbies. Update the relevant functions and demonstrate the changes in the `main` function.
-
-</code></pre>
-<pre><code class="language-admonish tip title=&#39;Challenge 2&#39;">
-Extend the `Data` `union` to include an array of integers. Modify the `printData` function to handle this new data type.
-
-</code></pre>
+<div id="admonition-challenge-1" class="admonition admonish-tip" role="note" aria-labelledby="admonition-challenge-1-title">
+<div class="admonition-title">
+<div id="admonition-challenge-1-title">
+<p>Challenge 1</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-challenge-1"></a>
+</div>
+<div>
+<p>Modify the <code>Person</code> <code>struct</code> to include an array of hobbies. Update the relevant functions and demonstrate the changes in the <code>main</code> function.</p>
+</div>
+</div>
+<div id="admonition-challenge-2" class="admonition admonish-tip" role="note" aria-labelledby="admonition-challenge-2-title">
+<div class="admonition-title">
+<div id="admonition-challenge-2-title">
+<p>Challenge 2</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-challenge-2"></a>
+</div>
+<div>
+<p>Extend the <code>Data</code> <code>union</code> to include an array of integers. Modify the <code>printData</code> function to handle this new data type.</p>
+</div>
+</div>
 <hr />
 <hr />
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion:</a></h2>
