@@ -1,0 +1,983 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Object Orientated Programming - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/src/Learning_Python/OOP.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="python-object-oriented-programming-oop"><a class="header" href="#python-object-oriented-programming-oop">Python Object-Oriented Programming (OOP)</a></h1>
+<h2 id="exercise-instructions-creating-and-running-files"><a class="header" href="#exercise-instructions-creating-and-running-files">Exercise Instructions: Creating and Running Files</a></h2>
+<p>Each exercise includes steps on saving the code in separate files, organizing code within <code>main()</code> functions, and running each file.</p>
+<hr />
+<h2 id="part-1-basic-classes-and-instances"><a class="header" href="#part-1-basic-classes-and-instances">Part 1: Basic Classes and Instances</a></h2>
+<h3 id="exercise-1-creating-a-simple-class"><a class="header" href="#exercise-1-creating-a-simple-class">Exercise 1: Creating a Simple Class</a></h3>
+<ol>
+<li>
+<p><strong>Create a Python file</strong> named <code>animal.py</code>.</p>
+</li>
+<li>
+<p>Define a class <code>Animal</code> with attributes: <code>name</code>, <code>species</code>, and <code>diet</code>.</p>
+</li>
+<li>
+<p>Add an <code>__init__</code> method and a <code>describe()</code> method to describe the animal.</p>
+</li>
+<li>
+<p><strong>Add a <code>main()</code> function</strong> at the bottom to create an instance of <code>Animal</code> and call <code>describe()</code>.</p>
+</li>
+<li>
+<p><strong>Run the file</strong> by opening a terminal in the directory where <code>animal.py</code> is saved, and execute:</p>
+<pre><code class="language-admonial terminal">```bash
+python animal.py
+```
+</code></pre>
+</li>
+<li> <details id="admonition-supressed-code-animalpy--14-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-supressed-code-animalpy--14-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-supressed-code-animalpy--14-lines-title">
+<p>Supressed code: animal.py .. [14 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-supressed-code-animalpy--14-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-python">class Animal:
+    def __init__(self, name, species, diet):
+        self.name = name
+        self.species = species
+        self.diet = diet
+
+    def describe(self):
+        print(f"{self.name} is a {self.species} and is a {self.diet}.")
+
+def main():
+    lion = Animal("Lion", "Panthera leo", "carnivore")
+    lion.describe()
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="part-2-creating-a-module-with-multiple-classes-and-data-structures"><a class="header" href="#part-2-creating-a-module-with-multiple-classes-and-data-structures">Part 2: Creating a Module with Multiple Classes and Data Structures</a></h2>
+<h3 id="exercise-2-building-an-animal-module"><a class="header" href="#exercise-2-building-an-animal-module">Exercise 2: Building an Animal Module</a></h3>
+<ol>
+<li><strong>Create a Python file</strong> named <code>zoo_module.py</code>.</li>
+<li>Define two classes, <code>Animal</code> and <code>Zoo</code>, within this file.</li>
+</ol>
+<h3 id="instructions"><a class="header" href="#instructions">Instructions:</a></h3>
+<ol>
+<li>
+<p>In <code>zoo_module.py</code>, initialize <code>Zoo</code> with a <code>name</code> attribute and an empty list <code>animals</code>.</p>
+</li>
+<li>
+<p>Write methods to <strong>add an animal</strong>, <strong>list animals</strong>, and <strong>find an animal by name</strong>.</p>
+</li>
+<li>
+<p>Add a <code>main()</code> function at the bottom to demonstrate creating <code>Zoo</code> and <code>Animal</code> instances and calling the methods.</p>
+</li>
+<li>
+<p><strong>Run the file</strong> by opening a terminal and executing:</p>
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code class="language-bash">python zoo_module.py
+</code></pre>
+</div>
+</div>
+</li>
+<li> <details id="admonition-supressed-code-zoo_modulepy--38-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-supressed-code-zoo_modulepy--38-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-supressed-code-zoo_modulepy--38-lines-title">
+<p>Supressed code: zoo_module.py .. [38 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-supressed-code-zoo_modulepy--38-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-python">class Animal:
+    def __init__(self, name, species, diet):
+        self.name = name
+        self.species = species
+        self.diet = diet
+
+    def describe(self):
+        return f"{self.name} is a {self.species} and is a {self.diet}."
+
+class Zoo:
+    def __init__(self, name):
+        self.name = name
+        self.animals = []
+
+    def add_animal(self, animal):
+        self.animals.append(animal)
+
+    def list_animals(self):
+        for animal in self.animals:
+            print(animal.describe())
+
+    def find_animal(self, name):
+        for animal in self.animals:
+            if animal.name == name:
+                print(animal.describe())
+                return animal
+        print(f"{name} not found in the zoo.")
+
+def main():
+    city_zoo = Zoo("City Zoo")
+    lion = Animal("Lion", "Panthera leo", "carnivore")
+    giraffe = Animal("Giraffe", "Giraffa", "herbivore")
+    city_zoo.add_animal(lion)
+    city_zoo.add_animal(giraffe)
+    city_zoo.list_animals()
+    city_zoo.find_animal("Lion")
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="part-3-inheritance-and-method-overriding"><a class="header" href="#part-3-inheritance-and-method-overriding">Part 3: Inheritance and Method Overriding</a></h2>
+<h3 id="exercise-3-specialized-animal-classes"><a class="header" href="#exercise-3-specialized-animal-classes">Exercise 3: Specialized Animal Classes</a></h3>
+<ol>
+<li><strong>Create a Python file</strong> called <code>specialized_animals.py</code>.</li>
+<li>Define <code>Animal</code>, <code>Mammal</code>, and <code>Bird</code> classes in this file.</li>
+</ol>
+<h3 id="instructions-1"><a class="header" href="#instructions-1">Instructions:</a></h3>
+<ol>
+<li>
+<p>In <code>specialized_animals.py</code>, initialize <code>Mammal</code> and <code>Bird</code> classes with their unique attributes (e.g., <code>can_swim</code>, <code>can_fly</code>).</p>
+</li>
+<li>
+<p>Override the <code>describe()</code> method in both subclasses.</p>
+</li>
+<li>
+<p>Write a <code>main()</code> function to demonstrate creating instances and calling <code>describe()</code> for both <code>Mammal</code> and <code>Bird</code>.</p>
+</li>
+<li>
+<p><strong>Run the file</strong> by executing:</p>
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code class="language-bash">python specialized_animals.py
+</code></pre>
+</div>
+</div>
+</li>
+<li> <details id="admonition-supressed-code-specialised_animalspy--34-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-supressed-code-specialised_animalspy--34-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-supressed-code-specialised_animalspy--34-lines-title">
+<p>Supressed code: specialised_animals.py .. [34 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-supressed-code-specialised_animalspy--34-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-python">class Animal:
+    def __init__(self, name, species, diet):
+        self.name = name
+        self.species = species
+        self.diet = diet
+
+    def describe(self):
+        print(f"{self.name} is a {self.species} and is a {self.diet}.")
+
+class Mammal(Animal):
+    def __init__(self, name, species, diet, can_swim):
+        super().__init__(name, species, diet)
+        self.can_swim = can_swim
+
+    def describe(self):
+        swim_ability = "Yes" if self.can_swim else "No"
+        print(f"{self.name} is a {self.species} and is a {self.diet}. Can it swim? {swim_ability}")
+
+class Bird(Animal):
+    def __init__(self, name, species, diet, can_fly):
+        super().__init__(name, species, diet)
+        self.can_fly = can_fly
+
+    def describe(self):
+        fly_ability = "Yes" if self.can_fly else "No"
+        print(f"{self.name} is a {self.species} and is a {self.diet}. Can it fly? {fly_ability}")
+
+def main():
+    elephant = Mammal("Elephant", "Loxodonta", "herbivore", can_swim=False)
+    eagle = Bird("Eagle", "Aquila", "carnivore", can_fly=True)
+    elephant.describe()
+    eagle.describe()
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<hr />
+<h2 id="creating-a-university-module-management-system"><a class="header" href="#creating-a-university-module-management-system">Creating a University Module Management System</a></h2>
+<h3 id="objective"><a class="header" href="#objective">Objective</a></h3>
+<p>Create a modularised system to manage university Modules, instructors, and students. This exercise will help you build interconnected classes and organize them into modules.</p>
+<hr />
+<h3 id="instructions-2"><a class="header" href="#instructions-2">Instructions</a></h3>
+<ol>
+<li>
+<p><strong>Create a new folder</strong> called <code>university_management</code> to store your files for this project.</p>
+</li>
+<li>
+<p>Inside this folder, <strong>create three Python files</strong>:</p>
+<ul>
+<li><code>module.py</code>: For the <code>Module</code> class</li>
+<li><code>student.py</code>: For the <code>Student</code> class</li>
+<li><code>instructor.py</code>: For the <code>Instructor</code> class</li>
+</ul>
+</li>
+</ol>
+<h3 id="class-descriptions"><a class="header" href="#class-descriptions">Class Descriptions</a></h3>
+<ul>
+<li>
+<p><strong>module Class</strong> (in <code>module.py</code>)</p>
+<ul>
+<li><strong>Attributes</strong>:
+<ul>
+<li><code>module_name</code>: Name of the module</li>
+<li><code>module_code</code>: Unique identifier for the module</li>
+<li><code>instructor</code>: Assigned instructor (use an instance of <code>Instructor</code>)</li>
+<li><code>students</code>: A list to hold instances of enrolled <code>Student</code> objects</li>
+</ul>
+</li>
+<li><strong>Methods</strong>:
+<ul>
+<li><code>add_student(student)</code>: Adds a <code>Student</code> instance to the module.</li>
+<li><code>list_students()</code>: Lists all students enrolled in the module.</li>
+<li><code>get_module_info()</code>: Returns module details including instructor name.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Student Class</strong> (in <code>student.py</code>)</p>
+<ul>
+<li><strong>Attributes</strong>:
+<ul>
+<li><code>student_name</code>: Name of the student</li>
+<li><code>student_id</code>: Unique identifier for the student</li>
+<li><code>Module</code>: A list to hold enrolled Module</li>
+</ul>
+</li>
+<li><strong>Methods</strong>:
+<ul>
+<li><code>enroll(module)</code>: Adds a <code>module</code> instance to the student's module list.</li>
+<li><code>list_Module()</code>: Lists all Module the student is enrolled in.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Instructor Class</strong> (in <code>instructor.py</code>)</p>
+<ul>
+<li><strong>Attributes</strong>:
+<ul>
+<li><code>instructor_name</code>: Name of the instructor</li>
+<li><code>instructor_id</code>: Unique identifier for the instructor</li>
+<li><code>Module</code>: A list to hold assigned Module</li>
+</ul>
+</li>
+<li><strong>Methods</strong>:
+<ul>
+<li><code>assign_module(module)</code>: Adds a <code>module</code> instance to the instructor's module list.</li>
+<li><code>list_Module()</code>: Lists all Module the instructor teaches.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="example-usage"><a class="header" href="#example-usage">Example Usage</a></h3>
+<p>In the <code>university_management</code> folder, create a main script file (<code>main.py</code>) to test your classes and methods.</p>
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-python">from module import Module
+from student import Student
+from instructor import Instructor
+
+def main():
+    # Create instructor and module
+    instructor = Instructor("Insert someone here", "I123")
+    module = module("Programming For Engineers", "ELEE1147", instructor)
+
+    # Assign module to instructor
+    instructor.assign_module(module)
+
+    # Create students and enroll them in the module
+    student1 = Student("Insert a student name here", "S001")
+    student2 = Student("Insert a student name here", "S002")
+    module.add_student(student1)
+    module.add_student(student2)
+
+    # Enroll students in module
+    student1.enroll(module)
+    student2.enroll(module)
+
+    # Display module info
+    print(module.get_module_info())
+    module.list_students()
+
+    # Display Module for instructor and students
+    instructor.list_Module()
+    student1.list_Module()
+    student2.list_Module()
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+</div>
+</div>
+<h3 id="running-the-program"><a class="header" href="#running-the-program">Running the Program</a></h3>
+<ol>
+<li>
+<p><strong>Save each class in the specified files</strong> (<code>module.py</code>, <code>student.py</code>, <code>instructor.py</code>) in the <code>university_management</code> folder.</p>
+</li>
+<li>
+<p><strong>Run the main script</strong> by navigating to the <code>university_management</code> folder and executing:</p>
+<div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+<div class="admonition-title">
+<div id="admonition-terminal-2-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+</div>
+<div>
+<pre><code class="language-bash">python main.py
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Full code</p>
+<ul>
+<li>  <details id="admonition-supressed-code-modulepy--16-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-supressed-code-modulepy--16-lines-title">
+  <summary class="admonition-title">
+  <div id="admonition-supressed-code-modulepy--16-lines-title">
+<p>Supressed code: module.py .. [16 lines]</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-supressed-code-modulepy--16-lines"></a>
+  </summary>
+  <div>
+<pre><code class="language-python">class module:
+    def __init__(self, module_name, module_code, instructor):
+        self.module_name = module_name
+        self.module_code = module_code
+        self.instructor = instructor
+        self.students = []
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def list_students(self):
+        print(f"Students in {self.module_name}:")
+        for student in self.students:
+            print(f"- {student.student_name}")
+
+    def get_module_info(self):
+        return f"module: {self.module_name} ({self.module_code}), Instructor: {self.instructor.instructor_name}"
+</code></pre>
+  </div>
+  </details>
+</li>
+<li> <details id="admonition-supressed-code-studentpy--12-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-supressed-code-studentpy--12-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-supressed-code-studentpy--12-lines-title">
+<p>Supressed code: student.py .. [12 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-supressed-code-studentpy--12-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-py">class Student:
+    def __init__(self, student_name, student_id):
+        self.student_name = student_name
+        self.student_id = student_id
+        self.Module = []
+
+    def enroll(self, module):
+        self.Module.append(module)
+
+    def list_Module(self):
+        print(f"{self.student_name}'s enrolled Module:")
+        for module in self.Module:
+            print(f"- {module.module_name}")
+</code></pre>
+ </div>
+ </details>
+</li>
+<li> <details id="admonition-supressed-code-instuctorpy--12-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-supressed-code-instuctorpy--12-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-supressed-code-instuctorpy--12-lines-title">
+<p>Supressed code: instuctor.py .. [12 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-supressed-code-instuctorpy--12-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-py">class Instructor:
+    def __init__(self, instructor_name, instructor_id):
+        self.instructor_name = instructor_name
+        self.instructor_id = instructor_id
+        self.Module = []
+
+    def assign_module(self, module):
+        self.Module.append(module)
+
+    def list_Module(self):
+        print(f"Module taught by {self.instructor_name}:")
+        for module in self.Module:
+            print(f"- {module.module_name}")
+</code></pre>
+ </div>
+ </details>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<hr />
+<h2 id="oop-approach-to-analyzing-user-behaviour-data"><a class="header" href="#oop-approach-to-analyzing-user-behaviour-data">OOP Approach to Analyzing User behaviour Data</a></h2>
+<p>In this exercise, you will create a program using Object-Oriented Programming (OOP) principles to analyse a dataset of user behaviour on mobile devices. The data is stored in a CSV file called <code>user_behaviour_dataset.csv</code>, which contains various attributes such as user ID, device model, operating system, app usage time, and user behaviour class.</p>
+<p>You will:</p>
+<ol>
+<li><strong>Read the data from the CSV file</strong> -&gt; <a href="./user_behavior_dataset.csv">user_behavior_dataset.csv</a></li>
+<li><strong>Design appropriate classes and objects</strong> to represent users and their behaviour.</li>
+<li><strong>Implement methods to analyse the data</strong>, such as finding the average app usage time or identifying trends in user behaviour.</li>
+</ol>
+<h3 id="dataset-description"><a class="header" href="#dataset-description">Dataset Description</a></h3>
+<p>The CSV file <code>user_behaviour_dataset.csv</code> contains the following columns:</p>
+<ul>
+<li><code>User ID</code>: Unique identifier for the user.</li>
+<li><code>Device Model</code>: Model of the user's device.</li>
+<li><code>Operating System</code>: Operating system used by the user (Android or iOS).</li>
+<li><code>App Usage Time (min/day)</code>: Average app usage time per day in minutes.</li>
+<li><code>Screen On Time (hours/day)</code>: Average screen on time per day in hours.</li>
+<li><code>Battery Drain (mAh/day)</code>: Daily battery usage in mAh.</li>
+<li><code>Number of Apps Installed</code>: The total number of apps installed on the device.</li>
+<li><code>Data Usage (MB/day)</code>: Daily data usage in MB.</li>
+<li><code>Age</code>: Age of the user.</li>
+<li><code>Gender</code>: Gender of the user (Male or Female).</li>
+<li><code>User Behavior Class</code>: A class assigned to the user based on their behavior (1 to 5).</li>
+</ul>
+<h2 id="task-instructions"><a class="header" href="#task-instructions">Task Instructions</a></h2>
+<h3 id="step-1-define-classes"><a class="header" href="#step-1-define-classes">Step 1: Define Classes</a></h3>
+<p>You need to create at least the following classes:</p>
+<ol>
+<li>
+<p><strong>User</strong>:</p>
+<ul>
+<li>This class represents an individual user.</li>
+<li>Attributes: <code>user_id</code>, <code>device_model</code>, <code>operating_system</code>, <code>app_usage_time</code>, <code>screen_on_time</code>, <code>battery_drain</code>, <code>num_apps_installed</code>, <code>data_usage</code>, <code>age</code>, <code>gender</code>, <code>user_behavior_class</code>.</li>
+<li>Methods:
+<ul>
+<li><code>__str__()</code>: Return a string representation of the user.</li>
+<li><code>get_app_usage_time()</code>: Return the app usage time in minutes.</li>
+<li><code>get_battery_drain()</code>: Return the battery drain in mAh.</li>
+<li><code>get_user_behavior_class()</code>: Return the behavior class.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Dataset</strong>:</p>
+<ul>
+<li>This class will manage the list of users and provide methods for analyzing the data.</li>
+<li>Attributes: <code>users</code> (list of User objects).</li>
+<li>Methods:
+<ul>
+<li><code>add_user(user)</code>: Adds a user to the dataset.</li>
+<li><code>get_avg_app_usage_time()</code>: Calculate and return the average app usage time across all users.</li>
+<li><code>get_users_by_behavior_class(class_number)</code>: Return a list of users belonging to a specific behavior class.</li>
+<li><code>get_highest_battery_drain()</code>: Return the user with the highest battery drain.</li>
+<li><code>get_avg_screen_time_by_os()</code>: Calculate the average screen on time by operating system.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-2-reading-the-data"><a class="header" href="#step-2-reading-the-data">Step 2: Reading the Data</a></h3>
+<p>You need to read the data from <code>user_behaviour_dataset.csv</code> and create <code>User</code> objects to populate the <code>Dataset</code> class. To read the CSV file, you can use Python's <code>csv</code> module.</p>
+<p>Example:</p>
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
+<pre><code class="language-python">import csv
+
+def read_data(file_path):
+    users = []
+    with open(file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            user = User(
+                user_id=row['User ID'],
+                device_model=row['Device Model'],
+                operating_system=row['Operating System'],
+                app_usage_time=int(row['App Usage Time (min/day)']),
+                screen_on_time=float(row['Screen On Time (hours/day)']),
+                battery_drain=int(row['Battery Drain (mAh/day)']),
+                num_apps_installed=int(row['Number of Apps Installed']),
+                data_usage=int(row['Data Usage (MB/day)']),
+                age=int(row['Age']),
+                gender=row['Gender'],
+                user_behavior_class=int(row['User Behavior Class'])
+            )
+            users.append(user)
+    return users
+</code></pre>
+</div>
+</div>
+<h3 id="step-3-analyzing-the-data"><a class="header" href="#step-3-analyzing-the-data">Step 3: Analyzing the Data</a></h3>
+<p>Once the data is loaded into the Dataset class, implement the following analysis tasks:</p>
+<ol>
+<li>Average App Usage Time: Calculate the average app usage time across all users.</li>
+<li>Behavior Class Distribution: Calculate how many users belong to each behavior class (1 to 5).</li>
+<li>User with Highest Battery Drain: Find the user with the highest battery drain.</li>
+<li>Average Screen On Time by OS: Calculate the average screen on time for Android and iOS users separately.</li>
+</ol>
+<h3 id="step-4-test-your-program"><a class="header" href="#step-4-test-your-program">Step 4: Test Your Program</a></h3>
+<p>After implementing the classes and methods, you should test your program by calling the various methods in the <code>Dataset</code> class. Print out the results of each analysis.</p>
+<h4 id="example-test"><a class="header" href="#example-test">Example test:</a></h4>
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
+<pre><code class="language-python">if __name__ == "__main__":
+    # Read data from CSV
+    users = read_data('user_behaviour_dataset.csv')
+
+    # Create Dataset object
+    dataset = Dataset(users)
+
+    # analyse data
+    print("Average App Usage Time (min/day):", dataset.get_avg_app_usage_time())
+    print("Users by Behavior Class 4:", dataset.get_users_by_behavior_class(4))
+    print("User with Highest Battery Drain:", dataset.get_highest_battery_drain())
+    print("Average Screen On Time by OS:", dataset.get_avg_screen_time_by_os())
+</code></pre>
+</div>
+</div>
+<h3 id="step-5-extend-the-program"><a class="header" href="#step-5-extend-the-program">Step 5: Extend the Program</a></h3>
+<p>Once you have completed the initial analysis, you can extend the program by adding additional features such as:</p>
+<ul>
+<li>Identifying the most common device models or operating systems.</li>
+<li>Visualising the data (e.g., plotting the average app usage time vs. age or gender).</li>
+<li>Adding a method to export the analysis results to a new CSV file.</li>
+</ul>
+<h3 id="solution"><a class="header" href="#solution">Solution</a></h3>
+ <details id="admonition-supressed-code-115-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-supressed-code-115-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-supressed-code-115-lines-title">
+<p>Supressed code... [115 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-supressed-code-115-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-python">import csv
+from collections import defaultdict
+
+# Define the User class
+class User:
+    def __init__(self, user_id, device_model, operating_system, app_usage_time, screen_on_time,
+                 battery_drain, num_apps_installed, data_usage, age, gender, user_behavior_class):
+        self.user_id = user_id
+        self.device_model = device_model
+        self.operating_system = operating_system
+        self.app_usage_time = app_usage_time
+        self.screen_on_time = screen_on_time
+        self.battery_drain = battery_drain
+        self.num_apps_installed = num_apps_installed
+        self.data_usage = data_usage
+        self.age = age
+        self.gender = gender
+        self.user_behavior_class = user_behavior_class
+
+    def __str__(self):
+        return f"User ID: {self.user_id}, Device: {self.device_model}, OS: {self.operating_system}, " \
+               f"App Usage: {self.app_usage_time} min/day, Screen Time: {self.screen_on_time} hrs/day, " \
+               f"Battery Drain: {self.battery_drain} mAh/day, Apps Installed: {self.num_apps_installed}, " \
+               f"Data Usage: {self.data_usage} MB/day, Age: {self.age}, Gender: {self.gender}, " \
+               f"Behavior Class: {self.user_behavior_class}"
+
+    def get_app_usage_time(self):
+        return self.app_usage_time
+
+    def get_battery_drain(self):
+        return self.battery_drain
+
+    def get_user_behavior_class(self):
+        return self.user_behavior_class
+
+    def get_screen_on_time(self):
+        return self.screen_on_time
+
+
+# Define the Dataset class
+class Dataset:
+    def __init__(self, users):
+        self.users = users
+
+    def add_user(self, user):
+        self.users.append(user)
+
+    def get_avg_app_usage_time(self):
+        total_usage = sum(user.get_app_usage_time() for user in self.users)
+        return total_usage / len(self.users) if self.users else 0
+
+    def get_users_by_behavior_class(self, class_number):
+        return [user for user in self.users if user.get_user_behavior_class() == class_number]
+
+    def get_highest_battery_drain(self):
+        return max(self.users, key=lambda user: user.get_battery_drain())
+
+    def get_avg_screen_time_by_os(self):
+        os_data = defaultdict(lambda: {'total_screen_time': 0, 'user_count': 0})
+        for user in self.users:
+            os_data[user.operating_system]['total_screen_time'] += user.get_screen_on_time()
+            os_data[user.operating_system]['user_count'] += 1
+        avg_screen_time = {os: data['total_screen_time'] / data['user_count'] for os, data in os_data.items()}
+        return avg_screen_time
+
+
+# Function to read the data from the CSV file
+def read_data(file_path):
+    users = []
+    with open(file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            user = User(
+                user_id=row['User ID'],
+                device_model=row['Device Model'],
+                operating_system=row['Operating System'],
+                app_usage_time=int(row['App Usage Time (min/day)']),
+                screen_on_time=float(row['Screen On Time (hours/day)']),
+                battery_drain=int(row['Battery Drain (mAh/day)']),
+                num_apps_installed=int(row['Number of Apps Installed']),
+                data_usage=int(row['Data Usage (MB/day)']),
+                age=int(row['Age']),
+                gender=row['Gender'],
+                user_behavior_class=int(row['User Behavior Class'])
+            )
+            users.append(user)
+    return users
+
+
+# Main function to test the program
+if __name__ == "__main__":
+    # Read data from CSV
+    users = read_data('user_behaviour_dataset.csv')
+
+    # Create Dataset object
+    dataset = Dataset(users)
+
+    # Analyze data
+    print("Average App Usage Time (min/day):", dataset.get_avg_app_usage_time())
+    
+    # Example: Get users by behavior class 4
+    behavior_class = 4
+    users_in_class_4 = dataset.get_users_by_behavior_class(behavior_class)
+    print(f"\nUsers in Behavior Class {behavior_class}:")
+    for user in users_in_class_4:
+        print(user)
+
+    # Example: User with highest battery drain
+    highest_battery_user = dataset.get_highest_battery_drain()
+    print(f"\nUser with Highest Battery Drain: {highest_battery_user}")
+
+    # Example: Average screen on time by OS
+    avg_screen_time_by_os = dataset.get_avg_screen_time_by_os()
+    print("\nAverage Screen On Time by Operating System:")
+    for os, avg_time in avg_screen_time_by_os.items():
+        print(f"{os}: {avg_time:.2f} hours/day")
+</code></pre>
+ </div>
+ </details>
+<details id="admonition-explanation-of-the-code" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-the-code-title">
+<summary class="admonition-title">
+<div id="admonition-explanation-of-the-code-title">
+<p>Explanation of the Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-the-code"></a>
+</summary>
+<div>
+<ol>
+<li>
+<p><code>User</code> Class:</p>
+<ul>
+<li>The <code>User</code> class holds individual user data with attributes such as user_id, device_model, app_usage_time, and more.</li>
+<li>It has methods like <code>get_app_usage_time()</code>, <code>get_battery_drain()</code>, and <code>get_user_behavior_class()</code> to retrieve relevant data.</li>
+</ul>
+</li>
+<li>
+<p><code>Dataset</code> Class:</p>
+<ul>
+<li>The <code>Dataset</code> class manages a collection of User objects.</li>
+<li>It contains methods like:
+<ul>
+<li><code>get_avg_app_usage_time()</code>: Calculates the average app usage time across all users.</li>
+<li><code>get_users_by_behavior_class()</code>: Filters users based on their behavior class.</li>
+<li><code>get_highest_battery_drain()</code>: Identifies the user with the highest battery drain.</li>
+<li><code>get_avg_screen_time_by_os()</code>: Computes the average screen on time by operating system.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>read_data</code> Function:</p>
+<ul>
+<li>This function reads the CSV file and converts each row into a <code>User</code> object.</li>
+<li>It returns a list of <code>User</code> objects.</li>
+</ul>
+</li>
+<li>
+<p>Main Program:</p>
+<ul>
+<li>The <code>main</code> block reads the dataset from the CSV file and performs various analyses, such as calculating the average app usage time, filtering users by behavior class, finding the user with the highest battery drain, and calculating average screen time by OS.</li>
+</ul>
+</li>
+</ol>
+</div>
+</details>
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Learning_Python/Importing_Modules.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../BranchingModel/BranchingModel.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Learning_Python/Importing_Modules.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../BranchingModel/BranchingModel.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
