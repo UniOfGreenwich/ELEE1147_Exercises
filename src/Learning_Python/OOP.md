@@ -18,7 +18,7 @@ Each exercise includes steps on saving the code in separate files, organizing co
 4. **Add a `main()` function** at the bottom to create an instance of `Animal` and call `describe()`.
 5. **Run the file** by opening a terminal in the directory where `animal.py` is saved, and execute:
    
-   ~~~admonial terminal
+   ~~~admonish terminal
    ```bash
    python animal.py
    ```
