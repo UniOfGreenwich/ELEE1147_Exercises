@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Branching-Strategy - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/src/BranchingModel/BranchingModel.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h2 id="a-git-branching-mdeol"><a class="header" href="#a-git-branching-mdeol">A Git Branching Mdeol</a></h2>
+<h3 id="the-gist"><a class="header" href="#the-gist">The gist</a></h3>
+<ol>
+<li><code>master/main</code> must always be deployable.</li>
+<li><strong>all changes</strong> made through feature branches (pull-request + merge)</li>
+<li>rebase to avoid/resolve conflicts; merge in to <code>master/main</code></li>
+</ol>
+<p>Or, as Zach Holman succinctly put it:</p>
+<div align=center>
+<p><img src="./figures/masterBranchCycle.png" alt="flow" /></p>
+</div>
+<h3 id="the-workflow"><a class="header" href="#the-workflow">The workflow</a></h3>
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-bash"># everything is happy and up-to-date in master
+git checkout master
+git pull origin master
+
+# let's branch to make changes
+git checkout -b my-new-feature
+
+# go ahead, make changes now.
+$EDITOR file
+
+# commit your (incremental, atomic) changes
+git add -p
+git commit -m "my changes"
+
+# keep abreast of other changes, to your feature branch or master.
+# rebasing keeps our code working, merging easy, and history clean.
+git fetch origin
+git rebase origin/my-new-feature
+git rebase origin/master
+
+# optional: push your branch for discussion (pull-request)
+#           you might do this many times as you develop.
+git push origin my-new-feature
+
+# optional: feel free to rebase within your feature branch at will.
+#           ok to rebase after pushing if your team can handle it!
+git rebase -i origin/master
+
+# merge when done developing.
+# --no-ff preserves feature history and easy full-feature reverts
+# merge commits should not include changes; rebasing reconciles issues
+# github takes care of this in a Pull-Request merge
+git checkout master
+git pull origin master
+git merge --no-ff my-new-feature
+
+
+# optional: tag important things, such as releases
+git tag 1.0.0-RC1
+</code></pre>
+</div>
+</div>
+<h3 id="useful-config"><a class="header" href="#useful-config">useful config</a></h3>
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
+<pre><code class="language-bash"># autosetup rebase so that pulls rebase by default
+git config --global branch.autosetuprebase always
+
+# if you already have branches (made before `autosetuprebase always`)
+git config branch.&lt;branchname&gt;.rebase true
+</code></pre>
+</div>
+</div>
+<h3 id="dos-and-donts"><a class="header" href="#dos-and-donts">DOs and DON'Ts</a></h3>
+<p>No DO or DON'T is sacred. You'll obviously run into exceptions, and develop
+your own way of doing things. However, these are guidelines I've found
+useful.</p>
+<h4 id="dos"><a class="header" href="#dos">DOs</a></h4>
+<ul>
+<li><strong>DO</strong> keep <code>master</code> in working order.</li>
+<li><strong>DO</strong> rebase your feature branches.
+<ul>
+<li><strong>DO</strong> pull in (rebase on top of) changes</li>
+</ul>
+</li>
+<li><strong>DO</strong> tag releases</li>
+<li><strong>DO</strong> push feature branches for discussion</li>
+<li><strong>DO</strong> learn to rebase</li>
+</ul>
+<h4 id="donts"><a class="header" href="#donts">DON'Ts</a></h4>
+<ul>
+<li><strong>DON'T</strong> merge in broken code.</li>
+<li><strong>DON'T</strong> commit onto <code>master</code> directly.
+<ul>
+<li><strong>DON'T</strong> hotfix onto master! use a feature branch.</li>
+</ul>
+</li>
+<li><strong>DON'T</strong> rebase <code>master</code>.</li>
+<li><strong>DON'T</strong> merge with conflicts. handle conflicts upon rebasing.</li>
+</ul>
+<h3 id="links"><a class="header" href="#links">Links</a></h3>
+<ul>
+<li>https://github.com/blog/1124-how-we-use-pull-requests-to-build-github</li>
+</ul>
+<h2 id="faq"><a class="header" href="#faq">FAQ</a></h2>
+<h3 id="wont-git-merge---no-ff-generate-merge-bubbles"><a class="header" href="#wont-git-merge---no-ff-generate-merge-bubbles">Won't <code>git merge --no-ff</code> generate merge bubbles?</a></h3>
+<p>Yes. Merge bubbles aren't inherently bad. They allow you to revert entire
+features at a time. They get confusing and annoying to deal with if they cross
+(commits interleave), so don't do that.</p>
+<div align=center>
+<p><img src="./figures/mergeGoodandBad.png" alt="merge bubbles" /></p>
+</div>
+<h3 id="what-do-you-mean-by-incremental-atomic-changes"><a class="header" href="#what-do-you-mean-by-incremental-atomic-changes">What do you mean by "incremental, atomic" changes?</a></h3>
+<p>http://en.wikipedia.org/wiki/Atomic_commit#Atomic_Commit_Convention</p>
+<p>Thanks wikipedia, I couldn't have put it better myself.</p>
+<h3 id="why-not-gitflow-or-another-complex-workflow"><a class="header" href="#why-not-gitflow-or-another-complex-workflow">Why not <a href="http://nvie.com/git-model/">gitflow</a> or another complex workflow?</a></h3>
+<p>Be my guest. I've used gitflow and other similar models.After working in various teams, this is just what I've come to use. But next time you have to ask someone whether it is okay to push or pull from this or that branch.</p>
+<h3 id="but-is-it-web-scale"><a class="header" href="#but-is-it-web-scale">But, is it <a href="http://mongodb-is-web-scale.com/">web-scale</a>?</a></h3>
+<p>Friends claim more complex models are necessary for scaling large teams,
+maintaining old releases, controlling information flow, etc. It very well may
+be that using multiple mainlines (e.g. <code>develop</code>, <code>stable</code>, <code>release</code>, <code>v2</code>,
+<code>tested</code>, etc) is exactly what fits your organization's constraints. That's
+for you to decide, not me (unless we work together -- oh hi there!).</p>
+<p>But you always have to wonder, "shouldn't I use tags for that"? For example,
+tracking releases on a branch is a bit silly. A release commit can be tagged.
+You can checkout a tag, just like any branch, or any commit, and do
+whatever it is you need to do.</p>
+<p>My guess is this relationship holds:</p>
+<div align=center>
+<p><img src="./figures/commitsHeadless.png" alt="headless" /></p>
+</div>
+<p>So, perhaps taking five minutes to teach your team how to use <code>checkout</code> and
+<code>tag</code> might save you more than 15% on car insurance.</p>
+<h2 id="github-notes"><a class="header" href="#github-notes">GitHub notes</a></h2>
+<h3 id="dont-fork-push-feature-branches-to-main-repo"><a class="header" href="#dont-fork-push-feature-branches-to-main-repo">Don't fork. Push feature branches to main repo.</a></h3>
+<p>Sometimes I see people forking repositories in order to issue pull-requests.
+Yes, you may have to do this when contributing to open-source projects you
+don't regularly contribute to. But, if you are a contributor, or working in the
+same org, get push rights on the repo and push all your feature branches to it.
+<strong>Issue pull requests from one branch to another within the same repo.</strong></p>
+<h3 id="should-i-merge-pull-requests-on-the-site-or-commandline"><a class="header" href="#should-i-merge-pull-requests-on-the-site-or-commandline">Should I merge Pull Requests on the site or commandline?</a></h3>
+<p>Up to you. Github does <code>git merge --no-ff</code> so that the commit message indicates
+the pull request number. This is useful information to have, don't just throw
+away history for the sake of it. You never know what will be useful to look at
+in the future.</p>
+
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Compilers/compilers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../OneFlow/OneFlow.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Compilers/compilers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../OneFlow/OneFlow.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

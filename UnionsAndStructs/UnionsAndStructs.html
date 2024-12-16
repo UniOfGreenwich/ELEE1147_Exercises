@@ -1,0 +1,726 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Structs and Unions - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/src/UnionsAndStructs/UnionsAndStructs.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="lab-7-unions-and-structs"><a class="header" href="#lab-7-unions-and-structs">Lab 7: Unions and Structs</a></h1>
+<ul>
+<li>
+<p>You need to open a new Visual Studio Code, give it a meaningful name.</p>
+</li>
+<li>
+<p>Create a new file called <code>unionsandstructs.exe</code></p>
+</li>
+<li>
+<p>modify the contents to look like this:</p>
+</li>
+<li><div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(){
+
+
+ return 0;
+}
+</code></pre>
+</div>
+</div>
+</li>
+</ul>
+<h2 id="exercise-1-structs"><a class="header" href="#exercise-1-structs">Exercise 1: Structs</a></h2>
+<p>Objective: Understand the concept of structs and their usage in C.</p>
+<ol>
+<li>
+<p>Create a C program that defines a <code>Person</code> <code>struct</code> with the following attributes:</p>
+<ul>
+<li><code>name</code> (string)</li>
+<li><code>age</code> (integer)</li>
+<li><code>height</code> (float)</li>
+</ul>
+</li>
+<li>
+<p>Write a function <code>printPerson</code> that takes a <code>Person</code> <code>struct</code> as a parameter and prints its attributes.</p>
+</li>
+<li>
+<p>In the main function, create an instance of the <code>Person</code> <code>struct</code>,populate its attributes with your name, age and height, and use the <code>printPerson</code> function to display the details.</p>
+</li>
+<li><div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<div class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</div>
+<div>
+<p><img src="./figures/step1.PNG" alt="" /></p>
+</div>
+</div>
+</li>
+<li> <details id="admonition-suppressed-code-29-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-29-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-suppressed-code-29-lines-title">
+<p>Suppressed Code... [29 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-suppressed-code-29-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+/**
+* @struct Person
+* @brief Represents information about a person.
+*/
+struct Person {
+    char name[50]; ///&lt; Name of the person.
+    int age;       ///&lt; Age of the person.
+    float height;  ///&lt; Height of the person.
+};
+
+/**
+* @brief Prints details of a person.
+* @param p The person to be printed.
+*/
+void printPerson(struct Person p) {
+    printf("Name: %s\nAge: %d\nHeight: %.2f\n", p.name, p.age, p.height);
+}
+
+/**
+* @brief Main function where the program starts execution.
+*/
+int main() {
+    // Create an instance of Person, initialize its attributes, and print details
+    struct Person person1 = {"Your Name", 1, 4.0};
+    printPerson(person1);
+
+    return 0;
+}
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<hr />
+<h2 id="exercise-2-unions"><a class="header" href="#exercise-2-unions">Exercise 2: Unions</a></h2>
+<p>Objective: Explore the concept of unions and their applications in C.</p>
+<ol>
+<li>
+<p>Create a C program that defines a <code>Data</code> <code>union</code> with the following members:</p>
+<ul>
+<li><code>integerData</code> (integer)</li>
+<li><code>floatData</code> (float)</li>
+<li><code>charData</code> (character)</li>
+</ul>
+</li>
+<li>
+<p>Write a function printData that takes a <code>Data</code> <code>union</code> as a parameter and prints the value based on the type of data (integer, float, or character).</p>
+</li>
+<li>
+<p>In the main function, create an instance of the <code>Data</code> <code>union</code>, assign values to different members, and use the <code>printData</code> function to display the values.</p>
+</li>
+<li><div id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+<div class="admonition-title">
+<div id="admonition-output-1-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-1"></a>
+</div>
+<div>
+<p><img src="./figures/step2.PNG" alt="" /></p>
+</div>
+</div>
+</li>
+<li> <details id="admonition-suppressed-code-32-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-32-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-suppressed-code-32-lines-title">
+<p>Suppressed Code... [32 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-suppressed-code-32-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+/**
+* @union Data
+* @brief Represents different types of data (integer, float, char).
+*/
+union Data {
+    int integerData; ///&lt; Integer data.
+    float floatData; ///&lt; Float data.
+};
+
+/**
+* @brief Prints details of data, detecting its type.
+* @param d The data to be printed.
+*/
+void printData(union Data d) {
+    printf("Data: ");
+    printf("%d (Integer)\n", d.integerData);
+    printf("%f (Float)\n", d.floatData);
+
+}
+
+/**
+* @brief Main function where the program starts execution.
+*/
+int main() {
+    // Create an instance of Data, assign values, and print details
+    union Data data1;
+    data1.floatData = 123.45f;
+    printData(data1);
+
+    return 0;
+}
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<hr />
+<h2 id="exercise-3-unions-vs-structs"><a class="header" href="#exercise-3-unions-vs-structs">Exercise 3: Unions Vs Structs</a></h2>
+<p>In this exercise we are going to explore the difference between and <code>struct</code> and a <code>union</code>:</p>
+<ol>
+<li>
+<p>Create a <code>struct</code> called <code>Person</code> with the following attributes:</p>
+<ul>
+<li>name (char size 50)</li>
+<li>age (integer)</li>
+<li>height (float)</li>
+</ul>
+</li>
+<li>
+<p>Create a <code>union</code> called <code>Data</code> with the following attributes:</p>
+<ul>
+<li>integerData (Int)</li>
+<li>floatData (float)</li>
+<li>CharData (char)</li>
+</ul>
+</li>
+<li>
+<p>In <code>main</code> define a the <code>struct Person</code> as <code>person</code> and the <code>union Data</code> as <code>data</code></p>
+</li>
+<li>
+<p>Reproduce the following code to assign <code>person.age</code> and <code>data.integerData</code> and <code>data.floatData</code>:</p>
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code class="language-c">...
+ // Accessing struct members
+person.age = 25;
+printf("Struct Member - Age: %d\n", person.age);
+
+// Accessing union members
+data.integerData = 42;
+printf("Union Member - Integer Data: %d\n", data.integerData);
+
+// Modify union member and access another member
+data.floatData = 3.14;
+printf("Union Member - Float Data: %.2f\n", data.floatData);
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>Now we are going to compare the size of the <code>struct</code> and the <code>union</code>, reproduce the following after last <code>printf(...)</code> line:</p>
+ <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+ <div class="admonition-title">
+ <div id="admonition-code-2-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+ </div>
+ <div>
+<pre><code class="language-c">...
+// Demonstrate the size difference between struct and union
+printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
+printf("Size of Union (Data): %lu bytes\n", sizeof(union Data));
+</code></pre>
+ </div>
+ </div>
+</li>
+<li><div id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+<div class="admonition-title">
+<div id="admonition-output-2-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-2"></a>
+</div>
+<div>
+<p><img src="./figures/step3.PNG" alt="" /></p>
+</div>
+</div>
+</li>
+<li><details id="admonition-suppressed-code-48-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-48-lines-title">
+<summary class="admonition-title">
+<div id="admonition-suppressed-code-48-lines-title">
+<p>Suppressed Code... [48 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-suppressed-code-48-lines"></a>
+</summary>
+<div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+/**
+    * @struct Person
+    * @brief Represents personal information about a person.
+    */
+struct Person {
+    char name[50]; ///&lt; Name of the person.
+    int age;       ///&lt; Age of the person.
+    float height;  ///&lt; Height of the person.
+};
+
+/**
+    * @union Data
+    * @brief Represents different types of data (integer, float, char).
+    */
+union Data {
+    int integerData; ///&lt; Integer data.
+    float floatData; ///&lt; Float data.
+    char charData;   ///&lt; Character data.
+};
+
+/**
+    * @brief Main function where the program starts execution.
+    * @return 0 on successful execution.
+    */
+int main() {
+    // Create an instance of the struct and union
+    struct Person person;
+    union Data data;
+
+    // Accessing struct members
+    person.age = 25;
+    printf("Struct Member - Age: %d\n", person.age);
+
+    // Accessing union members
+    data.integerData = 42;
+    printf("Union Member - Integer Data: %d\n", data.integerData);
+
+    // Modify union member and access another member
+    data.floatData = 3.14;
+    printf("Union Member - Float Data: %.2f\n", data.floatData);
+
+    // Demonstrate the size difference between struct and union
+    printf("Size of Struct (Person): %lu bytes\n", sizeof(struct Person));
+    printf("Size of Union (Data): %llu bytes\n", sizeof(union Data));
+
+    return 0;
+}
+</code></pre>
+</div>
+</details>
+ <div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+ <div class="admonition-title">
+ <div id="admonition-info-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info"></a>
+ </div>
+ <div>
+<ul>
+<li>
+<p>A <code>struct Person</code> is defined with attributes representing personal information.</p>
+</li>
+<li>
+<p>A <code>union Data</code> is defined with three members: <code>integerData</code>, <code>floatData</code>, and <code>charData</code>.</p>
+</li>
+<li>
+<p>In the <code>main</code> function, an instance of both the <code>struct</code> and the <code>union</code> is created.</p>
+</li>
+<li>
+<p>The program demonstrates how to access and modify members of the <code>struct</code> and the <code>union</code>.</p>
+</li>
+<li>
+<p>It prints the size of the <code>struct</code> and <code>union</code> to highlight the memory usage difference.</p>
+</li>
+<li>
+<p>This exercise illustrates the key differences between <code>structs</code> and <code>unions</code>:</p>
+</li>
+<li>
+<p><code>Struct</code>: Each member has its own memory space, and the size of the <code>struct</code> is the sum of the sizes of its members.</p>
+</li>
+<li>
+<p><code>Union</code>: All members share the same memory space, and the size of the <code>union</code> is determined by the largest member.</p>
+</li>
+</ul>
+ </div>
+ </div>
+</li>
+</ol>
+<hr />
+<hr />
+<h2 id="exercise-4-combining-structs-and-unions"><a class="header" href="#exercise-4-combining-structs-and-unions">Exercise 4: Combining Structs and Unions</a></h2>
+<p>Objective: Understand how structs and unions can be combined for more complex data structures.</p>
+<ol>
+<li>
+<p>Create a new <code>struct</code> named <code>Employee</code> with the following attributes:</p>
+<ul>
+<li><code>personalInfo</code> (a Person struct)</li>
+<li><code>jobInfo</code> (a Data union representing various job-related information)</li>
+</ul>
+</li>
+<li>
+<p>Write a function <code>printEmployee</code> that takes an <code>Employee</code> <code>struct</code> as a parameter and prints both personal and job-related information using the previously defined functions (<code>printPerson</code> and <code>printData</code>).</p>
+</li>
+<li>
+<p>In the main function, create an instance of the <code>Employee</code> <code>struct</code>, populate its attributes, and use the <code>printEmployee</code> function to display the details.</p>
+</li>
+<li><div id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+<div class="admonition-title">
+<div id="admonition-output-3-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-3"></a>
+</div>
+<div>
+<p><img src="./figures/step4.PNG" alt="" /></p>
+</div>
+</div>
+</li>
+<li> <details id="admonition-suppressed-code-75-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-75-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-suppressed-code-75-lines-title">
+<p>Suppressed Code... [75 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-suppressed-code-75-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+/**
+* @struct Person
+* @brief Represents information about a person.
+*/
+struct Person {
+    char name[50]; ///&lt; Name of the person.
+    int age;       ///&lt; Age of the person.
+    float height;  ///&lt; Height of the person.
+};
+
+/**
+* @union Data
+* @brief Represents different types of data (integer, float, char).
+*/
+union Data {
+    int integerData; ///&lt; Integer data.
+    float floatData; ///&lt; Float data.
+    char charData;   ///&lt; Character data.
+};
+
+/**
+* @struct Employee
+* @brief Represents information about an employee.
+*/
+struct Employee {
+    struct Person personalInfo; ///&lt; Personal information of the employee.
+    union Data jobInfo;         ///&lt; Job-related information of the employee.
+};
+
+/**
+* @brief Prints details of data, detecting its type.
+* @param d The data to be printed.
+*/
+void printData(union Data d) {
+    printf("Data: ");
+    if (d.integerData) {
+        printf("%d (Integer)\n", d.integerData);
+    } else if (d.floatData) {
+        printf("%.2f (Float)\n", d.floatData);
+    } else {
+        printf("%c (Character)\n", d.charData);
+    }
+}
+
+/**
+* @brief Prints details of a person.
+* @param p The person to be printed.
+*/
+void printPerson(struct Person p) {
+    printf("Name: %s\nAge: %d\nHeight: %.2f\n", p.name, p.age, p.height);
+}
+
+/**
+* @brief Prints details of an employee.
+* @param e The employee to be printed.
+*/
+void printEmployee(struct Employee e) {
+    printf("Personal Information:\n");
+    printPerson(e.personalInfo);
+    printf("\nJob Information:\n");
+    printData(e.jobInfo);
+}
+
+/**
+* @brief Main function where the program starts execution.
+*/
+int main() {
+    // Create an instance of Employee, assign values, and print details
+    struct Employee employee1 = {{"Alice", 30, 5.5}, {0}};
+    employee1.jobInfo.floatData = 75000.50;
+    printEmployee(employee1);
+
+    return 0;
+}
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<h2 id="additional-challenges"><a class="header" href="#additional-challenges">Additional Challenges:</a></h2>
+<div id="admonition-challenge-1" class="admonition admonish-tip" role="note" aria-labelledby="admonition-challenge-1-title">
+<div class="admonition-title">
+<div id="admonition-challenge-1-title">
+<p>Challenge 1</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-challenge-1"></a>
+</div>
+<div>
+<p>Modify the <code>Person</code> <code>struct</code> to include an array of hobbies. Update the relevant functions and demonstrate the changes in the <code>main</code> function.</p>
+</div>
+</div>
+<div id="admonition-challenge-2" class="admonition admonish-tip" role="note" aria-labelledby="admonition-challenge-2-title">
+<div class="admonition-title">
+<div id="admonition-challenge-2-title">
+<p>Challenge 2</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-challenge-2"></a>
+</div>
+<div>
+<p>Extend the <code>Data</code> <code>union</code> to include an array of integers. Modify the <code>printData</code> function to handle this new data type.</p>
+</div>
+</div>
+<hr />
+<hr />
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion:</a></h2>
+<p>This lab covers the basics of using <code>structs</code> and <code>unions</code> in <code>C</code>. It helps in understanding how to define, initialise, and manipulate data using these fundamental concepts. Additionally, provides key knowledge and skills for the assignment.</p>
+
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../PointersAndAddressing/PointersAndAddressing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../Streams/Streams.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../PointersAndAddressing/PointersAndAddressing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../Streams/Streams.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
