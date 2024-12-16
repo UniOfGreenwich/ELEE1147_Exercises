@@ -1,0 +1,500 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Markdown Book Guide - MD-Book Template for UoG</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MD-Book Template for UoG</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/MD_Book_Template" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/MD_Book_Template/edit/main/src/Markdown_Book_Guide/Markdown_Book_Guide.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="documentation"><a class="header" href="#documentation">Documentation</a></h1>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
+</div>
+<div>
+<ul>
+<li>Version: 1.0.0</li>
+<li>View the deployment for a rendered documentation:
+<ul>
+<li><a href="https://uniofgreenwich.github.io/MD_Book_Template">https://uniofgreenwich.github.io/MD_Book_Template</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>This template can used to create a place for all exercises or source of knowledge for your module, which is deployed as a webpage with the following address:</p>
+<p><code>https://uniofgreenwich.github.io/Name_of_your_Repository</code>, best practice is to prefix with the module code.</p>
+<p>Examples:</p>
+<ul>
+<li>
+<p><a href="https://uniofgreenwich.github.io/ELEE1147_Exercises/">https://uniofgreenwich.github.io/ELEE1147_Exercises/</a></p>
+</li>
+<li>
+<p><a href="https://uniofgreenwich.github.io/ELEE1119_Exercises/">https://uniofgreenwich.github.io/ELEE1119_Exercises/</a></p>
+</li>
+</ul>
+<h2 id="how-to"><a class="header" href="#how-to">How to...</a></h2>
+<h3 id="setting-up-gitgithub"><a class="header" href="#setting-up-gitgithub">Setting up Git/Github</a></h3>
+<p>Open Git Bash</p>
+<p>First set your username:</p>
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code class="language-sh">git config --global user.name "YourGitHubUserName"
+</code></pre>
+</div>
+</div>
+<p>Next set your email:</p>
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">git config --global user.email "TheEmailYouUsedForGitHub"
+</code></pre>
+</div>
+</div>
+<h2 id="security-and-authentication"><a class="header" href="#security-and-authentication">Security and authentication</a></h2>
+<p>You need to create an ssh key to push and pull to your online storage/repo before we try to sync with the cloud.</p>
+<div id="admonition-important" class="admonition admonish-tip" role="note" aria-labelledby="admonition-important-title">
+<div class="admonition-title">
+<div id="admonition-important-title">
+<p>Important</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-important"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>When you see <code>~</code>, this means <strong>home</strong>,</p>
+<ul>
+<li>
+<p>On the university imaged machines this typically is the <code>G Drive</code></p>
+</li>
+<li>
+<p>If you are not then this will be, <code>C/Users/&lt;username&gt;/</code>, your <strong>home</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>Follow these instructions in the command line.</p>
+<div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+<div class="admonition-title">
+<div id="admonition-terminal-2-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on  dev
+❯ ssh-keygen -t ed25519 -C "YourGitEmail"
+</code></pre>
+</div>
+</div>
+<p>For every line requesting  user input just press the enter key and until the command has finished.</p>
+<div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<div class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</div>
+<div>
+<pre><code class="language-sh">Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/yourusername/.ssh/id_ed25519):
+Created directory '/home/yourusername/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/yourusername/.ssh/id_ed25519
+Your public key has been saved in /home/yourusername/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:opMi+Jtjau26rE8pbgULmR4gI4SHnkxFV0dZVz1HO2g YourGitEmail
+The key's randomart image is:
++--[ED25519 256]--+
+|oooo ....oo. ..oo|
+|B.. .   ..  . ..+|
+|B=.          E oo|
+|+*          .   .|
+|o +   . S        |
+|.o o o .         |
+|+ * +            |
+|oBo+ .           |
+|*OO+             |
++----[SHA256]-----+
+</code></pre>
+</div>
+</div>
+<div id="admonition-error" class="admonition admonish-danger" role="note" aria-labelledby="admonition-error-title">
+<div class="admonition-title">
+<div id="admonition-error-title">
+<p>Error</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-error"></a>
+</div>
+<div>
+<p>If you get a response</p>
+<pre><code>Saving key ".ssh" failed: No such file or directory
+</code></pre>
+<p>Then you need to do the following</p>
+<pre><code>mkdir ~/.ssh
+</code></pre>
+<p>and then repeat the previous step again.</p>
+</div>
+</div>
+<p>Now you need to get your public key you have generated and add to GitHub.</p>
+<div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+<div class="admonition-title">
+<div id="admonition-terminal-3-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+</div>
+<div>
+<pre><code class="language-sh">myfirstrepository on  dev
+❯ cat ~/.ssh/id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJf5t9RcKdkZwlxS14EZn91hDQndAjMIDz+c92kFtfC YourGitEmail
+</code></pre>
+</div>
+</div>
+<p>The copy the output from <code>ssh-ed25519 ... YourGitEmail</code> and follow the screenshots below.</p>
+<div align=center>
+<ol>
+<li><img src="./figures/step6-4.png" alt="" /></li>
+<li><img src="./figures/step6-5.png" alt="" /></li>
+<li><img src="./figures/step6-6.png" alt="" /></li>
+<li><img src="./figures/step6-7.png" alt="" /></li>
+</ol>
+</div>
+<p>Once completed, go back to the terminal and lets check for a connection:</p>
+<div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+<div class="admonition-title">
+<div id="admonition-terminal-4-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+</div>
+<div>
+<pre><code class="language-sh">❯ ssh git@github.com
+</code></pre>
+</div>
+</div>
+<div id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+<div class="admonition-title">
+<div id="admonition-output-1-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">The authenticity of host 'github.com (140.82.121.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</code></pre>
+</div>
+</div>
+<div id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+<div class="admonition-title">
+<div id="admonition-output-2-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-2"></a>
+</div>
+<div>
+<pre><code class="language-sh">Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+PTY allocation request failed on channel 0
+Hi &lt;Your GitHub Username&gt;! You've successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+</code></pre>
+</div>
+</div>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>If you are on the university image and <code>~</code> is the <code>G Drive</code> you only have to do all the above once.</p>
+</li>
+<li>
+<p>You need to repeat if you do this on any other machine to set up the key, but again only once.</p>
+</li>
+</ul>
+</div>
+</div>
+<h3 id="mfa"><a class="header" href="#mfa">MFA</a></h3>
+<p>In order to access <a href="https://github.com/UniofGreenwich">https://github.com/UniofGreenwich</a> you need to have enabled MFA on your GitHub account, if you can see this repository you likely already have.</p>
+<ul>
+<li>
+<p>Navigate to <strong>Password and authentication</strong> and enable MFA:</p>
+<p><img src="./figures/MFA.png" alt="" /></p>
+</li>
+</ul>
+<h3 id="creating-your-markdown-book"><a class="header" href="#creating-your-markdown-book">Creating your markdown book</a></h3>
+<ol>
+<li>
+<p>Inside the <a href="https://github.com/UniofGreenwich">https://github.com/UniofGreenwich</a> organisation page you create a new repository give it the following naming convention:</p>
+<pre><code>ModuleCode_Exercices
+</code></pre>
+</li>
+<li>
+<p>Use the template option and search for <code>MD_Book_Template</code></p>
+</li>
+<li>
+<p>See gif below:</p>
+<p><img src="./figures/Using_Template.gif" alt="" /></p>
+</li>
+</ol>
+<h2 id="tech-stack"><a class="header" href="#tech-stack">Tech Stack</a></h2>
+<p>This template includes the following tech stack:</p>
+<ul>
+<li>
+<p><a href="https://github.com/rust-lang/mdBook">Github Source mdbook</a></p>
+<ul>
+<li><a href="https://rust-lang.github.io/mdBook/">mdbook Documenation</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/tommilligan/mdbook-admonish">GitHub Source mdbook-admonish</a></p>
+<ul>
+<li><a href="https://tommilligan.github.io/mdbook-admonish/">mdbook-admonish Documentation</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/slowsage/mdbook-pagetoc">GitHub mdbook-pagtoc</a></p>
+<ul>
+<li><a href="https://jorel.dev/mdBook-pagetoc/">mdbook-pagtoc Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Introduction/Introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../Markdown_Doc/Markdown_Doc.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Introduction/Introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../Markdown_Doc/Markdown_Doc.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src=".././theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
