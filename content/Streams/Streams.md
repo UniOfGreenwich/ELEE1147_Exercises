@@ -35,9 +35,9 @@ You have been using the `stdio.h` for nearly every lab, and will use it for near
 
 -------------------
 
-## Task 1: Starting out...
+## C Task 1: Starting out...
 
-In this program you are going to: 
+~~~admonish todo title='In this program you are going to:'
 
 - prompt the user to enter a number.
 
@@ -47,8 +47,9 @@ In this program you are going to:
 
 - The result is displayed using `printf()`.
 
+~~~
 
-1. Create a new project in Visual Studio and call it Streams, rename the `Streams.cpp` to `Streams.c`
+1. Create a new directory called Streams, name the child file inside the Streams directory `streams.c`
 
 2. Define two variables both integers called `number` and `result`.
    
@@ -81,7 +82,7 @@ In this program you are going to:
         scanf("%d", &number)
 
         // compare user inputted value
-        if ( result != 2) {
+        if ( number != 2) {
             // Handle input error using perror()
             perror("Error reading input");
             return 1; // Exit with an error code
@@ -112,167 +113,197 @@ In this program you are going to:
 
 -------
 
-## Task 2: Read and Write a File
+## C Task 2: Read and Write a File
 
 The program you will write assumes that there is an input file named `input.txt` that stores two integers. The program will then create an output file named `output.txt` with the multiplication result of those two numbers. Error handling is incorporated using `perror()` for file-related errors.
 
-1. Create a new file and places in the resources folder of the solution view, call it `input.txt`, inside the file input **two** numbers seperated by **space** that range from `0` **to** `50000`, save the file.
+### 1. Prepare Input File
 
-2. Now modify `main()`, by placing using the ` FILE *inputFile, *outputFile;` at the top of `main()`. 
-    
-    ~~~admonish info
-    
-     - `FILE` is not a fundamental C data type; it's a data type defined in the C standard library. It represents a file stream and is used to interact with files in C ograms. The `FILE` type is typically defined in the <stdio.h> header file as `struct`
-       
-        ```c
-        typedef struct {
-        // Implementation-specific members
-        } FILE;
-        ```
-    
-     - `FILE` is essentially a structure that holds information about an open file, including its **current position**, **status**, and **other details**. When you open a file using functions like `fopen()`, it returns a pointer,`*`, to a `FILE` structure that you use for subsequent file operations.
+Create a new file and places in the resources folder of the solution view, call it `input.txt`, inside the file input **two** numbers seperated by **space** that range from `0` **to** `50000`, save the file.
 
-    ~~~
+### 2. Define Main Function
 
-3. On the next line define three integer variables called, `numOne`, `numTwo` and `result`: 
-   
-   ~~~admonish code collapsible=true title='Suppressed Code... [1 line]'
+Now modify `main()`, by placing using the ` FILE *inputFile, *outputFile;` at the top of `main()`. 
+    
+~~~admonish info
+
+- `FILE` is not a fundamental C data type; it's a data type defined in the C standard library. It represents a file stream and is used to interact with files in C ograms. The `FILE` type is typically defined in the <stdio.h> header file as `struct`
 
     ```c
-    int num1, num2, result;
-    ```
-   
-   ~~~
-
-4. Create two newlines and the second one you need to reproduce the follwoing: 
-
-    ~~~admonish code
-
-    ```c
-    // Open input file for reading
-    inputFile = fopen("input.txt", "r");
-    if (inputFile == NULL) {
-        perror("Error opening input file");
-        return 1; // Exit with an error code
-    }
+    typedef struct {
+    // Implementation-specific members
+    } FILE;
     ```
 
-    ~~~
+- `FILE` is essentially a structure that holds information about an open file, including its **current position**, **status**, and **other details**. When you open a file using functions like `fopen()`, it returns a pointer,`*`, to a `FILE` structure that you use for subsequent file operations.
 
-    ~~~admonish example title='Explanation of code'
+~~~
 
-    - Here we are using `fopen` to open the `"input.txt"` with in read mode `"r"`
+### 3. Initialise Variables
 
-    - A check is made to see if the `inputFile` has any data, does the file exist, this is done with a `NULL` check.
-
-    - If `NULL`, then the `perror` is invoked and outputs `"Error opening input file"` to standard error, and close the application with `return 1,` to indicate an error using an exit code.
-
-    ~~~ 
-
-5. If inputFile is not `NULL` then the following code would excute, input the following: 
-
-   ~~~admonish code
-
-   ```c
-   // Read two integers from the input file
-   if (fscanf(inputFile, "%d %d", &numOne, &numTwo) != 2) {
-        // Handle input error using perror()
-        perror("Error reading input from file");
-        fclose(inputFile); // Close the input file
-        return 1; // Exit with an error code
-    }
-   ```
+On the next line define three integer variables called, `numOne`, `numTwo` and `result`: 
    
-   ~~~
+~~~admonish code collapsible=true title='Suppressed Code... [1 line]'
 
+```c
+int num1, num2, result;
+```
 
-   ~~~admonish info
+~~~
 
-   - `fscanf` is for reading files what `scanf` is for reading from terminal input.
+### 4. Open Input File
 
-   - `fscanf`  returns the number of successfully read items. In this case, it should return `2` if it successfully reads two integers from the file. The `!= 2` checks if the return value is **not** equal to 2, indicating that the expected number of items was **not** successfully read.
+Create two newlines and the second one you need to reproduce the follwoing: 
 
-   - `fclose` is invoked because the file was opened, and needs to be closed. This protects the file from curruption when the program closes with `return 1`
+~~~admonish code
 
-   ~~~
+```c
+// Open input file for reading
+inputFile = fopen("input.txt", "r");
+if (inputFile == NULL) {
+    perror("Error opening input file");
+    return 1; // Exit with an error code
+}
+```
 
-6. We should also close the file when successfully read, do this by reproducing the `fclose` code on a new line outside of the closing brace of the `if(...){...`}
+~~~
 
-7. The calculation can now be performed, multiply `numOne` by `numTwo` and store in `result`
+~~~admonish example title='Explanation of code'
 
-    ~~~admonish code collapsible=true title='Suppressed Code... [3 lines]'
+- Here we are using `fopen` to open the `"input.txt"` with in read mode `"r"`
 
-    ```c
+- A check is made to see if the `inputFile` has any data, does the file exist, this is done with a `NULL` check.
+
+- If `NULL`, then the `perror` is invoked and outputs `"Error opening input file"` to standard error, and close the application with `return 1,` to indicate an error using an exit code.
+
+~~~
+
+### 5. Validating Input File
+
+If `inputFile` is not `NULL` then the following code would excute, input the following: 
+
+~~~admonish code
+
+```c
+// Read two integers from the input file
+if (fscanf(inputFile, "%d %d", &numOne, &numTwo) != 2) {
+    // Handle input error using perror()
+    perror("Error reading input from file");
     fclose(inputFile); // Close the input file
+    return 1; // Exit with an error code
+}
+```
 
-    // Perform multiplication
-    result = numOne * numTwo;
-    ```
+~~~
 
-    ~~~
 
-8. In a similar fashion to step 4 we need to write to a new file, reproduce the following:
+~~~admonish example title='Explanation of code'
 
-    ~~~admonish code
+- `fscanf` is for reading files what `scanf` is for reading from terminal input.
 
-    ```c
-    // Open output file for writing
-    outputFile = fopen("output.txt", "w");
-    if (outputFile == NULL) {
-        perror("Error opening output file");
-        return 1; // Exit with an error code
-    }
-    ```
+- `fscanf`  returns the number of successfully read items. In this case, it should return `2` if it successfully reads two integers from the file. The `!= 2` checks if the return value is **not** equal to 2, indicating that the expected number of items was **not** successfully read.
 
-    ~~~
+- `fclose` is invoked because the file was opened, and needs to be closed. This protects the file from curruption when the program closes with `return 1`
 
-    ~~~admonish example title='Explanation of code'
+~~~
 
-    - `fopen` opens the `"output.txt"` in write mode `"w"`
+### 6. Perform Multiplication
 
-    - A check is made to see if the `outputFile` has any data, does the file exist, this is done with a `NULL` check.
+The calculation can now be performed, multiply `numOne` by `numTwo` and store in `result`
 
-    - If `NULL`, then the `perror` is invoked and outputs `"Error opening output file"` to standard error, and close the application with `return 1`, to indicate an error using an exit code. 
+~~~admonish code collapsible=true title='Suppressed Code... [3 lines]'
 
-    ~~~
+```c
+fclose(inputFile); // Close the input file
 
-9. Again, repeating the structure of step 5, we can write to the file the `result` variable. Reproduce the following:
+// Perform multiplication
+result = numOne * numTwo;
+```
 
-    ~~~admonish code
+~~~
 
-    ```c
-    // Write the result to the output file
-    if (fprintf(outputFile, "Multiplication result: %d\n", result) < 0) {
-        // Handle output error using perror()
-        perror("Error writing output to file");
-        fclose(outputFile); // Close the output file before exiting
-        return 1; // Exit with an error code
-    }
-    ```
+### 7. Write to Output File
 
-    ~~~
+In a similar fashion to the `inputFile` we need to write to a new file, reproduce the following:
 
-    ~~~admonish example title='Explanation of code'
-    
-    - `fprintf` is for writing a formatted output to a file. It is similar to `printf`, but it writes to a file stream (`FILE*`).
-    
-    - `< 0` is a comparison that checks if the return value of fprintf is **less than** 0. `fprintf` returns the number of characters successfully written. If the return value is less than 0, it indicates an error occurred during writing.
+~~~admonish code
 
-    - Again you see `perror()` for standard error and the addition of `fclose()` to close the file.
+```c
+// Open output file for writing
+outputFile = fopen("output.txt", "w");
+if (outputFile == NULL) {
+    perror("Error opening output file");
+    return 1; // Exit with an error code
+}
+```
 
-    ~~~
+~~~
 
-10. On success the file needs to be close so after the `if(..){..}` add `fclose("outputFile)` and on a new line `printf("Operation completed successfully.\n");`
+~~~admonish example title='Explanation of code'
 
-11. Run the code and you should see the following outputs: 
+- `fopen` opens the `"output.txt"` in write mode `"w"`
 
-12. Open the `output.txt` file to see the result of the multiplication.
+- A check is made to see if the `outputFile` has any data, does the file exist, this is done with a `NULL` check.
+
+- If `NULL`, then the `perror` is invoked and outputs `"Error opening output file"` to standard error, and close the application with `return 1`, to indicate an error using an exit code. 
+
+~~~
+
+### 5. Validating Output File
+
+Again, repeating the structure of step 5, we can write to the file the `result` variable. Reproduce the following:
+
+~~~admonish code
+
+```c
+// Write the result to the output file
+if (fprintf(outputFile, "Multiplication result: %d\n", result) < 0) {
+    // Handle output error using perror()
+    perror("Error writing output to file");
+    fclose(outputFile); // Close the output file before exiting
+    return 1; // Exit with an error code
+}
+```
+
+~~~
+
+~~~admonish example title='Explanation of code'
+
+- `fprintf` is for writing a formatted output to a file. It is similar to `printf`, but it writes to a file stream (`FILE*`).
+
+- `< 0` is a comparison that checks if the return value of fprintf is **less than** 0. `fprintf` returns the number of characters successfully written. If the return value is less than 0, it indicates an error occurred during writing.
+
+- Again you see `perror()` for standard error and the addition of `fclose()` to close the file.
+
+~~~
+
+### 7. Print Success Message
+
+On success the file needs to be close so after the `if(..){..}` add `fclose("outputFile)` and on a new line `printf("Operation completed successfully.\n");`
+
+~~~admonish code
+
+```c
+fclose("outputFile);
+printf("Operation completed successfully.\n");
+```
+
+~~~
+
+### 8. Run the Program
+
+Compile and run the code.
+
+
+### 9. Verify the Output
+
+Open the `output.txt` file to see the result of the multiplication.
 
 
 -----------------------
 
 
-## Full code
+## C Full code
 
 ~~~admonish code collapsible=true title='Full code... [56 lines] '
 
@@ -324,6 +355,258 @@ int main() {
 
     return 0; // Exit successfully
 }
+```
+
+~~~
+
+--- 
+
+## Python Task 1: Starting out...
+
+~~~admonish info title='In this program you are going to:'
+
+- prompt the user to enter a number.
+
+- read the user input using `input()` and checks if the input was successfully read. If an error occurs, `except` is used to print an error message, and the program exits with an error code. 
+
+- If the input is successfully read, a simple calculation is performed (squaring the input).
+
+- The result is displayed using `print(f"")`.
+
+~~~
+
+1. Create a new file called `streams.py`
+
+2. At the top of the file put `import` `sys` package
+
+3. Next you need to create a `try:`-`except:` block
+
+4. Inside `try:` create a variable called `user_input` and assign to it the output of the following function `input("Enter a number: ")`
+
+5. Next convert the `user_input` to a `float` using the `float(...)` function, assign this to `number`
+
+6. On the next line square the `number`... and assign it to `result`
+
+7. Now you we need to output the `result` to the user. Use `print(f"")` notation 
+
+    ~~~admonish code collapsible=true title='`try` code... [14 lines] '
+    ```py
+    import sys  # Import for handling exit
+
+    try:
+        # Prompt the user to enter a number
+        user_input = input("Enter a number: ")
+
+        # Convert the input to a float
+        number = float(user_input)
+
+        # Perform the calculation (square the number)
+        result = number ** 2
+
+        # Display the result
+        print(f"The square of {number} is {result}")
+    ```
+    ~~~
+
+8. Next we need to add the `except:` incase there was an error inside `try:`
+
+9. Using `print()` return an appropriate error message 
+
+10. Finally, use the `sys` package and use the module `exit(1)`
+
+    ~~~admonish code collapsible=true title='Full code... [18 lines]'
+    import sys  # Import for handling exit
+
+    try:
+        # Prompt the user to enter a number
+        user_input = input("Enter a number: ")
+
+        # Convert the input to a float
+        number = float(user_input)
+
+        # Perform the calculation (square the number)
+        result = number ** 2
+
+        # Display the result
+        print(f"The square of {number} is {result}")
+
+    except ValueError:
+        # Handle invalid input
+        print("Error: Invalid input. Please enter a valid number.")
+        sys.exit(1)  # Exit the program with an error code
+    ```
+    ~~~
+
+11. Run the code and supply and numerical value, and then again with an alpha symbol.
+
+## Python Task 2: Read and Write a File
+
+This lab assumes an input file named `input.txt` containing two integers. The program will create an output file named `output.txt` to store the multiplication result of those integers. Proper error handling is implemented for file-related issues.
+
+---
+
+### 1. Define Main Function
+
+1. Create a new file called `read_write.py`
+
+2. Begin by defining a `main()` function in Python.
+
+```python
+import sys
+
+def main():
+```
+
+---
+
+### 2. Initialise Variables
+
+Define variables to hold the two numbers and the result of their multiplication.
+
+```python
+num_one = 0
+num_two = 0
+result = 0
+```
+
+---
+
+### 3. Open Input File
+
+Use a `try...except` block to handle potential errors when opening the file.
+
+```python
+try:
+    with open("input.txt", "r") as input_file:
+        # Read two integers from the file
+        try:
+            num_one, num_two = map(int, input_file.read().split())
+        except ValueError:
+            print("Error: Could not read two integers from input file.", file=sys.stderr)
+            return
+except FileNotFoundError:
+    print("Error: Input file not found.", file=sys.stderr)
+    return
+except IOError as e:
+    print(f"Error opening input file: {e}", file=sys.stderr)
+    return
+```
+
+~~~admonish example title='Explanation of code'
+
+- `open` opens the file in read mode (`"r"`).
+- `map(int, ...)` converts the space-separated values into integers.
+- Errors such as file not found or value parsing are handled gracefully.
+- The `except` blocks ensure that specific errors are caught and informative messages are printed. For instance:
+
+    - `FileNotFoundError`: This occurs when the file does not exist in the specified - location.
+
+    - `IOError`: This handles other input/output-related errors, such as permission - issues or hardware problems.
+
+    - `ValueError`: This handles scenarios where the file content is not properly formatted as two integers
+~~~
+
+---
+
+### 4. Perform Multiplication
+
+Multiply the two numbers and store the result.
+
+```python
+result = num_one * num_two
+```
+
+---
+
+### 5. Write to Output File
+
+Use another `try...except` block to handle potential issues when writing to the output file.
+
+```python
+try:
+    with open("output.txt", "w") as output_file:
+        # Write the result to the output file
+        output_file.write(f"Multiplication result: {result}\n")
+except IOError as e:
+    print(f"Error writing to output file: {e}", file=sys.stderr)
+    return
+```
+~~~admonish example title='Explanation of code'
+
+- `open` opens the file in write mode (`"w"`).
+- Errors during writing are caught and printed to standard error.
+
+~~~
+
+---
+
+### 6. Print Success Message
+
+Inform the user that the operation completed successfully.
+
+```python
+    print("Operation completed successfully.")
+```
+
+---
+
+### 7. Run the Program
+
+Call the `main()` function to execute the code.
+
+```python
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+### 8. Verify the Output
+
+1. Run the program.
+2. Open `output.txt` to verify that it contains the correct multiplication result.
+
+
+### 9. Full Code here
+
+~~~admonish code collapsible=true title='Full code... [35 lines]'
+```py
+import sys
+
+def main():
+    num_one = 0
+    num_two = 0
+    result = 0
+
+    try:
+        with open("input.txt", "r") as input_file:
+            # Read two integers from the file
+            try:
+                num_one, num_two = map(int, input_file.read().split())
+            except ValueError:
+                print("Error: Could not read two integers from input file.", file=sys.stderr)
+                return
+    except FileNotFoundError:
+        print("Error: Input file not found.", file=sys.stderr)
+        return
+    except IOError as e:
+        print(f"Error opening input file: {e}", file=sys.stderr)
+        return
+
+    result = num_one * num_two
+
+    try:
+        with open("output.txt", "w") as output_file:
+            # Write the result to the output file
+            output_file.write(f"Multiplication result: {result}\n")
+    except IOError as e:
+        print(f"Error writing to output file: {e}", file=sys.stderr)
+        return
+    
+    print("Operation completed successfully.")
+
+if __name__ == "__main__":
+    main()
 ```
 
 ~~~
