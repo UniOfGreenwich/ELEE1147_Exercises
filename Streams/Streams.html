@@ -202,8 +202,15 @@
 </tbody></table>
 </div>
 <hr />
-<h2 id="task-1-starting-out"><a class="header" href="#task-1-starting-out">Task 1: Starting out...</a></h2>
+<h2 id="c-task-1-starting-out"><a class="header" href="#c-task-1-starting-out">C Task 1: Starting out...</a></h2>
+<div id="admonition-in-this-program-you-are-going-to" class="admonition admonish-info" role="note" aria-labelledby="admonition-in-this-program-you-are-going-to-title">
+<div class="admonition-title">
+<div id="admonition-in-this-program-you-are-going-to-title">
 <p>In this program you are going to:</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-in-this-program-you-are-going-to"></a>
+</div>
+<div>
 <ul>
 <li>
 <p>prompt the user to enter a number.</p>
@@ -218,9 +225,11 @@
 <p>The result is displayed using <code>printf()</code>.</p>
 </li>
 </ul>
+</div>
+</div>
 <ol>
 <li>
-<p>Create a new project in Visual Studio and call it Streams, rename the <code>Streams.cpp</code> to <code>Streams.c</code></p>
+<p>Create a new directory called Streams, name the child file inside the Streams directory <code>streams.c</code></p>
 </li>
 <li>
 <p>Define two variables both integers called <code>number</code> and <code>result</code>.</p>
@@ -303,22 +312,20 @@ int main() {
 </li>
 </ol>
 <hr />
-<h2 id="task-2-read-and-write-a-file"><a class="header" href="#task-2-read-and-write-a-file">Task 2: Read and Write a File</a></h2>
+<h2 id="c-task-2-read-and-write-a-file"><a class="header" href="#c-task-2-read-and-write-a-file">C Task 2: Read and Write a File</a></h2>
 <p>The program you will write assumes that there is an input file named <code>input.txt</code> that stores two integers. The program will then create an output file named <code>output.txt</code> with the multiplication result of those two numbers. Error handling is incorporated using <code>perror()</code> for file-related errors.</p>
-<ol>
-<li>
+<h3 id="1-prepare-input-file"><a class="header" href="#1-prepare-input-file">1. Prepare Input File</a></h3>
 <p>Create a new file and places in the resources folder of the solution view, call it <code>input.txt</code>, inside the file input <strong>two</strong> numbers seperated by <strong>space</strong> that range from <code>0</code> <strong>to</strong> <code>50000</code>, save the file.</p>
-</li>
-<li>
+<h3 id="2-define-main-function"><a class="header" href="#2-define-main-function">2. Define Main Function</a></h3>
 <p>Now modify <code>main()</code>, by placing using the <code> FILE *inputFile, *outputFile;</code> at the top of <code>main()</code>.</p>
- <div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
- <div class="admonition-title">
- <div id="admonition-info-title">
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
 <p>Info</p>
- </div>
- <a class="admonition-anchor-link" href="#admonition-info"></a>
- </div>
- <div>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
 <ul>
 <li>
 <p><code>FILE</code> is not a fundamental C data type; it's a data type defined in the C standard library. It represents a file stream and is used to interact with files in C ograms. The <code>FILE</code> type is typically defined in the &lt;stdio.h&gt; header file as <code>struct</code></p>
@@ -331,10 +338,9 @@ int main() {
 <p><code>FILE</code> is essentially a structure that holds information about an open file, including its <strong>current position</strong>, <strong>status</strong>, and <strong>other details</strong>. When you open a file using functions like <code>fopen()</code>, it returns a pointer,<code>*</code>, to a <code>FILE</code> structure that you use for subsequent file operations.</p>
 </li>
 </ul>
- </div>
- </div>
-</li>
-<li>
+</div>
+</div>
+<h3 id="3-initialise-variables"><a class="header" href="#3-initialise-variables">3. Initialise Variables</a></h3>
 <p>On the next line define three integer variables called, <code>numOne</code>, <code>numTwo</code> and <code>result</code>:</p>
 <details id="admonition-suppressed-code-1-line" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-1-line-title">
 <summary class="admonition-title">
@@ -348,17 +354,16 @@ int main() {
 </code></pre>
 </div>
 </details>
-</li>
-<li>
+<h3 id="4-open-input-file"><a class="header" href="#4-open-input-file">4. Open Input File</a></h3>
 <p>Create two newlines and the second one you need to reproduce the follwoing:</p>
- <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
- <div class="admonition-title">
- <div id="admonition-code-title">
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
 <p>Code</p>
- </div>
- <a class="admonition-anchor-link" href="#admonition-code"></a>
- </div>
- <div>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
 <pre><code class="language-c">// Open input file for reading
 inputFile = fopen("input.txt", "r");
 if (inputFile == NULL) {
@@ -366,16 +371,16 @@ if (inputFile == NULL) {
     return 1; // Exit with an error code
 }
 </code></pre>
- </div>
- </div>
- <div id="admonition-explanation-of-code" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-title">
- <div class="admonition-title">
- <div id="admonition-explanation-of-code-title">
+</div>
+</div>
+<div id="admonition-explanation-of-code" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-title">
 <p>Explanation of code</p>
- </div>
- <a class="admonition-anchor-link" href="#admonition-explanation-of-code"></a>
- </div>
- <div>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code"></a>
+</div>
+<div>
 <ul>
 <li>
 <p>Here we are using <code>fopen</code> to open the <code>"input.txt"</code> with in read mode <code>"r"</code></p>
@@ -387,14 +392,10 @@ if (inputFile == NULL) {
 <p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>"Error opening input file"</code> to standard error, and close the application with <code>return 1,</code> to indicate an error using an exit code.</p>
 </li>
 </ul>
-<pre><code>
-&lt;/div&gt;
-&lt;/div&gt;
-
-</code></pre>
-</li>
-<li>
-<p>If inputFile is not <code>NULL</code> then the following code would excute, input the following:</p>
+</div>
+</div>
+<h3 id="5-validating-input-file"><a class="header" href="#5-validating-input-file">5. Validating Input File</a></h3>
+<p>If <code>inputFile</code> is not <code>NULL</code> then the following code would excute, input the following:</p>
 <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
 <div class="admonition-title">
 <div id="admonition-code-1-title">
@@ -405,20 +406,20 @@ if (inputFile == NULL) {
 <div>
 <pre><code class="language-c">// Read two integers from the input file
 if (fscanf(inputFile, "%d %d", &amp;numOne, &amp;numTwo) != 2) {
-     // Handle input error using perror()
-     perror("Error reading input from file");
-     fclose(inputFile); // Close the input file
-     return 1; // Exit with an error code
- }
+    // Handle input error using perror()
+    perror("Error reading input from file");
+    fclose(inputFile); // Close the input file
+    return 1; // Exit with an error code
+}
 </code></pre>
 </div>
 </div>
-<div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+<div id="admonition-explanation-of-code-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-1-title">
 <div class="admonition-title">
-<div id="admonition-info-1-title">
-<p>Info</p>
+<div id="admonition-explanation-of-code-1-title">
+<p>Explanation of code</p>
 </div>
-<a class="admonition-anchor-link" href="#admonition-info-1"></a>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code-1"></a>
 </div>
 <div>
 <ul>
@@ -434,38 +435,33 @@ if (fscanf(inputFile, "%d %d", &amp;numOne, &amp;numTwo) != 2) {
 </ul>
 </div>
 </div>
-</li>
-<li>
-<p>We should also close the file when successfully read, do this by reproducing the <code>fclose</code> code on a new line outside of the closing brace of the <code>if(...){...</code>}</p>
-</li>
-<li>
+<h3 id="6-perform-multiplication"><a class="header" href="#6-perform-multiplication">6. Perform Multiplication</a></h3>
 <p>The calculation can now be performed, multiply <code>numOne</code> by <code>numTwo</code> and store in <code>result</code></p>
- <details id="admonition-suppressed-code-3-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-3-lines-title">
- <summary class="admonition-title">
- <div id="admonition-suppressed-code-3-lines-title">
+<details id="admonition-suppressed-code-3-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-suppressed-code-3-lines-title">
+<summary class="admonition-title">
+<div id="admonition-suppressed-code-3-lines-title">
 <p>Suppressed Code... [3 lines]</p>
- </div>
- <a class="admonition-anchor-link" href="#admonition-suppressed-code-3-lines"></a>
- </summary>
- <div>
+</div>
+<a class="admonition-anchor-link" href="#admonition-suppressed-code-3-lines"></a>
+</summary>
+<div>
 <pre><code class="language-c">fclose(inputFile); // Close the input file
 
 // Perform multiplication
 result = numOne * numTwo;
 </code></pre>
- </div>
- </details>
-</li>
-<li>
-<p>In a similar fashion to step 4 we need to write to a new file, reproduce the following:</p>
- <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
- <div class="admonition-title">
- <div id="admonition-code-2-title">
+</div>
+</details>
+<h3 id="7-write-to-output-file"><a class="header" href="#7-write-to-output-file">7. Write to Output File</a></h3>
+<p>In a similar fashion to the <code>inputFile</code> we need to write to a new file, reproduce the following:</p>
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
 <p>Code</p>
- </div>
- <a class="admonition-anchor-link" href="#admonition-code-2"></a>
- </div>
- <div>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
 <pre><code class="language-c">// Open output file for writing
 outputFile = fopen("output.txt", "w");
 if (outputFile == NULL) {
@@ -473,16 +469,16 @@ if (outputFile == NULL) {
     return 1; // Exit with an error code
 }
 </code></pre>
- </div>
- </div>
- <div id="admonition-explanation-of-code-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-1-title">
- <div class="admonition-title">
- <div id="admonition-explanation-of-code-1-title">
+</div>
+</div>
+<div id="admonition-explanation-of-code-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-2-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-2-title">
 <p>Explanation of code</p>
- </div>
- <a class="admonition-anchor-link" href="#admonition-explanation-of-code-1"></a>
- </div>
- <div>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code-2"></a>
+</div>
+<div>
 <ul>
 <li>
 <p><code>fopen</code> opens the <code>"output.txt"</code> in write mode <code>"w"</code></p>
@@ -494,19 +490,18 @@ if (outputFile == NULL) {
 <p>If <code>NULL</code>, then the <code>perror</code> is invoked and outputs <code>"Error opening output file"</code> to standard error, and close the application with <code>return 1</code>, to indicate an error using an exit code.</p>
 </li>
 </ul>
- </div>
- </div>
-</li>
-<li>
+</div>
+</div>
+<h3 id="5-validating-output-file"><a class="header" href="#5-validating-output-file">5. Validating Output File</a></h3>
 <p>Again, repeating the structure of step 5, we can write to the file the <code>result</code> variable. Reproduce the following:</p>
- <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
- <div class="admonition-title">
- <div id="admonition-code-3-title">
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
 <p>Code</p>
- </div>
- <a class="admonition-anchor-link" href="#admonition-code-3"></a>
- </div>
- <div>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
 <pre><code class="language-c">// Write the result to the output file
 if (fprintf(outputFile, "Multiplication result: %d\n", result) &lt; 0) {
     // Handle output error using perror()
@@ -515,16 +510,16 @@ if (fprintf(outputFile, "Multiplication result: %d\n", result) &lt; 0) {
     return 1; // Exit with an error code
 }
 </code></pre>
- </div>
- </div>
- <div id="admonition-explanation-of-code-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-2-title">
- <div class="admonition-title">
- <div id="admonition-explanation-of-code-2-title">
+</div>
+</div>
+<div id="admonition-explanation-of-code-3" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-3-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-3-title">
 <p>Explanation of code</p>
- </div>
- <a class="admonition-anchor-link" href="#admonition-explanation-of-code-2"></a>
- </div>
- <div>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code-3"></a>
+</div>
+<div>
 <ul>
 <li>
 <p><code>fprintf</code> is for writing a formatted output to a file. It is similar to <code>printf</code>, but it writes to a file stream (<code>FILE*</code>).</p>
@@ -536,21 +531,29 @@ if (fprintf(outputFile, "Multiplication result: %d\n", result) &lt; 0) {
 <p>Again you see <code>perror()</code> for standard error and the addition of <code>fclose()</code> to close the file.</p>
 </li>
 </ul>
- </div>
- </div>
-</li>
-<li>
+</div>
+</div>
+<h3 id="7-print-success-message"><a class="header" href="#7-print-success-message">7. Print Success Message</a></h3>
 <p>On success the file needs to be close so after the <code>if(..){..}</code> add <code>fclose("outputFile)</code> and on a new line <code>printf("Operation completed successfully.\n");</code></p>
-</li>
-<li>
-<p>Run the code and you should see the following outputs:</p>
-</li>
-<li>
+<div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+<div class="admonition-title">
+<div id="admonition-code-4-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-4"></a>
+</div>
+<div>
+<pre><code class="language-c">fclose("outputFile);
+printf("Operation completed successfully.\n");
+</code></pre>
+</div>
+</div>
+<h3 id="8-run-the-program"><a class="header" href="#8-run-the-program">8. Run the Program</a></h3>
+<p>Compile and run the code.</p>
+<h3 id="9-verify-the-output"><a class="header" href="#9-verify-the-output">9. Verify the Output</a></h3>
 <p>Open the <code>output.txt</code> file to see the result of the multiplication.</p>
-</li>
-</ol>
 <hr />
-<h2 id="full-code"><a class="header" href="#full-code">Full code</a></h2>
+<h2 id="c-full-code"><a class="header" href="#c-full-code">C Full code</a></h2>
 <details id="admonition-full-code-56-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-56-lines-title">
 <summary class="admonition-title">
 <div id="admonition-full-code-56-lines-title">
@@ -606,6 +609,297 @@ int main() {
 
     return 0; // Exit successfully
 }
+</code></pre>
+</div>
+</details>
+<hr />
+<h2 id="python-task-1-starting-out"><a class="header" href="#python-task-1-starting-out">Python Task 1: Starting out...</a></h2>
+<div id="admonition-in-this-program-you-are-going-to-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-in-this-program-you-are-going-to-1-title">
+<div class="admonition-title">
+<div id="admonition-in-this-program-you-are-going-to-1-title">
+<p>In this program you are going to:</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-in-this-program-you-are-going-to-1"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>prompt the user to enter a number.</p>
+</li>
+<li>
+<p>read the user input using <code>input()</code> and checks if the input was successfully read. If an error occurs, <code>except</code> is used to print an error message, and the program exits with an error code.</p>
+</li>
+<li>
+<p>If the input is successfully read, a simple calculation is performed (squaring the input).</p>
+</li>
+<li>
+<p>The result is displayed using <code>print(f"")</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<ol>
+<li>
+<p>Create a new file called <code>streams.py</code></p>
+</li>
+<li>
+<p>At the top of the file put <code>import</code> <code>sys</code> package</p>
+</li>
+<li>
+<p>Next you need to create a <code>try:</code>-<code>except:</code> block</p>
+</li>
+<li>
+<p>Inside <code>try:</code> create a variable called <code>user_input</code> and assign to it the output of the following function <code>input("Enter a number: ")</code></p>
+</li>
+<li>
+<p>Next convert the <code>user_input</code> to a <code>float</code> using the <code>float(...)</code> function, assign this to <code>number</code></p>
+</li>
+<li>
+<p>On the next line square the <code>number</code>... and assign it to <code>result</code></p>
+</li>
+<li>
+<p>Now you we need to output the <code>result</code> to the user. Use <code>print(f"")</code> notation</p>
+ <details id="admonition-try-code-14-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-try-code-14-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-try-code-14-lines-title">
+<p><code>try</code> code... [14 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-try-code-14-lines"></a>
+ </summary>
+ <div>
+<pre><code> ```py
+</code></pre>
+<p>import sys  # Import for handling exit</p>
+<p>try:
+# Prompt the user to enter a number
+user_input = input("Enter a number: ")</p>
+<pre><code> # Convert the input to a float
+ number = float(user_input)
+
+ # Perform the calculation (square the number)
+ result = number ** 2
+
+ # Display the result
+ print(f"The square of {number} is {result}")
+</code></pre>
+<pre><code>
+&lt;/div&gt;
+&lt;/details&gt;
+
+</code></pre>
+</li>
+<li>
+<p>Next we need to add the <code>except:</code> incase there was an error inside <code>try:</code></p>
+</li>
+<li>
+<p>Using <code>print()</code> return an appropriate error message</p>
+</li>
+<li>
+<p>Finally, use the <code>sys</code> package and use the module <code>exit(1)</code></p>
+<details id="admonition-full-code-18-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-18-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-18-lines-title">
+<p>Full code... [18 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-18-lines"></a>
+</summary>
+<div>
+<pre><code>import sys  # Import for handling exit
+</code></pre>
+<p>try:
+# Prompt the user to enter a number
+user_input = input("Enter a number: ")</p>
+<pre><code># Convert the input to a float
+number = float(user_input)
+
+# Perform the calculation (square the number)
+result = number ** 2
+
+# Display the result
+print(f"The square of {number} is {result}")
+</code></pre>
+<p>except ValueError:
+# Handle invalid input
+print("Error: Invalid input. Please enter a valid number.")
+sys.exit(1)  # Exit the program with an error code</p>
+<pre><code>
+&lt;/div&gt;
+&lt;/details&gt;
+
+</code></pre>
+</li>
+<li>
+<p>Run the code and supply and numerical value, and then again with an alpha symbol.</p>
+</li>
+</ol>
+<h2 id="python-task-2-read-and-write-a-file"><a class="header" href="#python-task-2-read-and-write-a-file">Python Task 2: Read and Write a File</a></h2>
+<p>This lab assumes an input file named <code>input.txt</code> containing two integers. The program will create an output file named <code>output.txt</code> to store the multiplication result of those integers. Proper error handling is implemented for file-related issues.</p>
+<hr />
+<h3 id="1-define-main-function"><a class="header" href="#1-define-main-function">1. Define Main Function</a></h3>
+<ol>
+<li>
+<p>Create a new file called <code>read_write.py</code></p>
+</li>
+<li>
+<p>Begin by defining a <code>main()</code> function in Python.</p>
+</li>
+</ol>
+<pre><code class="language-python">import sys
+
+def main():
+</code></pre>
+<hr />
+<h3 id="2-initialise-variables"><a class="header" href="#2-initialise-variables">2. Initialise Variables</a></h3>
+<p>Define variables to hold the two numbers and the result of their multiplication.</p>
+<pre><code class="language-python">num_one = 0
+num_two = 0
+result = 0
+</code></pre>
+<hr />
+<h3 id="3-open-input-file"><a class="header" href="#3-open-input-file">3. Open Input File</a></h3>
+<p>Use a <code>try...except</code> block to handle potential errors when opening the file.</p>
+<pre><code class="language-python">try:
+    with open("input.txt", "r") as input_file:
+        # Read two integers from the file
+        try:
+            num_one, num_two = map(int, input_file.read().split())
+        except ValueError:
+            print("Error: Could not read two integers from input file.", file=sys.stderr)
+            return
+except FileNotFoundError:
+    print("Error: Input file not found.", file=sys.stderr)
+    return
+except IOError as e:
+    print(f"Error opening input file: {e}", file=sys.stderr)
+    return
+</code></pre>
+<div id="admonition-explanation-of-code-4" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-4-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-4-title">
+<p>Explanation of code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code-4"></a>
+</div>
+<div>
+<ul>
+<li>
+<p><code>open</code> opens the file in read mode (<code>"r"</code>).</p>
+</li>
+<li>
+<p><code>map(int, ...)</code> converts the space-separated values into integers.</p>
+</li>
+<li>
+<p>Errors such as file not found or value parsing are handled gracefully.</p>
+</li>
+<li>
+<p>The <code>except</code> blocks ensure that specific errors are caught and informative messages are printed. For instance:</p>
+<ul>
+<li>
+<p><code>FileNotFoundError</code>: This occurs when the file does not exist in the specified - location.</p>
+</li>
+<li>
+<p><code>IOError</code>: This handles other input/output-related errors, such as permission - issues or hardware problems.</p>
+</li>
+<li>
+<p><code>ValueError</code>: This handles scenarios where the file content is not properly formatted as two integers</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<hr />
+<h3 id="4-perform-multiplication"><a class="header" href="#4-perform-multiplication">4. Perform Multiplication</a></h3>
+<p>Multiply the two numbers and store the result.</p>
+<pre><code class="language-python">result = num_one * num_two
+</code></pre>
+<hr />
+<h3 id="5-write-to-output-file"><a class="header" href="#5-write-to-output-file">5. Write to Output File</a></h3>
+<p>Use another <code>try...except</code> block to handle potential issues when writing to the output file.</p>
+<pre><code class="language-python">try:
+    with open("output.txt", "w") as output_file:
+        # Write the result to the output file
+        output_file.write(f"Multiplication result: {result}\n")
+except IOError as e:
+    print(f"Error writing to output file: {e}", file=sys.stderr)
+    return
+</code></pre>
+<div id="admonition-explanation-of-code-5" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-5-title">
+<div class="admonition-title">
+<div id="admonition-explanation-of-code-5-title">
+<p>Explanation of code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-of-code-5"></a>
+</div>
+<div>
+<ul>
+<li><code>open</code> opens the file in write mode (<code>"w"</code>).</li>
+<li>Errors during writing are caught and printed to standard error.</li>
+</ul>
+</div>
+</div>
+<hr />
+<h3 id="6-print-success-message"><a class="header" href="#6-print-success-message">6. Print Success Message</a></h3>
+<p>Inform the user that the operation completed successfully.</p>
+<pre><code class="language-python">    print("Operation completed successfully.")
+</code></pre>
+<hr />
+<h3 id="7-run-the-program"><a class="header" href="#7-run-the-program">7. Run the Program</a></h3>
+<p>Call the <code>main()</code> function to execute the code.</p>
+<pre><code class="language-python">if __name__ == "__main__":
+    main()
+</code></pre>
+<hr />
+<h3 id="8-verify-the-output"><a class="header" href="#8-verify-the-output">8. Verify the Output</a></h3>
+<ol>
+<li>Run the program.</li>
+<li>Open <code>output.txt</code> to verify that it contains the correct multiplication result.</li>
+</ol>
+<h3 id="9-full-code-here"><a class="header" href="#9-full-code-here">9. Full Code here</a></h3>
+<details id="admonition-full-code-35-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-35-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-35-lines-title">
+<p>Full code... [35 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-35-lines"></a>
+</summary>
+<div>
+<pre><code class="language-py">import sys
+
+def main():
+    num_one = 0
+    num_two = 0
+    result = 0
+
+    try:
+        with open("input.txt", "r") as input_file:
+            # Read two integers from the file
+            try:
+                num_one, num_two = map(int, input_file.read().split())
+            except ValueError:
+                print("Error: Could not read two integers from input file.", file=sys.stderr)
+                return
+    except FileNotFoundError:
+        print("Error: Input file not found.", file=sys.stderr)
+        return
+    except IOError as e:
+        print(f"Error opening input file: {e}", file=sys.stderr)
+        return
+
+    result = num_one * num_two
+
+    try:
+        with open("output.txt", "w") as output_file:
+            # Write the result to the output file
+            output_file.write(f"Multiplication result: {result}\n")
+    except IOError as e:
+        print(f"Error writing to output file: {e}", file=sys.stderr)
+        return
+    
+    print("Operation completed successfully.")
+
+if __name__ == "__main__":
+    main()
 </code></pre>
 </div>
 </details>
