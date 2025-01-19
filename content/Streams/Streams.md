@@ -1,4 +1,4 @@
-# Lab 8: Streams
+# Streams
 
 You have been using the `stdio.h` for nearly every lab, and will use it for nearly every program you will ever create in C.
 

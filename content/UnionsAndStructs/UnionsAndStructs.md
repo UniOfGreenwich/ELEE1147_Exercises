@@ -1,4 +1,4 @@
-# Lab 7: Unions and Structs
+# Unions and Structs
 
  - You need to open a new Visual Studio Code, give it a meaningful name. 
  - Create a new file called `unionsandstructs.exe` 

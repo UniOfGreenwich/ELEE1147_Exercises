@@ -1,4 +1,4 @@
-## Lab 9: Algorithms 
+## Algorithms 
 
 - Quick sort Example, \\( O(n\ log\ n)\\)
 

@@ -1,4 +1,4 @@
-# Lab 6: C Pointers and Addressing
+# C Pointers and Addressing
 
 In this lab you will be introduce to pointers and addressing as tool to understand computer memory.
 

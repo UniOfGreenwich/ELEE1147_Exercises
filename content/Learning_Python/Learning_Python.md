@@ -1,4 +1,4 @@
-# Lab n: Learning Python
+# Learning Python
 
 We will be doing this lab inconjuction with the Python lecture. Key concepts will be explained and you will put into practice.
 
