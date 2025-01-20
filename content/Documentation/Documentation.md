@@ -238,6 +238,3 @@ Here is an example output of what we are going to create: <a href="docs/html/ind
     ~~~
 
 10. Consider expanding on the Calculator add some more features and explore more features with Doxygen: (https://www.doxygen.nl/examples.html)[https://www.doxygen.nl/examples.html]
-
-## Task 2: Pydoc for Python
-
