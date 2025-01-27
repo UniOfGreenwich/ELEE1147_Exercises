@@ -38,6 +38,7 @@
 
  - [Compilers](./Compilers/compilers.md)
  - [Documentation](./Documentation/Documentation.md)
+ - [Debugging](./Debugging/Debugging.md)
 
 ------
 
