@@ -14,13 +14,9 @@
 - [Header Files, Guards, and Macros](HeaderFilesGuardsMacros/HeaderFilesGuardsMacros.md)
 - [Bitwise Operations](BitwiseOperations/BitwiseOperations.md)
 - [Arithmetic Operations](ArithmeticOperations/ArithmeticOperations.md)
-- [Recursion]()
--------------------------------------
-
 - [Pointers and Addressing](PointersAndAddressing/PointersAndAddressing.md)
 - [Structs and Unions](UnionsAndStructs/UnionsAndStructs.md)
 - [Streams](Streams/Streams.md)
-- [Algorithms](Algorithms/Algorithms.md)
 
 -----
 
@@ -31,6 +27,12 @@
 - [Importing Modules](./Learning_Python/Importing_Modules.md)
 - [Object Orientated Programming](./Learning_Python/OOP.md)
 
+------
+
+# Shell
+
+- [Introduction to Shell Scripting]()
+- [Advanced Shell Scripting]()
 
 ------
 
@@ -39,6 +41,8 @@
  - [Compilers](./Compilers/compilers.md)
  - [Documentation](./Documentation/Documentation.md)
  - [Debugging](./Debugging/Debugging.md)
+ - [Algorithms](./Algorithms/Algorithms.md)
+ - [Recursion]()
 
 ------
 
