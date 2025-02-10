@@ -1,0 +1,1008 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Introduction to Shell Scripting - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/content/Learning_Shell/Learning_Shell.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="introduction-to-shell-scripting"><a class="header" href="#introduction-to-shell-scripting">Introduction to Shell Scripting</a></h1>
+<hr />
+<h2 id="bash-system"><a class="header" href="#bash-system">Bash system</a></h2>
+<ol>
+<li>Navigate to a terminal to with a bash shell</li>
+<li>Make a new directory with the <code>mkdir</code> command called <code>Shell</code>, and the change to that directory <code>$ cd ~/path/to/Shell</code></li>
+<li>Make new directory, <code>$ mkdir scripting</code> and again change directory to <code>scripting</code></li>
+</ol>
+<hr />
+<h2 id="task-1--shebanghashbang"><a class="header" href="#task-1--shebanghashbang">Task 1. <code>#!</code> Shebang/hashbang</a></h2>
+<ol>
+<li>
+<p>Create a new file called <code>script.sh</code></p>
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code>$ touch script.sh
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then edit the file</p>
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code>$ nano script.sh
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Reproduce the following...</p>
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-sh"> #! /usr/bin/env cat
+ VAR1=Hello
+ VAR2=World!
+ VAR3=Goodbye
+
+ echo ${VAR1} ${VAR2}
+ echo ${VAR3} ${VAR2}
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Write out <code>ctrl+x</code></p>
+</li>
+<li>
+<p>Modify the file's mode bits so that it becomes an executable</p>
+<div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+<div class="admonition-title">
+<div id="admonition-terminal-2-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ ls -l
+$ chmod +x script.sh
+$ ls -l
+</code></pre>
+</div>
+</div>
+<ul>
+<li>
+<p>performing <code>ls -l</code> either side of the <code>chmod</code> command shows the information about the file such as its mode bits.</p>
+<ul>
+<li>
+<p><strong>Before:</strong></p>
+<div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<div class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</div>
+<div>
+<pre><code class="language-sh">-rw-r--r-- 1 jovyan users  107 Feb 22 12:35 script.sh
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>After:</strong></p>
+<div id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+<div class="admonition-title">
+<div id="admonition-output-1-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">-rwxr-xr-x 1 jovyan users    107 Feb 22 12:35 script.sh
+</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Now you are going to run the script two ways.</p>
+<ul>
+<li>
+<p>first way is to call the script via bash directly:</p>
+   <div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+   <div class="admonition-title">
+   <div id="admonition-terminal-3-title">
+<p>Terminal</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+   </div>
+   <div>
+<pre><code class="language-sh">$ bash script.sh
+</code></pre>
+   </div>
+   </div>
+<ul>
+<li>
+<p><strong>Ouput:</strong></p>
+ <div id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+ <div class="admonition-title">
+ <div id="admonition-output-2-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-2"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">Hello World!
+Goodbye World!
+</code></pre>
+ </div>
+ </div>
+</li>
+</ul>
+</li>
+<li>
+<p>Second way is to run the script as an executable</p>
+  <div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+  <div class="admonition-title">
+  <div id="admonition-terminal-4-title">
+<p>Terminal</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+  </div>
+  <div>
+<pre><code class="language-sh">./script.sh
+</code></pre>
+  </div>
+  </div>
+</li>
+<li>
+<p><strong>Ouput:</strong></p>
+ <div id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+ <div class="admonition-title">
+ <div id="admonition-output-3-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-3"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env cat
+VAR1=Hello
+VAR2=World!
+VAR3=Goodbye
+echo ${VAR1} ${VAR2}
+echo ${VAR3} ${VAR2}
+</code></pre>
+ </div>
+ </div>
+</li>
+</ul>
+</li>
+<li>
+<p>Lets modifiy the script so that the <code>#! /usr/bin/env wc</code></p>
+<ul>
+<li>
+<p>write out <code>ctrl+x</code></p>
+</li>
+<li>
+<p>What will running the script do?</p>
+</li>
+<li>
+<p>Run it and find out.</p>
+   <details id="admonition-terminal-5" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-5-title">
+   <summary class="admonition-title">
+   <div id="admonition-terminal-5-title">
+<p>Terminal</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-terminal-5"></a>
+   </summary>
+   <div>
+<pre><code class="language-sh">$ ./script.sh
+    12 97 ./script.sh
+</code></pre>
+<p>So you can see that the <code>#!</code> is only operated on when the script is run as an executable, where as using <code>bash</code> command we are calling the interpreter directly and it ignores the <code>#!</code>.</p>
+   </div>
+   </details>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="task-2-variables"><a class="header" href="#task-2-variables">Task 2. Variables</a></h2>
+<ol>
+<li>
+<p>create a new file and call it <code>int-or-string.sh</code></p>
+</li>
+<li>
+<p>Reproduce the following:</p>
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+A=2334                   # Integer... though still a string
+echo "A = ${A} "         # a = 2335
+A=$(( ${A} + 1 ))        # increment A by 1.
+echo "A = ${A} "         # a = 2335, Integer, still.
+echo                     # new empty line
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>You can change the mode bits again if you like or run with just <code>bash</code>.</p>
+<ul>
+<li>
+<p><code>bash int-or-string.sh</code></p>
+</li>
+<li>
+<p>or <code>chmod +x int-or-string.sh</code>, <code>./int-or-string.sh</code></p>
+</li>
+<li>
+<p><strong>Output:</strong></p>
+<div id="admonition-output-4" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-4-title">
+<div class="admonition-title">
+<div id="admonition-output-4-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-4"></a>
+</div>
+<div>
+<pre><code class="language-sh">A = 2334
+A = 2335 
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>This behaved as expected, using arthemtric expansion <code>$((...))</code> to increment variable <code>A</code> by 1.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Modify the script to include, pay attention to the comments.</p>
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
+<pre><code class="language-sh">B=${A/23/BB}             # Substitute "BB" for "23".
+                         # This transforms $b into a string.
+echo "B = ${B}"          # B = BB35
+declare -i B             # Declaring it an integer doesn't help.
+echo "B = ${B}"          # B = BB35
+
+B=$(( ${B} + 1 ))        # BB35 + 1
+echo "B = $B"            # B = 1
+echo                     # Bash sets the "integer value" of a string to 0.
+
+C=BB34
+echo "C = $C"            # C = BB34
+D=${C/BB/23}             # Substitute "23" for "BB".
+                         # This makes $D an integer.
+echo "D = ${D}"          # D = 2334
+D=$(( ${D} + 1 ))        # 2334 + 1
+echo "D = ${D}"          # D = 2335
+echo
+</code></pre>
+</div>
+</div>
+<ul>
+<li>
+<p><strong>Output:</strong></p>
+   <div id="admonition-output-5" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-5-title">
+   <div class="admonition-title">
+   <div id="admonition-output-5-title">
+<p>Output</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-output-5"></a>
+   </div>
+   <div>
+<pre><code class="language-sh">A = 2334
+A = 2335 
+
+B = BB35
+B = BB35
+B = 1
+
+C = BB34
+D = 2334
+D = 2335
+</code></pre>
+   </div>
+   </div>
+</li>
+</ul>
+</li>
+<li>
+<p>Still on Variables... create a new script called <code>my-name-is.sh</code></p>
+<ul>
+<li>
+<p>reproduce the following code, like from the lecture slide.</p>
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+GREETING=Hi
+STATEMENT="my name is,"
+INTERROGATIVEPRONOUN1=what?
+INTERROGATIVEPRONOUN2=who?
+NAME=${1:-"Slim Shady"}
+ALLITERATION=chka-chka
+
+echo ${STATEMENT} ${INTERROGATIVEPRONOUN1}
+echo ${STATEMENT} ${INTERROGATIVEPRONOUN2}
+echo ${STATEMENT} ${ALLITERATION} ${NAME}
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>again note the Uppercase standard for nameing convention here.</p>
+</li>
+<li>
+<p>Notice how not all variables values are explicitly declared as string <code>""</code>. You only need to do this if there are spaces between letters/words.</p>
+</li>
+<li>
+<p>run the command.</p>
+<div id="admonition-terminal-6" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-6-title">
+<div class="admonition-title">
+<div id="admonition-terminal-6-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-6"></a>
+</div>
+<div>
+<pre><code class="language-sh"> $ bash my-name-is.sh
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Output:</strong></p>
+<div id="admonition-output-6" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-6-title">
+<div class="admonition-title">
+<div id="admonition-output-6-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-6"></a>
+</div>
+<div>
+<pre><code class="language-sh">my name is, what?
+my name is, who?
+my name is, chka-chka Slim Shady
+</code></pre>
+</div>
+</div>
+   <div id="admonition-explanation" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-title">
+   <div class="admonition-title">
+   <div id="admonition-explanation-title">
+<p>Explanation</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-explanation"></a>
+   </div>
+   <div>
+<ul>
+<li>But hold on... what about <code>NAME=${1:-"Slim Shady"}</code>
+<ul>
+<li>Well this special operation allows default values to be assigned to the variable if something is <code>null</code> such as <code>1</code> is the positional number for a parameter coming into the script when it is called from the CLIm if this is <code>null</code> then set <code>NAME=Slim Shady</code>.</li>
+</ul>
+</li>
+</ul>
+   </div>
+   </div>
+</li>
+<li>
+<p>Try calling the script but this time provide your first name, or mulitple names encapsulated with <code>"name name name"</code></p>
+ <div id="admonition-terminal-7" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-7-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-7-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-7"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">$ bash my-name-is.sh Seb 
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p><strong>Output:</strong></p>
+  <div id="admonition-output-7" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-7-title">
+  <div class="admonition-title">
+  <div id="admonition-output-7-title">
+<p>Output</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-output-7"></a>
+  </div>
+  <div>
+<pre><code class="language-sh">my name is, what?
+my name is, who?
+my name is, chka-chka Seb
+</code></pre>
+  </div>
+  </div>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="task-3-loops"><a class="header" href="#task-3-loops">Task 3. Loops</a></h2>
+<ol>
+<li>
+<p>Create a new script called <code>forloops.sh</code></p>
+</li>
+<li>
+<p>Reproduce the following code, pay attention to the comments.</p>
+<div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+<div class="admonition-title">
+<div id="admonition-code-4-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-4"></a>
+</div>
+<div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+DIR="task5"
+
+# if directory (-d) does not exist (!), then create it
+if [[ ! -d ${DIR} ]]; then 
+  mkdir ${DIR} &amp;&amp; echo "${DIR} created" # if successful printout created
+fi
+# a becomes 1 then 2, and 3 and this is appended to the word foo_ to 
+# create files in the directory that was created.
+for a in 1 2 3 ; do
+   touch ${DIR}/foo_$a
+done
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run this command, and see if you get a new directory filled with files.</p>
+</li>
+<li>
+<p>You can check by running the ls  &amp; wc -l command in terminal:</p>
+<div id="admonition-terminal-8" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-8-title">
+<div class="admonition-title">
+<div id="admonition-terminal-8-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-8"></a>
+</div>
+<div>
+<pre><code class="language-sh">$ ls task5/ | wc -l
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Lets modify the script again</p>
+<div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+<div class="admonition-title">
+<div id="admonition-code-5-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-5"></a>
+</div>
+<div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+DIR="task5"
+
+# if directory (-d) does not exist (!), then create it
+if [[ ! -d ${DIR} ]]; then
+    mkdir ${DIR} &amp;&amp; echo "${DIR} created" # if successful printout created
+fi
+# counts the number of files in the directory 
+# you can run commands and save the outputs to variables using $(...)
+COUNT=$( ls ${DIR} | wc -l )
+# arthimetic operations can be formed using $((...))
+BOUND=$(( ${COUNT}+5 )) 
+
+#  using the seq command you can create sequence from one number to 
+# another... seq a b, 1 to 10 for example.
+# this way we can create a new file proceeding the last file in the dir
+for a in $( seq ${COUNT} ${BOUND} ) ; do
+   touch ${DIR}/foo_$a
+done
+</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the command and perform the command <code>ls task5/ | wc -l</code> to see if the files have been created. Rinse and repeat a few times to see if it works.</p>
+</li>
+<li>
+<p>Now create a <code>whileloop.sh</code> file</p>
+<div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+<div class="admonition-title">
+<div id="admonition-code-6-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-6"></a>
+</div>
+<div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+ COUNTER=1
+
+ while [ ${COUNTER} -lt 10 ]
+ do
+ echo ${COUNTER}
+ COUNTER=$(( ${COUNTER}+1 ))
+ done
+ echo All done
+
+ until [ ${COUNTER} -eq 0 ]
+ do
+ echo ${COUNTER}
+ COUNTER=$((${COUNTER}-1))
+ done
+
+ echo All done
+</code></pre>
+</div>
+</div>
+</li>
+</ol>
+<ul>
+<li>Run this and see the output in the terminal,
+<ul>
+<li>experiment with:
+<ul>
+<li><code>-lt</code> less than</li>
+<li><code>-le</code> less than equal to</li>
+<li><code>-eq</code> equal to</li>
+<li><code>-ge</code> greater than equal to</li>
+<li><code>-gt</code> greater than</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="task-4--special-parameters-and-conditions"><a class="header" href="#task-4--special-parameters-and-conditions">Task 4.  Special parameters and conditions</a></h2>
+<p>So now you are going to understand in more detail how parameters work.</p>
+<ol>
+<li>
+<p>Create a new script called <code>parameters.sh</code></p>
+</li>
+<li>
+<p>edit the script to look like this:</p>
+ <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+ <div class="admonition-title">
+ <div id="admonition-code-7-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+while getopts u:a:f: flag
+do
+case "${flag}" in
+    u) username=${OPTARG};;
+    a) age=${OPTARG};;
+    f) fullname=${OPTARG};;
+esac
+done
+echo "Username: $username" echo "Age: $age" echo "Full Name: $fullname"
+</code></pre>
+ </div>
+ </div>
+<ul>
+<li>
+<p>Run the script by only supplying your username, age and full name.</p>
+</li>
+<li>
+<p>What happened?</p>
+  <details id="admonition-terminal-answer" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-answer-title">
+  <summary class="admonition-title">
+  <div id="admonition-terminal-answer-title">
+<p>Terminal Answer</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal-answer"></a>
+  </summary>
+  <div>
+<pre><code class="language-sh">bash parameters.sh sb1501 nonyabusiness "Seb Blair"
+Username:  echo Age:  echo Full Name: 
+</code></pre>
+  </div>
+  </details>
+</details>
+</li>
+<li>
+<p>Try again this time provide your a <code>-u</code> then the username.</p>
+  <details id="admonition-terminal-answer-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-answer-1-title">
+  <summary class="admonition-title">
+  <div id="admonition-terminal-answer-1-title">
+<p>Terminal Answer</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal-answer-1"></a>
+  </summary>
+  <div>
+<pre><code class="language-sh">bash parameters.sh -u sb1501 nonyabusiness "Seb Blair"
+Username: sb1501 echo Age:  echo Full Name: 
+</code></pre>
+  </div>
+  </details>
+</li>
+<li>
+<p>Repeat but provide all options <code>-u</code>, <code>-a</code>, and <code>-f</code></p>
+  <details id="admonition-terminal-answer-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-answer-2-title">
+  <summary class="admonition-title">
+  <div id="admonition-terminal-answer-2-title">
+<p>Terminal Answer</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal-answer-2"></a>
+  </summary>
+  <div>
+<pre><code class="language-sh">bash parameters.sh -u sb1501 -a nonyabusiness -f "Seb Blair"
+Username: sb1501 echo Age: nonyabusiness echo Full Name: Seb Blair
+</code></pre>
+  </div>
+  </details>
+</li>
+</ul>
+</li>
+<li>
+<p>Modify the code again, so that parameters can be precheck before coming to <code>getopts</code></p>
+<div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+<div class="admonition-title">
+<div id="admonition-code-8-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-8"></a>
+</div>
+<div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+if [[ $# -gt 6 ]];then
+   echo -e "Too many arguments supplied:\n$#"
+   exit 1
+elif [[ $# == 0 ]]; then
+   echo -e "Not enough arguments supplied:\n$#"
+   exit 1
+fi
+
+while getopts u:a:f: flag
+do
+case "${flag}" in
+   u) username=${OPTARG};;
+   a) age=${OPTARG};;
+   f) fullname=${OPTARG};;
+esac
+done
+echo "Username: $username"  "Age: $age"  "Full Name: $fullname"
+</code></pre>
+</div>
+</div>
+</li>
+</ol>
+<ul>
+<li>
+<p>Try to run the script with no parameters, what happens?</p>
+</li>
+<li>
+<p>Try to run the script with more than 6 parameters, what happens?</p>
+</li>
+<li>
+<p>What about providing a flag that is not accounted for?</p>
+<div id="admonition-terminal-9" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-9-title">
+<div class="admonition-title">
+<div id="admonition-terminal-9-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-9"></a>
+</div>
+<div>
+<pre><code class="language-sh">bash parameters.sh -U sb1501 -a nonyabusiness -f "Seb Blair"
+</code></pre>
+</div>
+</div>
+<details id="admonition-output-answer" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-answer-title">
+<summary class="admonition-title">
+<div id="admonition-output-answer-title">
+<p>Output: Answer</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-answer"></a>
+</summary>
+<div>
+<pre><code class="language-sh">$ bash parameters.sh -U sb1501 -a nonyabusiness -f "Seb Blair"
+  parameters.sh: illegal option -- U
+  Username:  Age:  Full Name: 
+</code></pre>
+<p>So you see that the <code>getopts</code> deals with illegal options.</p>
+<p>Out of curosity, what happens if you change your parameters orders..?</p>
+</div>
+</details>
+</li>
+</ul>
+<hr />
+<h2 id="task-5-reading-from-stdin"><a class="header" href="#task-5-reading-from-stdin">Task 5. Reading from stdin</a></h2>
+<p>Here you are replicating what was in the lecture using the <code>read</code> command to caputer user input.</p>
+<ol>
+<li>
+<p>create a new script called <code>userinput.sh</code></p>
+</li>
+<li>
+<p>reproduce the following code, pay attention to the comments:</p>
+ <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+ <div class="admonition-title">
+ <div id="admonition-code-9-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+echo -n "Enter your name:"
+read NAME # stores user's input 
+echo "Your name is:" ${NAME} # prints user's input
+
+# prompt with and stores user's input 
+read -p "Enter your name: " NAME 
+echo Your name is ${NAME}.
+
+# prompt with suppressed feature enable so user input is hidden
+read  -t  5 -p "Enter your password: "$'\n' -s PASSWORD 
+echo ${PASSWORD} # though it is stored as plain text here... 
+
+read -a WORDS &lt;&lt;&lt; "Hello world!" # stores an array '-a` 
+echo ${WORDS[0]} # accessing the arrays indicies
+echo ${WORDS[1]} 
+echo ${WORDS[@]} # access the entire array
+echo ${#WORDS[1]}  # get length of the index
+echo ${#WORDS[@]} # get lenght of array
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>Run the code, what output/experience do you get?</p>
+</li>
+</ol>
+
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Learning_Python/OOP.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../Compilers/compilers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Learning_Python/OOP.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../Compilers/compilers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
