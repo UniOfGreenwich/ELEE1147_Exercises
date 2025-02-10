@@ -32,7 +32,7 @@
 # Shell
 
 - [Introduction to Shell Scripting](./Learning_Shell/Learning_Shell.md)
-- [Advanced Shell Scripting]()
+- [Advanced Shell Scripting](./Learning_Shell/Advanced_Shell.md)
 
 ------
 
