@@ -1,0 +1,1075 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Advanced Shell Scripting - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/content/Learning_Shell/Advanced_Shell.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="advanced-shell"><a class="header" href="#advanced-shell">Advanced Shell</a></h1>
+<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div class="admonition-title">
+<div id="admonition-warning-title">
+<p>Warning</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-warning"></a>
+</div>
+<div>
+<p>Ensure you have a Bash shell available and working. You should already be comfortable with basic shell scripting concepts, including variables, loops, and conditionals, see <a href="Learning_Shell/Learning_Shell.html">Learning_Shell/Learning_Shell.md</a></p>
+</div>
+</div>
+<h2 id="task-1-using-functions"><a class="header" href="#task-1-using-functions">Task 1. Using functions</a></h2>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
+</div>
+<div>
+<p>Functions need to be defined before they are invoked, remembering that the language interpreted line by line.</p>
+</div>
+</div>
+<ol>
+<li>
+<p>Create a new script called <code>functions.sh</code>:</p>
+ <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+ <div class="admonition-title">
+ <div id="admonition-code-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+
+# Note the positional parameters are not specified in the function parentheses 
+greet() {
+    echo "Hello, $1!"
+}
+
+
+sum() {
+    echo "$(( $1 + $2 ))"
+}
+
+# This parameter is supplied to the script
+greet "$1"
+echo "The sum of $2 and $3 is: $(sum $2 $3)"
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>Try running the script to see what happens</p>
+ <div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">$ bash functions.sh Seb 10 5
+</code></pre>
+ </div>
+ </div>
+ <details id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output"></a>
+ </summary>
+ <div>
+<pre><code class="language-sh">&gt; Hello, Seb
+  The sum of 10 and 5 is: 15
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="task-2-arrays"><a class="header" href="#task-2-arrays">Task 2: Arrays</a></h2>
+<ol>
+<li>
+<p>Create a new script <code>arrays.sh</code></p>
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+
+declare -a fruits=("Apple" "Banana" "Cherry")
+
+echo "Length of fruit: ${#fruits[@]}"
+echo "First fruit: ${fruits[0]}"
+echo "All fruits: ${fruits[@]}" # If elements contain spaces, ensure each element remains distinct
+echo "All fruits: ${fruits[*]}" # Merges all elements into a single string
+
+for fruit in "${fruits[@]}"; do
+    echo "I like $fruit"
+done
+
+unset fruits[2] # remove the third element (remember 0 indexed)
+
+for fruit in "${fruits[@]}"; do
+    echo "Actually, I like $fruit"
+done
+
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation"></a>
+ </div>
+ <div>
+<p>Key Differences:</p>
+<ul>
+<li>
+<p><code>${fruits[@]}</code> expands to individual elements (preserves words when quoted).</p>
+</li>
+<li>
+<p><code>${fruits[*]}</code> expands to a single string with elements joined by a space when quoted.</p>
+</li>
+<li>
+<p>If elements contain spaces, quoting <code>"${fruits[@]}"</code> ensures each remains distinct, whereas <code>"${fruits[*]}"</code> merges them into a single string.</p>
+</li>
+</ul>
+ </div>
+ </div>
+</li>
+<li>
+<p>Try running the script to see what happens</p>
+ <div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-1-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">$ bash arrays.sh
+</code></pre>
+ </div>
+ </div>
+ <details id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-1-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-1"></a>
+ </summary>
+ <div>
+<pre><code>&gt; Length of fruit: 3
+First fruit: Apple
+All fruits: Apple Banana Cherry
+All fruits: Apple Banana Cherry
+I like Apple
+I like Banana
+I like Cherry
+Actually, I like Apple
+Actually, I like Banana
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="task-3-processing-files"><a class="header" href="#task-3-processing-files">Task 3: Processing Files</a></h2>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip"></a>
+</div>
+<div>
+<p>So interestingly <code>[</code> is actually a command also known by <code>test</code></p>
+<ul>
+<li><a href="https://www.man7.org/linux/man-pages/man1/test.1.html">https://www.man7.org/linux/man-pages/man1/test.1.html</a></li>
+</ul>
+</div>
+</div>
+<ol>
+<li>
+<p>Create a new file called <code>file_processing.sh</code></p>
+ <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+ <div class="admonition-title">
+ <div id="admonition-code-2-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+
+input_file="input.txt"
+
+if [[ ! -e "$input_file" ]]; then
+    echo "Error: File $input_file does not exist."
+    exit 1
+fi
+
+while IFS= read -r line; do
+    echo "Processing: $line"
+done &lt; "$input_file"
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-1-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-1-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-1"></a>
+ </div>
+ <div>
+<ul>
+<li>
+<p><code>IFS</code> (Internal Field Separator) is a special shell variable in Bash that defines the delimiter used for word splitting. By default, it contains whitespace (space, tab, and <strong>newline</strong>), meaning Bash splits input based on these characters.</p>
+</li>
+<li>
+<p><code>&lt;</code> passes the file into the <code>while</code> construct</p>
+</li>
+</ul>
+ </div>
+ </div>
+</li>
+<li>
+<p>Try running the script</p>
+ <div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-2-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+ </div>
+ <div>
+<pre><code>$ bash file_processing.sh
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-error" class="admonition admonish-danger" role="note" aria-labelledby="admonition-error-title">
+ <div class="admonition-title">
+ <div id="admonition-error-title">
+<p>Error</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-error"></a>
+ </div>
+ <div>
+<pre><code>Error: File input.txt does not exist.
+</code></pre>
+ </div>
+ </div>
+ <details id="admonition-question-so-why" class="admonition admonish-question" role="note" aria-labelledby="admonition-question-so-why-title">
+ <summary class="admonition-title">
+ <div id="admonition-question-so-why-title">
+<p>Question: So, why?</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-question-so-why"></a>
+ </summary>
+ <div>
+<ul>
+<li>If you look at the <code>if</code> statement the <code>-e</code> option means <code>File exists</code> and the <code>!</code> inverses the result. You can always revisit <a href="https://www.man7.org/linux/man-pages/man1/test.1.html">https://www.man7.org/linux/man-pages/man1/test.1.html</a>.</li>
+</ul>
+ </div>
+ </details>
+</li>
+<li>
+<p>Now create the <code>input.txt</code> file in the same direcorty as the script and append the file:</p>
+ <div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-3-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">$ touch input.txt
+$ echo "first line" &gt; input.txt
+$ echo "second line" &gt;&gt; input.txt
+</code></pre>
+<ul>
+<li><code>&gt;</code> redirects and overwrites</li>
+<li><code>&gt;&gt;</code> redirects and appends the file</li>
+</ul>
+ </div>
+ </div>
+</li>
+<li>
+<p>Try running the script, again...</p>
+ <details id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-2-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-2"></a>
+ </summary>
+ <div>
+<pre><code>$ bash file_processing.sh
+&gt; Processing: first line
+&gt; Processing: second line
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="task-4-error-handling"><a class="header" href="#task-4-error-handling">Task 4: Error handling</a></h2>
+<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+<div class="admonition-title">
+<div id="admonition-note-1-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note-1"></a>
+</div>
+<div>
+<p>The <code>set</code> command in Bash is a built-in command used to change the values of shell options and positional parameters, or to display the names and values of shell variables.</p>
+</div>
+</div>
+<ol>
+<li>
+<p>If you run <code>set</code> in the terminal you will see all of the shell variables and functions:</p>
+ <div id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+ <div class="admonition-title">
+ <div id="admonition-output-3-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-3"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">$ set
+HISTFILE='/root/.bash_history'
+HOME='/root'
+HOSTNAME='localhost'
+IFS=' \t\n'
+LINENO=''
+OLDPWD='/'
+OPTIND='1'
+PAGER='less' PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+PPID='1'
+PS1='\h:\w\$ '
+PS2='&gt; '
+PS4='+ '
+PWD='/root'
+SHLVL='3'
+TERM='linux'
+TZ='UTC-01:00' _='--version'
+script='/etc/profile.d/*.sh'
+...
+</code></pre>
+<ul>
+<li>Your output may differ slightly based on your shell!</li>
+</ul>
+ </div>
+ </div>
+</li>
+<li>
+<p>We can use the <code>set</code> inside a shell script to handle errors etc, create a script called <code>set.sh</code>, that displays the contents of a file and outputs a message if the file exists in our directory:</p>
+ <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+ <div class="admonition-title">
+ <div id="admonition-code-3-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash 
+set -e 
+mkdir newfolder 
+cat filenotindirectory 
+echo 'The file is not in our directory!'
+</code></pre>
+ </div>
+ </div>
+<p>When a query returns a non-zero status, the <code>-e</code> flag stops the script. It also detects errors in the currently executing script.</p>
+</li>
+<li>
+<p>Run the script:</p>
+ <div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-4-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">$ bash set.sh
+</code></pre>
+ </div>
+ </div>
+ <details id="admonition-error-1" class="admonition admonish-danger" role="note" aria-labelledby="admonition-error-1-title">
+ <summary class="admonition-title">
+ <div id="admonition-error-1-title">
+<p>Error</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-error-1"></a>
+ </summary>
+ <div>
+<pre><code>$ bash set.sh
+cat: filenotindirectory: No such file or directory
+</code></pre>
+<p>When the script tries to display the contents of the file <code>filenotindirectory</code>, it errors out because the file does not exist, and it exits immediately. As a result, the final <code>echo</code> command is also not run.</p>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="task-5-debugging"><a class="header" href="#task-5-debugging">Task 5: "Debugging"</a></h2>
+<div id="admonition-information" class="admonition admonish-note" role="note" aria-labelledby="admonition-information-title">
+<div class="admonition-title">
+<div id="admonition-information-title">
+<p>Information</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-information"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>Debugging in Bash is an essential skill for identifying and resolving issues in shell scripts. It involves systematically examining the script to understand its behavior and pinpoint errors.</p>
+</li>
+<li>
+<p>One of the most effective ways to debug a Bash script is by using the <code>set -x</code> command, which prints each command and its arguments to the terminal before executing them.</p>
+</li>
+<li>
+<p>Or you can use <code>bash -x &lt;script&gt;</code></p>
+</li>
+<li>
+<p>This helps you trace the script’s execution flow and identify where it deviates from expected behavior.</p>
+</li>
+</ul>
+</div>
+</div>
+<ol>
+<li>
+<p>Create a new script <code>line-by-line.sh</code>, where we will iterate over <code>0...n</code> and output each step to the terminal using the <code>set -x</code></p>
+ <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+ <div class="admonition-title">
+ <div id="admonition-code-4-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+set -x
+n=3
+while [ $n -gt 0 ]; do
+    n=$[ $n-1 ]
+    echo $n
+    sleep 1
+done
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>Run this script</p>
+ <div id="admonition-terminal-5" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-5-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-5-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-5"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">$ bash line-by-line.sh
+</code></pre>
+ </div>
+ </div>
+ <details id="admonition-output-4" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-4-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-4-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-4"></a>
+ </summary>
+ <div>
+<pre><code>$ bash line-by-line.sh
++ n=3
++ '[' 3 -gt 0 ']'
++ n=2
++ echo 2
+2
++ sleep 1
++ '[' 2 -gt 0 ']'
++ n=1
++ echo 1
+1
++ sleep 1
++ '[' 1 -gt 0 ']'
++ n=0
++ echo 0
+0
++ sleep 1
++ '[' 0 -gt 0 ']'
+</code></pre>
+<ul>
+<li><code>+</code> indicates a line that is being interpreted</li>
+</ul>
+ </div>
+ </details>
+</li>
+<li>
+<p>Rerun the <code>file_processing.sh</code> you created before but this time pass <code>-x</code> to the <code>bash</code> command</p>
+ <div id="admonition-terminal-6" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-6-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-6-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-6"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">$ bash -x file_processing.sh
+</code></pre>
+ </div>
+ </div>
+ <details id="admonition-output-5" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-5-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-5-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-5"></a>
+ </summary>
+ <div>
+<pre><code class="language-sh">$ bash -x file_processing.sh
++ input_file=input.txt
++ [[ ! -f input.txt ]]
++ IFS=
++ read -r line
++ echo 'Processing: first line'
+Processing: first line
++ IFS=
++ read -r line
++ echo 'Processing: second line'
+Processing: second line
++ IFS=
++ read -r line
+</code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<hr />
+<h2 id="task-6-automating-how-i-make-lecture-slide-templates"><a class="header" href="#task-6-automating-how-i-make-lecture-slide-templates">Task 6: Automating, How I make lecture slide templates.</a></h2>
+<div id="admonition-information-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-information-1-title">
+<div class="admonition-title">
+<div id="admonition-information-1-title">
+<p>Information</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-information-1"></a>
+</div>
+<div>
+<ul>
+<li>The goal of this lab is to help you understand how I automate the creation of structured lecture files using a shell script. The script allows the creation Markdown files with pre-defined content, environmental variables, and formatting.</li>
+</ul>
+</div>
+</div>
+<ol>
+<li>
+<p>Make sure you change directory and call it <code>lectures</code> and reproduce the following structure</p>
+<pre><code>lectures
+      |___scripts
+              |___ config
+              |___ createslides.sh
+      |___content
+</code></pre>
+ <details id="admonition-terminal-7" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-7-title">
+ <summary class="admonition-title">
+ <div id="admonition-terminal-7-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-7"></a>
+ </summary>
+ <div>
+<pre><code class="language-sh">$ cd ../ &amp;&amp; mkdir -p lectures/{scripts,content} &amp;&amp; cd lectures
+$ touch scripts/config &amp;&amp; touch scripts/createslides.sh
+</code></pre>
+ </div>
+ </details>
+</li>
+<li>
+<p>Edit the <code>scripts/config</code> file, which will hold some environment variables that <code>createslides.sh</code> will use:</p>
+ <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+ <div class="admonition-title">
+ <div id="admonition-code-5-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">modulecode="ELEE1147"
+modulename="Programming for Engineers"
+moduleleader="Seb Blair BEng(H) PGCAP MIET MIHEEM FHEA"
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>Now edit the <code>scripts/createslides.sh</code>:</p>
+<ul>
+<li>
+<p>At the top of the file reproduce the following:</p>
+  <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+  <div class="admonition-title">
+  <div id="admonition-code-6-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+  </div>
+  <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+
+MODULE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]%/*}" )" &amp;&gt; /dev/null &amp;&amp; pwd )
+
+LECTURE_FOLDER=${MODULE_DIR}/content/$1
+
+# default name is $1 if $2 not supplied
+LECTURE_FILENAME=${2:-$1}
+
+if [[ ! -d ${LECTURE_FOLDER} ]];then
+    mkdir ${LECTURE_FOLDER}
+fi
+
+#set environmental variables
+source ${MODULE_DIR}/scripts/config
+</code></pre>
+  </div>
+  </div>
+  <div id="admonition-explanation-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-2-title">
+  <div class="admonition-title">
+  <div id="admonition-explanation-2-title">
+<p>Explanation</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-explanation-2"></a>
+  </div>
+  <div>
+<ul>
+<li>
+<p>The first line of the script identifies the directory where the script is located:</p>
+<ul>
+<li>
+<p><code>MODULE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]%/*}" )" &amp;&gt; /dev/null &amp;&amp; pwd )</code></p>
+</li>
+<li>
+<p>This ensures that the script can access files relative to its own location.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The script expects two arguments:</p>
+<ul>
+<li>
+<p><code>$1</code>: The folder name to store the lecture (<code>content/$1</code>).</p>
+</li>
+<li>
+<p><code>$2</code>: The filename for the lecture. If this is not supplied, it defaults to <code>$1</code>.</p>
+<pre><code class="language-sh">LECTURE_FOLDER=${MODULE_DIR}/content/$1
+LECTURE_FILENAME=${2:-$1}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>If the directory specified in <code>$LECTURE_FOLDER</code> doesn't exist, it gets created:</p>
+<pre><code class="language-sh">if [[ ! -d ${LECTURE_FOLDER} ]];then
+    mkdir ${LECTURE_FOLDER}
+fi
+</code></pre>
+</li>
+<li>
+<p>The script then sources the <code>config</code> file with <code>source</code>, which contains environmental variables related to the module</p>
+<pre><code class="language-sh">source ${MODULE_DIR}/script/config
+</code></pre>
+</li>
+</ul>
+  </div>
+  </div>
+</li>
+</ul>
+</li>
+<li>
+<p>Continuing on with the <code>createslides.sh</code> after the <code>source ${MODULE_DIR}/script/config</code> we are going to build the template file for the markdown slide deck:</p>
+ <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+ <div class="admonition-title">
+ <div id="admonition-code-7-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">...
+cat &gt;&gt; ${LECTURE_FOLDER}/${LECTURE_FILENAME}.md &lt;&lt; EOF
+---
+title: DOCUMENT TITLE
+description: DESCRIPTION OF DOCUMENT
+class: gaia
+_class:
+- lead
+- invert
+style: |
+    #img-right{
+    float: right;
+    }
+    img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+    }
+    table {
+    border-collapse: collapse;
+    font-size: 22px;
+    }
+    table, th,tr, td {
+    border: none!important;
+    vertical-align: middle;
+    }
+    section::after {
+    content: attr(data-marpit-pagination) '/' attr(data-marpit-pagination-total);
+    }
+footer: "$modulecode | $modulename"
+size: 16:9
+paginate: true
+_paginate: false
+marp: true
+math: true
+---
+
+&lt;!-- _footer: "[Download as a PDF](https://github.com/UniOfGreenwich/${modulecode}-Lectures/raw/gh-pages/content/${LECTURE_FOLDER}/${LECTURE_FILENAME}.pdf)" --&gt;
+
+# ${LECTURE_FILENAME}
+
+    Module Code: $modulecode
+
+    Module Name: $modulename
+
+    Module Leader: $moduleleader
+
+---
+EOF
+
+# remove environment variables from current shell
+unset $modulecode $modulename $moduleleader
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>If you are using Visual Studio Code, you can get the <code>Marp</code> extentsion from the marketplace, which will render the Markdown as a slide deck.</p>
+<p><img src="./figures/marpextension.png" alt="" /></p>
+</li>
+<li>
+<p>Now you can run the script like so...</p>
+ <div id="admonition-terminal-8" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-8-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-8-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-8"></a>
+ </div>
+ <div>
+<pre><code>$ bash script/createslides.sh shell_programming
+</code></pre>
+ </div>
+ </div>
+<p><img src="./figures/createslides.gif" alt="" /></p>
+ <details id="admonition-full-code-createsilidessh" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-createsilidessh-title">
+ <summary class="admonition-title">
+ <div id="admonition-full-code-createsilidessh-title">
+<p>Full Code: createsilides.sh</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-full-code-createsilidessh"></a>
+ </summary>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+
+MODULE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]%/*}" )" &amp;&gt; /dev/null &amp;&amp; pwd )
+
+LECTURE_FOLDER=${MODULE_DIR}/content/$1
+
+# default name is $1 if $2 not supplied
+LECTURE_FILENAME=${2:-$1}
+
+if [[ ! -d ${LECTURE_FOLDER} ]];then
+    mkdir ${LECTURE_FOLDER}
+fi
+
+#set environmental variables
+source ${MODULE_DIR}/scripts/config
+
+cat &gt;&gt; ${LECTURE_FOLDER}/${LECTURE_FILENAME}.md &lt;&lt; EOF
+---
+title: DOCUMENT TITLE
+description: DESCRIPTION OF DOCUMENT
+class: gaia
+_class:
+- lead
+- invert
+style: |
+    #img-right{
+    float: right;
+    }
+    img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+    }
+    table {
+    border-collapse: collapse;
+    font-size: 22px;
+    }
+    table, th,tr, td {
+    border: none!important;
+    vertical-align: middle;
+    }
+    section::after {
+    content: attr(data-marpit-pagination) '/' attr(data-marpit-pagination-total);
+    }
+footer: "$modulecode | $modulename"
+size: 16:9
+paginate: true
+_paginate: false
+marp: true
+math: true
+---
+
+&lt;!-- _footer: "[Download as a PDF](https://github.com/UniOfGreenwich/${modulecode}-Lectures/raw/gh-pages/content/${LECTURE_FOLDER}/${LECTURE_FILENAME}.pdf)" --&gt;
+
+# LECTURE TITLE
+
+    Module Code: $modulecode
+
+    Module Name: $modulename
+
+    Module Leader: $moduleleader
+
+---
+EOF
+
+# remove environment variables from current shell
+unset $modulecode $modulename $moduleleader
+</code></pre>
+ </div>
+ </details></li>
+</ol>
+
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Learning_Shell/Learning_Shell.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../Compilers/compilers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Learning_Shell/Learning_Shell.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../Compilers/compilers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
