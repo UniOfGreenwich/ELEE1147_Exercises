@@ -31,7 +31,7 @@
 
 # Shell
 
-- [Introduction to Shell Scripting]()
+- [Introduction to Shell Scripting](./Learning_Shell/Learning_Shell.md)
 - [Advanced Shell Scripting]()
 
 ------
