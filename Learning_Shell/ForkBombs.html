@@ -1,0 +1,554 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Fork Bomb - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/content/Learning_Shell/ForkBombs.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="fork-bombs"><a class="header" href="#fork-bombs">Fork Bombs</a></h1>
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-sh">:(){:|:&amp;};:
+</code></pre>
+</div>
+</div>
+<h2 id="breaking-down-the-oneliner"><a class="header" href="#breaking-down-the-oneliner">Breaking down the oneliner</a></h2>
+<h3 id="1--function-definition"><a class="header" href="#1--function-definition">1.  Function Definition</a></h3>
+<p>The oneliner, designed as a DNS attack, exponentially floods the process tree via recurisive function calls, how?</p>
+<p>Well lets break it down:</p>
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+# Minified -&gt; :(){:|:&amp;};:
+
+:() {
+        : | : &amp;
+
+}
+
+:
+</code></pre>
+</div>
+</div>
+<div id="admonition-explanation" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-title">
+<div class="admonition-title">
+<div id="admonition-explanation-title">
+<p>Explanation</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation"></a>
+</div>
+<div>
+<ul>
+<li>
+<p><code>:() { ... }:</code> This defines a function named <code>:</code> (a colon). In Bash, function names can be arbitrary characters, and here <code>:</code> is used as the function name.</p>
+</li>
+<li>
+<p>Inside the function body:</p>
+<ul>
+<li><code>:| : &amp;</code>: This is the core of the fork bomb.
+<ul>
+<li><code>:</code>: Calls the function itself. Since <code>:</code> is defined as a function, this recursively calls itself.</li>
+<li><code>|</code>: The pipe operator. It takes the output of the command on its left (<code>:</code>) and uses it as input for the command on its right (another <code>:</code>). Since the function <code>:</code> is called twice, it creates two processes.</li>
+<li><code>&amp;</code>: Runs the command in the background. The <code>&amp;</code> at the end of the command line means that the function <code>:</code> is executed in the background, allowing the script to continue running without waiting for the function to finish.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h3 id="2-function-invocation"><a class="header" href="#2-function-invocation">2. Function Invocation</a></h3>
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
+<pre><code>:
+</code></pre>
+</div>
+</div>
+<div id="admonition-explanation-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-1-title">
+<div class="admonition-title">
+<div id="admonition-explanation-1-title">
+<p>Explanation</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation-1"></a>
+</div>
+<div>
+<ul>
+<li>This line invokes the function <code>:</code>. When this is executed, it starts the recursive process of the function <code>:</code> calling itself, which rapidly consumes system resources.</li>
+</ul>
+</div>
+</div>
+<h3 id="3-refactoring"><a class="header" href="#3-refactoring">3. Refactoring</a></h3>
+<p>We can see below that <code>myfunc</code> replaces <code>:</code>, so this should be more readable.</p>
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+myfunc() {
+
+        my_func | my_func &amp;
+
+}
+
+my_func
+</code></pre>
+</div>
+</div>
+<h3 id="4-exploring-safely"><a class="header" href="#4-exploring-safely">4. Exploring safely...</a></h3>
+<ul>
+<li>
+<p>To explore this safely we are going to set limit within our fork bomb, that when it gets to the seventh iteration the fork will stop and close. Terminating all forked processes attached to the parent process, i.e the first time it is called.</p>
+ <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+ <div class="admonition-title">
+ <div id="admonition-code-4-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#! /usr/bin/env bash
+
+fork_bomb(){
+        local num=$1
+        local name=$2
+        printf '%-2d %-5s %s\n' "$num" "$name" 'running' &gt;&amp;2
+
+        if ((num == 6)); then
+                return 0
+        fi
+
+        ((num++))
+        fork_bomb "$num" 'left' | fork_bomb "$num" 'right' &amp;
+}
+
+fork_bomb 0 'none'
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-2-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-2-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-2"></a>
+ </div>
+ <div>
+<ul>
+<li>The two locally defined variables <code>num</code> and <code>name</code> keep track of the iteration  and weither it was forked left or right of the pipe. This is for our purpose when viewing it in the terminal, as <code>printf</code> would indicate.</li>
+<li>Saftey net is defined in the <code>if</code> block, when <code>num == 6</code> each process terminates</li>
+<li>After the safety net we increment the iteration <code>((num++))</code></li>
+<li>the main part is the <code>fork_bomb "$num" 'left'...</code> which essentially replicates the <code>:|:&amp;</code> where the <code>"$num"</code> and <code>left/right</code> is suppied for tracking.</li>
+<li>Lastly, the function is invoked for the first time via <code>fork_bomb 0 'none'</code></li>
+</ul>
+ </div>
+ </div>
+</li>
+<li>
+<p>The output would look something like:</p>
+  <div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+  <div class="admonition-title">
+  <div id="admonition-output-title">
+<p>Output</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-output"></a>
+  </div>
+  <div>
+<pre><code>$ bash explainable_fork_bomb.sh
+&gt;
+0  none  running
+1  left  running
+1  right running
+2  left  running
+2  right running # happens 4 times
+... 
+
+3  left  running ## happens 8 times
+3  right running 
+...
+4  left  running # happens 16 times
+4  right running
+...
+5  right running
+5  left  running # happens 32 times
+...
+6  right running
+6  left  running # happens 64 times
+</code></pre>
+  </div>
+  </div>
+</li>
+<li>
+<p>We actually prove that processes are spawned exponentially, following the base 2:</p>
+  <div id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+  <div class="admonition-title">
+  <div id="admonition-output-1-title">
+<p>Output</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-output-1"></a>
+  </div>
+  <div>
+<pre><code class="language-sh">$  bash explained_fork_bomb.sh 2&gt;&amp;1 | sort | awk '{print $1}' | uniq -c
+&gt; 
+    1 0
+    2 1
+    4 2
+    8 3
+    16 4
+    32 5
+    64 6
+</code></pre>
+<ul>
+<li>Here you can see the first time around layer 0, there is 1 function call.</li>
+<li>by the time we reach 6, we have 64 aka $2^6$</li>
+</ul>
+  </div>
+  </div>
+</li>
+</ul>
+<h2 id="differences-between-pid-limit-max-user-processes-and-max-threads"><a class="header" href="#differences-between-pid-limit-max-user-processes-and-max-threads">Differences Between PID Limit, Max User Processes, and Max Threads</a></h2>
+<div id="admonition-important" class="admonition admonish-tip" role="note" aria-labelledby="admonition-important-title">
+<div class="admonition-title">
+<div id="admonition-important-title">
+<p>Important</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-important"></a>
+</div>
+<div>
+<p>The following commands will <strong>only</strong> work on Linux</p>
+</div>
+</div>
+<h3 id="1-process-id-pid-limit"><a class="header" href="#1-process-id-pid-limit">1. Process ID (PID) Limit</a></h3>
+<ul>
+<li>
+<p><strong>What it is</strong>:<br />
+The Process ID (PID) is a unique identifier assigned to each running process on the system. The PID limit determines the maximum number of unique PIDs that can be assigned.</p>
+</li>
+<li>
+<p><strong>Configuration</strong>:<br />
+This limit is set by the <code>max_pid</code> parameter in <code>/proc/sys/kernel</code>. You can view the maximum PID numerical value with:</p>
+  <div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+  <div class="admonition-title">
+  <div id="admonition-terminal-title">
+<p>Terminal</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal"></a>
+  </div>
+  <div>
+<pre><code class="language-bash">$ cat /proc/sys/kernel/pid_max
+</code></pre>
+  </div>
+  </div>
+<p>This value defines the maximum PID number allowed on the system. For example, this means that your a process can have the PID upto the value of <code>4194304</code>, this does not mean you can have $2^{22}$ processes.</p>
+</li>
+<li>
+<p><strong>Why it matters</strong>:</p>
+<p>This limit ensures that the system does not run out of unique PIDs. If the number of processes reaches the PID limit, new processes cannot be created until existing ones exit and their PIDs are recycled.</p>
+</li>
+</ul>
+<h3 id="2-max-user-processes-ulimit--a"><a class="header" href="#2-max-user-processes-ulimit--a">2. Max User Processes (<code>ulimit -a</code>)</a></h3>
+<ul>
+<li>
+<p><strong>What it is:</strong></p>
+<p>The maximum number of processes a single user can create is controlled by the ulimit command. This is a user-level limit that restricts the number of processes that any single user can spawn.</p>
+  <div id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+  <div class="admonition-title">
+  <div id="admonition-output-2-title">
+<p>Output</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-output-2"></a>
+  </div>
+  <div>
+<pre><code class="language-sh">$ ulimit -a | grep "max user processes"
+&gt;   
+max user processes                  (-u) 63562
+</code></pre>
+  </div>
+  </div>
+<p>Incidentally, this obtained from the /proc/self/limits file, produce by the kernel:</p>
+  <div id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+  <div class="admonition-title">
+  <div id="admonition-output-3-title">
+<p>Output</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-output-3"></a>
+  </div>
+  <div>
+<pre><code class="language-sh">$ cat /proc/self/limits | grep "Max processes"
+&gt; 
+Limit                     Soft Limit           Hard Limit           Units
+Max processes             63562                63562                processes
+</code></pre>
+  </div>
+  </div>
+</li>
+<li>
+<p><strong>Why it matters</strong>:</p>
+<p>This limit is crucial for managing system resources and preventing any single user from monopolizing process creation, which could impact the performance and stability of the system.</p>
+</li>
+</ul>
+<h2 id="3-max-threads-procsyskernelthreads-max"><a class="header" href="#3-max-threads-procsyskernelthreads-max">3. Max Threads (<code>/proc/sys/kernel/threads-max</code>)</a></h2>
+<ul>
+<li>
+<p><strong>What it is</strong>:</p>
+<p>This parameter defines the maximum number of threads that can be created system-wide. Threads are the smallest unit of execution within a process.</p>
+</li>
+<li>
+<p><strong>Configuration</strong>:</p>
+<p>You can check the current limit with:</p>
+  <div id="admonition-output-4" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-4-title">
+  <div class="admonition-title">
+  <div id="admonition-output-4-title">
+<p>Output</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-output-4"></a>
+  </div>
+  <div>
+<pre><code class="language-sh">$ cat /proc/sys/kernel/threads-max
+&gt; 127125
+
+</code></pre>
+  </div>
+  </div>
+</li>
+<li>
+<p><strong>Why it matters</strong>:</p>
+<p>This limit ensures that the system doesn’t get overwhelmed with too many threads, which could exhaust memory and other resources. It controls the maximum number of concurrent threads in the system, affecting performance and stability.</p>
+</li>
+</ul>
+
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Learning_Shell/Advanced_Shell.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../Compilers/compilers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Learning_Shell/Advanced_Shell.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../Compilers/compilers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
