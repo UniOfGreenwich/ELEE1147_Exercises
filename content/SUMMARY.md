@@ -33,6 +33,7 @@
 
 - [Introduction to Shell Scripting](./Learning_Shell/Learning_Shell.md)
 - [Advanced Shell Scripting](./Learning_Shell/Advanced_Shell.md)
+- [Fork Bomb](./Learning_Shell/ForkBombs.md)
 
 ------
 
