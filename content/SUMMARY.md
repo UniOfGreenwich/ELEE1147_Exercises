@@ -42,6 +42,7 @@
  - [Compilers](./Compilers/compilers.md)
  - [Documentation](./Documentation/Documentation.md)
  - [Debugging](./Debugging/Debugging.md)
+ - [Virtual Environments](./VirtualEnvironments/VirtualEnvironments.md)
  - [Algorithms](./Algorithms/Algorithms.md)
  - [Recursion]()
 
