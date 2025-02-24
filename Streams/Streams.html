@@ -667,26 +667,23 @@ int main() {
  <a class="admonition-anchor-link" href="#admonition-try-code-14-lines"></a>
  </summary>
  <div>
-<pre><code> ```py
-</code></pre>
-<p>import sys  # Import for handling exit</p>
-<p>try:
-# Prompt the user to enter a number
-user_input = input("Enter a number: ")</p>
-<pre><code> # Convert the input to a float
- number = float(user_input)
+<pre><code class="language-py">import sys  # Import for handling exit
 
- # Perform the calculation (square the number)
- result = number ** 2
+try:
+    # Prompt the user to enter a number
+    user_input = input("Enter a number: ")
 
- # Display the result
- print(f"The square of {number} is {result}")
-</code></pre>
-<pre><code>
-&lt;/div&gt;
-&lt;/details&gt;
+    # Convert the input to a float
+    number = float(user_input)
 
+    # Perform the calculation (square the number)
+    result = number ** 2
+
+    # Display the result
+    print(f"The square of {number} is {result}")
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
 <p>Next we need to add the <code>except:</code> incase there was an error inside <code>try:</code></p>
@@ -704,8 +701,7 @@ user_input = input("Enter a number: ")</p>
 <a class="admonition-anchor-link" href="#admonition-full-code-18-lines"></a>
 </summary>
 <div>
-<pre><code>import sys  # Import for handling exit
-</code></pre>
+<p>import sys  # Import for handling exit</p>
 <p>try:
 # Prompt the user to enter a number
 user_input = input("Enter a number: ")</p>

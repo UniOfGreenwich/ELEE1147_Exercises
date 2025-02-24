@@ -1,0 +1,778 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Virtual Environments - Programming for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/css/code.css">
+        <link rel="stylesheet" href=".././theme/css/terminal.css">
+        <link rel="stylesheet" href=".././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/content/VirtualEnvironments/VirtualEnvironments.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="virtual-environments"><a class="header" href="#virtual-environments">Virtual Environments</a></h1>
+<p>In this section you are going to build a virtual environment using <code>python</code>, and then learn how to use an <code>install.sh</code> to automate this process.</p>
+<h2 id="step-1-verify-python-is-installed"><a class="header" href="#step-1-verify-python-is-installed">Step 1: Verify Python is installed</a></h2>
+<ol>
+<li>
+<p>Open VSCode, and open the terminal and run</p>
+<div id="admonition-terminal" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-title">
+<div class="admonition-title">
+<div id="admonition-terminal-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal"></a>
+</div>
+<div>
+<pre><code>python3 --version
+</code></pre>
+</div>
+</div>
+<div id="admonition-explanation" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-title">
+<div class="admonition-title">
+<div id="admonition-explanation-title">
+<p>Explanation</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-explanation"></a>
+</div>
+<div>
+<p>This command checks if Python 3 is installed on your system. If it returns a version number, you're good to go.</p>
+</div>
+</div>
+<p>On some systems, you may need to run:</p>
+<div id="admonition-terminal-1" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-1-title">
+<div class="admonition-title">
+<div id="admonition-terminal-1-title">
+<p>Terminal</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-terminal-1"></a>
+</div>
+<div>
+<pre><code>python --version
+</code></pre>
+</div>
+</div>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip"></a>
+</div>
+<div>
+<p>You can also use the shell command called... <code>command</code></p>
+<pre><code>command -v python
+</code></pre>
+</div>
+</div>
+</li>
+</ol>
+<h2 id="step-2-create-a-virtual-environment"><a class="header" href="#step-2-create-a-virtual-environment">Step 2: Create a Virtual Environment</a></h2>
+<ol>
+<li>
+<p>Choose a name for your virtual environment (for example, <code>myenv</code>) and run:</p>
+ <div id="admonition-terminal-2" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-2-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-2-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-2"></a>
+ </div>
+ <div>
+<pre><code>python3 -m venv myenv
+</code></pre>
+ </div>
+ </div>
+<p>This command creates a directory named myenv containing a self-contained Python installation.</p>
+ <div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+ <div class="admonition-title">
+ <div id="admonition-info-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info"></a>
+ </div>
+ <div>
+<p>Think of this as creating a special folder where all the tools (Python libraries) you use for your project are kept, so they don't interfere with tools for other projects.</p>
+ </div>
+ </div>
+</li>
+</ol>
+<h2 id="step-3-activate-the-virutal-envionment"><a class="header" href="#step-3-activate-the-virutal-envionment">Step 3: Activate the Virutal Envionment</a></h2>
+<ol>
+<li>
+<p>Activation is necessary so that when you install packages, they go into this isolated environment rather than your system-wide Python installation.</p>
+<ul>
+<li>
+<p>Linux/MacOS :</p>
+  <div id="admonition-terminal-3" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-3-title">
+  <div class="admonition-title">
+  <div id="admonition-terminal-3-title">
+<p>Terminal</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal-3"></a>
+  </div>
+  <div>
+<pre><code>source myenv/bin/activate
+</code></pre>
+  </div>
+  </div>
+</li>
+<li>
+<p>On Windows (Command Prompt):</p>
+  <div id="admonition-terminal-4" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-4-title">
+  <div class="admonition-title">
+  <div id="admonition-terminal-4-title">
+<p>Terminal</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal-4"></a>
+  </div>
+  <div>
+<pre><code>myenv\Scripts\activate.bat
+</code></pre>
+  </div>
+  </div>
+</li>
+<li>
+<p>On Windows (Bash):</p>
+  <div id="admonition-terminal-5" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-5-title">
+  <div class="admonition-title">
+  <div id="admonition-terminal-5-title">
+<p>Terminal</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal-5"></a>
+  </div>
+  <div>
+<pre><code>source myenv/Scripts/activate
+</code></pre>
+  </div>
+  </div>
+</li>
+<li>
+<p>On Windows (Powershell):</p>
+  <div id="admonition-terminal-6" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-6-title">
+  <div class="admonition-title">
+  <div id="admonition-terminal-6-title">
+<p>Terminal</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-terminal-6"></a>
+  </div>
+  <div>
+<pre><code>source myenv/Scripts/activate.ps1
+</code></pre>
+  </div>
+  </div>
+</li>
+</ul>
+</li>
+<li>
+<p>After activation, your command prompt should change (usually showing the environment name), indicating that you're now working inside <code>myenv</code></p>
+ <div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+ <div class="admonition-title">
+ <div id="admonition-info-1-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-1"></a>
+ </div>
+ <div>
+<p>Activating the environment is like stepping into your dedicated workspace where all the tools you install won't mix with others outside of this space.</p>
+ </div>
+ </div>
+</li>
+<li>
+<p>You can verify by runnning <code>pip list</code>, you should only have one package</p>
+ <div id="admonition-terminal-7" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-7-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-7-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-7"></a>
+ </div>
+ <div>
+<pre><code>$ pip list
+Package Version
+------- -------
+pip     24.3.1
+</code></pre>
+ </div>
+ </div>
+</li>
+</ol>
+<h2 id="step-4-install-packages"><a class="header" href="#step-4-install-packages">Step 4: Install Packages</a></h2>
+<ol>
+<li>
+<p>Once your virtual environment is activated, you can install any packages you need. For example:</p>
+ <div id="admonition-terminal-8" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-8-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-8-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-8"></a>
+ </div>
+ <div>
+<pre><code>pip install numpy pandas requests
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>If you later decide to track these dependencies, you can create a <code>requirements.txt</code> file by running:</p>
+ <div id="admonition-terminal-9" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-9-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-9-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-9"></a>
+ </div>
+ <div>
+<pre><code>pip freeze &gt; requirements.txt
+</code></pre>
+ </div>
+ </div>
+</li>
+</ol>
+<h2 id="step-5-deactivate-the-virtual-environment"><a class="header" href="#step-5-deactivate-the-virtual-environment">Step 5: Deactivate the Virtual Environment</a></h2>
+<ol>
+<li>
+<p>When you’re finished working, simply run:</p>
+ <div id="admonition-terminal-10" class="admonition admonish-terminal" role="note" aria-labelledby="admonition-terminal-10-title">
+ <div class="admonition-title">
+ <div id="admonition-terminal-10-title">
+<p>Terminal</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-terminal-10"></a>
+ </div>
+ <div>
+<pre><code>deactivate
+</code></pre>
+ </div>
+ </div>
+<p>This returns you to your system's default Python environment.</p>
+ <div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+ <div class="admonition-title">
+ <div id="admonition-note-title">
+<p>Note</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-note"></a>
+ </div>
+ <div>
+<p>Using virtual environments ensures that your project dependencies remain isolated and consistent across different development environments, a best practice in professional Python development</p>
+ </div>
+ </div>
+</li>
+</ol>
+<h2 id="step-6-installsh"><a class="header" href="#step-6-installsh">Step 6: Install.sh</a></h2>
+<h3 id="step-61-initial-setup-and-os-detection"><a class="header" href="#step-61-initial-setup-and-os-detection">Step 6.1: Initial Setup and OS Detection</a></h3>
+<ol>
+<li>
+<p>Create a new file outside of the venv/ called <code>install.sh</code></p>
+</li>
+<li>
+<p>Begin your script with a shebang and error handling, then detect the operating system.</p>
+ <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+ <div class="admonition-title">
+ <div id="admonition-code-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code"></a>
+ </div>
+ <div>
+<pre><code class="language-sh">#!/usr/bin/env bash
+set -e
+
+# Detect the operating system.
+OS_TYPE=$(uname -s)
+echo "Detected OS: $OS_TYPE"
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-1-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-1-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-1"></a>
+ </div>
+ <div>
+<p>The shebang <code>#!/usr/bin/env</code> bash tells your system to run the script with Bash. The <code>set -e</code> command makes the script exit immediately if any command fails. <code>uname -s</code> fetches the OS type.</p>
+ </div>
+ </div>
+</li>
+</ol>
+<h3 id="step-62-checking-for-python-installation"><a class="header" href="#step-62-checking-for-python-installation">Step 6.2: Checking for Python Installation</a></h3>
+<ol>
+<li>
+<p>Ensure that Python (preferably Python 3) is installed before proceeding.</p>
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code class="language-sh"># Check if Python 3 is available.
+if command -v python3 &amp;&gt; /dev/null; then
+    PYTHON=python3
+elif command -v python &amp;&gt; /dev/null; then
+    PYTHON=python
+else
+    echo "Python is not installed. Please install Python and try again."
+    exit 1
+fi
+
+echo "Using Python executable: $PYTHON"
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-2-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-2-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-2"></a>
+ </div>
+ <div>
+<p>This block checks for the presence of python3 or falls back to python. If neither is available, the script exits with an error.</p>
+ </div>
+ </div>
+</li>
+</ol>
+<h3 id="step-63-creating-the-virtual-environment"><a class="header" href="#step-63-creating-the-virtual-environment">Step 6.3: Creating the Virtual Environment</a></h3>
+<ol>
+<li>
+<p>Define a directory for your virtual environment and create it if it doesn’t already exist.</p>
+ <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+ <div class="admonition-title">
+ <div id="admonition-code-2-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+ </div>
+ <div>
+<pre><code class="language-sh"># Define the directory for the virtual environment.
+ENV_DIR="venv"
+
+# Create the virtual environment if it doesn't already exist.
+if [ -d "$ENV_DIR" ]; then
+    echo "Virtual environment directory '$ENV_DIR' already exists."
+else
+    echo "Creating virtual environment in '$ENV_DIR'..."
+    $PYTHON -m venv "$ENV_DIR"
+fi
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-3" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-3-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-3-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-3"></a>
+ </div>
+ <div>
+<p>The variable <code>ENV_DIR</code> specifies the folder (named <code>venv</code>) where the virtual environment will be created. The script checks if the folder exists and creates it if not.</p>
+ </div>
+ </div>
+</li>
+</ol>
+<h3 id="step-64-determining-the-pip-executable-path"><a class="header" href="#step-64-determining-the-pip-executable-path">Step 6.4: Determining the pip Executable Path</a></h3>
+<ol>
+<li>
+<p>Determine the correct path to the <code>pip</code> executable based on the operating system.</p>
+ <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+ <div class="admonition-title">
+ <div id="admonition-code-3-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+ </div>
+ <div>
+<pre><code class="language-sh"># Determine the correct pip executable based on OS.
+if [ "$OS_TYPE" = "Darwin" ] || [ "$OS_TYPE" = "Linux" ]; then
+    PIP="$ENV_DIR/bin/pip"
+elif [[ "$OS_TYPE" == MINGW* || "$OS_TYPE" == CYGWIN* || "$OS_TYPE" == MSYS* ]]; then
+    PIP="$ENV_DIR\\Scripts\\pip.exe"
+else
+    echo "Unknown OS. Cannot determine pip path."
+    exit 1
+fi
+
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-4" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-4-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-4-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-4"></a>
+ </div>
+ <div>
+<p>This code sets the <code>PIP</code> variable to point to the correct executable path for <code>pip</code>, depending on whether you’re on Linux/macOS or Windows.</p>
+ </div>
+ </div>
+</li>
+</ol>
+<h3 id="step-65-installing-packages-from-requirementstxt"><a class="header" href="#step-65-installing-packages-from-requirementstxt">Step 6.5: Installing Packages from requirements.txt</a></h3>
+<ol>
+<li>
+<p>If a <code>requirements.txt</code> file exists in the directory, use it to install <code>pip</code> packages. If you remember we had one from <a href="#step-4-install-packages">Step 4</a>.</p>
+ <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+ <div class="admonition-title">
+ <div id="admonition-code-4-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+ </div>
+ <div>
+<pre><code class="language-sh"># Check if requirements.txt exists and install the packages if it does.
+if [ -f "requirements.txt" ]; then
+    echo "Installing pip packages from requirements.txt..."
+    $PIP install -r requirements.txt
+else
+    echo "requirements.txt not found. Skipping package installation."
+fi
+
+echo "Pip package installation complete."
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-5" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-5-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-5-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-5"></a>
+ </div>
+ <div>
+<p>This block checks for a <code>requirements.txt</code> file and, if found, installs all packages listed in it using <code>pip</code>.</p>
+ </div>
+ </div>
+</li>
+</ol>
+<h3 id="step-66-displaying-activation-instructions"><a class="header" href="#step-66-displaying-activation-instructions">Step 6.6: Displaying Activation Instructions</a></h3>
+<ol>
+<li>
+<p>Provide the user with the correct command to activate the virtual environment</p>
+ <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+ <div class="admonition-title">
+ <div id="admonition-code-5-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+ </div>
+ <div>
+<pre><code class="language-sh"># Provide activation instructions based on the OS.
+if [ "$OS_TYPE" = "Darwin" ] || [ "$OS_TYPE" = "Linux" ]; then
+    echo "To activate the virtual environment, run:"
+    echo "  source $ENV_DIR/bin/activate"
+elif [[ "$OS_TYPE" == MINGW* || "$OS_TYPE" == CYGWIN* || "$OS_TYPE" == MSYS* ]]; then
+    echo "For Windows, run:"
+    echo "  $ENV_DIR\\Scripts\\activate"
+else
+    echo "Unknown OS. Please activate the virtual environment manually."
+fi
+
+echo "Setup complete."
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-6" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-6-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-6-title">
+<p>Explanation</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-6"></a>
+ </div>
+ <div>
+<p>The final section outputs the appropriate activation command for the user, depending on their operating system..</p>
+ </div>
+ </div>
+</li>
+</ol>
+<h3 id="step-67-installer-code"><a class="header" href="#step-67-installer-code">Step 6.7: Installer code</a></h3>
+<details id="admonition-installsh-full-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-installsh-full-code-title">
+<summary class="admonition-title">
+<div id="admonition-installsh-full-code-title">
+<p>install.sh full code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-installsh-full-code"></a>
+</summary>
+<div>
+<pre><code class="language-sh">#!/usr/bin/env bash
+
+# Exit immediately if any command fails.
+set -e
+
+# Detect the operating system.
+OS_TYPE=$(uname -s)
+echo "Detected OS: $OS_TYPE"
+
+# Check if Python 3 is available.
+if command -v python3 &amp;&gt; /dev/null; then
+    PYTHON=python3
+elif command -v python &amp;&gt; /dev/null; then
+    PYTHON=python
+else
+    echo "Python is not installed. Please install Python and try again."
+    exit 1
+fi
+
+echo "Using Python executable: $PYTHON"
+
+# Define the directory for the virtual environment.
+ENV_DIR="venv"
+
+# Create the virtual environment if it doesn't already exist.
+if [ -d "$ENV_DIR" ]; then
+    echo "Virtual environment directory '$ENV_DIR' already exists."
+else
+    echo "Creating virtual environment in '$ENV_DIR'..."
+    $PYTHON -m venv "$ENV_DIR"
+fi
+
+# Determine the correct pip executable based on OS.
+if [ "$OS_TYPE" = "Darwin" ] || [ "$OS_TYPE" = "Linux" ]; then
+    PIP="$ENV_DIR/bin/pip"
+elif [[ "$OS_TYPE" == MINGW* || "$OS_TYPE" == CYGWIN* || "$OS_TYPE" == MSYS* ]]; then
+    PIP="$ENV_DIR\\Scripts\\pip.exe"
+else
+    echo "Unknown OS. Cannot determine pip path."
+    exit 1
+fi
+
+# Check if requirements.txt exists and install the packages if it does.
+if [ -f "requirements.txt" ]; then
+    echo "Installing pip packages from requirements.txt..."
+    $PIP install -r requirements.txt
+else
+    echo "requirements.txt not found. Skipping package installation."
+fi
+
+echo "Pip package installation complete."
+
+# Provide activation instructions based on the OS.
+if [ "$OS_TYPE" = "Darwin" ] || [ "$OS_TYPE" = "Linux" ]; then
+    echo "To activate the virtual environment, run:"
+    echo "  source $ENV_DIR/bin/activate"
+elif [[ "$OS_TYPE" == MINGW* || "$OS_TYPE" == CYGWIN* || "$OS_TYPE" == MSYS* ]]; then
+    echo "For Windows, run:"
+    echo "  $ENV_DIR\\Scripts\\activate"
+else
+    echo "Unknown OS. Please activate the virtual environment manually."
+fi
+
+echo "Setup complete."
+
+</code></pre>
+</div>
+</details>
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Debugging/Debugging.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../Algorithms/Algorithms.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Debugging/Debugging.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../Algorithms/Algorithms.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
