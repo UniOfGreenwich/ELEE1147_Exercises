@@ -217,10 +217,10 @@
 <h2 id="quick-sort-algorithm-on-log-n"><a class="header" href="#quick-sort-algorithm-on-log-n">Quick Sort Algorithm \(O(n\ log\ n)\):</a></h2>
 <ol>
 <li>
-<p>Create a new C++ Console Application call it <code>SortingAlgorithms</code>. Remember to modify the <code>SortingAlgorithms.cpp</code> so that it is a c file <code>SortingAlgorithms.c</code></p>
+<p>Create a new C folder called <code>SortingAlgorithms</code></p>
 </li>
 <li>
-<p>Creat a header and C file called <code>Sort.h</code> and <code>Sort.c</code>.</p>
+<p>Create a header and C file called <code>sort.h</code>, <code>sort.c</code> and <code>main.c</code>.</p>
 <ul>
 <li>
 <p>The algorithm works by first:</p>
@@ -242,7 +242,7 @@
 </ul>
 </li>
 <li>
-<p>Reproduce the following code in <code>Sort.h</code>:</p>
+<p>Reproduce the following code in sort.h`:</p>
  <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
  <div class="admonition-title">
  <div id="admonition-code-1-title">
@@ -268,7 +268,7 @@ void printArray(int arr[], int size);
  </div>
 </li>
 <li>
-<p>Reproduce the following code in <code>Sort.c</code>:</p>
+<p>Reproduce the following code in <code>sort.c</code>:</p>
  <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
  <div class="admonition-title">
  <div id="admonition-code-2-title">
@@ -277,7 +277,7 @@ void printArray(int arr[], int size);
  <a class="admonition-anchor-link" href="#admonition-code-2"></a>
  </div>
  <div>
-<pre><code class="language-c">#include "Sort.h"
+<pre><code class="language-c">#include "sort.h"
 
 void quicksortMiddle(int arr[], int low, int high) {
     if (low &lt; high) {
@@ -320,7 +320,7 @@ void printArray(int arr[], int size)
  </div>
 </li>
 <li>
-<p>Now you have the first sorting algorithm is set up we need get the <code>SortingAlgorithms.c</code> file ready to invoke the sorting function and calcualte the how long it took. Modify the code, <code>SortingAlgorithms.c</code>, to include the following, pay close attention to the comments as they provide verbose guidance:</p>
+<p>Now you have the first sorting algorithm is set up we need get the <code>main.c</code> file ready to invoke the sorting function and calcualte the how long it took. Modify the code, <code>main.c</code>, to include the following, pay close attention to the comments as they provide verbose guidance:</p>
  <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
  <div class="admonition-title">
  <div id="admonition-code-3-title">
@@ -329,7 +329,7 @@ void printArray(int arr[], int size)
  <a class="admonition-anchor-link" href="#admonition-code-3"></a>
  </div>
  <div>
-<pre><code class="language-c">#include "Sort.h"
+<pre><code class="language-c">#include "sort.h"
 
 int main()
 {
@@ -371,7 +371,7 @@ int main()
 <ul>
 <li>You should see that the original array is sorted and the the time taken.</li>
 <li>Time taken currentlty shows as milliseconds, however this 10^6 times larger than actual time. Remember we repeat the algorithm \(10\cdot10^6\) times, so we need to divide by the same to get the actual time.
-Timing:  \[33.5ns \equiv 33.5 \cdot 10^{-8} =  \frac{335 \cdot 10^{-3}}{10 \cdot 10^6}  \leftarrow \frac{0.335000}{10000000}\]</li>
+Timing:  \[33.47ns \equiv 33.47 \cdot 10^{-8} =  \frac{3347 \cdot 10^{-3}}{10 \cdot 10^6}  \leftarrow \frac{0.334700}{10000000}\]</li>
 </ul>
 </li>
 <li>
@@ -409,10 +409,10 @@ Timing:  \[33.5ns \equiv 33.5 \cdot 10^{-8} =  \frac{335 \cdot 10^{-3}}{10 \cdot
 </ul>
 <ol>
 <li>
-<p>To implement the bubble sort algorithm, revist the <code>Sort.h</code> and add the prototype <code>void bubblesort(int arr[], int n)</code></p>
+<p>To implement the bubble sort algorithm, revist the <code>sort.h</code> and add the prototype <code>void bubblesort(int arr[], int n)</code></p>
 </li>
 <li>
-<p>Next open the <code>Sort.c</code> file and add the <code>bubblesort()</code> functionality, place the following between the two functions, <code>quicksortMiddle()</code>, <code>printArray()</code>:</p>
+<p>Next open the <code>sort.c</code> file and add the <code>bubblesort()</code> functionality, place the following between the two functions, <code>quicksortMiddle()</code>, <code>printArray()</code>:</p>
  <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
  <div class="admonition-title">
  <div id="admonition-code-4-title">
@@ -448,7 +448,7 @@ void printArray(int arr[], int size) ...
  </div>
 </li>
 <li>
-<p>Like before we need to invoke the <code>bubblesort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>SortingAlgorithms.c</code>:</p>
+<p>Like before we need to invoke the <code>bubblesort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>main.c</code>:</p>
  <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
  <div class="admonition-title">
  <div id="admonition-code-5-title">
@@ -485,7 +485,7 @@ void printArray(int arr[], int size) ...
 <p>Time taken currentlty shows as milliseconds, however this 10^6 times larger than actual time. Remember we repeat the algorithm \(10\cdot10^6\) times, so we need to divide by the same to get the actual time.</p>
 </li>
 <li>
-<p>Timing:  \[33.2ns \equiv 33.2 \cdot 10^{-8} =  \frac{332 \cdot 10^{-3}}{10 \cdot 10^6}  \leftarrow \frac{0.332000}{10000000}\]</p>
+<p>Timing:  \[34.5ns \equiv 33.2 \cdot 10^{-8} =  \frac{345 \cdot 10^{-3}}{10 \cdot 10^6}  \leftarrow \frac{0.345000}{10000000}\]</p>
 </li>
 </ul>
 </li>
@@ -524,10 +524,10 @@ void printArray(int arr[], int size) ...
 </ul>
 <ol>
 <li>
-<p>To implement the bubble sort algorithm, revist the <code>Sort.h</code> and add the prototype <code>void selectionsort(int arr[], int n)</code></p>
+<p>To implement the bubble sort algorithm, revist the <code>sort.h</code> and add the prototype <code>void selectionsort(int arr[], int n)</code></p>
 </li>
 <li>
-<p>Next open the <code>Sort.c</code> file and add the <code>selectionsort()</code> functionality, place the following between the two functions, <code>bubblesort()</code>, <code>printArray()</code>:</p>
+<p>Next open the <code>sort.c</code> file and add the <code>selectionsort()</code> functionality, place the following between the two functions, <code>bubblesort()</code>, <code>printArray()</code>:</p>
  <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
  <div class="admonition-title">
  <div id="admonition-code-6-title">
@@ -568,7 +568,7 @@ void printArray(int arr[], int size) ...
  </div>
 </li>
 <li>
-<p>Like before we need to invoke the <code>selectionSort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>SortingAlgorithms.c</code>:</p>
+<p>Like before we need to invoke the <code>selectionSort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>main.c</code>:</p>
  <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
  <div class="admonition-title">
  <div id="admonition-code-7-title">
@@ -607,7 +607,7 @@ void printArray(int arr[], int size) ...
 <p>Time taken currentlty shows as milliseconds, however this 10^6 times larger than actual time. Remember we repeat the algorithm \(10\cdot10^6\) times, so we need to divide by the same to get the actual time.</p>
 </li>
 <li>
-<p>Timing:  \[46.4ns \equiv 46.4 \cdot 10^{-8} =  \frac{464 \cdot 10^{-3}}{10 \cdot 10^6}  \leftarrow \frac{0.464000}{10000000}\]</p>
+<p>Timing:  \[31.6ns \equiv 31.6 \cdot 10^{-8} =  \frac{316 \cdot 10^{-3}}{10 \cdot 10^6}  \leftarrow \frac{0.316000}{10000000}\]</p>
 </li>
 </ul>
 </li>
@@ -649,10 +649,10 @@ void printArray(int arr[], int size) ...
 </ul>
 <ol>
 <li>
-<p>To implement the bubble sort algorithm, revist the Sort.h and add the prototype <code>void insertionsort(int arr[], int n)</code>.</p>
+<p>To implement the bubble sort algorithm, revist the <code>sort.h</code> and add the prototype <code>void insertionsort(int arr[], int n)</code>.</p>
 </li>
 <li>
-<p>Next open the <code>Sort.c</code> file and add the <code>insertionsort()</code> functionality, place the following between the two functions, <code>selectionSort()</code>, <code>printArray()</code>:</p>
+<p>Next open the <code>sort.c</code> file and add the <code>insertionsort()</code> functionality, place the following between the two functions, <code>selectionSort()</code>, <code>printArray()</code>:</p>
  <div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
  <div class="admonition-title">
  <div id="admonition-code-8-title">
@@ -690,7 +690,7 @@ void printArray(int arr[], int size) ...
  </div>
 </li>
 <li>
-<p>Like before we need to invoke the <code>insertionsort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>SortingAlgorithms.c</code>:</p>
+<p>Like before we need to invoke the <code>insertionsort()</code> in the <code>main()</code>, you'll pleased to note we are adding one line, and commenting another, go back to <code>main.c</code>:</p>
  <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
  <div class="admonition-title">
  <div id="admonition-code-9-title">
@@ -730,7 +730,7 @@ void printArray(int arr[], int size) ...
 <p>Time taken currentlty shows as milliseconds, however this 10^6 times larger than actual time. Remember we repeat the algorithm \(10\cdot10^6\) times, so we need to divide by the same to get the actual time.</p>
 </li>
 <li>
-<p>Timing:  \[15.1ns \equiv 15.1 \cdot 10^{-8} =  \frac{151 \cdot 10^{-3}}{10 \cdot 10^6}  \leftarrow \frac{0.151000}{10000000}\]</p>
+<p>Timing:  \[17.5ns \equiv 17.5 \cdot 10^{-8} =  \frac{175 \cdot 10^{-3}}{10 \cdot 10^6}  \leftarrow \frac{0.175000}{10000000}\]</p>
 </li>
 </ul>
 </li>
@@ -743,14 +743,11 @@ void printArray(int arr[], int size) ...
 <h2 id="outcome"><a class="header" href="#outcome">Outcome:</a></h2>
 <p>So we can see that the following sorting algorithms can be ranked by time complexity:</p>
 <ol>
-<li>Insertion Sort @ 15.1ns</li>
-<li>Bubble Sort @ 33.2ns</li>
-<li>Quick Sort @ 33.5ns</li>
-<li>Selection Sort @ 46.4ns</li>
+<li>Insertion Sort @ 17.5ns</li>
+<li>Selection Sort @ 31.6ns</li>
+<li>Quick Sort @ 33.47ns</li>
+<li>Bubble Sort @ 34.5ns</li>
 </ol>
-<ul>
-<li>Download code here -&gt; <a href="SortingAlgorithms.zip">SortingAlgorithms.zip</a></li>
-</ul>
 <hr />
 <h2 id="investigation-and-exploration"><a class="header" href="#investigation-and-exploration">Investigation and exploration</a></h2>
 <ol>
