@@ -1,7 +1,7 @@
 # University of Greenwich - MD_Book_Template
 
 > [!NOTE]
-> - Version: 1.1.0
+> - Version: 1.2.0
 > - View the deployment for a rendered documentation:
 >   - [https://uniofgreenwich.github.io/MD_Book_Template](https://uniofgreenwich.github.io/MD_Book_Template)
 
@@ -30,6 +30,10 @@ This template includes the following tech stack:
 
 - [GitHub mdbook-quiz](https://github.com/cognitive-engineering-lab/mdbook-quiz)
   - [mdbook-quiz Documentation](https://github.com/cognitive-engineering-lab/mdbook-quiz)
+
+- [GitHub mdbook-embedify](https://github.com/MR-Addict/mdbook-embedify)
+  - [mdbook-embedify Documentation]([b/mdbook-quizhttps://github.com/cognitive-engineering-la](https://mr-addict.github.io/mdbook-embedify/))
+
 
 ## Contribution
 
