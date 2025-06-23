@@ -6,11 +6,20 @@ src = "content"
 title = "Programming for Engineers"
 
 [output.html]
+highlightjs = false  # disable if not already
 mathjax-support = true
 git-repository-url = "https://github.com/uniofgreenwich/ELEE1147_Exercises"
 edit-url-template = "https://github.com/uniofgreenwich/ELEE1147_Exercises/edit/main/{path}"
-additional-css = ["./theme/pagetoc.css", "./theme/css/mdbook-admonish.css", "./theme/css/code.css","./theme/css/terminal.css","./theme/css/output.css", "./theme/css/mdbook-admonish.css"]
-additional-js  = ["./theme/pagetoc.js"]
+additional-css = [
+    "./theme/pagetoc.css", 
+    "./theme/css/mdbook-admonish.css",
+    "./theme/css/code.css",
+    "./theme/css/terminal.css",
+    "./theme/css/output.css",
+    "./theme/css/mdbook-admonish.css"
+
+]
+additional-js  = ["./theme/pagetoc.js", "./theme/highlightjs-line-numbers.js"]
 
 [output.html.print]
 enable = false
@@ -74,5 +83,3 @@ fullscreen = false
 show-bug-reporter = true
 
 [preprocessor.pagetoc]
-
-
