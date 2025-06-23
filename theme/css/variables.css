@@ -349,7 +349,7 @@
 
 /* Override code blocks for Kanagawa theme */
 .kanagawa .hljs {
-    background: #2A2A37; /* sumiInk2 for a slightly lighter background */
+    background: #323242; /* sumiInk2 for a slightly lighter background */
     color: #DCD7BA; /* fujiWhite for Default foreground */
 }
 
@@ -407,7 +407,7 @@
 
 /* Override Code Blocks for Tokyo Night theme */
 .tokyonight .hljs {
-    background: #1B2232; /* A darker background, similar to sidebar-bg */
+    background: #20283b; /* A darker background, similar to sidebar-bg */
     color: #bdc7f0; /* Foreground color used in sidebar */
 }
 
@@ -559,11 +559,11 @@
   --bg: #282828;               /* Background (Base 00) */
   --fg: #eeeeee;               /* Foreground (Base 05) */
   
-  --sidebar-bg: #282828;       /* Same as background */
+  --sidebar-bg: #3c3836;       /* Same as background */
   --sidebar-fg: #eeeeee;       /* Same as foreground */
   --sidebar-non-existant: #666666; /* Slightly muted grey */
   --sidebar-active: #ffcc66;   /* Accent green from tender (color12) */
-  --sidebar-spacer: #3c3836;   /* Slightly lighter bg for spacing */
+  --sidebar-spacer: #282828;   /* Slightly lighter bg for spacing */
 
   --scrollbar: #5c5c5c;        /* Neutral mid-grey for scrollbar */
 
