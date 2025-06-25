@@ -16,8 +16,7 @@ additional-css = [
     "./theme/css/code.css",
     "./theme/css/terminal.css",
     "./theme/css/output.css",
-    "./theme/css/mdbook-admonish.css"
-
+    "./theme/css/mdbook-admonish.css",
 ]
 additional-js  = ["./theme/pagetoc.js", "./theme/highlightjs-line-numbers.js"]
 
@@ -35,6 +34,15 @@ heading-split-level = 2
 
 [output.html.fold]
 enable = true
+
+[preprocessor.gitinfo]
+enable = true
+template = "Last updated: {{date}} {{sep}} Commit: {{hash}}"
+font-size = "0.8em"
+separator = "|"
+date-format = "%A %d %B %Y"
+time-format = "@ %H:%M:%S"
+after = ["embedify"]
 
 [preprocessor.embedify]
 custom-templates-folder = "theme/assets/templates"
