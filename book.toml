@@ -16,6 +16,7 @@ additional-css = [
     "./theme/css/code.css",
     "./theme/css/terminal.css",
     "./theme/css/output.css",
+    "./theme/css/film.css",
     "./theme/css/mdbook-admonish.css",
 ]
 additional-js  = ["./theme/pagetoc.js", "./theme/highlightjs-line-numbers.js"]
@@ -37,7 +38,7 @@ enable = true
 
 [preprocessor.gitinfo]
 enable = true
-template = "Last updated: {{date}} {{sep}} Commit: {{hash}}"
+template = "Page last updated: {{date}} {{sep}} Commit: {{hash}}"
 font-size = "0.8em"
 separator = "|"
 date-format = "%A %d %B %Y"
@@ -80,6 +81,11 @@ aliases = ["code"]
 icon = "./theme/terminal.svg"
 color = "#76727B"
 aliases = ["cli","cmd"]
+
+[preprocessor.admonish.directive.custom.film]
+icon = "./theme/film.svg"
+color = "#3eaebd"
+aliases = ["film","video","movie"]
 
 [preprocessor.admonish.directive.custom.output]
 icon = "./theme/output.svg"

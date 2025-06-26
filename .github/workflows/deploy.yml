@@ -37,7 +37,7 @@ jobs:
       
       - name: Install mdbook-gitinfo
         run: |
-          curl -sSL https://github.com/CompEng0001/mdbook-gitinfo/releases/download/v1.0.0/mdbook-gitinfo-linux.tar.gz | tar -xz
+          curl -sSL https://github.com/CompEng0001/mdbook-gitinfo/releases/download/v0.1.1/mdbook-gitinfo-linux.tar.gz | tar -xz
           chmod +x mdbook-gitinfo-linux
           mv mdbook-gitinfo-linux ~/.cargo/bin/mdbook-gitinfo
 
