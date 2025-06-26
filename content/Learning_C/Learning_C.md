@@ -8,12 +8,19 @@ We will be doing this lab inconjuction with the C lecture. Key concepts will be 
 - We need add a compiler to out `PATH` to do that revist the `~/.bashrc` file and append the `PATH` environment variable the following: 
 
     ~~~admonish terminal
+    
+    <div align="center">
+
+    <iframe src="https://gre.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=c7893e28-8022-4936-a344-b1fe00e9b543&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="100%" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="GCC_To_PATH"></iframe>
+
+    </div>
+
 
     ```sh
     $ vim ~/.bashrc
     export PATH=$PATH:"/c/Program Files/GCC-Windows-MingW-2.0.0/w64devkit/bin"
     ```
-
+    
     ~~~
 
     ~~~admonish info    
@@ -22,6 +29,7 @@ We will be doing this lab inconjuction with the C lecture. Key concepts will be 
     - and only for our machines in Nelson 128 and Nelson 108, you can download and install using the release and then do the export above.
 
     ~~~
+
 
 - Then source the `~/.bashrc` or use the alias we created last time `refresh`
 
