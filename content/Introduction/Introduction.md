@@ -7,7 +7,7 @@ This mdBook will grow over the duration of this module with new labs/workshops a
 <tr>
 <td>
 
-The mdBook accessed outside of blackboard and is mobile and tablet friendly. :
+The mdBook accessed outside of Moodle and is mobile and tablet friendly. :
 - [https://uniofgreenwich.github.io/ELEE1147_Exercises/](https://uniofgreenwich.github.io/ELEE1147_Exercises/Introduction.html)
 - Or scan the QR code on the right:
 </td>
