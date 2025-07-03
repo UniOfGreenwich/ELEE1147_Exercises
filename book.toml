@@ -52,20 +52,6 @@ scroll-to-top.enable = true
 footer.enable = true
 footer.message = "Copyright © 2025 • Created with ❤️ by [CompEng0001](https://github.com/CompEng0001)"
 
-announcement-banner.enable = false
-announcement-banner.id = "0.2.15"
-announcement-banner.message = "*Version **0.2.15** now has relased, check it out [here](https://github.com/MR-Addict/mdbook-embedify/releases/tag/0.2.15).*"
-
-giscus.enable = false
-giscus.repo = "MR-Addict/mdbook-embedify"
-giscus.repo-id = "R_kgDOLCxX0Q"
-giscus.category = "General"
-giscus.category-id = "DIC_kwDOLCxX0c4CdGx-"
-giscus.reactions-enabled = "1"
-giscus.theme = "book"
-giscus.lang = "en"
-giscus.loading = "lazy"
-
 [preprocessor.admonish]
 command = "mdbook-admonish"
 assets_version = "3.1.0" # do not edit: managed by `mdbook-admonish install`
