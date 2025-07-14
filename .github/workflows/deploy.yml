@@ -23,7 +23,7 @@ jobs:
         run: pip install segno
 
       - name: Setup mdBook
-        uses: jontze/action-mdbook@v3
+        uses: jontze/action-mdbook@v4
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           use-toc: true

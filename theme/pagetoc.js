@@ -50,6 +50,25 @@ const updateFunction = () => {
   }
 };
 
+function togglePagetocByWidth(thresholdPercentage = 0.7) {
+  const pagetoc = document.querySelector('.pagetoc');
+  if (!pagetoc) return;
+
+  const viewportWidth = window.innerWidth;
+  const maxWidth = 1920; // or another base value for full layout
+  const threshold = maxWidth * thresholdPercentage;
+
+  if (viewportWidth < threshold) {
+    pagetoc.style.display = "none";
+  } else {
+    pagetoc.style.display = "block";
+  }
+}
+
+window.addEventListener("resize", () => togglePagetocByWidth(0.87));
+window.addEventListener("load", () => togglePagetocByWidth(0.87));
+
+
 window.addEventListener('load', () => {
   const pagetoc = getPagetoc();
   const headers = [...document.getElementsByClassName("header")];

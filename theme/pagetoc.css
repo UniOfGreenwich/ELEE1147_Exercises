@@ -1,6 +1,6 @@
 :root {
-    --toc-width: 18%;
-    --center-content-toc-shift: calc(-1 * var(--toc-width) / 2);
+    --toc-width: 16%;
+    --center-content-toc-shift: calc(-1 * var(--toc-width) / 3);
 }
 
 .nav-chapters {
@@ -17,7 +17,7 @@
 }
 
 
-@media only screen and (max-width:1439px) {
+@media only screen and (max-width:1705px) {
     .sidetoc {
         display: none;
     }
@@ -31,7 +31,7 @@
         margin-left: auto;
         margin-right: auto;
         margin-top: auto;
-        left: calc(100% + (var(--content-max-width))/4 - 140px);
+        left: calc(100% + (var(--content-max-width))/5 - 140px);
         position: absolute;
     }
     .pagetoc {
