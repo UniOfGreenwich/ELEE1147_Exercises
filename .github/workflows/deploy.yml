@@ -13,6 +13,8 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -29,24 +31,27 @@ jobs:
           use-toc: true
           use-admonish: true
       
-      - name: Install mdbook-quiz
-        run: |
-          curl -sSL https://github.com/cognitive-engineering-lab/mdbook-quiz/releases/download/v0.3.10/mdbook-quiz_x86_64-unknown-linux-gnu_bare.tar.gz | tar -xz
-          chmod +x mdbook-quiz
-          mv mdbook-quiz ~/.cargo/bin/
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Build and install mdbook-quiz from source
+        run: cargo install mdbook-quiz --version 0.4.0
       
       - name: Install mdbook-gitinfo
         run: |
-          curl -sSL https://github.com/CompEng0001/mdbook-gitinfo/releases/download/v0.1.1/mdbook-gitinfo-linux.tar.gz | tar -xz
+          curl -sSL https://github.com/CompEng0001/mdbook-gitinfo/releases/download/v0.1.2/mdbook-gitinfo-linux.tar.gz | tar -xz
           chmod +x mdbook-gitinfo-linux
           mv mdbook-gitinfo-linux ~/.cargo/bin/mdbook-gitinfo
 
       - name: Install mdbook-embedify
         run: |
-          curl -sSL -o embedify.zip https://github.com/MR-Addict/mdbook-embedify/releases/download/0.2.15/mdbook-embedify-0.2.15-x86_64-unknown-linux-gnu.zip
+          curl -sSL -o embedify.zip https://github.com/MR-Addict/mdbook-embedify/releases/download/0.2.17/mdbook-embedify-0.2.17-x86_64-unknown-linux-gnu.zip
           unzip embedify.zip
-          chmod +x mdbook-embedify-0.2.15-x86_64-unknown-linux-gnu/mdbook-embedify
-          mv mdbook-embedify-0.2.15-x86_64-unknown-linux-gnu/mdbook-embedify ~/.cargo/bin/
+          chmod +x mdbook-embedify-0.2.17-x86_64-unknown-linux-gnu/mdbook-embedify
+          mv mdbook-embedify-0.2.17-x86_64-unknown-linux-gnu/mdbook-embedify ~/.cargo/bin/
 
       - name: Show mdbook version
         run: mdbook --version

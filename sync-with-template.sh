@@ -43,6 +43,7 @@ INCLUDE_FILES=(
   ".github/*"
   ".gitignore"
   "README.md"
+  "CHANGELOG.md"
   "sync-with-template.sh"
   "theme/*"
   "book.toml"

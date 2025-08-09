@@ -1,7 +1,7 @@
 # University of Greenwich - MD_Book_Template
 
 > [!NOTE]
-> - Version: 1.2.6
+> - Version: 1.2.8
 > - View the deployment for a rendered documentation:
 >   - [https://uniofgreenwich.github.io/MD_Book_Template](https://uniofgreenwich.github.io/MD_Book_Template)
 

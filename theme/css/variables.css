@@ -231,6 +231,7 @@
     /* Base and Surface colors for background and foreground */
     --bg: #282a36; /* Default background */
     --fg: #f8f8f2; /* Default text color */
+    --custom: #313442; /* Default background */
 
     /* Sidebar settings */
     --sidebar-bg: #44475a; /* Sidebar background */
@@ -280,7 +281,7 @@
 
 /* Override Code Blocks for Rose Pink theme */
 .dracula .hljs {
-    background: #f4f0f8; /* Light pink background for contrast */
+    background: #f1e9fa; /* Light pink background for contrast */
     color: #350c3d; /* Darker rose color for text */
 }
 
@@ -346,6 +347,7 @@
     /* Using the Kanagawa color palette */
     --bg: #222835; /* sumiInk1 for Default background */
     --fg: #DCD7BA; /* fujiWhite for Default foreground */
+    --custom: #252b38; /* sumiInk1 for Default background */
 
     --sidebar-bg: #2A2A37; /* sumiInk2 for a subtler sidebar background */
     --sidebar-fg: #C8C093; /* oldWhite for Dark foreground in sidebar */
@@ -443,6 +445,7 @@
 .tender {
   --bg: #282828;               /* Background (Base 00) */
   --fg: #eeeeee;               /* Foreground (Base 05) */
+  --custom: #423c38;
   
   --sidebar-bg: #3c3836;       /* Same as background */
   --sidebar-fg: #eeeeee;       /* Same as foreground */
@@ -581,7 +584,7 @@
 .nord {
     --bg: #2e3440;                  /* nord0 */
     --fg: #d8dee9;                  /* nord4 */
-
+    --custom: #2e3646;  /* nord0 */
     --sidebar-bg: #3b4252;          /* nord1 */
     --sidebar-fg: #eceff4;          /* nord6 */
     --sidebar-active: #88c0d0;      /* nord8 */
@@ -627,7 +630,7 @@
 .nord code.hljs {
     padding: 0.2em 0.4em;
     border-radius: 4px;
-    background: #3b4252;  /* nord1 */
+    background: #454d5f;  /* nord1 */
 }
 
 /* Syntax highlight classes */
@@ -963,6 +966,7 @@
 .everforest {
     --bg: #2f383e;
     --fg: #d3c6aa;
+    --custom: #2d383f;
 
     --sidebar-bg: #3a454a;
     --sidebar-fg: #d3c6aa;
@@ -1071,6 +1075,7 @@
 .miasma {
     --bg: #222222;
     --fg: #c2c2b0;
+    --custom: #272727;
 
     --sidebar-bg: #2b2b2b;
     --sidebar-fg: #c2c2b0;
@@ -1115,7 +1120,7 @@
 
 .miasma code.hljs {
     padding: 0.2em 0.4em;
-    background: #2b2b2b; /* slightly lighter for inline */
+    background: #302f2f; /* slightly lighter for inline */
 }
 
 /* Syntax classes */
@@ -1287,12 +1292,13 @@
 .noctis-lux {
     --bg: #f6edda;
     --fg: #005661;
+    --custom: #EFE6D2;
 
     --sidebar-bg: #e9dfcb;
     --sidebar-fg: #005661;
     --sidebar-active: #0094f0;         /* blue */
     --sidebar-non-existant: #8ca6a6;   /* normal white */
-    --sidebar-spacer: #d4e8e2;
+    --sidebar-spacer: #6DBDEE;
 
     --scrollbar: #005661;
 

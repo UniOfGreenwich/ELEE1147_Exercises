@@ -346,3 +346,54 @@ details[open].admonition > summary.admonition-title::after {
 .rust .admonition-anchor-link:link, .rust .admonition-anchor-link:visited {
   color: var(--sidebar-fg);
 }
+
+.tender :is(.admonition) {
+  background-color: var(--custom);
+  color: var(--sidebar-fg);
+}
+
+.dayfox :is(.admonition) {
+  background-color: var(--searchbar-bg);
+  color: var(--sidebar-fg);
+}
+
+.noctis-lux :is(.admonition) {
+  background-color: var(--custom);
+  color: var(--sidebar-fg);
+}
+
+.brew :is(.admonition) {
+  background-color: var(--theme-hover);
+  color: var(--fg);
+}
+
+.pinkrose :is(.admonition) {
+  background-color: var(--searchbar-bg);
+  color: var(--fg);
+}
+
+.nord :is(.admonition) {
+  background-color: var(--custom);
+  color: var(--fg);
+}
+
+.miasma :is(.admonition) {
+  background-color: var(--custom);
+  color: var(--fg);
+}
+
+
+.kanagawa :is(.admonition) {
+  background-color: var(--custom);
+  color: var(--fg);
+}
+
+.dracula :is(.admonition) {
+  background-color: var(--custom);
+  color: var(--fg);
+}
+
+.everforest :is(.admonition) {
+  background-color: var(--custom);
+  color: var(--fg);
+}

@@ -17,6 +17,7 @@ additional-css = [
     "./theme/css/terminal.css",
     "./theme/css/output.css",
     "./theme/css/film.css",
+    "./theme/css/bullseye.css",
     "./theme/css/mdbook-admonish.css",
 ]
 additional-js  = ["./theme/pagetoc.js", "./theme/highlightjs-line-numbers.js"]
@@ -38,11 +39,13 @@ enable = true
 
 [preprocessor.gitinfo]
 enable = true
-template = "Page last updated: {{date}} {{sep}} Commit: {{hash}}"
+template = "Page last updated: {{date}} {{sep}} Branch: {{branch}} {{sep}} Commit: {{hash}}"
 font-size = "0.8em"
 separator = "|"
 date-format = "%A %d %B %Y"
 time-format = "@ %H:%M:%S"
+branch = "main"
+
 after = ["embedify"]
 
 [preprocessor.embedify]
@@ -50,7 +53,7 @@ custom-templates-folder = "theme/assets/templates"
 before = ["links"]
 scroll-to-top.enable = true
 footer.enable = true
-footer.message = "Copyright © 2025 • Created with ❤️ by [CompEng0001](https://github.com/CompEng0001)"
+footer.message = "Created with ❤️ by [CompEng0001](https://github.com/CompEng0001)"
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
@@ -76,6 +79,11 @@ aliases = ["film","video","movie"]
 [preprocessor.admonish.directive.custom.output]
 icon = "./theme/output.svg"
 color = "#72879C"
+
+[preprocessor.admonish.directive.custom.bullseye]
+icon = "./theme/bullseye.svg"
+color = "#f7c65dff"
+aliases = ["bullseye","goal"]
 
 [preprocessor.quiz]
 before = ["admonish"]
